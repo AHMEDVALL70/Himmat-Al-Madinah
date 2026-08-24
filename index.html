@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>همة المدينة العقارية | Himmat Al Madinah Real Estate</title>
+    <meta name="description" content="همة المدينة العقارية — وساطة وتسويق عقاري في المدينة المنورة والمدن الرئيسية." />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* -------------------- إعادة ضبط وتجهيز أساسي -------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: #f5f7fc;
+            color: #1a2639;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* -------------------- متغيرات الألوان -------------------- */
+        :root {
+            --primary: #0b1a33;
+            --primary-light: #1a3557;
+            --gold: #d4af37;
+            --gold-soft: #e8d5a3;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --gold-gradient: linear-gradient(135deg, #d4af37, #b8962c, #a07d25);
+            --white: #ffffff;
+            --light-bg: #f0f4fe;
+            --shadow-heavy: 0 30px 60px -20px rgba(11, 26, 51, 0.2);
+            --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.3);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* -------------------- الهيدر -------------------- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 10px 0;
+            background: rgba(11, 26, 51, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.12);
+            transition: var(--transition);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .logo-area img {
+            height: 68px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.35);
+            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.4));
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding-bottom: 4px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2.5px;
+            background: var(--gold-gradient);
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links .badge-offer {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white !important;
+            padding: 2px 12px;
+            border-radius: 60px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+            margin-right: 4px;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        /* أزرار اللغة */
+        .lang-group {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 5px 14px;
+            border-radius: 60px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-btn.active {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .lang-btn .flag {
+            font-size: 1.1rem;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #0b1a33 !important;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            border: none;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: var(--shadow-gold);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.45);
+            color: #0b1a33 !important;
+        }
+
+        .btn-outline-gold {
+            background: transparent;
+            color: var(--gold) !important;
+            border: 2px solid var(--gold);
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .btn-outline-gold:hover {
+            background: var(--gold-gradient);
+            color: #0b1a33 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -8px rgba(212, 175, 55, 0.4);
+        }
+
+        /* -------------------- شارة الترخيص -------------------- */
+        .license-banner {
+            background: var(--white);
+            padding: 12px 0;
+            border-bottom: 1px solid #e8edf2;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+            margin-top: 72px;
+        }
+
+        .license-banner .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .license-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .license-info .license-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .license-info .license-icon i {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .license-info .license-number {
+            background: linear-gradient(135deg, #f0f4fe, #e8edf7);
+            padding: 4px 18px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            border: 1px solid #e2e8f0;
+        }
+
+        .license-info .license-number strong {
+            color: var(--gold);
+        }
+
+        .license-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a6a7e;
+            font-size: 0.85rem;
+        }
+
+        .license-badge .check {
+            color: #2ecc71;
+            font-size: 1.1rem;
+        }
+
+        /* -------------------- الهيرو -------------------- */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(145deg, #0a1628 0%, #162b4a 45%, #1d3857 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 .gold-text {
+            color: var(--gold);
+            position: relative;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .hero-content .badge-office {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 5px 20px;
+            border-radius: 60px;
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .hero-badges span {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(6px);
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .hero-badges span:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-badges i {
+            color: var(--gold);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hero-image-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image-box .floating-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 35px 40px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-box .floating-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-logo-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo-wrap img {
+            width: min(100%, 460px);
+            height: auto;
+            border-radius: 28px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 40px rgba(212, 175, 55, 0.25);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .floating-card .big-icon {
+            font-size: 4.5rem;
+            color: var(--gold);
+            opacity: 0.8;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        .page-view.active.hero {
+            display: flex;
+        }
+
+        .ai-grid.single {
+            grid-template-columns: 1fr;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offers-section,
+        .ai-section {
+            border-radius: 28px;
+            margin: 24px 0 0;
+        }
+
+        .add-property-form {
+            display: none;
+            grid-column: 1 / -1;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .add-property-form.show {
+            display: block;
+        }
+
+        .floating-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .floating-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .floating-card .gold-line {
+            width: 60px;
+            height: 4px;
+            background: var(--gold-gradient);
+            margin: 12px auto;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .floating-card .city-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            position: relative;
+        }
+
+        .floating-card .city-tags span {
+            background: rgba(212, 175, 55, 0.10);
+            padding: 5px 14px;
+            border-radius: 60px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.8rem;
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            transition: var(--transition);
+        }
+
+        .floating-card .city-tags span:hover {
+            background: rgba(212, 175, 55, 0.18);
+            transform: scale(1.05);
+        }
+
+        /* -------------------- الأقسام العامة -------------------- */
+        .section-padding {
+            padding: 70px 0 50px;
+        }
+
+        .section-header {
+            text-align: right;
+            margin-bottom: 45px;
+        }
+
+        .section-header .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header .section-title::after {
+            content: '';
+            width: 70px;
+            height: 5px;
+            background: var(--gold-gradient);
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            border-radius: 10px;
+        }
+
+        .section-header .section-sub {
+            color: #6b7b90;
+            font-size: 1.1rem;
+            margin-top: 18px;
+        }
+
+        /* -------------------- العقارات -------------------- */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 35px 60px -25px rgba(11, 26, 51, 0.2);
+            border-color: var(--gold-soft);
+        }
+
+        .property-card .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+            padding: 5px 16px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-badge.sale {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .card-badge.rent {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .card-badge.featured {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            right: auto;
+            left: 15px;
+        }
+
+        .property-img {
+            height: 210px;
+            background: linear-gradient(145deg, #dce3ee, #c8d2e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.2rem;
+            color: var(--primary-light);
+            position: relative;
+        }
+
+        .property-body {
+            padding: 22px 24px 28px;
+        }
+
+        .property-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+
+        .property-location {
+            color: #6b7b90;
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .property-location i {
+            color: var(--gold);
+        }
+
+        .property-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-top: 1px solid #edf2f7;
+            padding-top: 14px;
+            font-size: 0.9rem;
+            color: #3d4d62;
+        }
+
+        .property-meta i {
+            color: var(--gold);
+            margin-left: 5px;
+        }
+
+        .price-tag {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .price-tag .currency {
+            font-size: 0.95rem;
+            color: #6b7b90;
+            font-weight: 500;
+        }
+
+        /* زر إدراج العقار */
+        .add-property-btn {
+            background: var(--white);
+            border: 2px dashed var(--gold);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 280px;
+        }
+
+        .add-property-btn:hover {
+            background: rgba(212, 175, 55, 0.03);
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+
+        .add-property-btn i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .add-property-btn h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .add-property-btn p {
+            color: #6b7b90;
+            font-size: 0.9rem;
+        }
+
+        /* -------------------- العروض الخاصة -------------------- */
+        .offers-section {
+            background: linear-gradient(135deg, #0a1628, #1a3557);
+            padding: 60px 0;
+            border-radius: 60px 60px 0 0;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offers-section::before {
+            content: '⭐';
+            font-size: 18rem;
+            position: absolute;
+            left: -50px;
+            bottom: -80px;
+            opacity: 0.02;
+        }
+
+        .offers-section .section-title {
+            color: var(--white);
+        }
+
+        .offers-section .section-title::after {
+            background: var(--gold-gradient);
+        }
+
+        .offers-section .section-sub {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .offer-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            border-radius: var(--radius-md);
+            padding: 30px 25px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .offer-card:hover::before {
+            opacity: 1;
+        }
+
+        .offer-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--gold);
+            transform: translateY(-6px);
+        }
+
+        .offer-card .offer-icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .offer-card h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .offer-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .offer-card .discount {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 4px 18px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* -------------------- خدمات الذكاء الاصطناعي -------------------- */
+        .ai-section {
+            background: linear-gradient(165deg, #f5f7fc 0%, #e8edf7 100%);
+            padding: 70px 0 80px;
+            border-radius: 60px 60px 0 0;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .ai-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            box-shadow: var(--shadow-heavy);
+            border-top: 8px solid var(--gold);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-card::after {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 40px 70px -25px rgba(11, 26, 51, 0.15);
+        }
+
+        .ai-card .icon-wrap {
+            display: inline-flex;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .ai-card .icon-wrap i {
+            font-size: 2.4rem;
+            color: var(--gold);
+        }
+
+        .ai-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .ai-card p {
+            color: #5a6a7e;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .ai-form label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .ai-form label .required {
+            color: #e74c3c;
+        }
+
+        .ai-form input,
+        .ai-form select {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 60px;
+            background: #fafcff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: var(--transition);
+            color: #1a2639;
+        }
+
+        .ai-form input:focus,
+        .ai-form select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.08);
+        }
+
+        .ai-form .btn-gold {
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 14px;
+        }
+
+        .result-box {
+            background: #f0f4fe;
+            padding: 18px 22px;
+            border-radius: var(--radius-md);
+            margin-top: 18px;
+            border-right: 6px solid var(--gold);
+            font-weight: 500;
+            display: none;
+            color: var(--primary);
+        }
+
+        .result-box.show {
+            display: block;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-box .contract-preview {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 14px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            color: #1a2639;
+            line-height: 1.9;
+        }
+
+        /* -------------------- شرح العقود -------------------- */
+        .contracts-info {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px 35px;
+            margin-top: 25px;
+            box-shadow: var(--shadow-soft);
+            border-right: 6px solid var(--gold);
+        }
+
+        .contracts-info h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contracts-info h4 i {
+            color: var(--gold);
+        }
+
+        .contracts-info ul {
+            list-style: none;
+            padding-right: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .contracts-info ul li {
+            padding: 8px 16px;
+            background: #f8faff;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #3d4d62;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contracts-info ul li i {
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        /* -------------------- أيقونات التواصل -------------------- */
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: var(--white);
+            padding: 35px 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-heavy);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-item .c-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            background: rgba(212, 175, 55, 0.06);
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .contact-item .c-icon:hover {
+            transform: scale(1.12) rotate(-3deg);
+        }
+
+        /* ألوان خاصة لكل أيقونة */
+        .contact-item .c-icon.whatsapp {
+            background: rgba(37, 211, 102, 0.12);
+            color: #25d366;
+        }
+        .contact-item .c-icon.whatsapp:hover {
+            background: #25d366;
+            color: white;
+        }
+
+        .contact-item .c-icon.x {
+            background: rgba(0, 0, 0, 0.06);
+            color: #000;
+        }
+        .contact-item .c-icon.x:hover {
+            background: #000;
+            color: white;
+        }
+
+        .contact-item .c-icon.facebook {
+            background: rgba(24, 119, 242, 0.12);
+            color: #1877f2;
+        }
+        .contact-item .c-icon.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .contact-item .c-icon.tiktok {
+            background: rgba(0, 0, 0, 0.06);
+            color: #000;
+        }
+        .contact-item .c-icon.tiktok:hover {
+            background: #000;
+            color: #ff0050;
+        }
+
+        .contact-item .c-icon.snapchat {
+            background: rgba(255, 252, 0, 0.15);
+            color: #fffc00;
+        }
+        .contact-item .c-icon.snapchat:hover {
+            background: #fffc00;
+            color: #000;
+        }
+
+        .contact-item .c-icon.instagram {
+            background: rgba(214, 36, 159, 0.10);
+            color: #d6249f;
+        }
+        .contact-item .c-icon.instagram:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+            color: white;
+        }
+
+        .contact-item .c-icon.phone {
+            background: rgba(46, 204, 113, 0.12);
+            color: #2ecc71;
+        }
+        .contact-item .c-icon.phone:hover {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .contact-item .c-icon.email {
+            background: rgba(231, 76, 60, 0.12);
+            color: #e74c3c;
+        }
+        .contact-item .c-icon.email:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .contact-item .c-icon.location {
+            background: rgba(52, 152, 219, 0.12);
+            color: #3498db;
+        }
+        .contact-item .c-icon.location:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .contact-item .contact-info h4 {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .contact-item .contact-info p,
+        .contact-item .contact-info a {
+            color: #6b7b90;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .contact-item .contact-info a:hover {
+            color: var(--gold);
+        }
+
+        /* -------------------- شات واتساب + شات الموقع -------------------- */
+        .chat-widgets {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .chat-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            text-decoration: none;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-btn.whatsapp-chat {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+        }
+
+        .chat-btn.whatsapp-chat:hover {
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.45);
+        }
+
+        .chat-btn.site-chat {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+        }
+
+        .chat-btn.site-chat:hover {
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.45);
+        }
+
+        .chat-btn .badge-dot {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 14px;
+            height: 14px;
+            background: #e74c3c;
+            border-radius: 60px;
+            border: 2px solid white;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* -------------------- نافذة شات الموقع -------------------- */
+        .chat-window {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            width: 360px;
+            max-height: 440px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .chat-window.open {
+            display: flex;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        .chat-header {
+            background: var(--primary);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .chat-header .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .chat-header .chat-title i {
+            color: var(--gold);
+        }
+
+        .chat-header .chat-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .chat-header .chat-close:hover {
+            color: white;
+        }
+
+        .chat-messages {
+            padding: 16px 20px;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 290px;
+            background: #f8faff;
+        }
+
+        .chat-message {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-message.bot {
+            justify-content: flex-start;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-message .bubble {
+            padding: 10px 16px;
+            border-radius: 16px;
+            max-width: 85%;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .chat-message.bot .bubble {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            color: #1a2639;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.user .bubble {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 60px;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .chat-message.user .avatar {
+            background: var(--primary);
+            color: var(--gold);
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 12px 16px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .chat-input-area input:focus {
+            border-color: var(--gold);
+        }
+
+        .chat-input-area button {
+            background: var(--gold-gradient);
+            border: none;
+            border-radius: 60px;
+            width: 44px;
+            height: 44px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .chat-input-area button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* -------------------- تذييل -------------------- */
+        .footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 50px 0 25px;
+            margin-top: 40px;
+            border-top: 4px solid var(--gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .footer a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+            transform: translateX(-6px);
+        }
+
+        .footer .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0;
+        }
+
+        .footer .social-links a:hover {
+            background: var(--gold-gradient);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer .license-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer .license-footer i {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 25px;
+            font-size: 0.85rem;
+        }
+
+        /* -------------------- استجابة للجوالات -------------------- */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-image-box .floating-card {
+                max-width: 100%;
+            }
+
+            .ai-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .license-banner .container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .license-info {
+                justify-content: center;
+            }
+
+            .chat-window {
+                width: 320px;
+                max-height: 400px;
+            }
+
+            .contracts-info ul {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-widgets {
+                left: 15px;
+                bottom: 15px;
+            }
+
+            .chat-btn {
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .contact-item {
+                flex-direction: row;
+                text-align: right;
+            }
+
+            .section-header .section-title {
+                font-size: 1.8rem;
+            }
+
+            .ai-card {
+                padding: 25px 18px;
+            }
+
+            .floating-card {
+                padding: 20px !important;
+            }
+
+            .chat-window {
+                width: 290px;
+                max-height: 360px;
+                left: 10px;
+                right: 10px;
+            }
+
+            .chat-widgets {
+                left: 15px;
+                bottom: 15px;
+            }
+
+            .chat-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-area img {
+                height: 38px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
+            .header-left {
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .lang-btn {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+
+            .lang-btn .flag {
+                font-size: 0.9rem;
+            }
+
+            .license-info .license-number {
+                font-size: 0.75rem;
+                padding: 2px 12px;
+            }
+
+            .add-property-btn {
+                padding: 30px 20px;
+                min-height: 220px;
+            }
+
+            .add-property-btn i {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* -------------------- الترجمة (لغة إنجليزية) -------------------- */
+        body.en {
+            direction: ltr;
+            text-align: left;
+        }
+
+        body.en .section-header {
+            text-align: left;
+        }
+
+        body.en .section-header .section-title::after {
+            right: auto;
+            left: 0;
+        }
+
+        body.en .property-location {
+            direction: ltr;
+        }
+
+        body.en .nav-links a::after {
+            right: auto;
+            left: 0;
+        }
+
+        body.en .contact-item {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        body.en .result-box {
+            border-right: none;
+            border-left: 6px solid var(--gold);
+        }
+
+        body.en .contracts-info {
+            border-right: none;
+            border-left: 6px solid var(--gold);
+        }
+
+        body.en .ai-form label {
+            text-align: left;
+        }
+
+        body.en .floating-card .city-tags {
+            direction: ltr;
+        }
+
+        body.en .license-info .license-icon {
+            flex-direction: row-reverse;
+        }
+
+        body.en .license-badge {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <button type="button" class="logo-area" onclick="showView('home')" aria-label="همة المدينة العقارية">
+                <img src="Himmat-Almedina.png" alt="همة المدينة العقارية | Himmat Al Madinah Real Estate" />
+            </button>
+            <div class="header-left">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-view="home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                    <li><a href="#properties" data-view="properties" data-ar="عقارات" data-en="Properties">عقارات</a></li>
+                    <li><a href="#offers" data-view="offers" data-ar="عروض" data-en="Offers">عروض</a></li>
+                    <li><a href="#valuation" data-view="valuation" data-ar="تقييم" data-en="Valuation">تقييم</a></li>
+                    <li><a href="#contracts" data-view="contracts" data-ar="عقود" data-en="Contracts">عقود</a></li>
+                    <li><a href="#contact" data-view="contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+                </ul>
+                <div class="lang-group">
+                    <button type="button" class="lang-btn active" onclick="switchLanguage('ar')" id="langAr"><span class="flag">🇸🇦</span> ع</button>
+                    <button type="button" class="lang-btn" onclick="switchLanguage('en')" id="langEn"><span class="flag">🇬🇧</span> EN</button>
+                </div>
+                <button type="button" class="btn-gold" onclick="showView('contact')" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="license-banner" id="licenseBanner">
+        <div class="container">
+            <div class="license-info">
+                <span class="license-icon">
+                    <i class="fas fa-certificate"></i>
+                    <span data-ar="ترخيص رقم:" data-en="License No.:">ترخيص رقم:</span>
+                </span>
+                <span class="license-number"><strong>5800012345</strong> | <span data-ar="الهيئة العامة للعقار" data-en="Real Estate General Authority">الهيئة العامة للعقار</span></span>
+            </div>
+            <div class="license-badge">
+                <i class="fas fa-check-circle check"></i>
+                <span data-ar="مكتب معتمد" data-en="Licensed office">مكتب معتمد</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="page-view active hero" id="view-home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge-office">
+                    <i class="fas fa-city"></i>
+                    <span data-ar="همة المدينة العقارية" data-en="Himmat Al Madinah Real Estate">همة المدينة العقارية</span>
+                </div>
+                <h1>
+                    <span class="gold-text" data-ar="همة المدينة العقارية" data-en="Himmat Al Madinah">همة المدينة العقارية</span><br />
+                    <span data-ar="وساطة وتسويق في قلب المدينة" data-en="Brokerage and marketing in Madinah">وساطة وتسويق في قلب المدينة</span>
+                </h1>
+                <p data-ar="نعرض العقارات، نقدّر القيمة بشكل تقريبي، ونساعدك على صياغة بنود العقد. للتقييم الرسمي أو العقد النهائي تواصل مع المكتب مباشرة." data-en="We list properties, provide an approximate estimate, and help draft contract terms. For an official appraisal or a final contract, contact the office directly.">نعرض العقارات، نقدّر القيمة بشكل تقريبي، ونساعدك على صياغة بنود العقد. للتقييم الرسمي أو العقد النهائي تواصل مع المكتب مباشرة.</p>
+                <div class="hero-badges">
+                    <span><i class="fas fa-building"></i> <span data-ar="عقارات" data-en="Listings">عقارات</span></span>
+                    <span><i class="fas fa-chart-line"></i> <span data-ar="تقدير سعري" data-en="Price estimate">تقدير سعري</span></span>
+                    <span><i class="fas fa-file-signature"></i> <span data-ar="مسودة عقد" data-en="Contract draft">مسودة عقد</span></span>
+                    <span><i class="fas fa-map-marker-alt"></i> <span data-ar="المدينة أوله" data-en="Madinah first">المدينة أوله</span></span>
+                </div>
+                <div class="hero-actions">
+                    <button type="button" class="btn-gold" onclick="showView('properties')"><i class="fas fa-building"></i> <span data-ar="استعرض العقارات" data-en="Browse properties">استعرض العقارات</span></button>
+                    <button type="button" class="btn-outline-gold" onclick="showView('valuation')"><i class="fas fa-chart-line"></i> <span data-ar="قدّر العقار" data-en="Estimate a property">قدّر العقار</span></button>
+                </div>
+            </div>
+            <div class="hero-logo-wrap">
+                <img src="Himmat-Almedina.png" alt="Himmat Al Madinah Real Estate logo" />
+            </div>
+        </div>
+    </section>
+
+    <section class="page-view section-padding container" id="view-properties">
+        <div class="section-header">
+            <h2 class="section-title" data-ar="عقارات" data-en="Properties">عقارات</h2>
+            <p class="section-sub" data-ar="نماذج للعرض. الصور والتفاصيل النهائية تُحدَّث من المكتب." data-en="Sample listings. Final photos and details are updated by the office.">نماذج للعرض. الصور والتفاصيل النهائية تُحدَّث من المكتب.</p>
+        </div>
+        <div class="property-grid">
+            <div class="property-card">
+                <span class="card-badge sale" data-ar="للبيع" data-en="For sale">للبيع</span>
+                <div class="property-img"><i class="fas fa-building"></i></div>
+                <div class="property-body">
+                    <h3 data-ar="عمارة سكنية" data-en="Residential building">عمارة سكنية</h3>
+                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="حي الأنصار، المدينة المنورة" data-en="Al Ansar, Madinah">حي الأنصار، المدينة المنورة</span></div>
+                    <div class="property-meta">
+                        <span><i class="fas fa-layer-group"></i> 5 <span data-ar="أدوار" data-en="floors">أدوار</span></span>
+                        <span><i class="fas fa-bed"></i> 20 <span data-ar="شقة" data-en="apts">شقة</span></span>
+                        <span><i class="fas fa-vector-square"></i> 2,500 m²</span>
+                    </div>
+                    <div class="price-tag">8,500,000 <span class="currency">SAR</span></div>
+                </div>
+            </div>
+            <div class="property-card">
+                <span class="card-badge rent" data-ar="للإيجار" data-en="For rent">للإيجار</span>
+                <div class="property-img"><i class="fas fa-home"></i></div>
+                <div class="property-body">
+                    <h3 data-ar="دبلكس" data-en="Duplex">دبلكس</h3>
+                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="حي العوالي، المدينة المنورة" data-en="Al Awali, Madinah">حي العوالي، المدينة المنورة</span></div>
+                    <div class="property-meta">
+                        <span><i class="fas fa-bed"></i> 4 <span data-ar="غرف" data-en="beds">غرف</span></span>
+                        <span><i class="fas fa-bath"></i> 3 <span data-ar="حمامات" data-en="baths">حمامات</span></span>
+                        <span><i class="fas fa-vector-square"></i> 320 m²</span>
+                    </div>
+                    <div class="price-tag">85,000 <span class="currency" data-ar="ر.س/سنة" data-en="SAR/year">ر.س/سنة</span></div>
+                </div>
+            </div>
+            <div class="property-card">
+                <span class="card-badge sale" data-ar="للبيع" data-en="For sale">للبيع</span>
+                <div class="property-img"><i class="fas fa-tree"></i></div>
+                <div class="property-body">
+                    <h3 data-ar="مزرعة" data-en="Farm">مزرعة</h3>
+                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="طريق المدينة، المدينة المنورة" data-en="Madinah Road, Madinah">طريق المدينة، المدينة المنورة</span></div>
+                    <div class="property-meta">
+                        <span><i class="fas fa-vector-square"></i> 10,000 m²</span>
+                        <span><i class="fas fa-water"></i> <span data-ar="بئر" data-en="Well">بئر</span></span>
+                    </div>
+                    <div class="price-tag">3,200,000 <span class="currency">SAR</span></div>
+                </div>
+            </div>
+            <div class="add-property-btn" onclick="openAddProperty()">
+                <i class="fas fa-plus-circle"></i>
+                <h4 data-ar="إدراج عقار" data-en="List a property">إدراج عقار</h4>
+                <p data-ar="افتح النموذج وأرسل التفاصيل للمكتب" data-en="Open the form and send details to the office">افتح النموذج وأرسل التفاصيل للمكتب</p>
+            </div>
+            <form class="add-property-form ai-form" id="addPropertyForm" onsubmit="submitNewProperty(event)">
+                <h3 data-ar="بيانات العقار" data-en="Property details">بيانات العقار</h3>
+                <label data-ar="نوع العقار" data-en="Property type">نوع العقار</label>
+                <select id="newType" required>
+                    <option value="" data-ar="اختر النوع" data-en="Select type">اختر النوع</option>
+                    <option value="عمارة" data-ar="عمارة" data-en="Building">عمارة</option>
+                    <option value="دبلكس" data-ar="دبلكس" data-en="Duplex">دبلكس</option>
+                    <option value="شقة" data-ar="شقة" data-en="Apartment">شقة</option>
+                    <option value="أرض" data-ar="أرض" data-en="Land">أرض</option>
+                    <option value="مزرعة" data-ar="مزرعة" data-en="Farm">مزرعة</option>
+                </select>
+                <label data-ar="المدينة" data-en="City">المدينة</label>
+                <select id="newCity" required>
+                    <option value="المدينة المنورة" data-ar="المدينة المنورة" data-en="Madinah">المدينة المنورة</option>
+                    <option value="مكة المكرمة" data-ar="مكة المكرمة" data-en="Makkah">مكة المكرمة</option>
+                    <option value="جدة" data-ar="جدة" data-en="Jeddah">جدة</option>
+                    <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
+                </select>
+                <label data-ar="الحي" data-en="District">الحي</label>
+                <input type="text" id="newDistrict" required data-ar-placeholder="اسم الحي" data-en-placeholder="District name" placeholder="اسم الحي" />
+                <label data-ar="السعر (ر.س)" data-en="Price (SAR)">السعر (ر.س)</label>
+                <input type="number" id="newPrice" required />
+                <button type="submit" class="btn-gold" data-ar="إرسال عبر واتساب" data-en="Send via WhatsApp">إرسال عبر واتساب</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="page-view" id="view-offers">
+        <div class="offers-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-ar="عروض" data-en="Offers">عروض</h2>
+                    <p class="section-sub" data-ar="عروض المكتب الحالية. التفاصيل النهائية تُؤكد عند التواصل." data-en="Current office offers. Final terms are confirmed when you contact us.">عروض المكتب الحالية. التفاصيل النهائية تُؤكد عند التواصل.</p>
+                </div>
+                <div class="offers-grid">
+                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-percent"></i></div><h4 data-ar="خصم على التقدير" data-en="Estimate discount">خصم على التقدير</h4><p data-ar="خصم للعملاء الجدد على خدمة التقدير العقاري" data-en="Discount for new clients on the estimate service">خصم للعملاء الجدد على خدمة التقدير العقاري</p></div>
+                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-file-contract"></i></div><h4 data-ar="مسودة عقد أولى" data-en="First contract draft">مسودة عقد أولى</h4><p data-ar="مسودة أولى عند طلب التقدير من المكتب" data-en="A first draft when you request an estimate from the office">مسودة أولى عند طلب التقدير من المكتب</p></div>
+                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-handshake"></i></div><h4 data-ar="عمولة البيع" data-en="Sale commission">عمولة البيع</h4><p data-ar="عمولة مخفضة على عقود البيع حتى نهاية الشهر" data-en="Reduced commission on sale contracts until month end">عمولة مخفضة على عقود البيع حتى نهاية الشهر</p></div>
+                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-comments"></i></div><h4 data-ar="استشارة أولى" data-en="First consultation">استشارة أولى</h4><p data-ar="محادثة تعريفية عبر واتساب مع أول تواصل" data-en="An introductory WhatsApp chat with your first contact">محادثة تعريفية عبر واتساب مع أول تواصل</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-view" id="view-valuation">
+        <div class="ai-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-ar="تقدير عقاري تقريبي" data-en="Approximate estimate">تقدير عقاري تقريبي</h2>
+                    <p class="section-sub" data-ar="حساب مبدئي حسب المساحة. ليس تقييمًا رسميًا معتمدًا." data-en="A preliminary calculation by area. This is not an official licensed appraisal.">حساب مبدئي حسب المساحة. ليس تقييمًا رسميًا معتمدًا.</p>
+                </div>
+                <div class="ai-grid single">
+                    <div class="ai-card">
+                        <div class="icon-wrap"><i class="fas fa-chart-line"></i></div>
+                        <h3 data-ar="أدخل بيانات العقار" data-en="Enter property details">أدخل بيانات العقار</h3>
+                        <form class="ai-form" id="valuationForm">
+                            <label data-ar="الرغبة" data-en="Purpose">الرغبة <span class="required">*</span></label>
+                            <select id="purpose" required>
+                                <option value="" data-ar="اختر الرغبة" data-en="Select purpose">اختر الرغبة</option>
+                                <option value="بيع" data-ar="بيع" data-en="Sale">بيع</option>
+                                <option value="إيجار" data-ar="إيجار" data-en="Rent">إيجار</option>
+                            </select>
+                            <label data-ar="نوع العقار" data-en="Property type">نوع العقار <span class="required">*</span></label>
+                            <select id="propertyType" required>
+                                <option value="" data-ar="اختر النوع" data-en="Select type">اختر النوع</option>
+                                <option value="عمارة" data-ar="عمارة" data-en="Building">عمارة</option>
+                                <option value="شقة" data-ar="شقة" data-en="Apartment">شقة</option>
+                                <option value="دبلكس" data-ar="دبلكس" data-en="Duplex">دبلكس</option>
+                                <option value="مزرعة" data-ar="مزرعة" data-en="Farm">مزرعة</option>
+                                <option value="دور" data-ar="دور" data-en="Floor">دور</option>
+                                <option value="أرض" data-ar="أرض" data-en="Land">أرض</option>
+                                <option value="مكتب" data-ar="مكتب" data-en="Office">مكتب</option>
+                            </select>
+                            <label data-ar="المدينة" data-en="City">المدينة <span class="required">*</span></label>
+                            <select id="city" required onchange="updateNeighborhoods()">
+                                <option value="" data-ar="اختر المدينة" data-en="Select city">اختر المدينة</option>
+                                <option value="المدينة المنورة" data-ar="المدينة المنورة" data-en="Madinah">المدينة المنورة</option>
+                                <option value="مكة المكرمة" data-ar="مكة المكرمة" data-en="Makkah">مكة المكرمة</option>
+                                <option value="جدة" data-ar="جدة" data-en="Jeddah">جدة</option>
+                                <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
+                            </select>
+                            <label data-ar="الحي" data-en="District">الحي <span class="required">*</span></label>
+                            <select id="neighborhood" required><option value="" data-ar="اختر الحي" data-en="Select district">اختر الحي</option></select>
+                            <label data-ar="المساحة (م²)" data-en="Area (m2)">المساحة (م²) <span class="required">*</span></label>
+                            <input type="number" id="area" min="1" required data-ar-placeholder="المساحة بالمتر المربع" data-en-placeholder="Area in square meters" placeholder="المساحة بالمتر المربع" />
+                            <button type="button" class="btn-gold" onclick="showValuation()"><i class="fas fa-calculator"></i> <span data-ar="احسب التقدير" data-en="Calculate estimate">احسب التقدير</span></button>
+                        </form>
+                        <div class="result-box" id="valuationResult">
+                            <span data-ar="التقدير التقريبي:" data-en="Approximate estimate:">التقدير التقريبي:</span>
+                            <strong id="valuationPrice"></strong><br />
+                            <span style="font-size:0.85rem; color:#5a6a7e;" id="valuationDetails"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-view" id="view-contracts">
+        <div class="ai-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-ar="مسودة العقد" data-en="Contract draft">مسودة العقد</h2>
+                    <p class="section-sub" data-ar="نص مبدئي للمراجعة. ليس عقدًا نهائيًا ملزمًا حتى يُعتمد من المكتب." data-en="A preliminary text for review. It is not a binding final contract until the office approves it.">نص مبدئي للمراجعة. ليس عقدًا نهائيًا ملزمًا حتى يُعتمد من المكتب.</p>
+                </div>
+                <div class="ai-grid single">
+                    <div class="ai-card">
+                        <div class="icon-wrap"><i class="fas fa-file-pen"></i></div>
+                        <h3 data-ar="بيانات الأطراف" data-en="Party details">بيانات الأطراف</h3>
+                        <div class="contracts-info">
+                            <h4><i class="fas fa-list-check"></i> <span data-ar="الأنواع المتاحة" data-en="Available types">الأنواع المتاحة</span></h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد بيع" data-en="Sale">عقد بيع</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد إيجار" data-en="Rental">عقد إيجار</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد وساطة" data-en="Brokerage">عقد وساطة</span></li>
+                            </ul>
+                        </div>
+                        <form class="ai-form" id="contractForm">
+                            <select id="contractType" required>
+                                <option value="" data-ar="نوع العقد" data-en="Contract type">نوع العقد</option>
+                                <option value="بيع" data-ar="عقد بيع" data-en="Sale contract">عقد بيع</option>
+                                <option value="إيجار" data-ar="عقد إيجار" data-en="Rental contract">عقد إيجار</option>
+                                <option value="وساطة" data-ar="عقد وساطة" data-en="Brokerage contract">عقد وساطة</option>
+                            </select>
+                            <input type="text" id="partyOne" required data-ar-placeholder="اسم الطرف الأول" data-en-placeholder="First party name" placeholder="اسم الطرف الأول" />
+                            <input type="text" id="partyTwo" required data-ar-placeholder="اسم الطرف الثاني" data-en-placeholder="Second party name" placeholder="اسم الطرف الثاني" />
+                            <input type="text" id="propertyDetails" required data-ar-placeholder="وصف العقار والموقع" data-en-placeholder="Property and location" placeholder="وصف العقار والموقع" />
+                            <button type="button" class="btn-gold" onclick="showContract()"><i class="fas fa-file-lines"></i> <span data-ar="إنشاء المسودة" data-en="Create draft">إنشاء المسودة</span></button>
+                        </form>
+                        <div class="result-box" id="contractResult">
+                            <span data-ar="مسودة للمراجعة:" data-en="Draft for review:">مسودة للمراجعة:</span>
+                            <div class="contract-preview" id="contractPreview"></div>
+                            <button type="button" class="btn-gold" style="margin-top:14px; width:100%; background: var(--primary); color: white; box-shadow: none;" onclick="printContract()"><i class="fas fa-print"></i> <span data-ar="طباعة المسودة" data-en="Print draft">طباعة المسودة</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-view contact-section container" id="view-contact">
+        <div class="section-header">
+            <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</h2>
+            <p class="section-sub" data-ar="واتساب والهاتف هما أسرع طريق للتواصل." data-en="WhatsApp and phone are the fastest way to reach us.">واتساب والهاتف هما أسرع طريق للتواصل.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-item"><a href="https://wa.me/966530500906" class="c-icon whatsapp"><i class="fab fa-whatsapp"></i></a><div class="contact-info"><h4 data-ar="واتساب" data-en="WhatsApp">واتساب</h4><a href="https://wa.me/966530500906">+966 53 050 0906</a></div></div>
+            <div class="contact-item"><a href="tel:+966530500906" class="c-icon phone"><i class="fas fa-phone-alt"></i></a><div class="contact-info"><h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4><a href="tel:+966530500906">+966 53 050 0906</a></div></div>
+            <div class="contact-item"><a href="mailto:ffaaddhheell2323@gmail.com" class="c-icon email"><i class="fas fa-envelope"></i></a><div class="contact-info"><h4 data-ar="البريد" data-en="Email">البريد</h4><a href="mailto:ffaaddhheell2323@gmail.com">ffaaddhheell2323@gmail.com</a></div></div>
+            <div class="contact-item"><a href="https://www.tiktok.com/@fadhel_133" class="c-icon tiktok"><i class="fab fa-tiktok"></i></a><div class="contact-info"><h4 data-ar="تيك توك" data-en="TikTok">تيك توك</h4><a href="https://www.tiktok.com/@fadhel_133">@fadhel_133</a></div></div>
+            <div class="contact-item"><a href="https://www.snapchat.com/add/f.4018" class="c-icon snapchat"><i class="fab fa-snapchat-ghost"></i></a><div class="contact-info"><h4 data-ar="سناب شات" data-en="Snapchat">سناب شات</h4><a href="https://www.snapchat.com/add/f.4018">f.4018</a></div></div>
+            <div class="contact-item"><div class="c-icon location"><i class="fas fa-location-dot"></i></div><div class="contact-info"><h4 data-ar="العنوان" data-en="Address">العنوان</h4><p>9263 الملك عبدالله بن عبد العزيز، DMAF9263</p></div></div>
+        </div>
+    </section>
+
+    <section class="page-view section-padding container" id="view-faq">
+        <div class="section-header">
+            <h2 class="section-title" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</h2>
+            <p class="section-sub" data-ar="إجابات مختصرة قبل التواصل مع المكتب." data-en="Short answers before you contact the office.">إجابات مختصرة قبل التواصل مع المكتب.</p>
+        </div>
+        <div class="ai-card">
+            <h3 data-ar="هل التقدير رسمي؟" data-en="Is the estimate official?">هل التقدير رسمي؟</h3>
+            <p data-ar="لا. التقدير على الموقع حساب مبدئي. التقييم المعتمد يتم عبر المكتب." data-en="No. The website estimate is preliminary. A licensed appraisal is done through the office.">لا. التقدير على الموقع حساب مبدئي. التقييم المعتمد يتم عبر المكتب.</p>
+            <h3 data-ar="هل المسودة عقد نهائي؟" data-en="Is the draft a final contract?">هل المسودة عقد نهائي؟</h3>
+            <p data-ar="لا. المسودة للمراجعة فقط حتى يعتمدها المكتب." data-en="No. The draft is for review until the office approves it.">لا. المسودة للمراجعة فقط حتى يعتمدها المكتب.</p>
+        </div>
+    </section>
+
+    <div class="chat-widgets">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-title"><i class="fas fa-comments"></i> <span data-ar="مساعدة همة المدينة" data-en="Himmat Al Madinah help">مساعدة همة المدينة</span></div>
+                <button type="button" class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot"><div class="avatar"><i class="fas fa-building"></i></div><div class="bubble" data-ar="مرحباً. اكتب: عقارات، تقييم، عقود، أو عروض." data-en="Hello. Type: properties, valuation, contracts, or offers.">مرحباً. اكتب: عقارات، تقييم، عقود، أو عروض.</div></div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" data-ar-placeholder="اكتب رسالتك" data-en-placeholder="Type your message" placeholder="اكتب رسالتك" onkeypress="if(event.key==='Enter') sendChatMessage()" />
+                <button type="button" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <a href="https://wa.me/966530500906" target="_blank" class="chat-btn whatsapp-chat" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <button type="button" class="chat-btn site-chat" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="Himmat-Almedina.png" alt="همة المدينة العقارية" style="height:72px;border-radius:10px;margin-bottom:12px;" />
+                    <p style="max-width:220px;line-height:1.8;font-size:0.9rem;" data-ar="همة المدينة العقارية — وساطة وتسويق عقاري." data-en="Himmat Al Madinah Real Estate — brokerage and marketing.">همة المدينة العقارية — وساطة وتسويق عقاري.</p>
+                </div>
+                <div>
+                    <h4 data-ar="الأقسام" data-en="Sections">الأقسام</h4>
+                    <a href="#properties" data-view="properties" data-ar="عقارات" data-en="Properties">عقارات</a>
+                    <a href="#offers" data-view="offers" data-ar="عروض" data-en="Offers">عروض</a>
+                    <a href="#valuation" data-view="valuation" data-ar="تقييم" data-en="Valuation">تقييم</a>
+                    <a href="#contracts" data-view="contracts" data-ar="عقود" data-en="Contracts">عقود</a>
+                </div>
+                <div>
+                    <h4 data-ar="المكتب" data-en="Office">المكتب</h4>
+                    <a href="#contact" data-view="contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+                    <a href="#faq" data-view="faq" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
+                </div>
+                <div>
+                    <h4 data-ar="المدن" data-en="Cities">المدن</h4>
+                    <span data-ar="المدينة المنورة · مكة · جدة · الرياض" data-en="Madinah · Makkah · Jeddah · Riyadh">المدينة المنورة · مكة · جدة · الرياض</span>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 <span data-ar="همة المدينة العقارية. جميع الحقوق محفوظة." data-en="Himmat Al Madinah Real Estate. All rights reserved.">همة المدينة العقارية. جميع الحقوق محفوظة.</span></div>
+        </div>
+    </footer>
+
+    <script>
+        const neighborhoodsData = {
+            'المدينة المنورة': ['الأنصار','العوالي','الحديقة','السلام','الإسكان','القبلتين','سيد الشهداء','المهاجرين','الأغوات'],
+            'مكة المكرمة': ['العزيزية','الزاهر','الشرائع','العوالي','المعابدة','الخالدية'],
+            'جدة': ['الروضة','السلامة','النعيم','الزهراء','الأندلس','الصفا'],
+            'الرياض': ['النرجس','الملقا','العقيق','الازدهار','الوادي']
+        };
+        let currentLang = 'ar';
+        function t(ar, en) { return currentLang === 'en' ? en : ar; }
+        function applyTranslations() {
+            document.querySelectorAll('[data-ar][data-en]').forEach(function(el) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') return;
+                const text = el.getAttribute('data-' + currentLang);
+                if (!text) return;
+                if (el.querySelector('[data-ar]')) return;
+                el.textContent = text;
+            });
+            document.querySelectorAll('[data-ar-placeholder][data-en-placeholder]').forEach(function(el) {
+                el.placeholder = currentLang === 'ar' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+            });
+        }
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('langAr').classList.toggle('active', lang === 'ar');
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            document.body.classList.toggle('en', lang === 'en');
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            applyTranslations();
+            updateNeighborhoods();
+        }
+        function showView(view) {
+            document.querySelectorAll('.page-view').forEach(function(section) { section.classList.remove('active'); });
+            const target = document.getElementById('view-' + view);
+            if (target) target.classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.classList.toggle('active', link.getAttribute('data-view') === view);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function updateNeighborhoods() {
+            const citySelect = document.getElementById('city');
+            const neighborhoodSelect = document.getElementById('neighborhood');
+            if (!citySelect || !neighborhoodSelect) return;
+            const selectedCity = citySelect.value;
+            const previous = neighborhoodSelect.value;
+            neighborhoodSelect.innerHTML = '';
+            const first = document.createElement('option');
+            first.value = '';
+            first.textContent = t('اختر الحي', 'Select district');
+            neighborhoodSelect.appendChild(first);
+            if (selectedCity && neighborhoodsData[selectedCity]) {
+                neighborhoodsData[selectedCity].forEach(function(name) {
+                    const option = document.createElement('option');
+                    option.value = name;
+                    option.textContent = name;
+                    if (name === previous) option.selected = true;
+                    neighborhoodSelect.appendChild(option);
+                });
+            }
+        }
+        function showValuation() {
+            const purpose = document.getElementById('purpose').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const city = document.getElementById('city').value;
+            const neighborhood = document.getElementById('neighborhood').value;
+            const area = document.getElementById('area').value;
+            if (!purpose || !propertyType || !city || !neighborhood || !area) {
+                alert(t('الرجاء تعبئة جميع الحقول', 'Please fill in all fields'));
+                return;
+            }
+            const minPrice = (parseFloat(area) * 3500).toLocaleString();
+            const maxPrice = (parseFloat(area) * 4200).toLocaleString();
+            document.getElementById('valuationPrice').textContent = minPrice + ' – ' + maxPrice + ' SAR';
+            document.getElementById('valuationDetails').textContent = propertyType + ' | ' + purpose + ' | ' + city + ' | ' + neighborhood + ' | ' + area + ' m²';
+            document.getElementById('valuationResult').classList.add('show');
+        }
+        function showContract() {
+            const type = document.getElementById('contractType').value;
+            const one = document.getElementById('partyOne').value.trim();
+            const two = document.getElementById('partyTwo').value.trim();
+            const details = document.getElementById('propertyDetails').value.trim();
+            if (!type || !one || !two || !details) {
+                alert(t('الرجاء تعبئة جميع الحقول', 'Please fill in all fields'));
+                return;
+            }
+            const text = currentLang === 'ar'
+                ? ('عقد ' + type + '\n\nحررت هذه المسودة بين الطرف الأول «' + one + '» والطرف الثاني «' + two + '» بخصوص: ' + details + '.\nهذه مسودة للمراجعة وليست عقدًا نهائيًا حتى يعتمدها مكتب همة المدينة العقارية.')
+                : (type + ' contract\n\nThis draft is between first party “' + one + '” and second party “' + two + '” regarding: ' + details + '.\nThis is a review draft, not a final contract, until Himmat Al Madinah Real Estate approves it.');
+            document.getElementById('contractPreview').textContent = text.replace(/\\n/g, '\n');
+            document.getElementById('contractResult').classList.add('show');
+        }
+        function printContract() {
+            const preview = document.getElementById('contractPreview').textContent;
+            if (!preview) return;
+            const win = window.open('', '_blank');
+            win.document.write('<pre style="font-family:Tahoma,sans-serif;white-space:pre-wrap;padding:24px;">' + preview.replace(/</g, '') + '</pre>');
+            win.document.close();
+            win.print();
+        }
+        function openAddProperty() { document.getElementById('addPropertyForm').classList.toggle('show'); }
+        function submitNewProperty(event) {
+            event.preventDefault();
+            const type = document.getElementById('newType').value;
+            const city = document.getElementById('newCity').value;
+            const district = document.getElementById('newDistrict').value;
+            const price = document.getElementById('newPrice').value;
+            const msg = encodeURIComponent('طلب إدراج عقار:\n' + type + ' - ' + city + ' - ' + district + ' - ' + price + ' SAR');
+            window.open('https://wa.me/966530500906?text=' + msg, '_blank');
+        }
+        function toggleChat() { document.getElementById('chatWindow').classList.toggle('open'); }
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            const messagesContainer = document.getElementById('chatMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            const userBubble = document.createElement('div');
+            userBubble.className = 'bubble';
+            userBubble.textContent = message;
+            const userAvatar = document.createElement('div');
+            userAvatar.className = 'avatar';
+            userAvatar.innerHTML = '<i class="fas fa-user"></i>';
+            userMsg.appendChild(userBubble);
+            userMsg.appendChild(userAvatar);
+            messagesContainer.appendChild(userMsg);
+            const msg = message.toLowerCase();
+            let response = t('يمكنك اختيار القسم من القائمة أعلاه.', 'Use the menu above to open a section.');
+            let view = '';
+            if (msg.indexOf('عقار') !== -1 || msg.indexOf('propert') !== -1) { response = t('قسم العقارات أمامك الآن.', 'Opening properties.'); view = 'properties'; }
+            else if (msg.indexOf('تقييم') !== -1 || msg.indexOf('valu') !== -1 || msg.indexOf('سعر') !== -1 || msg.indexOf('price') !== -1) { response = t('قسم التقدير أمامك الآن.', 'Opening valuation.'); view = 'valuation'; }
+            else if (msg.indexOf('عقد') !== -1 || msg.indexOf('contract') !== -1) { response = t('قسم العقود أمامك الآن.', 'Opening contracts.'); view = 'contracts'; }
+            else if (msg.indexOf('عرض') !== -1 || msg.indexOf('offer') !== -1) { response = t('قسم العروض أمامك الآن.', 'Opening offers.'); view = 'offers'; }
+            else if (msg.indexOf('تواصل') !== -1 || msg.indexOf('contact') !== -1 || msg.indexOf('واتس') !== -1) { response = t('قسم التواصل أمامك الآن.', 'Opening contact.'); view = 'contact'; }
+            setTimeout(function() {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                const avatar = document.createElement('div');
+                avatar.className = 'avatar';
+                avatar.innerHTML = '<i class="fas fa-building"></i>';
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.textContent = response;
+                botMsg.appendChild(avatar);
+                botMsg.appendChild(bubble);
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                if (view) showView(view);
+            }, 300);
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        document.addEventListener('click', function(event) {
+            const link = event.target.closest('[data-view]');
+            if (!link) return;
+            event.preventDefault();
+            showView(link.getAttribute('data-view'));
+        });
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            header.style.background = window.scrollY > 50 ? 'rgba(11, 26, 51, 0.97)' : 'rgba(11, 26, 51, 0.95)';
+        });
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+    </script>
+</body>
+</html>
