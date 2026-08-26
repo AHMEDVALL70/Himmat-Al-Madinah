@@ -25,7 +25,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -45,8 +44,6 @@
             --box-shadow-3d: 8px 8px 20px rgba(0,0,0,0.7), -4px -4px 15px rgba(255,255,255,0.02);
             --input-shadow-3d: inset 2px 2px 5px rgba(0,0,0,0.8), inset -1px -1px 3px rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.5);
             --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.25);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
             --shadow-lg: 0 10px 30px rgba(0,0,0,0.6);
             --shadow-xl: 0 20px 50px rgba(0,0,0,0.8);
             --radius-sm: 8px;
@@ -73,8 +70,6 @@
             --box-shadow-3d: 6px 6px 16px rgba(0,0,0,0.08), -4px -4px 12px rgba(255,255,255,0.9);
             --input-shadow-3d: inset 2px 2px 4px rgba(0,0,0,0.06), inset -1px -1px 2px rgba(255,255,255,0.8);
             --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.12);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
             --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
             --shadow-xl: 0 20px 50px rgba(0,0,0,0.12);
         }
@@ -175,7 +170,7 @@
         }
         .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
         .checkbox-group { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
-        .checkbox-group label, .checkbox-chip {
+        .checkbox-group label {
             font-size: 8px; display: flex; align-items: center; gap: 3px;
             cursor: pointer; color: var(--text-muted); font-weight: 600;
             padding: 4px 9px; border-radius: var(--radius-full);
@@ -194,7 +189,6 @@
         .btn-sm { padding: 6px 14px; font-size: 9px; }
         .btn-lg { padding: 11px 24px; font-size: 12px; }
         .btn-block { width: 100%; justify-content: center; }
-        .btn-excel { padding: 7px 14px !important; font-size: 10px !important; height: auto !important; width: auto !important; display: inline-flex; align-items: center; gap: 5px; }
 
         /* ========== الهيرو ========== */
         .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 15px 30px; }
@@ -210,7 +204,6 @@
             transition: var(--transition);
             background: var(--bg-card);
         }
-        .hero-logo-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px var(--gold-glow-strong); }
         .full-logo-img { width: 100%; height: auto; display: block; object-fit: cover; }
         .badge-certified { background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.4); color: var(--accent-gold); padding: 4px 12px; border-radius: 20px; font-size: 8px; font-weight: 700; }
         .hero-title { font-size: clamp(18px, 2.8vw, 28px); font-weight: 900; color: var(--text-main); line-height: 1.25; }
@@ -238,7 +231,7 @@
         .floating-chat { background: var(--bg-input); border: 2px solid var(--accent-gold); }
         .floating-chat svg { fill: var(--accent-gold); }
 
-        /* ========== صفحة التواصل ========== */
+        /* ========== التواصل ========== */
         .contact-container { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; max-width: 900px !important; margin: 0 auto !important; }
         .contact-socials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin-top: 10px; }
         .contact-socials-grid a {
@@ -255,6 +248,28 @@
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .license-badge { display: inline-block; margin-top: 8px; background: rgba(212,175,55,0.15); color: var(--accent-gold); padding: 4px 12px; border-radius: 20px; font-size: 9px; font-weight: 700; border: 1px solid rgba(212,175,55,0.4); }
 
+        /* ========== المنيو السفلي الطبيعي ========== */
+        .navbar-bottom-mobile {
+            display: flex !important;
+            position: relative !important;
+            bottom: auto !important;
+            margin: 20px auto 0 !important;
+            width: 95% !important;
+            max-width: 700px;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 8px 15px;
+            z-index: 10;
+            box-shadow: var(--shadow-soft);
+        }
+        .navbar-bottom-mobile a { display: flex; align-items: center; justify-content: center; text-decoration: none; padding: 5px 10px; border-radius: var(--radius-full); transition: var(--transition); cursor: pointer; }
+        .navbar-bottom-mobile a svg { width: 17px; height: 17px; color: var(--text-muted); }
+        .navbar-bottom-mobile a.active { background: rgba(212,175,55,0.12); }
+        .navbar-bottom-mobile a.active svg { color: var(--accent-gold); }
+
         /* ========== الفوتر الطبيعي ========== */
         .main-footer {
             position: relative !important;
@@ -262,26 +277,20 @@
             left: auto !important;
             transform: none !important;
             z-index: 1 !important;
-            margin-top: 50px !important;
+            margin-top: 30px !important;
             width: 100% !important;
             background: var(--bg-card);
             color: var(--text-main);
             text-align: center;
             border-top: 1px solid var(--border-color);
-            padding: 30px 20px 0;
+            padding: 25px 20px 0;
         }
-        .footer-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; }
+        .footer-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
         .footer-logo img { width: 45px; height: 45px; border-radius: 10px; object-fit: cover; margin-bottom: 8px; }
         .footer-title { font-size: 16px; font-weight: 900; color: var(--text-main); margin-bottom: 5px; }
         .footer-description { font-size: 10px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; max-width: 450px; }
         .footer-socials { display: flex; justify-content: center; gap: 7px; margin-bottom: 10px; flex-wrap: wrap; }
-        .social-icon {
-            width: 32px; height: 32px;
-            background: var(--bg-input); border: 1px solid var(--border-color);
-            border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); font-size: 13px;
-            text-decoration: none; transition: var(--transition-fast);
-        }
+        .social-icon { width: 32px; height: 32px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; text-decoration: none; transition: var(--transition-fast); }
         .social-icon:hover { background: rgba(212,175,55,0.15); color: var(--accent-gold); border-color: var(--accent-gold); transform: translateY(-2px); }
         .footer-bottom { border-top: 1px solid var(--border-color); padding: 10px; font-size: 9px; color: var(--text-muted); }
 
@@ -309,8 +318,6 @@
             .page-content { padding: 75px 15px 30px; }
             .card, .contact-info-card, .contact-form-3d { padding: 14px !important; }
             select, input, textarea { font-size: 16px !important; }
-            .footer-description { font-size: 9px; }
-            .social-icon { width: 28px; height: 28px; font-size: 11px; }
         }
         @media (max-width: 600px) {
             .hero-container, .container, .main-footer, .page-content {
@@ -325,7 +332,7 @@
     <nav class="navbar-modern" id="navbarModern">
         <div class="navbar-inner">
             <div class="navbar-brand-modern" onclick="navigateTo('home'); return false;">
-                <img src="Himmat-Almedina.png" alt="همة المدينة العقارية" class="navbar-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="Himmat-Almedina.png" alt="شعار همة المدينة العقارية" class="navbar-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div style="display:none;width:38px;height:38px;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:var(--accent-gold);">ه</div>
                 <div>
                     <div class="navbar-brand-ar">همة <span class="gold">المدينة</span></div>
@@ -334,15 +341,15 @@
             </div>
 
             <ul class="nav-links-modern">
-                <li><a class="active" data-page="home" onclick="navigateTo('home'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="nav-label">الرئيسية</span></a></li>
-                <li><a data-page="valuation" onclick="navigateTo('valuation'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="nav-label">التقييم</span></a></li>
-                <li><a data-page="offers" onclick="navigateTo('offers'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="nav-label">العروض</span></a></li>
-                <li><a data-page="contracts" onclick="navigateTo('contracts'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span class="nav-label">العقود</span></a></li>
-                <li><a data-page="add-property" onclick="navigateTo('add-property'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span class="nav-label">إضافة</span></a></li>
-                <li><a data-page="services" onclick="navigateTo('services'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="nav-label">الخدمات</span></a></li>
-                <li><a data-page="faq" onclick="navigateTo('faq'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="nav-label">الأسئلة</span></a></li>
-                <li><a data-page="about" onclick="navigateTo('about'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg><span class="nav-label">عن المكتب</span></a></li>
-                <li><a data-page="contact" onclick="navigateTo('contact'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nav-label">تواصل</span></a></li>
+                <li><a class="active" data-page="home" onclick="navigateTo('home'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="nav-label" data-i18n="nav_home">الرئيسية</span></a></li>
+                <li><a data-page="valuation" onclick="navigateTo('valuation'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="nav-label" data-i18n="nav_valuation">التقييم</span></a></li>
+                <li><a data-page="offers" onclick="navigateTo('offers'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="nav-label" data-i18n="nav_offers">العروض</span></a></li>
+                <li><a data-page="contracts" onclick="navigateTo('contracts'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span class="nav-label" data-i18n="nav_contracts">العقود</span></a></li>
+                <li><a data-page="add-property" onclick="navigateTo('add-property'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span class="nav-label" data-i18n="nav_add">إضافة</span></a></li>
+                <li><a data-page="services" onclick="navigateTo('services'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="nav-label" data-i18n="nav_services">الخدمات</span></a></li>
+                <li><a data-page="faq" onclick="navigateTo('faq'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="nav-label" data-i18n="nav_faq">الأسئلة</span></a></li>
+                <li><a data-page="about" onclick="navigateTo('about'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg><span class="nav-label" data-i18n="nav_about">عن المكتب</span></a></li>
+                <li><a data-page="contact" onclick="navigateTo('contact'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nav-label" data-i18n="nav_contact">تواصل</span></a></li>
             </ul>
 
             <div style="display:flex;align-items:center;gap:3px;">
@@ -368,11 +375,11 @@
     <!-- ========== نافذة الشات ========== -->
     <div class="chat-window" id="chatWindow">
         <div style="background:var(--bg-card);padding:9px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
-            <div style="display:flex;align-items:center;gap:7px;"><span style="font-size:15px;">🤖</span><div><h4 style="color:var(--text-main);font-size:10px;font-weight:800;">المساعد الذكي</h4><span style="color:var(--accent-gold);font-size:7px;">● متصل</span></div></div>
+            <div style="display:flex;align-items:center;gap:7px;"><span style="font-size:15px;">🤖</span><div><h4 style="color:var(--text-main);font-size:10px;font-weight:800;" data-i18n="chat_title">المساعد الذكي</h4><span style="color:var(--accent-gold);font-size:7px;">● متصل</span></div></div>
             <button onclick="toggleChat()" style="background:none;border:none;color:var(--text-muted);font-size:13px;cursor:pointer;">✕</button>
         </div>
         <div id="chatMessages" style="flex:1;padding:10px;overflow-y:auto;background:var(--bg-card);">
-            <div style="background:var(--bg-input);padding:7px 10px;border-radius:8px;font-size:9px;color:var(--text-main);margin-bottom:5px;border:1px solid var(--border-color);">مرحباً! كيف أساعدك؟ 🏠</div>
+            <div style="background:var(--bg-input);padding:7px 10px;border-radius:8px;font-size:9px;color:var(--text-main);margin-bottom:5px;border:1px solid var(--border-color);" data-i18n="chat_welcome">مرحباً! كيف أساعدك؟ 🏠</div>
         </div>
         <div style="padding:7px;display:flex;gap:5px;background:var(--bg-card);border-top:1px solid var(--border-color);">
             <input type="text" id="chatInput" placeholder="اكتب هنا..." style="flex:1;padding:7px 10px;border:1px solid var(--border-color);border-radius:18px;font-size:9px;outline:none;background:var(--bg-input);color:var(--text-main);font-family:'Cairo',sans-serif;" onkeypress="if(event.key==='Enter')sendChat()">
@@ -391,56 +398,69 @@
                             <div style="display:none;width:100%;padding:40px 0;align-items:center;justify-content:center;font-size:35px;font-weight:900;color:var(--accent-gold);">ه</div>
                         </div>
                     </div>
-                    <span class="badge-certified">✦ وكالة عقارية معتمدة</span>
+                    <span class="badge-certified" data-i18n="badge_certified">✦ وكالة عقارية معتمدة</span>
                 </div>
 
                 <div class="hero-content">
                     <h1 class="hero-title">
-                        همة <span class="gold">المدينة</span><br>
-                        <span style="font-size:0.55em;font-weight:600;color:var(--text-muted);">لتقدير القيم السوقية</span>
+                        <span data-i18n="hero_title">همة</span> <span class="gold" data-i18n="hero_title_gold">المدينة</span><br>
+                        <span style="font-size:0.55em;font-weight:600;color:var(--text-muted);" data-i18n="hero_subtitle">لتقدير القيم السوقية</span>
                     </h1>
-                    <p class="hero-description">منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.</p>
+                    <p class="hero-description" data-i18n="hero_desc">منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.</p>
                     <div class="hero-actions">
-                        <button class="btn btn-primary btn-lg" onclick="navigateTo('valuation')">🚀 ابدأ التقييم</button>
-                        <button class="btn btn-outline btn-lg" onclick="navigateTo('about')">🏢 تعرف علينا</button>
+                        <button class="btn btn-primary btn-lg" onclick="navigateTo('valuation')">🚀 <span data-i18n="btn_start">ابدأ التقييم</span></button>
+                        <button class="btn btn-outline btn-lg" onclick="navigateTo('about')">🏢 <span data-i18n="btn_about">تعرف علينا</span></button>
                     </div>
                     <div class="stats-container">
-                        <div class="stat-card"><span class="stat-number" data-count="4">0</span><span class="stat-label">مدن</span></div>
-                        <div class="stat-card"><span class="stat-number" data-count="85">0</span><span class="stat-label">حي</span></div>
-                        <div class="stat-card"><span class="stat-number" data-count="100">0</span><span class="stat-label">تقييم %</span></div>
-                        <div class="stat-card"><span class="stat-number" data-count="15">0</span><span class="stat-label">نوع عقار</span></div>
+                        <div class="stat-card"><span class="stat-number" data-count="4">0</span><span class="stat-label" data-i18n="stat_cities">مدن</span></div>
+                        <div class="stat-card"><span class="stat-number" data-count="85">0</span><span class="stat-label" data-i18n="stat_districts">حي</span></div>
+                        <div class="stat-card"><span class="stat-number" data-count="100">0</span><span class="stat-label" data-i18n="stat_valuations">تقييم %</span></div>
+                        <div class="stat-card"><span class="stat-number" data-count="15">0</span><span class="stat-label" data-i18n="stat_types">نوع عقار</span></div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- المنيو السفلي الطبيعي -->
+        <nav class="navbar-bottom-mobile" aria-label="القائمة السفلية">
+            <a class="active" data-page="home" onclick="navigateTo('home'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+            <a data-page="valuation" onclick="navigateTo('valuation'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></a>
+            <a data-page="offers" onclick="navigateTo('offers'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></a>
+            <a data-page="contracts" onclick="navigateTo('contracts'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></a>
+            <a data-page="add-property" onclick="navigateTo('add-property'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a>
+            <a data-page="services" onclick="navigateTo('services'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></a>
+            <a data-page="faq" onclick="navigateTo('faq'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></a>
+            <a data-page="about" onclick="navigateTo('about'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg></a>
+            <a data-page="contact" onclick="navigateTo('contact'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        </nav>
     </div>
-    <!-- ========== صفحة التقييم ========== -->
+        <!-- ========== صفحة التقييم ========== -->
     <div id="page-valuation" class="page-content">
         <div class="page-header">
-            <h2>📊 <span class="gold-underline">التقييم العقاري الذكي</span></h2>
-            <p>أدخل بيانات العقار لتقدير القيمة السوقية</p>
+            <h2>📊 <span class="gold-underline" data-i18n="valuation_title">التقييم العقاري الذكي</span></h2>
+            <p data-i18n="valuation_desc">أدخل بيانات العقار لتقدير القيمة السوقية</p>
         </div>
 
         <div class="card" style="padding:14px;">
             <div class="form-grid" style="margin-bottom:6px;">
-                <div><label class="form-label">🏙️ المدينة</label><select class="form-select" id="valCity" onchange="updateDistricts();"><option value="">-- اختر --</option><option value="riyadh">الرياض</option><option value="jeddah">جدة</option><option value="makkah">مكة المكرمة</option><option value="madinah">المدينة المنورة</option></select></div>
-                <div><label class="form-label">📍 الحي</label><select class="form-select" id="valDistrict" onchange="calculateValuation();"><option value="">-- اختر --</option></select></div>
-                <div><label class="form-label">🏠 نوع العقار</label><select class="form-select" id="valPropertyType" onchange="calculateValuation();"><option value="">--</option><option>فيلا</option><option>شقة في عمارة</option><option>شقة في برج</option><option>أرض</option><option>دبلكس</option><option>قصر</option><option>مكتب</option><option>عمارة</option></select></div>
-                <div><label class="form-label">📐 المساحة (م²)</label><input type="number" class="form-input" id="valArea" value="250" oninput="calculateValuation();"></div>
+                <div><label class="form-label" data-i18n="label_city">🏙️ المدينة</label><select class="form-select" id="valCity" onchange="updateDistricts();"><option value="">--</option><option value="riyadh">الرياض</option><option value="jeddah">جدة</option><option value="makkah">مكة المكرمة</option><option value="madinah">المدينة المنورة</option></select></div>
+                <div><label class="form-label" data-i18n="label_district">📍 الحي</label><select class="form-select" id="valDistrict" onchange="calculateValuation();"><option value="">--</option></select></div>
+                <div><label class="form-label" data-i18n="label_type">🏠 نوع العقار</label><select class="form-select" id="valPropertyType" onchange="calculateValuation();"><option value="">--</option><option>فيلا</option><option>شقة في عمارة</option><option>شقة في برج</option><option>أرض</option><option>دبلكس</option><option>قصر</option><option>مكتب</option><option>عمارة</option></select></div>
+                <div><label class="form-label" data-i18n="label_area">📐 المساحة (م²)</label><input type="number" class="form-input" id="valArea" value="250" oninput="calculateValuation();"></div>
             </div>
             <div class="form-grid" style="margin-bottom:6px;">
-                <div><label class="form-label">🛏️ عدد الغرف</label><select class="form-select" id="valRooms" onchange="calculateValuation();"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
-                <div><label class="form-label">📅 العمر</label><input type="number" class="form-input" id="valAge" value="5" oninput="calculateValuation();"></div>
-                <div><label class="form-label">🧭 الواجهة</label><select class="form-select" id="valDirection" onchange="calculateValuation();"><option value="شمالية">شمالية</option><option value="جنوبية" selected>جنوبية</option><option value="شرقية">شرقية</option><option value="غربية">غربية</option></select></div>
-                <div><label class="form-label">🛣️ عرض الشارع (م)</label><input type="number" class="form-input" id="valStreetWidth" value="15" oninput="calculateValuation();"></div>
+                <div><label class="form-label" data-i18n="label_rooms">🛏️ عدد الغرف</label><select class="form-select" id="valRooms" onchange="calculateValuation();"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
+                <div><label class="form-label" data-i18n="label_age">📅 العمر</label><input type="number" class="form-input" id="valAge" value="5" oninput="calculateValuation();"></div>
+                <div><label class="form-label" data-i18n="label_direction">🧭 الواجهة</label><select class="form-select" id="valDirection" onchange="calculateValuation();"><option value="شمالية">شمالية</option><option value="جنوبية" selected>جنوبية</option><option value="شرقية">شرقية</option><option value="غربية">غربية</option></select></div>
+                <div><label class="form-label" data-i18n="label_street">🛣️ عرض الشارع (م)</label><input type="number" class="form-input" id="valStreetWidth" value="15" oninput="calculateValuation();"></div>
             </div>
             <div class="form-grid" style="margin-bottom:6px;">
-                <div><label class="form-label">⭐ تصنيف الحي</label><select class="form-select" id="valDistrictClass" onchange="calculateValuation();"><option value="راقي">راقي</option><option value="متوسط" selected>متوسط</option><option value="شعبي">شعبي</option><option value="جديد">جديد</option></select></div>
-                <div><label class="form-label">📊 نسبة سكنية</label><select class="form-select" id="valResidentialRatio" onchange="calculateValuation();"><option value="20">20%</option><option value="50" selected>50%</option><option value="80">80%</option><option value="100">100%</option></select></div>
-                <div style="display:flex;align-items:flex-end;"><button class="btn btn-primary btn-sm btn-block" onclick="addNewCity()">➕ إضافة مدينة</button></div>
-                <div style="display:flex;align-items:flex-end;"><button class="btn btn-outline btn-sm btn-block" onclick="resetValuation()">🔄 إعادة</button></div>
+                <div><label class="form-label" data-i18n="label_class">⭐ تصنيف الحي</label><select class="form-select" id="valDistrictClass" onchange="calculateValuation();"><option value="راقي">راقي</option><option value="متوسط" selected>متوسط</option><option value="شعبي">شعبي</option><option value="جديد">جديد</option></select></div>
+                <div><label class="form-label" data-i18n="label_ratio">📊 نسبة سكنية</label><select class="form-select" id="valResidentialRatio" onchange="calculateValuation();"><option value="20">20%</option><option value="50" selected>50%</option><option value="80">80%</option><option value="100">100%</option></select></div>
+                <div style="display:flex;align-items:flex-end;"><button class="btn btn-primary btn-sm btn-block" onclick="addNewCity()" data-i18n="btn_add_city">➕ إضافة مدينة</button></div>
+                <div style="display:flex;align-items:flex-end;"><button class="btn btn-outline btn-sm btn-block" onclick="resetValuation()" data-i18n="btn_reset">🔄 إعادة</button></div>
             </div>
-            <div class="checkbox-group" id="valCheckboxes">
+            <div class="checkbox-group">
                 <label class="active"><input type="checkbox" id="valElevator" onchange="calculateValuation(); toggleChip(this);" checked> 🔝 مصعد</label>
                 <label><input type="checkbox" id="valPool" onchange="calculateValuation(); toggleChip(this);"> 🏊 مسبح</label>
                 <label class="active"><input type="checkbox" id="valMaidRoom" onchange="calculateValuation(); toggleChip(this);" checked> 🧹 غرفة خادمة</label>
@@ -453,15 +473,15 @@
         </div>
 
         <div class="valuation-result" id="valuationResult">
-            <div style="text-align:center;margin-bottom:8px;"><span style="font-size:12px;font-weight:900;color:var(--text-main);">📊 <span style="color:var(--accent-gold);">نتيجة التقييم</span></span></div>
+            <div style="text-align:center;margin-bottom:8px;"><span style="font-size:12px;font-weight:900;color:var(--text-main);">📊 <span style="color:var(--accent-gold);" data-i18n="result_title">نتيجة التقييم</span></span></div>
             <div class="result-grid">
-                <div class="result-item"><div class="label">💰 النطاق السعري</div><div class="value" id="priceRange">--</div></div>
-                <div class="result-item"><div class="label">📊 المتوسط</div><div class="value" id="avgPrice">--</div></div>
-                <div class="result-item"><div class="label">📈 مؤشر الاستثمار</div><div class="value" id="investmentIndex" style="font-size:10px;">--</div></div>
+                <div class="result-item"><div class="label" data-i18n="result_range">💰 النطاق السعري</div><div class="value" id="priceRange">--</div></div>
+                <div class="result-item"><div class="label" data-i18n="result_avg">📊 المتوسط</div><div class="value" id="avgPrice">--</div></div>
+                <div class="result-item"><div class="label" data-i18n="result_index">📈 مؤشر الاستثمار</div><div class="value" id="investmentIndex" style="font-size:10px;">--</div></div>
             </div>
             <div style="display:flex;gap:5px;justify-content:center;margin-top:8px;">
-                <button class="btn btn-primary btn-sm" onclick="shareValuation()">📤 مشاركة</button>
-                <button class="btn btn-outline btn-sm" onclick="showValuationDetails()">📋 تفاصيل</button>
+                <button class="btn btn-primary btn-sm" onclick="shareValuation()" data-i18n="btn_share">📤 مشاركة</button>
+                <button class="btn btn-outline btn-sm" onclick="showValuationDetails()" data-i18n="btn_details">📋 تفاصيل</button>
             </div>
         </div>
     </div>
@@ -469,14 +489,14 @@
     <!-- ========== صفحة الإضافة ========== -->
     <div id="page-add-property" class="page-content">
         <div class="page-header">
-            <h2>➕ <span class="gold-underline">إضافة عقار جديد</span></h2>
-            <p>أدخل بيانات العقار كاملة</p>
+            <h2>➕ <span class="gold-underline" data-i18n="add_title">إضافة عقار جديد</span></h2>
+            <p data-i18n="add_desc">أدخل بيانات العقار كاملة</p>
         </div>
 
         <div class="card" style="margin-bottom:8px;padding:12px;">
-            <div style="border:2px dashed var(--accent-gold);border-radius:10px;padding:12px;text-align:center;cursor:pointer;transition:var(--transition);" onclick="document.getElementById('excelFile').click()">
-                <div style="font-size:22px;margin-bottom:2px;">📂</div>
-                <p style="font-size:9px;color:var(--text-muted);font-weight:700;">اسحب Excel هنا أو اضغط</p>
+            <div style="border:2px dashed var(--accent-gold);border-radius:10px;padding:12px;text-align:center;cursor:pointer;" onclick="document.getElementById('excelFile').click()">
+                <div style="font-size:22px;">📂</div>
+                <p style="font-size:9px;color:var(--text-muted);font-weight:700;" data-i18n="excel_text">اسحب Excel هنا أو اضغط</p>
                 <input type="file" id="excelFile" accept=".xlsx,.xls" style="display:none;" onchange="handleExcelFile(event)">
             </div>
         </div>
@@ -510,25 +530,20 @@
                 <label><input type="checkbox" id="addGarage"> 🅿️ موقف</label>
                 <label><input type="checkbox" id="addSecurity"> 🔐 أمن</label>
             </div>
-            <div style="margin-bottom:6px;">
-                <label class="form-label">📝 وصف العقار</label>
-                <textarea class="form-input" id="addDescription" rows="2" placeholder="وصف مختصر..." style="resize:vertical;"></textarea>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="addPropertyManually()">🚀 إدراج وتقييم</button>
+            <div style="margin-bottom:6px;"><label class="form-label">📝 وصف العقار</label><textarea class="form-input" id="addDescription" rows="2" placeholder="وصف مختصر..." style="resize:vertical;"></textarea></div>
+            <button class="btn btn-primary btn-block" onclick="addPropertyManually()" data-i18n="btn_submit_add">🚀 إدراج وتقييم</button>
         </div>
     </div>
+
     <!-- ========== صفحة العروض ========== -->
     <div id="page-offers" class="page-content">
         <div class="page-header">
-            <h2>💰 <span class="gold-underline">عروض وخصومات</span></h2>
-            <p>فرص لا تفوّت</p>
+            <h2>💰 <span class="gold-underline" data-i18n="offers_title">عروض وخصومات</span></h2>
+            <p data-i18n="offers_desc">فرص لا تفوّت</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:85px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:26px;">🏠</span>
-                    <span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-8%</span>
-                </div>
+                <div style="height:85px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;"><span style="font-size:26px;">🏠</span><span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-8%</span></div>
                 <div style="padding:9px;">
                     <h4 style="font-size:10px;color:var(--text-main);font-weight:800;">فيلا · النرجس</h4>
                     <p style="font-size:7px;color:var(--text-muted);">الرياض، النرجس</p>
@@ -539,10 +554,7 @@
                 </div>
             </div>
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:85px;background:linear-gradient(135deg,#1a2744,#243b5e);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:26px;">🏢</span>
-                    <span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-12%</span>
-                </div>
+                <div style="height:85px;background:linear-gradient(135deg,#1a2744,#243b5e);display:flex;align-items:center;justify-content:center;position:relative;"><span style="font-size:26px;">🏢</span><span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-12%</span></div>
                 <div style="padding:9px;">
                     <h4 style="font-size:10px;color:var(--text-main);font-weight:800;">شقة · الشاطئ</h4>
                     <p style="font-size:7px;color:var(--text-muted);">جدة، الشاطئ</p>
@@ -553,10 +565,7 @@
                 </div>
             </div>
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:85px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:26px;">🕌</span>
-                    <span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-10%</span>
-                </div>
+                <div style="height:85px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;"><span style="font-size:26px;">🕌</span><span style="position:absolute;top:7px;right:7px;background:var(--accent-gold);color:var(--text-on-gold);font-size:7px;font-weight:800;padding:2px 9px;border-radius:10px;">-10%</span></div>
                 <div style="padding:9px;">
                     <h4 style="font-size:10px;color:var(--text-main);font-weight:800;">شقة · العزيزية</h4>
                     <p style="font-size:7px;color:var(--text-muted);">مكة، العزيزية</p>
@@ -572,47 +581,46 @@
     <!-- ========== صفحة الخدمات ========== -->
     <div id="page-services" class="page-content">
         <div class="page-header">
-            <h2>🛠️ <span class="gold-underline">خدماتنا</span></h2>
-            <p>اضغط على الخدمة للانتقال</p>
+            <h2>🛠️ <span class="gold-underline" data-i18n="services_title">خدماتنا</span></h2>
+            <p data-i18n="services_desc">اضغط على الخدمة للانتقال</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('offers')"><div style="font-size:22px;margin-bottom:3px;">🏠</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">بيع وشراء العقارات</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">تصفح العروض</p></div>
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('valuation')"><div style="font-size:22px;margin-bottom:3px;">📊</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">التقييم الذكي</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">قيّم عقارك</p></div>
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contracts')"><div style="font-size:22px;margin-bottom:3px;">📄</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">صياغة العقود</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">أنشئ عقدك</p></div>
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;margin-bottom:3px;">🔑</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">إدارة الأملاك</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">تواصل معنا</p></div>
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;margin-bottom:3px;">💼</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">استشارات عقارية</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">احصل على استشارة</p></div>
-            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;margin-bottom:3px;">📣</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">تسويق عقاري</h4><p style="font-size:7px;color:var(--text-muted);margin-top:2px;">سوّق عقارك</p></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('offers')"><div style="font-size:22px;">🏠</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_buy">بيع وشراء العقارات</h4></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('valuation')"><div style="font-size:22px;">📊</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_valuation">التقييم الذكي</h4></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contracts')"><div style="font-size:22px;">📄</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_contracts">صياغة العقود</h4></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;">🔑</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_management">إدارة الأملاك</h4></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;">💼</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_consulting">استشارات عقارية</h4></div>
+            <div class="card" style="text-align:center;padding:13px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:22px;">📣</div><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="service_marketing">تسويق عقاري</h4></div>
         </div>
     </div>
-
-    <!-- ========== صفحة الأسئلة ========== -->
+        <!-- ========== صفحة الأسئلة ========== -->
     <div id="page-faq" class="page-content">
         <div class="page-header">
-            <h2>❓ <span class="gold-underline">الأسئلة الشائعة</span></h2>
+            <h2>❓ <span class="gold-underline" data-i18n="faq_title">الأسئلة الشائعة</span></h2>
         </div>
         <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:6px;">
-            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">كيف أضيف عقاري؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);">من صفحة «إضافة عقار» يدوياً أو رفع Excel.</div></div>
-            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">هل التقييم معتمد رسمياً؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);">نعم، يعتمد على معايير الهيئة العامة للعقار.</div></div>
-            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">هل يمكنني توقيع العقد مباشرة؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);">العقد مسودة والتوقيع عبر منصة إيجار.</div></div>
-            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">هل تغطون مدناً أخرى؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);">نعم، 4 مدن رئيسية مع خطة توسع.</div></div>
-            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;">هل الأدوات مجانية؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);">نعم، مجانية لجميع عملاء المكتب.</div></div>
+            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="faq_q1">كيف أضيف عقاري؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);" data-i18n="faq_a1">من صفحة «إضافة عقار» يدوياً أو رفع Excel.</div></div>
+            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="faq_q2">هل التقييم معتمد رسمياً؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);" data-i18n="faq_a2">نعم، يعتمد على معايير الهيئة العامة للعقار.</div></div>
+            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="faq_q3">هل يمكنني توقيع العقد مباشرة؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);" data-i18n="faq_a3">العقد مسودة والتوقيع عبر منصة إيجار.</div></div>
+            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="faq_q4">هل تغطون مدناً أخرى؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);" data-i18n="faq_a4">نعم، 4 مدن رئيسية مع خطة توسع.</div></div>
+            <div class="card" style="cursor:pointer;padding:10px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:10px;color:var(--text-main);font-weight:800;" data-i18n="faq_q5">هل الأدوات مجانية؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:13px;">➕</span></div><div class="faq-answer" style="display:none;font-size:8px;color:var(--text-muted);margin-top:4px;padding-top:4px;border-top:1px solid var(--border-color);" data-i18n="faq_a5">نعم، مجانية لجميع عملاء المكتب.</div></div>
         </div>
     </div>
 
     <!-- ========== صفحة عن المكتب ========== -->
     <div id="page-about" class="page-content">
         <div class="page-header">
-            <h2>🏢 <span class="gold-underline">عن المكتب</span></h2>
+            <h2>🏢 <span class="gold-underline" data-i18n="about_title">عن المكتب</span></h2>
         </div>
         <div class="about-container">
             <div class="about-card">
-                <h2 style="font-size:16px;color:var(--text-main);font-weight:900;">مكتب همة المدينة العقارية</h2>
-                <p style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:2;">شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.</p>
+                <h2 style="font-size:16px;color:var(--text-main);font-weight:900;" data-i18n="about_name">مكتب همة المدينة العقارية</h2>
+                <p style="font-size:10px;color:var(--text-muted);margin-top:6px;line-height:2;" data-i18n="about_desc">شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.</p>
                 <div class="license-badge">رخصة فال العقارية: 1200030428</div>
             </div>
             <div class="about-grid">
-                <div class="about-card"><h3 style="font-size:13px;color:var(--accent-gold);margin-bottom:4px;font-weight:900;">🎯 رؤيتنا</h3><p style="font-size:9px;color:var(--text-muted);line-height:1.8;">أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.</p></div>
-                <div class="about-card"><h3 style="font-size:13px;color:var(--accent-gold);margin-bottom:4px;font-weight:900;">💡 رسالتنا</h3><p style="font-size:9px;color:var(--text-muted);line-height:1.8;">تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.</p></div>
+                <div class="about-card"><h3 style="font-size:13px;color:var(--accent-gold);margin-bottom:4px;font-weight:900;" data-i18n="about_vision_title">🎯 رؤيتنا</h3><p style="font-size:9px;color:var(--text-muted);line-height:1.8;" data-i18n="about_vision">أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.</p></div>
+                <div class="about-card"><h3 style="font-size:13px;color:var(--accent-gold);margin-bottom:4px;font-weight:900;" data-i18n="about_mission_title">💡 رسالتنا</h3><p style="font-size:9px;color:var(--text-muted);line-height:1.8;" data-i18n="about_mission">تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.</p></div>
             </div>
         </div>
     </div>
@@ -620,12 +628,12 @@
     <!-- ========== صفحة التواصل ========== -->
     <div id="page-contact" class="page-content">
         <div class="page-header">
-            <h2>📞 <span class="gold-underline">تواصل معنا</span></h2>
+            <h2>📞 <span class="gold-underline" data-i18n="contact_title">تواصل معنا</span></h2>
         </div>
         <div class="contact-container">
             <div class="contact-info-card">
                 <img src="Himmat-Almedina.png" alt="شعار همة المدينة" style="width:70px;height:70px;object-fit:contain;margin-bottom:6px;filter:drop-shadow(0 4px 8px var(--gold-glow));" loading="lazy" onerror="this.style.display='none';">
-                <h3 style="font-size:14px;color:var(--accent-gold);font-weight:900;margin-bottom:8px;">معلومات التواصل</h3>
+                <h3 style="font-size:14px;color:var(--accent-gold);font-weight:900;margin-bottom:8px;" data-i18n="contact_info_title">معلومات التواصل</h3>
                 <p style="font-size:10px;color:var(--text-main);margin:5px 0;direction:ltr;">📍 المدينة المنورة، السعودية</p>
                 <p style="font-size:10px;color:var(--text-main);margin:5px 0;direction:ltr;">📞 +966 53 050 0906</p>
                 <p style="font-size:10px;color:var(--text-main);margin:5px 0;direction:ltr;">✉️ ffaaddhheell2323@gmail.com</p>
@@ -637,26 +645,25 @@
                 </div>
             </div>
             <form class="contact-form-3d card" onsubmit="event.preventDefault(); alert('✅ تم إرسال رسالتك بنجاح!');">
-                <h3 style="color:var(--accent-gold);margin-bottom:8px;font-weight:900;font-size:14px;">أرسل لنا رسالة</h3>
+                <h3 style="color:var(--accent-gold);margin-bottom:8px;font-weight:900;font-size:14px;" data-i18n="contact_form_title">أرسل لنا رسالة</h3>
                 <input type="text" placeholder="الاسم الكامل" required style="margin-bottom:5px;">
                 <input type="tel" placeholder="رقم الجوال" required style="margin-bottom:5px;">
                 <textarea rows="3" placeholder="نص الرسالة..." required style="margin-bottom:6px;resize:vertical;"></textarea>
-                <button type="submit" class="btn btn-primary btn-block">إرسال الرسالة</button>
+                <button type="submit" class="btn btn-primary btn-block" data-i18n="contact_send">إرسال الرسالة</button>
             </form>
         </div>
     </div>
-        <!-- ========== صفحة العقود ========== -->
+
+    <!-- ========== صفحة العقود ========== -->
     <div id="page-contracts" class="page-content">
         <div class="page-header">
-            <h2>📄 <span class="gold-underline">العقود</span></h2>
-            <p>عقود كاملة بجميع البنود</p>
+            <h2>📄 <span class="gold-underline" data-i18n="contracts_title">العقود</span></h2>
+            <p data-i18n="contracts_desc">عقود كاملة بجميع البنود</p>
         </div>
-
         <div style="display:flex;justify-content:center;gap:6px;margin-bottom:8px;">
             <button class="btn btn-primary btn-sm" onclick="showContract('residential')">🏠 عقد سكني</button>
             <button class="btn btn-outline btn-sm" onclick="showContract('commercial')">🏢 عقد تجاري</button>
         </div>
-
         <div class="card" id="residentialContract" style="display:block;padding:12px;">
             <div class="form-grid" style="margin-bottom:4px;">
                 <div><label class="form-label">المؤجر</label><input type="text" class="form-input" id="resLessorName" placeholder="اسم المؤجر"></div>
@@ -678,7 +685,6 @@
             </div>
             <button class="btn btn-primary btn-sm btn-block" onclick="generateFullResidentialContract()">🤖 توليد العقد الكامل</button>
         </div>
-
         <div class="card" id="commercialContract" style="display:none;padding:12px;">
             <div class="form-grid" style="margin-bottom:4px;">
                 <div><label class="form-label">المؤجر</label><input type="text" class="form-input" id="comLessorName" placeholder="اسم المؤجر"></div>
@@ -702,30 +708,123 @@
         </div>
     </div>
 
+    <!-- ========== الفوتر ========== -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo"><img src="Himmat-Almedina.png" alt="همة المدينة" loading="lazy" onerror="this.style.display='none';"></div>
+            <h3 class="footer-title" data-i18n="footer_title">همة المدينة</h3>
+            <p class="footer-description" data-i18n="footer_desc">مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.</p>
+            <div class="footer-socials">
+                <a href="https://wa.me/966530500906" target="_blank" class="social-icon" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@fadhel_133" target="_blank" class="social-icon" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/f.4018" target="_blank" class="social-icon" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.snapchat.com/add/f.4018" target="_blank" class="social-icon" aria-label="سناب شات"><i class="fab fa-snapchat-ghost"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer_copy">© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428</p>
+        </div>
+    </footer>
+
     <!-- ========== نافذة العقد ========== -->
     <div class="contract-print-window" id="contractPrintWindow">
         <div class="contract-print-content" id="contractPrintContent"></div>
     </div>
 
-    <!-- ========== الفوتر الطبيعي ========== -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-logo"><img src="Himmat-Almedina.png" alt="همة المدينة" loading="lazy" onerror="this.style.display='none';"></div>
-            <h3 class="footer-title">همة المدينة</h3>
-            <p class="footer-description">مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.</p>
-            <div class="footer-socials">
-                <a href="https://wa.me/966530500906" target="_blank" title="واتساب" class="social-icon" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.tiktok.com/@fadhel_133" target="_blank" title="تيك توك" class="social-icon" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/f.4018" target="_blank" title="إنستغرام" class="social-icon" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.snapchat.com/add/f.4018" target="_blank" title="سناب شات" class="social-icon" aria-label="سناب شات"><i class="fab fa-snapchat-ghost"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428</p>
-        </div>
-    </footer>
-
     <script>
+        // ========== قاموس الترجمة data-i18n ==========
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية", nav_valuation: "التقييم", nav_offers: "العروض", nav_contracts: "العقود",
+                nav_add: "إضافة", nav_services: "الخدمات", nav_faq: "الأسئلة", nav_about: "عن المكتب", nav_contact: "تواصل",
+                hero_title: "همة", hero_title_gold: "المدينة", hero_subtitle: "لتقدير القيم السوقية",
+                hero_desc: "منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.",
+                btn_start: "ابدأ التقييم", btn_about: "تعرف علينا",
+                badge_certified: "✦ وكالة عقارية معتمدة",
+                stat_cities: "مدن", stat_districts: "حي", stat_valuations: "تقييم %", stat_types: "نوع عقار",
+                chat_title: "المساعد الذكي", chat_welcome: "مرحباً! كيف أساعدك؟ 🏠",
+                valuation_title: "التقييم العقاري الذكي", valuation_desc: "أدخل بيانات العقار لتقدير القيمة السوقية",
+                label_city: "🏙️ المدينة", label_district: "📍 الحي", label_type: "🏠 نوع العقار", label_area: "📐 المساحة (م²)",
+                label_rooms: "🛏️ عدد الغرف", label_age: "📅 العمر", label_direction: "🧭 الواجهة", label_street: "🛣️ عرض الشارع (م)",
+                label_class: "⭐ تصنيف الحي", label_ratio: "📊 نسبة سكنية",
+                btn_add_city: "➕ إضافة مدينة", btn_reset: "🔄 إعادة",
+                result_title: "نتيجة التقييم", result_range: "💰 النطاق السعري", result_avg: "📊 المتوسط", result_index: "📈 مؤشر الاستثمار",
+                btn_share: "📤 مشاركة", btn_details: "📋 تفاصيل",
+                add_title: "إضافة عقار جديد", add_desc: "أدخل بيانات العقار كاملة",
+                excel_text: "اسحب Excel هنا أو اضغط", btn_submit_add: "🚀 إدراج وتقييم",
+                offers_title: "عروض وخصومات", offers_desc: "فرص لا تفوّت",
+                services_title: "خدماتنا", services_desc: "اضغط على الخدمة للانتقال",
+                service_buy: "بيع وشراء العقارات", service_valuation: "التقييم الذكي", service_contracts: "صياغة العقود",
+                service_management: "إدارة الأملاك", service_consulting: "استشارات عقارية", service_marketing: "تسويق عقاري",
+                faq_title: "الأسئلة الشائعة",
+                faq_q1: "كيف أضيف عقاري؟", faq_a1: "من صفحة «إضافة عقار» يدوياً أو رفع Excel.",
+                faq_q2: "هل التقييم معتمد رسمياً؟", faq_a2: "نعم، يعتمد على معايير الهيئة العامة للعقار.",
+                faq_q3: "هل يمكنني توقيع العقد مباشرة؟", faq_a3: "العقد مسودة والتوقيع عبر منصة إيجار.",
+                faq_q4: "هل تغطون مدناً أخرى؟", faq_a4: "نعم، 4 مدن رئيسية مع خطة توسع.",
+                faq_q5: "هل الأدوات مجانية؟", faq_a5: "نعم، مجانية لجميع عملاء المكتب.",
+                about_title: "عن المكتب", about_name: "مكتب همة المدينة العقارية",
+                about_desc: "شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.",
+                about_vision_title: "🎯 رؤيتنا", about_vision: "أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.",
+                about_mission_title: "💡 رسالتنا", about_mission: "تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.",
+                contact_title: "تواصل معنا", contact_info_title: "معلومات التواصل", contact_form_title: "أرسل لنا رسالة", contact_send: "إرسال الرسالة",
+                contracts_title: "العقود", contracts_desc: "عقود كاملة بجميع البنود",
+                footer_title: "همة المدينة",
+                footer_desc: "مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.",
+                footer_copy: "© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428"
+            },
+            en: {
+                nav_home: "Home", nav_valuation: "Valuation", nav_offers: "Offers", nav_contracts: "Contracts",
+                nav_add: "Add Property", nav_services: "Services", nav_faq: "FAQ", nav_about: "About Us", nav_contact: "Contact",
+                hero_title: "Himmat", hero_title_gold: "Al-Madinah", hero_subtitle: "For Market Value Estimation",
+                hero_desc: "Your smart platform for accurate real estate valuation in Saudi Arabia.",
+                btn_start: "Start Valuation", btn_about: "About Us",
+                badge_certified: "✦ Certified Real Estate Agency",
+                stat_cities: "Cities", stat_districts: "Districts", stat_valuations: "Valuations %", stat_types: "Property Types",
+                chat_title: "Smart Assistant", chat_welcome: "Hello! How can I help? 🏠",
+                valuation_title: "Smart Real Estate Valuation", valuation_desc: "Enter property details to estimate market value",
+                label_city: "🏙️ City", label_district: "📍 District", label_type: "🏠 Property Type", label_area: "📐 Area (m²)",
+                label_rooms: "🛏️ Rooms", label_age: "📅 Age", label_direction: "🧭 Facing", label_street: "🛣️ Street Width (m)",
+                label_class: "⭐ District Rating", label_ratio: "📊 Residential Ratio",
+                btn_add_city: "➕ Add City", btn_reset: "🔄 Reset",
+                result_title: "Valuation Result", result_range: "💰 Price Range", result_avg: "📊 Average", result_index: "📈 Investment Index",
+                btn_share: "📤 Share", btn_details: "📋 Details",
+                add_title: "Add New Property", add_desc: "Enter full property data",
+                excel_text: "Drag Excel or click", btn_submit_add: "🚀 Add & Evaluate",
+                offers_title: "Offers & Discounts", offers_desc: "Don't miss",
+                services_title: "Our Services", services_desc: "Click to navigate",
+                service_buy: "Buy & Sell", service_valuation: "Smart Valuation", service_contracts: "Contracts",
+                service_management: "Management", service_consulting: "Consulting", service_marketing: "Marketing",
+                faq_title: "FAQ",
+                faq_q1: "How to add my property?", faq_a1: "From Add Property page manually or upload Excel.",
+                faq_q2: "Is valuation official?", faq_a2: "Yes, based on Real Estate Authority standards.",
+                faq_q3: "Can I sign directly?", faq_a3: "Draft then official via Ejar.",
+                faq_q4: "Other cities?", faq_a4: "Yes, 4 major cities + expansion.",
+                faq_q5: "Are tools free?", faq_a5: "Yes, free for all clients.",
+                about_title: "About Us", about_name: "Himmat Al-Madinah Real Estate",
+                about_desc: "Your trusted real estate partner in Madinah. We offer integrated solutions in smart valuation, property management, and marketing.",
+                about_vision_title: "🎯 Our Vision", about_vision: "To be the leading real estate platform in Madinah with high-precision digital valuation solutions.",
+                about_mission_title: "💡 Our Mission", about_mission: "Providing reliable real estate services built on transparency and innovation.",
+                contact_title: "Contact Us", contact_info_title: "Contact Information", contact_form_title: "Send Us a Message", contact_send: "Send Message",
+                contracts_title: "Contracts", contracts_desc: "Full contracts with all clauses",
+                footer_title: "Himmat Al-Madinah",
+                footer_desc: "A certified Saudi real estate office offering property browsing, valuation, and smart contract drafting.",
+                footer_copy: "© 2026 Himmat Al-Madinah Real Estate. All rights reserved. • License: 1200030428"
+            }
+        };
+
+        function switchLanguage(lang) {
+            localStorage.setItem('site_lang', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-btn-modern').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        }
+
         // ========== البيانات ==========
         const districtsData = {
             riyadh: {'العليا':1.5,'السليمانية':1.3,'الملز':1.1,'الورود':1.4,'الرحمانية':1.2,'المحمدية':1.5,'الرائد':1.3,'النخيل':1.4,'أم الحمام':1.2,'المعذر':1.3,'الهدا':1.1,'الشفا':0.9,'بدر':0.8,'المروة':1.0,'ديراب':0.7,'نمار':0.9,'العريجاء':0.8,'البديعة':0.9,'السويدي':0.8,'الديرة':0.9,'الشميسي':0.8,'العود':0.9,'المرقب':0.9,'الربوة':1.1,'الريان':1.2,'الروابي':1.0,'النسيم':1.0,'المنار':1.1,'النهضة':1.0,'الخليج':1.2,'غرناطة':1.3,'قرطبة':1.4,'اليرموك':1.2,'الرمال':1.3,'القادسية':1.2,'الملقا':1.5,'حطين':1.4,'العقيق':1.4,'الصحافة':1.3,'الياسمين':1.5,'النرجس':1.6,'العارض':1.3,'القيروان':1.4,'الربيع':1.3,'الغدير':1.3,'النفل':1.4,'الوادي':1.2,'التعاون':1.3,'الازدهار':1.2,'المرسلات':1.3,'الفلاح':1.1,'الواحة':1.1,'الملك فهد':1.3,'الملك عبدالله':1.3,'الجزيرة':1.0,'الفيحاء':1.1,'المنصورة':0.9,'العزيزية':1.0,'الدار البيضاء':1.1},
@@ -737,95 +836,18 @@
         const typeFactors = {'فيلا':1.2,'قصر':1.6,'دبلكس':1.1,'شقة في برج':1.15,'شقة في عمارة':0.95,'أرض':0.7,'مزرعة':0.5,'استراحة':0.75,'مكتب':1.0,'معرض':1.1,'عمارة':1.3,'مخزن':0.55,'منتجع':1.25,'محطة':0.9,'دور':0.85};
         const directionFactors = {'شمالية':1.05,'جنوبية':0.95,'شرقية':1.0,'غربية':0.98};
 
-        // ========== قاموس الترجمة O(1) ==========
-        const translations = {
-            ar: {
-                "الرئيسية": "الرئيسية", "التقييم": "التقييم", "العروض": "العروض", "العقود": "العقود",
-                "إضافة": "إضافة", "الخدمات": "الخدمات", "الأسئلة": "الأسئلة", "عن المكتب": "عن المكتب", "تواصل": "تواصل",
-                "همة المدينة": "همة المدينة", "همة المدينة العقارية": "همة المدينة العقارية",
-                "لتقدير القيم السوقية": "لتقدير القيم السوقية",
-                "منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.": "منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.",
-                "ابدأ التقييم": "ابدأ التقييم", "تعرف علينا": "تعرف علينا",
-                "التقييم العقاري الذكي": "التقييم العقاري الذكي",
-                "أدخل بيانات العقار لتقدير القيمة السوقية": "أدخل بيانات العقار لتقدير القيمة السوقية",
-                "المدينة": "المدينة", "الحي": "الحي", "نوع العقار": "نوع العقار", "المساحة (م²)": "المساحة (م²)",
-                "عدد الغرف": "عدد الغرف", "العمر": "العمر", "الواجهة": "الواجهة", "عرض الشارع (م)": "عرض الشارع (م)",
-                "تصنيف الحي": "تصنيف الحي", "نسبة سكنية": "نسبة سكنية", "إعادة": "إعادة", "إضافة مدينة": "إضافة مدينة",
-                "نتيجة التقييم": "نتيجة التقييم",
-                "تواصل معنا": "تواصل معنا", "أرسل لنا رسالة": "أرسل لنا رسالة",
-                "الاسم الكامل": "الاسم الكامل", "رقم الجوال": "رقم الجوال", "نص الرسالة...": "نص الرسالة...", "إرسال الرسالة": "إرسال الرسالة",
-                "معلومات التواصل": "معلومات التواصل", "المدينة المنورة، السعودية": "المدينة المنورة، السعودية",
-                "واتساب": "واتساب", "تيك توك": "تيك توك", "إنستغرام": "إنستغرام", "سناب شات": "سناب شات",
-                "مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.": "مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.",
-                "© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428": "© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428",
-                "سياسة الخصوصية": "سياسة الخصوصية", "شروط الاستخدام": "شروط الاستخدام", "اتصل بنا": "اتصل بنا",
-                "بيع وشراء العقارات": "بيع وشراء العقارات", "التقييم الذكي": "التقييم الذكي", "صياغة العقود": "صياغة العقود",
-                "إدارة الأملاك": "إدارة الأملاك", "استشارات عقارية": "استشارات عقارية", "تسويق عقاري": "تسويق عقاري",
-                "عروض وخصومات": "عروض وخصومات", "خدماتنا": "خدماتنا", "الأسئلة الشائعة": "الأسئلة الشائعة",
-                "إضافة عقار جديد": "إضافة عقار جديد", "اسحب Excel هنا أو اضغط": "اسحب Excel هنا أو اضغط",
-                "إدراج وتقييم": "إدراج وتقييم", "اضغط على الخدمة للانتقال": "اضغط على الخدمة للانتقال"
-            },
-            en: {
-                "الرئيسية": "Home", "التقييم": "Valuation", "العروض": "Offers", "العقود": "Contracts",
-                "إضافة": "Add Property", "الخدمات": "Services", "الأسئلة": "FAQ", "عن المكتب": "About Us", "تواصل": "Contact",
-                "همة المدينة": "Himmat Al-Madinah", "همة المدينة العقارية": "Himmat Al-Madinah Real Estate",
-                "لتقدير القيم السوقية": "For Market Value Estimation",
-                "منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.": "Your smart platform for accurate real estate valuation in Saudi Arabia.",
-                "ابدأ التقييم": "Start Valuation", "تعرف علينا": "About Us",
-                "التقييم العقاري الذكي": "Smart Real Estate Valuation",
-                "أدخل بيانات العقار لتقدير القيمة السوقية": "Enter property details to estimate market value",
-                "المدينة": "City", "الحي": "District", "نوع العقار": "Property Type", "المساحة (م²)": "Area (m²)",
-                "عدد الغرف": "Rooms", "العمر": "Age", "الواجهة": "Facing", "عرض الشارع (م)": "Street Width (m)",
-                "تصنيف الحي": "District Rating", "نسبة سكنية": "Residential Ratio", "إعادة": "Reset", "إضافة مدينة": "Add City",
-                "نتيجة التقييم": "Valuation Result",
-                "تواصل معنا": "Contact Us", "أرسل لنا رسالة": "Send Us a Message",
-                "الاسم الكامل": "Full Name", "رقم الجوال": "Phone Number", "نص الرسالة...": "Your Message...", "إرسال الرسالة": "Send Message",
-                "معلومات التواصل": "Contact Information", "المدينة المنورة، السعودية": "Madinah, Saudi Arabia",
-                "واتساب": "WhatsApp", "تيك توك": "TikTok", "إنستغرام": "Instagram", "سناب شات": "Snapchat",
-                "مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.": "A certified Saudi real estate office offering property browsing, valuation, and smart contract drafting.",
-                "© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428": "© 2026 Himmat Al-Madinah Real Estate. All rights reserved. • License: 1200030428",
-                "سياسة الخصوصية": "Privacy Policy", "شروط الاستخدام": "Terms of Use", "اتصل بنا": "Contact Us",
-                "بيع وشراء العقارات": "Buy & Sell", "التقييم الذكي": "Smart Valuation", "صياغة العقود": "Contracts",
-                "إدارة الأملاك": "Management", "استشارات عقارية": "Consulting", "تسويق عقاري": "Marketing",
-                "عروض وخصومات": "Offers & Discounts", "خدماتنا": "Our Services", "الأسئلة الشائعة": "FAQ",
-                "إضافة عقار جديد": "Add New Property", "اسحب Excel هنا أو اضغط": "Drag Excel or click",
-                "إدراج وتقييم": "Add & Evaluate", "اضغط على الخدمة للانتقال": "Click to navigate"
-            }
-        };
-        const arToEnMap = translations.en;
-        const enToArMap = Object.fromEntries(Object.entries(translations.en).map(([ar, en]) => [en, ar]));
-
-        function switchLanguage(lang) {
-            localStorage.setItem('site_lang', lang);
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            const lookupMap = lang === 'en' ? arToEnMap : enToArMap;
-            document.querySelectorAll('h1, h2, h3, h4, h5, p, a, span, button, label, option, th, td').forEach(el => {
-                const text = el.innerText ? el.innerText.trim() : '';
-                if (text && lookupMap[text]) el.innerText = lookupMap[text];
-            });
-            document.querySelectorAll('input, textarea').forEach(input => {
-                const ph = input.getAttribute('placeholder');
-                if (ph && lookupMap[ph.trim()]) input.setAttribute('placeholder', lookupMap[ph.trim()]);
-            });
-        }
-
         // ========== التنقل ==========
         const pages = {
-            home: document.getElementById('page-home'),
-            valuation: document.getElementById('page-valuation'),
-            offers: document.getElementById('page-offers'),
-            contracts: document.getElementById('page-contracts'),
-            'add-property': document.getElementById('page-add-property'),
-            services: document.getElementById('page-services'),
-            faq: document.getElementById('page-faq'),
-            about: document.getElementById('page-about'),
-            contact: document.getElementById('page-contact')
+            home: document.getElementById('page-home'), valuation: document.getElementById('page-valuation'),
+            offers: document.getElementById('page-offers'), contracts: document.getElementById('page-contracts'),
+            'add-property': document.getElementById('page-add-property'), services: document.getElementById('page-services'),
+            faq: document.getElementById('page-faq'), about: document.getElementById('page-about'), contact: document.getElementById('page-contact')
         };
         function navigateTo(name) {
             Object.keys(pages).forEach(k => { if(pages[k]) { pages[k].style.display='none'; pages[k].classList.remove('active'); } });
             if(pages[name]) { pages[name].style.display='block'; pages[name].classList.add('active'); }
             document.querySelectorAll('.nav-links-modern a').forEach(a => a.classList.toggle('active', a.dataset.page===name));
+            document.querySelectorAll('.navbar-bottom-mobile a').forEach(a => a.classList.toggle('active', a.dataset.page===name));
             document.getElementById('chatWindow').classList.remove('active');
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -860,15 +882,9 @@
             }
             calculateValuation();
         }
-        function toggleChip(checkbox) {
-            const label = checkbox.closest('label');
-            if(label) { if(checkbox.checked) label.classList.add('active'); else label.classList.remove('active'); }
-        }
+        function toggleChip(checkbox) { const label = checkbox.closest('label'); if(label) { if(checkbox.checked) label.classList.add('active'); else label.classList.remove('active'); } }
         function calculateValuation() {
-            const cityEl = document.getElementById('valCity');
-            const districtEl = document.getElementById('valDistrict');
-            const typeEl = document.getElementById('valPropertyType');
-            const areaEl = document.getElementById('valArea');
+            const cityEl = document.getElementById('valCity'), districtEl = document.getElementById('valDistrict'), typeEl = document.getElementById('valPropertyType'), areaEl = document.getElementById('valArea');
             if(!cityEl || !districtEl || !typeEl || !areaEl) return;
             const city = cityEl.value, district = districtEl.value, propertyType = typeEl.value;
             const area = parseFloat(areaEl.value) || 0;
@@ -900,19 +916,18 @@
             if(document.getElementById('valGarage')?.checked) extraF += 0.03;
             if(document.getElementById('valSecurity')?.checked) extraF += 0.02;
             const final = area * base * ageF * roomsF * streetF * ratioF * extraF;
-            const unit = currentLang === 'ar' ? 'ر.س' : 'SAR';
-            const prEl = document.getElementById('priceRange');
-            const apEl = document.getElementById('avgPrice');
+            const unit = localStorage.getItem('site_lang') === 'en' ? 'SAR' : 'ر.س';
+            const prEl = document.getElementById('priceRange'), apEl = document.getElementById('avgPrice');
             if(prEl) prEl.textContent = Math.round(final*0.9).toLocaleString() + ' - ' + Math.round(final*1.1).toLocaleString();
             if(apEl) apEl.textContent = Math.round(final).toLocaleString() + ' ' + unit;
             let score = 60 + (districtFactor-1)*50 + ((classF[districtClass]||1)-1)*50 + (roomsF-1)*100 + (extraF-1)*100 - age*1.5 + Math.min(streetWidth,30)*0.5;
             score = Math.min(100, Math.max(0, Math.round(score)));
             const idx = document.getElementById('investmentIndex');
             if(idx) {
-                if(score>=75){idx.textContent='✅ ممتاز ('+score+'%)'; idx.style.color='var(--accent-gold)';}
-                else if(score>=55){idx.textContent='👍 جيد ('+score+'%)'; idx.style.color='var(--accent-gold-bright)';}
-                else if(score>=35){idx.textContent='⚠️ متوسط ('+score+'%)'; idx.style.color='var(--accent-gold-dark)';}
-                else {idx.textContent='👎 ضعيف ('+score+'%)'; idx.style.color='var(--text-muted)';}
+                if(score>=75){idx.textContent='✅ '+(localStorage.getItem('site_lang')==='en'?'Excellent':'ممتاز')+' ('+score+'%)'; idx.style.color='var(--accent-gold)';}
+                else if(score>=55){idx.textContent='👍 '+(localStorage.getItem('site_lang')==='en'?'Good':'جيد')+' ('+score+'%)'; idx.style.color='var(--accent-gold-bright)';}
+                else if(score>=35){idx.textContent='⚠️ '+(localStorage.getItem('site_lang')==='en'?'Average':'متوسط')+' ('+score+'%)'; idx.style.color='var(--accent-gold-dark)';}
+                else {idx.textContent='👎 '+(localStorage.getItem('site_lang')==='en'?'Weak':'ضعيف')+' ('+score+'%)'; idx.style.color='var(--text-muted)';}
             }
             const result = document.getElementById('valuationResult');
             if(result) result.style.display = 'block';
@@ -946,12 +961,8 @@
                 updateDistricts();
             }
         }
-        function showValuationDetails() { alert('📋 تفاصيل التقييم\n\n💰 السعر: '+(document.getElementById('avgPrice')?.textContent || '--')); }
-        function shareValuation() {
-            const text = '🏠 تقييم عقاري\n💰 '+(document.getElementById('avgPrice')?.textContent || '');
-            if(navigator.share){navigator.share({title:'همة المدينة',text:text}).catch(()=>{});}
-            else{navigator.clipboard.writeText(text).then(()=>alert('✅ تم النسخ')).catch(()=>alert(text));}
-        }
+        function showValuationDetails() { alert('📋 '+document.getElementById('avgPrice')?.textContent); }
+        function shareValuation() { const text = '🏠 '+document.getElementById('avgPrice')?.textContent; if(navigator.share){navigator.share({title:'همة المدينة',text:text}).catch(()=>{});}else{navigator.clipboard.writeText(text).then(()=>alert('✅')).catch(()=>alert(text));} }
 
         // ========== إضافة ==========
         function updateAddDistricts() {
@@ -964,27 +975,13 @@
             if(key && districtsData[key]) Object.keys(districtsData[key]).forEach(d => { const o=document.createElement('option'); o.value=d; o.textContent=d; sel.appendChild(o); });
         }
         function handleExcelFile(e) { if(e.target.files && e.target.files[0]) alert('📂 '+e.target.files[0].name); }
-        function addPropertyManually() {
-            if(!document.getElementById('addDistrict')?.value || !document.getElementById('addPrice')?.value || !document.getElementById('addArea')?.value) { alert('عبئ الحقول الأساسية'); return; }
-            alert('✅ تم الإدراج والتقييم');
-            ['addDistrict','addPrice','addArea','addDescription'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
-        }
+        function addPropertyManually() { if(!document.getElementById('addDistrict')?.value || !document.getElementById('addPrice')?.value || !document.getElementById('addArea')?.value) { alert('عبئ الحقول'); return; } alert('✅ تم الإدراج'); ['addDistrict','addPrice','addArea','addDescription'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; }); }
 
         // ========== أسئلة ==========
-        function toggleFAQ(el) {
-            const ans = el.querySelector('.faq-answer');
-            const tog = el.querySelector('.faq-toggle');
-            if(ans.style.display === 'none' || !ans.style.display) { ans.style.display='block'; tog.textContent='➖'; }
-            else { ans.style.display='none'; tog.textContent='➕'; }
-        }
+        function toggleFAQ(el) { const ans = el.querySelector('.faq-answer'); const tog = el.querySelector('.faq-toggle'); if(ans.style.display === 'none' || !ans.style.display) { ans.style.display='block'; tog.textContent='➖'; } else { ans.style.display='none'; tog.textContent='➕'; } }
 
         // ========== عقود ==========
-        function showContract(type) {
-            const res = document.getElementById('residentialContract');
-            const com = document.getElementById('commercialContract');
-            if(res) res.style.display = type==='residential' ? 'block' : 'none';
-            if(com) com.style.display = type==='commercial' ? 'block' : 'none';
-        }
+        function showContract(type) { const res = document.getElementById('residentialContract'); const com = document.getElementById('commercialContract'); if(res) res.style.display = type==='residential' ? 'block' : 'none'; if(com) com.style.display = type==='commercial' ? 'block' : 'none'; }
         function gv(id) { const el = document.getElementById(id); return el ? (el.value || '________') : '________'; }
         function generateFullResidentialContract() {
             const html = `<div style="text-align:center;margin-bottom:10px;"><h3 style="color:var(--text-main);font-size:14px;font-weight:900;">عقد إيجار سكني</h3></div>
@@ -1009,10 +1006,7 @@
             <div style="text-align:center;margin-top:10px;display:flex;gap:5px;justify-content:center;"><button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ طباعة</button><button class="btn btn-outline btn-sm" onclick="closePrintWindow()">إغلاق</button></div>`;
             openPrintWindow(html);
         }
-        function openPrintWindow(html) {
-            document.getElementById('contractPrintContent').innerHTML = html;
-            document.getElementById('contractPrintWindow').classList.add('active');
-        }
+        function openPrintWindow(html) { document.getElementById('contractPrintContent').innerHTML = html; document.getElementById('contractPrintWindow').classList.add('active'); }
         function closePrintWindow() { document.getElementById('contractPrintWindow').classList.remove('active'); }
 
         // ========== شات ==========
@@ -1046,27 +1040,13 @@
         // ========== تهيئة ==========
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
-            if(savedTheme === 'light') {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                const toggle = document.getElementById('themeToggle');
-                if(toggle) toggle.textContent = '☀️';
-            }
+            if(savedTheme === 'light') { document.body.classList.remove('dark-theme'); document.body.classList.add('light-theme'); const toggle = document.getElementById('themeToggle'); if(toggle) toggle.textContent = '☀️'; }
             const savedLang = localStorage.getItem('site_lang') || 'ar';
             switchLanguage(savedLang);
             animateCounters();
             navigateTo('home');
             updateAddDistricts();
-            setTimeout(() => {
-                const cityEl = document.getElementById('valCity');
-                if(cityEl) {
-                    cityEl.value = 'riyadh';
-                    updateDistricts();
-                    const typeEl = document.getElementById('valPropertyType');
-                    if(typeEl) typeEl.value = 'شقة في عمارة';
-                    calculateValuation();
-                }
-            }, 200);
+            setTimeout(() => { const cityEl = document.getElementById('valCity'); if(cityEl) { cityEl.value = 'riyadh'; updateDistricts(); const typeEl = document.getElementById('valPropertyType'); if(typeEl) typeEl.value = 'شقة في عمارة'; calculateValuation(); } }, 200);
             const cpw = document.getElementById('contractPrintWindow');
             if(cpw) cpw.addEventListener('click', function(e) { if(e.target === this) closePrintWindow(); });
         });
