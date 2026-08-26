@@ -421,199 +421,14 @@
     </footer>
 
     <div class="contract-print-window" id="contractPrintWindow"><div class="contract-print-content" id="contractPrintContent"></div></div>
-        // ==================== استكمال دالة التقييم ====================
-        function calculateValuation() {
-            const city = document.getElementById('valCity').value;
-            const district = document.getElementById('valDistrict').value;
-            const area = parseFloat(document.getElementById('valArea').value) || 0;
-            const rooms = parseFloat(document.getElementById('valRooms').value) || 0;
-            const age = parseFloat(document.getElementById('valAge').value) || 0;
-            const districtClass = document.getElementById('valDistrictClass').value;
-            const propertyType = document.getElementById('valPropertyType').value;
-            const resultBox = document.getElementById('valuationResult');
-            
-            if (area < 10 || !propertyType || !city) {
-                if (resultBox) resultBox.style.display = 'none';
-                return;
-            }
-            
-            let base = cityPricePerMeter[city] || 3000;
-            if (district && districtsData[city] && districtsData[city][district]) {
-                base *= districtsData[city][district];
-            }
-            const classF = {'راقي':1.2,'متوسط':1.0,'شعبي':0.85,'جديد':1.05};
-            base *= (classF[districtClass] || 1);
-            base *= (typeFactors[propertyType] || 1);
-            const ageFactor = Math.max(0.5, 1 - age * 0.015);
-            const roomsFactor = 1 + rooms * 0.025;
-            
-            const estimated = area * base * ageFactor * roomsFactor;
-            const low = Math.round(estimated * 0.9);
-            const high = Math.round(estimated * 1.1);
-            const avg = Math.round(estimated);
-            const unit = currentLang === 'ar' ? 'ر.س' : 'SAR';
-            
-            const prEl = document.getElementById('priceRange');
-            const apEl = document.getElementById('avgPrice');
-            if (prEl) prEl.textContent = low.toLocaleString() + ' - ' + high.toLocaleString() + ' ' + unit;
-            if (apEl) apEl.textContent = avg.toLocaleString() + ' ' + unit;
-            
-            const score = Math.min(100, Math.max(0, Math.round(65 + (classF[districtClass]||1)*10 - age*1.5 + rooms*2)));
-            const idx = document.getElementById('investmentIndex');
-            if (idx) {
-                if (score >= 80) { idx.textContent = '✅ ' + (currentLang === 'ar' ? 'ممتاز' : 'Excellent') + ' (' + score + '%)'; idx.style.color = 'var(--accent-gold)'; }
-                else if (score >= 65) { idx.textContent = '👍 ' + (currentLang === 'ar' ? 'جيد' : 'Good') + ' (' + score + '%)'; idx.style.color = 'var(--accent-gold-bright)'; }
-                else { idx.textContent = '⚠️ ' + (currentLang === 'ar' ? 'متوسط' : 'Average') + ' (' + score + '%)'; idx.style.color = 'var(--accent-gold-dark)'; }
-            }
-            if (resultBox) resultBox.style.display = 'block';
-        }
 
-        // ==================== الدوال المساعدة ====================
-        function resetValuation() {
-            const area = document.getElementById('valArea'); if (area) area.value = 250;
-            const rooms = document.getElementById('valRooms'); if (rooms) rooms.value = 4;
-            const age = document.getElementById('valAge'); if (age) age.value = 5;
-            const city = document.getElementById('valCity'); if (city) city.value = 'riyadh';
-            const cls = document.getElementById('valDistrictClass'); if (cls) cls.value = 'متوسط';
-            const type = document.getElementById('valPropertyType'); if (type) type.value = 'شقة في عمارة';
-            const result = document.getElementById('valuationResult'); if (result) result.style.display = 'none';
-            updateDistricts();
-        }
-
-        function showValuationDetails() {
-            alert(currentLang === 'ar' ? 'التقييم تقديري بناءً على متوسطات السوق في المملكة.' : 'Valuation is estimated based on KSA market averages.');
-        }
-
-        function shareValuation() {
-            const text = '🏠 ' + (document.getElementById('avgPrice')?.textContent || '');
-            if (navigator.share) { navigator.share({title:'همة المدينة', text: text}).catch(()=>{}); }
-            else { navigator.clipboard.writeText(text).then(()=>alert('✅')).catch(()=>alert(text)); }
-        }
-
-        function addNewCity() {
-            const name = prompt('🏙️ ' + (currentLang === 'ar' ? 'اسم المدينة:' : 'City name:'));
-            if (name && name.trim()) {
-                const key = name.trim().toLowerCase().replace(/\s+/g,'-');
-                const sel = document.getElementById('valCity');
-                const o = document.createElement('option');
-                o.value = key; o.textContent = name.trim();
-                sel.appendChild(o); sel.value = key;
-                cityPricePerMeter[key] = 3000;
-                districtsData[key] = {};
-                updateDistricts();
-            }
-        }
-
-        // ==================== إضافة العقار ====================
-        function handleExcelFile(event) {
-            const file = event.target.files[0];
-            if (file) alert('📂 ' + file.name);
-        }
-
-        function addPropertyManually() {
-            if (!document.getElementById('addDistrict')?.value || !document.getElementById('addPrice')?.value || !document.getElementById('addArea')?.value) {
-                alert(currentLang === 'ar' ? 'يرجى تعبئة الحقول الأساسية' : 'Please fill required fields');
-                return;
-            }
-            alert(currentLang === 'ar' ? '✅ تم إدراج العقار بنجاح!' : '✅ Property added successfully!');
-        }
-
-        // ==================== العروض ====================
-        function showOfferDetails(title) {
-            alert(title);
-        }
-
-        // ==================== الأسئلة ====================
-        function toggleFAQ(element) {
-            const answer = element.querySelector('.faq-answer');
-            const toggle = element.querySelector('.faq-toggle');
-            if (answer.style.display === 'none' || !answer.style.display) {
-                answer.style.display = 'block'; toggle.textContent = '➖';
-            } else {
-                answer.style.display = 'none'; toggle.textContent = '➕';
-            }
-        }
-
-        // ==================== العقود ====================
-        function showResidentialContract() {
-            document.getElementById('residentialContract').style.display = 'block';
-            document.getElementById('commercialContract').style.display = 'none';
-        }
-
-        function showCommercialContract() {
-            document.getElementById('residentialContract').style.display = 'none';
-            document.getElementById('commercialContract').style.display = 'block';
-        }
-
-        function generateResidentialContract() {
-            const lessor = gv('resLessorName'), tenant = gv('resTenantName'), rent = gv('resAnnualRent');
-            const html = '<div style="text-align:center;"><h3>عقد إيجار سكني</h3><p>المؤجر: ' + lessor + '</p><p>المستأجر: ' + tenant + '</p><p>الإيجار: ' + rent + ' ريال</p></div>';
-            openPrintWindow(html);
-        }
-
-        function generateCommercialContract() {
-            const lessor = gv('comLessorName'), tenant = gv('comTenantName'), activity = gv('comActivity'), rent = gv('comAnnualRent');
-            const html = '<div style="text-align:center;"><h3>عقد إيجار تجاري</h3><p>المؤجر: ' + lessor + '</p><p>المستأجر: ' + tenant + '</p><p>النشاط: ' + activity + '</p><p>الإيجار: ' + rent + ' ريال</p></div>';
-            openPrintWindow(html);
-        }
-
-        // ==================== الشات ====================
-        function toggleChat() { document.getElementById('chatWindow').classList.toggle('active'); }
-
-        function sendChat() {
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if (!msg) return;
-            const container = document.getElementById('chatMessages');
-            const userDiv = document.createElement('div');
-            userDiv.style.cssText = 'background:var(--accent-gold);color:var(--text-on-gold);padding:7px 10px;border-radius:8px;margin-bottom:5px;max-width:85%;margin-right:auto;font-size:9px;font-weight:700;';
-            userDiv.textContent = msg;
-            container.appendChild(userDiv);
-            input.value = '';
-            container.scrollTop = container.scrollHeight;
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.style.cssText = 'background:var(--bg-input);padding:7px 10px;border-radius:8px;margin-bottom:5px;max-width:85%;font-size:9px;color:var(--text-main);border:1px solid var(--border-color);';
-                botDiv.textContent = currentLang === 'ar' ? 'شكراً لتواصلك! راسلنا واتساب 📞' : 'Thanks! WhatsApp us 📞';
-                container.appendChild(botDiv);
-                container.scrollTop = container.scrollHeight;
-            }, 500);
-        }
-
-        function showPrivacy() { alert('🔒 ' + (currentLang === 'ar' ? 'بياناتكم محمية' : 'Your data is protected')); }
-        function showTerms() { alert('📋 ' + (currentLang === 'ar' ? 'يرجى قراءة الشروط' : 'Please read terms')); }
-
-        // ==================== تهيئة ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            if (savedTheme === 'light') {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme');
-                const toggle = document.getElementById('themeToggle');
-                if (toggle) toggle.textContent = '☀️';
-            }
-            const savedLang = localStorage.getItem('site_lang') || 'ar';
-            switchLanguage(savedLang);
-            animateCounters();
-            navigateTo('home');
-            updateAddDistricts();
-            setTimeout(() => {
-                const cityEl = document.getElementById('valCity');
-                if (cityEl) {
-                    cityEl.value = 'riyadh';
-                    updateDistricts();
-                    const typeEl = document.getElementById('valPropertyType');
-                    if (typeEl) typeEl.value = 'شقة في عمارة';
-                    calculateValuation();
-                }
-            }, 200);
-        });
     <script>
         const translations = {
             ar: { nav_home:"الرئيسية",nav_valuation:"التقييم",nav_offers:"العروض",nav_contracts:"العقود",nav_add:"إضافة",nav_services:"الخدمات",nav_faq:"الأسئلة",nav_about:"عن المكتب",nav_contact:"تواصل",hero_title:"همة",hero_title_gold:"المدينة",hero_subtitle:"لتقدير القيم السوقية",hero_desc:"منصتك الذكية لتقييم العقارات في السعودية بدقة واحترافية.",btn_start:"ابدأ التقييم",btn_about:"تعرف علينا",badge_certified:"✦ وكالة عقارية معتمدة",stat_cities:"مدن",stat_districts:"حي",stat_valuations:"تقييم %",stat_types:"نوع عقار",chat_title:"المساعد الذكي",chat_welcome:"مرحباً! كيف أساعدك؟ 🏠",valuation_title:"التقييم العقاري الذكي",valuation_desc:"أدخل بيانات العقار لتقدير القيمة السوقية",label_city:"🏙️ المدينة",label_district:"📍 الحي",label_type:"🏠 نوع العقار",label_area:"📐 المساحة (م²)",label_rooms:"🛏️ عدد الغرف",label_age:"📅 العمر",label_direction:"🧭 الواجهة",label_street:"🛣️ عرض الشارع (م)",label_class:"⭐ تصنيف الحي",label_ratio:"📊 نسبة سكنية",btn_add_city:"➕ إضافة مدينة",btn_reset:"🔄 إعادة",result_title:"نتيجة التقييم",result_range:"💰 النطاق السعري",result_avg:"📊 المتوسط",result_index:"📈 مؤشر الاستثمار",btn_share:"📤 مشاركة",btn_details:"📋 تفاصيل",add_title:"إضافة عقار جديد",add_desc:"أدخل بيانات العقار كاملة",excel_text:"اسحب Excel هنا أو اضغط",btn_submit_add:"🚀 إدراج وتقييم",offers_title:"عروض وخصومات",offers_desc:"فرص لا تفوّت",services_title:"خدماتنا",services_desc:"اضغط على الخدمة للانتقال",service_buy:"بيع وشراء العقارات",service_valuation:"التقييم الذكي",service_contracts:"صياغة العقود",service_management:"إدارة الأملاك",service_consulting:"استشارات عقارية",service_marketing:"تسويق عقاري",faq_title:"الأسئلة الشائعة",faq_q1:"كيف أضيف عقاري؟",faq_a1:"من صفحة «إضافة عقار» يدوياً أو رفع Excel.",faq_q2:"هل التقييم معتمد رسمياً؟",faq_a2:"نعم، يعتمد على معايير الهيئة العامة للعقار.",faq_q3:"هل يمكنني توقيع العقد مباشرة؟",faq_a3:"العقد مسودة والتوقيع عبر منصة إيجار.",faq_q4:"هل تغطون مدناً أخرى؟",faq_a4:"نعم، 4 مدن رئيسية مع خطة توسع.",faq_q5:"هل الأدوات مجانية؟",faq_a5:"نعم، مجانية لجميع عملاء المكتب.",about_title:"عن المكتب",about_name:"مكتب همة المدينة العقارية",about_desc:"شريكك العقاري الموثوق بالمدينة المنورة.",about_vision_title:"🎯 رؤيتنا",about_vision:"أن نكون المنصة العقارية الرائدة بالمدينة المنورة.",about_mission_title:"💡 رسالتنا",about_mission:"تقديم خدمات عقارية موثوقة.",contact_title:"تواصل معنا",contact_info_title:"معلومات التواصل",contact_form_title:"أرسل لنا رسالة",contact_send:"إرسال الرسالة",contracts_title:"العقود",contracts_desc:"عقود كاملة بجميع البنود",footer_title:"همة المدينة",footer_desc:"مكتب عقاري سعودي معتمد.",footer_copy:"© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428" },
             en: { nav_home:"Home",nav_valuation:"Valuation",nav_offers:"Offers",nav_contracts:"Contracts",nav_add:"Add Property",nav_services:"Services",nav_faq:"FAQ",nav_about:"About Us",nav_contact:"Contact",hero_title:"Himmat",hero_title_gold:"Al-Madinah",hero_subtitle:"For Market Value Estimation",hero_desc:"Your smart platform for accurate real estate valuation in Saudi Arabia.",btn_start:"Start Valuation",btn_about:"About Us",badge_certified:"✦ Certified Real Estate Agency",stat_cities:"Cities",stat_districts:"Districts",stat_valuations:"Valuations %",stat_types:"Property Types",chat_title:"Smart Assistant",chat_welcome:"Hello! How can I help? 🏠",valuation_title:"Smart Real Estate Valuation",valuation_desc:"Enter property details to estimate market value",label_city:"🏙️ City",label_district:"📍 District",label_type:"🏠 Property Type",label_area:"📐 Area (m²)",label_rooms:"🛏️ Rooms",label_age:"📅 Age",label_direction:"🧭 Facing",label_street:"🛣️ Street Width (m)",label_class:"⭐ District Rating",label_ratio:"📊 Residential Ratio",btn_add_city:"➕ Add City",btn_reset:"🔄 Reset",result_title:"Valuation Result",result_range:"💰 Price Range",result_avg:"📊 Average",result_index:"📈 Investment Index",btn_share:"📤 Share",btn_details:"📋 Details",add_title:"Add New Property",add_desc:"Enter full property data",excel_text:"Drag Excel or click",btn_submit_add:"🚀 Add & Evaluate",offers_title:"Offers & Discounts",offers_desc:"Don't miss",services_title:"Our Services",services_desc:"Click to navigate",service_buy:"Buy & Sell",service_valuation:"Smart Valuation",service_contracts:"Contracts",service_management:"Management",service_consulting:"Consulting",service_marketing:"Marketing",faq_title:"FAQ",faq_q1:"How to add my property?",faq_a1:"From Add Property page manually or upload Excel.",faq_q2:"Is valuation official?",faq_a2:"Yes, based on Real Estate Authority standards.",faq_q3:"Can I sign directly?",faq_a3:"Draft then official via Ejar.",faq_q4:"Other cities?",faq_a4:"Yes, 4 major cities + expansion.",faq_q5:"Are tools free?",faq_a5:"Yes, free for all clients.",about_title:"About Us",about_name:"Himmat Al-Madinah Real Estate",about_desc:"Your trusted real estate partner in Madinah.",about_vision_title:"🎯 Our Vision",about_vision:"To be the leading real estate platform in Madinah.",about_mission_title:"💡 Our Mission",about_mission:"Providing reliable real estate services.",contact_title:"Contact Us",contact_info_title:"Contact Information",contact_form_title:"Send Us a Message",contact_send:"Send Message",contracts_title:"Contracts",contracts_desc:"Full contracts with all clauses",footer_title:"Himmat Al-Madinah",footer_desc:"A certified Saudi real estate office.",footer_copy:"© 2026 Himmat Al-Madinah Real Estate. All rights reserved. • License: 1200030428" }
         };
-        function switchLanguage(lang){localStorage.setItem('site_lang',lang);document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(translations[lang]&&translations[lang][key]){el.textContent=translations[lang][key];}});document.querySelectorAll('.lang-btn-modern').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));}
+      let currentLang = 'ar';
+function switchLanguage(lang){currentLang=lang;localStorage.setItem('site_lang',lang);document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(translations[lang]&&translations[lang][key]){el.textContent=translations[lang][key];}});document.querySelectorAll('.lang-btn-modern').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));}
         const districtsData={riyadh:{'العليا':1.5,'السليمانية':1.3,'الملز':1.1,'الورود':1.4,'الرحمانية':1.2,'المحمدية':1.5,'الرائد':1.3,'النخيل':1.4,'أم الحمام':1.2,'المعذر':1.3,'الهدا':1.1,'الشفا':0.9,'بدر':0.8,'المروة':1.0,'ديراب':0.7,'نمار':0.9,'العريجاء':0.8,'البديعة':0.9,'السويدي':0.8,'الديرة':0.9,'الشميسي':0.8,'العود':0.9,'المرقب':0.9,'الربوة':1.1,'الريان':1.2,'الروابي':1.0,'النسيم':1.0,'المنار':1.1,'النهضة':1.0,'الخليج':1.2,'غرناطة':1.3,'قرطبة':1.4,'اليرموك':1.2,'الرمال':1.3,'القادسية':1.2,'الملقا':1.5,'حطين':1.4,'العقيق':1.4,'الصحافة':1.3,'الياسمين':1.5,'النرجس':1.6,'العارض':1.3,'القيروان':1.4,'الربيع':1.3,'الغدير':1.3,'النفل':1.4,'الوادي':1.2,'التعاون':1.3,'الازدهار':1.2,'المرسلات':1.3,'الفلاح':1.1,'الواحة':1.1,'الملك فهد':1.3,'الملك عبدالله':1.3,'الجزيرة':1.0,'الفيحاء':1.1,'المنصورة':0.9,'العزيزية':1.0,'الدار البيضاء':1.1},jeddah:{'الروضة':1.5,'الزهراء':1.4,'السلامة':1.3,'النهضة':1.1,'الشاطئ':1.6,'المحمدية':1.5,'الخالدية':1.3,'النعيم':1.0,'النزهة':1.2,'البوادي':1.1,'الربوة':1.1,'الصفا':1.2,'الفيصلية':1.3,'الرحاب':1.0,'مشرفة':1.1,'العزيزية':1.0,'الورود':1.3,'بني مالك':1.2,'النسيم':1.0,'الواحة':1.1,'السامر':1.2,'المنار':1.1,'الريان':1.2,'الجامعة':1.1,'الفيحاء':1.2,'السليمانية':1.0,'البلد':0.9,'الهدى':1.0,'الفلاح':1.1,'طيبة':1.0},makkah:{'العوالي':1.2,'الشوقية':1.1,'الشرائع':0.9,'النسيم':1.0,'الزاهر':1.2,'العتيبية':1.0,'العمرة':0.9,'التنعيم':1.0,'الراشدية':1.2,'الكعكية':1.2,'ولي العهد':1.3,'الزهراء':1.1,'النزهة':1.1,'المسفلة':0.9,'جرهم':1.0,'الروابي':1.0,'الخالدية':1.1,'المنصور':0.9,'الشامية':1.0,'المعابدة':1.0},madinah:{'العزيزية':1.3,'العاقول':0.9,'العريض':1.0,'الخالدية':1.2,'الزهرة':1.1,'الملك فهد':1.2,'الروابي':1.1,'قباء':1.3,'القصواء':1.2,'العوالي':1.1,'الهجرة':1.0,'العصبة':0.9,'الجامعة':1.1,'الجرف':1.0,'السلام':1.1,'الدفاع':1.0,'أحد':1.1,'النصر':1.0,'المناخة':0.9,'طيبة':1.1}};
         const cityPricePerMeter={riyadh:4000,jeddah:3500,makkah:3000,madinah:2500};
         const typeFactors={'فيلا':1.2,'قصر':1.6,'دبلكس':1.1,'شقة في برج':1.15,'شقة في عمارة':0.95,'أرض':0.7,'مزرعة':0.5,'استراحة':0.75,'مكتب':1.0,'معرض':1.1,'عمارة':1.3,'مخزن':0.55,'منتجع':1.25,'محطة':0.9,'دور':0.85};
@@ -640,11 +455,42 @@
         function openPrintWindow(html){document.getElementById('contractPrintContent').innerHTML=html;document.getElementById('contractPrintWindow').classList.add('active');}
         function closePrintWindow(){document.getElementById('contractPrintWindow').classList.remove('active');}
         function toggleChat(){document.getElementById('chatWindow').classList.toggle('active');}
-        function sendChat(){const input=document.getElementById('chatInput');const msg=input.value.trim();if(!msg)return;const container=document.getElementById('chatMessages');const userDiv=document.createElement('div');userDiv.style.cssText='background:var(--accent-gold);color:var(--text-on-gold);padding:7px 10px;border-radius:8px;margin-bottom:5px;max-width:85%;margin-right:auto;font-size:9px;font-weight:700;';userDiv.textContent=msg;container.appendChild(userDiv);input.value='';container.scrollTop=container.scrollHeight;setTimeout(()=>{const botDiv=document.createElement('div');botDiv.style.cssText='background:var(--bg-input);padding:7px 10px;border-radius:8px;margin-bottom:5px;max-width:85%;font-size:9px;color:var(--text-main);border:1px solid var(--border-color);';const lower=msg.toLowerCase();if(lower.includes('تقييم')||lower.includes('سعر'))botDiv.textContent='استخدم أداة التقييم 📊';else if(lower.includes('عقد'))botDiv.textContent='تفضل صفحة العقود 📄';else botDiv.textContent='شكراً! راسلنا واتساب 📞';container.appendChild(botDiv);container.scrollTop=container.scrollHeight;},500);}
-        function showPrivacy(){alert('🔒 بياناتكم محمية');}
-        function showTerms(){alert('📋 يرجى قراءة الشروط');}
-        function showOfferDetails(t){alert('📋 '+t);}
-        document.addEventListener('DOMContentLoaded',()=>{const savedTheme=localStorage.getItem('theme')||'dark';if(savedTheme==='light'){document.body.classList.remove('dark-theme');document.body.classList.add('light-theme');const toggle=document.getElementById('themeToggle');if(toggle)toggle.textContent='☀️';}const savedLang=localStorage.getItem('site_lang')||'ar';switchLanguage(savedLang);animateCounters();navigateTo('home');updateAddDistricts();setTimeout(()=>{const cityEl=document.getElementById('valCity');if(cityEl){cityEl.value='riyadh';updateDistricts();const typeEl=document.getElementById('valPropertyType');if(typeEl)typeEl.value='شقة في عمارة';calculateValuation();}},200);const cpw=document.getElementById('contractPrintWindow');if(cpw)cpw.addEventListener('click',function(e){if(e.target===this)closePrintWindow();});});
+        function sendChat(){
+            const input=document.getElementById('chatInput');
+            const msg=input.value.trim();
+            if(!msg) return;
+            const container=document.getElementById('chatMessages');
+            const userDiv=document.createElement('div');
+            userDiv.style.cssText='background:var(--accent-gold);color:var(--text-on-gold);padding:8px 12px;border-radius:8px;margin-bottom:5px;max-width:85%;margin-right:auto;font-size:9px;font-weight:700;';
+            userDiv.textContent=msg;
+            container.appendChild(userDiv);
+            input.value='';
+            setTimeout(()=>{
+                const botDiv=document.createElement('div');
+                botDiv.style.cssText='background:var(--bg-input);padding:8px 12px;border-radius:8px;margin-bottom:5px;max-width:85%;font-size:9px;color:var(--text-main);border:1px solid var(--border-color);';
+                botDiv.textContent=currentLang==='en'?'Welcome! How can we help?':'أهلاً بك! كيف يمكننا مساعدتك؟';
+                container.appendChild(botDiv);
+                container.scrollTop=container.scrollHeight;
+            },600);
+        }
+        function showPrivacy(){alert(currentLang==='en'?'Privacy Policy: Your data is protected.':'سياسة الخصوصية: بياناتكم محمية.');}
+        function showTerms(){alert(currentLang==='en'?'Terms of Use: Please read.':'شروط الاستخدام: يرجى القراءة.');}
+        function showOfferDetails(t){alert(t);}
+        document.addEventListener('DOMContentLoaded',()=>{
+            const savedTheme=localStorage.getItem('theme')||'dark';
+            if(savedTheme==='light'){document.body.classList.remove('dark-theme');document.body.classList.add('light-theme');const toggle=document.getElementById('themeToggle');if(toggle)toggle.textContent='☀️';}
+            const savedLang=localStorage.getItem('site_lang')||'ar';
+            switchLanguage(savedLang);
+            animateCounters();
+            navigateTo('home');
+            updateAddDistricts();
+            setTimeout(()=>{
+                const cityEl=document.getElementById('valCity');
+                if(cityEl){cityEl.value='riyadh';updateDistricts();const typeEl=document.getElementById('valPropertyType');if(typeEl)typeEl.value='شقة في عمارة';calculateValuation();}
+            },200);
+            const cpw=document.getElementById('contractPrintWindow');
+            if(cpw)cpw.addEventListener('click',function(e){if(e.target===this)closePrintWindow();});
+        });
     </script>
 </body>
 </html>
