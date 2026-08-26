@@ -1,2234 +1,1433 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlRoot">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>همة المدينة العقارية | Himmat Al Madinah Real Estate</title>
-    <meta name="description" content="همة المدينة العقارية — وساطة وتسويق عقاري في المدينة المنورة والمدن الرئيسية." />
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>همة المدينة العقارية | HIMMAT AL MADINAH REAL ESTATE</title>
     <style>
-        /* -------------------- إعادة ضبط وتجهيز أساسي -------------------- */
+        /* ==================== متغيرات الألوان المتناسقة ==================== */
+        :root {
+            --primary-dark: #0D1B2A;
+            --primary-mid: #1B2E45;
+            --primary-light: #2A4560;
+            --gold-main: #C9A845;
+            --gold-bright: #E8C96A;
+            --gold-pale: #F5E6B8;
+            --gold-glow: rgba(201, 168, 69, 0.4);
+            --bg-body: #F7F8FA;
+            --bg-card: #FFFFFF;
+            --text-heading: #1A2733;
+            --text-body: #3D4F5E;
+            --text-muted: #7A8A99;
+            --border-light: #E4E8EC;
+            --green-whatsapp: #25D366;
+            --shadow-sm: 0 2px 10px rgba(13, 27, 42, 0.06);
+            --shadow-md: 0 6px 25px rgba(13, 27, 42, 0.1);
+            --shadow-lg: 0 15px 45px rgba(13, 27, 42, 0.15);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        *::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        *::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+        *::-webkit-scrollbar-thumb {
+            background: var(--gold-main);
+            border-radius: 10px;
+        }
+
         body {
-            font-family: 'Tajawal', 'Segoe UI', sans-serif;
-            background: #f5f7fc;
-            color: #1a2639;
-            scroll-behavior: smooth;
-            transition: all 0.3s ease;
+            font-family: 'Segoe UI', 'Tahoma', 'Cairo', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-body);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .container {
-            width: 92%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* -------------------- متغيرات الألوان -------------------- */
-        :root {
-            --primary: #0b1a33;
-            --primary-light: #1a3557;
-            --gold: #d4af37;
-            --gold-soft: #e8d5a3;
-            --gold-glow: rgba(212, 175, 55, 0.25);
-            --gold-gradient: linear-gradient(135deg, #d4af37, #b8962c, #a07d25);
-            --white: #ffffff;
-            --light-bg: #f0f4fe;
-            --shadow-heavy: 0 30px 60px -20px rgba(11, 26, 51, 0.2);
-            --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.05);
-            --shadow-gold: 0 8px 30px rgba(212, 175, 55, 0.3);
-            --radius-lg: 28px;
-            --radius-md: 18px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* -------------------- الهيدر -------------------- */
-        .header {
+        /* ==================== NAVBAR ==================== */
+        .navbar-top {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 999;
-            padding: 10px 0;
-            background: rgba(11, 26, 51, 0.95);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 2px solid rgba(212, 175, 55, 0.12);
-            transition: var(--transition);
+            background: var(--primary-dark);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(13, 27, 42, 0.4);
+            border-bottom: 1.5px solid var(--gold-main);
+            height: 65px;
+            display: flex;
+            align-items: center;
         }
 
-        .header .container {
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
+            width: 100%;
+            gap: 10px;
         }
 
-        .logo-area {
+        .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
-            position: relative;
+            gap: 10px;
+            text-decoration: none;
             cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-            font-family: inherit;
+            flex-shrink: 0;
         }
 
-        .logo-area img {
-            height: 68px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.35);
-            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.4));
+        .brand-logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid var(--gold-main);
+            box-shadow: 0 0 20px var(--gold-glow);
+            animation: logoGlow 3s infinite alternate;
+            transition: var(--transition);
         }
 
-        .header-left {
+        @keyframes logoGlow {
+            0% { box-shadow: 0 0 15px var(--gold-glow), 0 0 30px rgba(201, 168, 69, 0.2); }
+            100% { box-shadow: 0 0 25px var(--gold-glow), 0 0 50px rgba(201, 168, 69, 0.4); }
+        }
+
+        .brand-logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-text {
             display: flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .brand-text-ar {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold-bright);
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .brand-text-en {
+            font-size: 8px;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 2px;
             list-style: none;
-            font-weight: 600;
+            flex-wrap: nowrap;
+            flex: 1;
+            justify-content: center;
         }
 
         .nav-links a {
+            color: #D5E2EE;
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 7px 10px;
+            border-radius: 7px;
             transition: var(--transition);
-            padding-bottom: 4px;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 0;
-            height: 2.5px;
-            background: var(--gold-gradient);
-            transition: var(--transition);
-            border-radius: 10px;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid transparent;
+            white-space: nowrap;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--gold);
+            background: rgba(201, 168, 69, 0.12);
+            border-color: rgba(201, 168, 69, 0.35);
+            color: var(--gold-bright);
         }
 
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-icon {
+            font-size: 14px;
         }
 
-        .nav-links .badge-offer {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white !important;
-            padding: 2px 12px;
-            border-radius: 60px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            animation: pulse 2s infinite;
-            margin-right: 4px;
-        }
-
-        @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.08);
-            }
-        }
-
-        /* أزرار اللغة */
-        .lang-group {
+        /* زر اللغة */
+        .lang-switcher {
             display: flex;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 60px;
-            padding: 3px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            align-items: center;
+            gap: 3px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(201, 168, 69, 0.4);
+            border-radius: 25px;
+            padding: 3px 6px;
+            flex-shrink: 0;
         }
 
         .lang-btn {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.5);
-            padding: 5px 14px;
-            border-radius: 60px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: inherit;
         }
 
         .lang-btn.active {
-            background: var(--gold-gradient);
-            color: var(--primary);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            background: var(--gold-main);
+            color: var(--primary-dark);
         }
 
-        .lang-btn:hover:not(.active) {
-            color: white;
-            background: rgba(255, 255, 255, 0.05);
+        .lang-flag {
+            font-size: 14px;
         }
 
-        .lang-btn .flag {
-            font-size: 1.1rem;
-        }
-
-        .btn-gold {
-            background: var(--gold-gradient);
-            color: #0b1a33 !important;
-            padding: 10px 28px;
-            border-radius: 60px;
-            font-weight: 700;
-            border: none;
-            transition: var(--transition);
-            display: inline-block;
-            text-decoration: none;
-            box-shadow: var(--shadow-gold);
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-family: inherit;
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.45);
-            color: #0b1a33 !important;
-        }
-
-        .btn-outline-gold {
-            background: transparent;
-            color: var(--gold) !important;
-            border: 2px solid var(--gold);
-            padding: 8px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            transition: var(--transition);
-            display: inline-block;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-family: inherit;
-        }
-
-        .btn-outline-gold:hover {
-            background: var(--gold-gradient);
-            color: #0b1a33 !important;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -8px rgba(212, 175, 55, 0.4);
-        }
-
-        /* -------------------- شارة الترخيص -------------------- */
-        .license-banner {
-            background: var(--white);
-            padding: 12px 0;
-            border-bottom: 1px solid #e8edf2;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
-            margin-top: 72px;
-        }
-
-        .license-banner .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .license-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .license-info .license-icon {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .license-info .license-icon i {
-            color: var(--gold);
-            font-size: 1.4rem;
-        }
-
-        .license-info .license-number {
-            background: linear-gradient(135deg, #f0f4fe, #e8edf7);
-            padding: 4px 18px;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            border: 1px solid #e2e8f0;
-        }
-
-        .license-info .license-number strong {
-            color: var(--gold);
-        }
-
-        .license-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #5a6a7e;
-            font-size: 0.85rem;
-        }
-
-        .license-badge .check {
-            color: #2ecc71;
-            font-size: 1.1rem;
-        }
-
-        /* -------------------- الهيرو -------------------- */
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(145deg, #0a1628 0%, #162b4a 45%, #1d3857 100%);
-            position: relative;
-            overflow: hidden;
-            padding-top: 20px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -10%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 3.8rem;
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--white);
-            margin-bottom: 15px;
-        }
-
-        .hero-content h1 .gold-text {
-            color: var(--gold);
-            position: relative;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-        }
-
-        .hero-content .badge-office {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 5px 20px;
-            border-radius: 60px;
-            color: var(--gold);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 18px;
-            backdrop-filter: blur(4px);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 500px;
-            line-height: 1.9;
-            margin-bottom: 30px;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 35px;
-        }
-
-        .hero-badges span {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(6px);
-            padding: 8px 20px;
-            border-radius: 60px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-
-        .hero-badges span:hover {
-            background: rgba(212, 175, 55, 0.08);
-            border-color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        .hero-badges i {
-            color: var(--gold);
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .hero-image-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-image-box .floating-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius-lg);
-            padding: 35px 40px;
-            width: 100%;
-            max-width: 440px;
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image-box .floating-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-logo-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-logo-wrap img {
-            width: min(100%, 460px);
-            height: auto;
-            border-radius: 28px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 40px rgba(212, 175, 55, 0.25);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-        }
-
-        .floating-card .big-icon {
-            font-size: 4.5rem;
-            color: var(--gold);
-            opacity: 0.8;
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        .page-view {
-            display: none;
-        }
-
-        .page-view.active {
-            display: block;
-        }
-
-        .page-view.active.hero {
-            display: flex;
-        }
-
-        .ai-grid.single {
-            grid-template-columns: 1fr;
-            max-width: 680px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .offers-section,
-        .ai-section {
-            border-radius: 28px;
-            margin: 24px 0 0;
-        }
-
-        .add-property-form {
-            display: none;
-            grid-column: 1 / -1;
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .add-property-form.show {
-            display: block;
-        }
-
-        .floating-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .floating-card p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .floating-card .gold-line {
-            width: 60px;
-            height: 4px;
-            background: var(--gold-gradient);
-            margin: 12px auto;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .floating-card .city-tags {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 16px;
-            position: relative;
-        }
-
-        .floating-card .city-tags span {
-            background: rgba(212, 175, 55, 0.10);
-            padding: 5px 14px;
-            border-radius: 60px;
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.8rem;
-            border: 1px solid rgba(212, 175, 55, 0.08);
-            transition: var(--transition);
-        }
-
-        .floating-card .city-tags span:hover {
-            background: rgba(212, 175, 55, 0.18);
-            transform: scale(1.05);
-        }
-
-        /* -------------------- الأقسام العامة -------------------- */
-        .section-padding {
-            padding: 70px 0 50px;
-        }
-
-        .section-header {
-            text-align: right;
-            margin-bottom: 45px;
-        }
-
-        .section-header .section-title {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header .section-title::after {
-            content: '';
-            width: 70px;
-            height: 5px;
-            background: var(--gold-gradient);
-            position: absolute;
-            bottom: -10px;
+        /* ==================== NAVBAR السفلي ==================== */
+        .navbar-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
             right: 0;
-            border-radius: 10px;
-        }
-
-        .section-header .section-sub {
-            color: #6b7b90;
-            font-size: 1.1rem;
-            margin-top: 18px;
-        }
-
-        /* -------------------- العقارات -------------------- */
-        .property-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .property-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.02);
-            position: relative;
-        }
-
-        .property-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 35px 60px -25px rgba(11, 26, 51, 0.2);
-            border-color: var(--gold-soft);
-        }
-
-        .property-card .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 2;
-            padding: 5px 16px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-badge.sale {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-        }
-
-        .card-badge.rent {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-        }
-
-        .card-badge.featured {
-            background: var(--gold-gradient);
-            color: var(--primary);
-            right: auto;
-            left: 15px;
-        }
-
-        .property-img {
-            height: 210px;
-            background: linear-gradient(145deg, #dce3ee, #c8d2e0);
-            display: flex;
+            background: var(--primary-dark);
+            z-index: 1000;
+            border-top: 1.5px solid var(--gold-main);
+            display: none;
+            justify-content: space-around;
             align-items: center;
-            justify-content: center;
-            font-size: 4.2rem;
-            color: var(--primary-light);
-            position: relative;
+            height: 55px;
+            padding: 0 5px;
         }
 
-        .property-body {
-            padding: 22px 24px 28px;
-        }
-
-        .property-body h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: var(--primary);
-        }
-
-        .property-location {
-            color: #6b7b90;
-            font-size: 0.9rem;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .property-location i {
-            color: var(--gold);
-        }
-
-        .property-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            border-top: 1px solid #edf2f7;
-            padding-top: 14px;
-            font-size: 0.9rem;
-            color: #3d4d62;
-        }
-
-        .property-meta i {
-            color: var(--gold);
-            margin-left: 5px;
-        }
-
-        .price-tag {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .price-tag .currency {
-            font-size: 0.95rem;
-            color: #6b7b90;
-            font-weight: 500;
-        }
-
-        /* زر إدراج العقار */
-        .add-property-btn {
-            background: var(--white);
-            border: 2px dashed var(--gold);
-            border-radius: var(--radius-lg);
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
+        .bottom-nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            min-height: 280px;
-        }
-
-        .add-property-btn:hover {
-            background: rgba(212, 175, 55, 0.03);
-            border-color: var(--gold);
-            transform: scale(1.02);
-        }
-
-        .add-property-btn i {
-            font-size: 3.5rem;
-            color: var(--gold);
-            opacity: 0.6;
-        }
-
-        .add-property-btn h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .add-property-btn p {
-            color: #6b7b90;
-            font-size: 0.9rem;
-        }
-
-        /* -------------------- العروض الخاصة -------------------- */
-        .offers-section {
-            background: linear-gradient(135deg, #0a1628, #1a3557);
-            padding: 60px 0;
-            border-radius: 60px 60px 0 0;
-            margin-top: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .offers-section::before {
-            content: '⭐';
-            font-size: 18rem;
-            position: absolute;
-            left: -50px;
-            bottom: -80px;
-            opacity: 0.02;
-        }
-
-        .offers-section .section-title {
-            color: var(--white);
-        }
-
-        .offers-section .section-title::after {
-            background: var(--gold-gradient);
-        }
-
-        .offers-section .section-sub {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .offer-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(212, 175, 55, 0.08);
-            border-radius: var(--radius-md);
-            padding: 30px 25px;
-            text-align: center;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 8px;
             transition: var(--transition);
+            cursor: pointer;
             position: relative;
-            overflow: hidden;
         }
 
-        .offer-card::before {
-            content: '';
+        .bottom-nav-item .nav-icon {
+            font-size: 18px;
+        }
+
+        .bottom-nav-item:hover,
+        .bottom-nav-item.active {
+            background: rgba(201, 168, 69, 0.15);
+        }
+
+        .bottom-nav-item::after {
+            content: attr(data-tooltip);
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gold-gradient);
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-dark);
+            color: var(--gold-bright);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            white-space: nowrap;
             opacity: 0;
+            pointer-events: none;
             transition: var(--transition);
+            border: 1px solid var(--gold-main);
         }
 
-        .offer-card:hover::before {
+        .bottom-nav-item:hover::after {
             opacity: 1;
         }
 
-        .offer-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: var(--gold);
-            transform: translateY(-6px);
-        }
-
-        .offer-card .offer-icon {
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .offer-card h4 {
-            color: var(--white);
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .offer-card p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-            margin-top: 6px;
-        }
-
-        .offer-card .discount {
-            display: inline-block;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 4px 18px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
-
-        /* -------------------- خدمات الذكاء الاصطناعي -------------------- */
-        .ai-section {
-            background: linear-gradient(165deg, #f5f7fc 0%, #e8edf7 100%);
-            padding: 70px 0 80px;
-            border-radius: 60px 60px 0 0;
-            margin-top: 40px;
-            position: relative;
-        }
-
-        .ai-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .ai-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 35px 30px;
-            box-shadow: var(--shadow-heavy);
-            border-top: 8px solid var(--gold);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ai-card::after {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .ai-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 40px 70px -25px rgba(11, 26, 51, 0.15);
-        }
-
-        .ai-card .icon-wrap {
-            display: inline-flex;
-            background: rgba(212, 175, 55, 0.08);
-            padding: 14px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-        }
-
-        .ai-card .icon-wrap i {
-            font-size: 2.4rem;
-            color: var(--gold);
-        }
-
-        .ai-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .ai-card p {
-            color: #5a6a7e;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .ai-form label {
-            display: block;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-
-        .ai-form label .required {
-            color: #e74c3c;
-        }
-
-        .ai-form input,
-        .ai-form select {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 60px;
-            background: #fafcff;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: var(--transition);
-            color: #1a2639;
-        }
-
-        .ai-form input:focus,
-        .ai-form select:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.08);
-        }
-
-        .ai-form .btn-gold {
-            width: 100%;
-            text-align: center;
-            font-size: 1rem;
-            padding: 14px;
-        }
-
-        .result-box {
-            background: #f0f4fe;
-            padding: 18px 22px;
-            border-radius: var(--radius-md);
-            margin-top: 18px;
-            border-right: 6px solid var(--gold);
-            font-weight: 500;
-            display: none;
-            color: var(--primary);
-        }
-
-        .result-box.show {
-            display: block;
-            animation: fadeSlide 0.4s ease;
-        }
-
-        @keyframes fadeSlide {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-box .contract-preview {
-            background: var(--white);
-            padding: 16px;
-            border-radius: 14px;
-            margin-top: 12px;
-            font-size: 0.9rem;
-            border: 1px solid #e2e8f0;
-            color: #1a2639;
-            line-height: 1.9;
-        }
-
-        /* -------------------- شرح العقود -------------------- */
-        .contracts-info {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 30px 35px;
-            margin-top: 25px;
-            box-shadow: var(--shadow-soft);
-            border-right: 6px solid var(--gold);
-        }
-
-        .contracts-info h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contracts-info h4 i {
-            color: var(--gold);
-        }
-
-        .contracts-info ul {
-            list-style: none;
-            padding-right: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .contracts-info ul li {
-            padding: 8px 16px;
-            background: #f8faff;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            color: #3d4d62;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .contracts-info ul li i {
-            color: var(--gold);
-            font-size: 0.8rem;
-        }
-
-        /* -------------------- أيقونات التواصل -------------------- */
-        .contact-section {
-            padding: 60px 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            background: var(--white);
-            padding: 35px 30px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-heavy);
-            border: 1px solid rgba(212, 175, 55, 0.06);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .contact-item .c-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--gold);
-            flex-shrink: 0;
-            background: rgba(212, 175, 55, 0.06);
-            transition: var(--transition);
-            text-decoration: none;
-            position: relative;
-        }
-
-        .contact-item .c-icon:hover {
-            transform: scale(1.12) rotate(-3deg);
-        }
-
-        /* ألوان خاصة لكل أيقونة */
-        .contact-item .c-icon.whatsapp {
-            background: rgba(37, 211, 102, 0.12);
-            color: #25d366;
-        }
-        .contact-item .c-icon.whatsapp:hover {
-            background: #25d366;
-            color: white;
-        }
-
-        .contact-item .c-icon.x {
-            background: rgba(0, 0, 0, 0.06);
-            color: #000;
-        }
-        .contact-item .c-icon.x:hover {
-            background: #000;
-            color: white;
-        }
-
-        .contact-item .c-icon.facebook {
-            background: rgba(24, 119, 242, 0.12);
-            color: #1877f2;
-        }
-        .contact-item .c-icon.facebook:hover {
-            background: #1877f2;
-            color: white;
-        }
-
-        .contact-item .c-icon.tiktok {
-            background: rgba(0, 0, 0, 0.06);
-            color: #000;
-        }
-        .contact-item .c-icon.tiktok:hover {
-            background: #000;
-            color: #ff0050;
-        }
-
-        .contact-item .c-icon.snapchat {
-            background: rgba(255, 252, 0, 0.15);
-            color: #fffc00;
-        }
-        .contact-item .c-icon.snapchat:hover {
-            background: #fffc00;
-            color: #000;
-        }
-
-        .contact-item .c-icon.instagram {
-            background: rgba(214, 36, 159, 0.10);
-            color: #d6249f;
-        }
-        .contact-item .c-icon.instagram:hover {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-            color: white;
-        }
-
-        .contact-item .c-icon.phone {
-            background: rgba(46, 204, 113, 0.12);
-            color: #2ecc71;
-        }
-        .contact-item .c-icon.phone:hover {
-            background: #2ecc71;
-            color: white;
-        }
-
-        .contact-item .c-icon.email {
-            background: rgba(231, 76, 60, 0.12);
-            color: #e74c3c;
-        }
-        .contact-item .c-icon.email:hover {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .contact-item .c-icon.location {
-            background: rgba(52, 152, 219, 0.12);
-            color: #3498db;
-        }
-        .contact-item .c-icon.location:hover {
-            background: #3498db;
-            color: white;
-        }
-
-        .contact-item .contact-info h4 {
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .contact-item .contact-info p,
-        .contact-item .contact-info a {
-            color: #6b7b90;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.85rem;
-        }
-
-        .contact-item .contact-info a:hover {
-            color: var(--gold);
-        }
-
-        /* -------------------- شات واتساب + شات الموقع -------------------- */
-        .chat-widgets {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .chat-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 60px;
+        /* ==================== الأزرار ==================== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-bright));
+            color: var(--primary-dark);
             border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 4px 15px var(--gold-glow);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--gold-glow);
+        }
+
+        .btn-secondary {
+            background: var(--primary-mid);
+            color: white;
+            border: 1px solid var(--primary-light);
+            padding: 11px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            border-color: var(--gold-main);
+        }
+
+        /* ==================== صفحات ==================== */
+        .page-content {
+            display: none;
+            min-height: calc(100vh - 120px);
+            padding: 80px 20px 20px;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* شاشة الكمبيوتر: المحتوى كامل بدون تمرير */
+        @media (min-width: 1025px) {
+            .page-content {
+                display: none;
+                height: calc(100vh - 65px);
+                overflow: hidden;
+                padding: 80px 30px 20px;
+            }
+            .page-content.active {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            body {
+                overflow: hidden;
+            }
+            .navbar-bottom {
+                display: none;
+            }
+        }
+
+        /* شاشة الموبايل */
+        @media (max-width: 1024px) {
+            body {
+                padding-bottom: 60px;
+            }
+            .navbar-top {
+                height: 60px;
+            }
+            .nav-links a span.nav-label {
+                display: none;
+            }
+            .navbar-bottom {
+                display: flex;
+            }
+            .page-content {
+                padding: 70px 15px 15px;
+            }
+        }
+
+        /* ==================== الهيرو ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-mid) 50%, var(--primary-dark) 100%);
+            min-height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
             position: relative;
-            text-decoration: none;
-        }
-
-        .chat-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .chat-btn.whatsapp-chat {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
-        }
-
-        .chat-btn.whatsapp-chat:hover {
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.45);
-        }
-
-        .chat-btn.site-chat {
-            background: var(--gold-gradient);
-            color: var(--primary);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
-        }
-
-        .chat-btn.site-chat:hover {
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.45);
-        }
-
-        .chat-btn .badge-dot {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 14px;
-            height: 14px;
-            background: #e74c3c;
-            border-radius: 60px;
-            border: 2px solid white;
-            animation: pulse 1.5s infinite;
-        }
-
-        /* -------------------- نافذة شات الموقع -------------------- */
-        .chat-window {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            width: 360px;
-            max-height: 440px;
-            display: none;
-            flex-direction: column;
             overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 18px;
+            margin-bottom: 20px;
+        }
+
+        .hero-logo-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 3px solid var(--gold-main);
+            box-shadow: 0 0 35px var(--gold-glow), inset 0 0 20px rgba(255,255,255,0.3);
+            animation: logoGlow 3s infinite alternate;
+            margin: 0 auto 15px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--gold-bright);
             margin-bottom: 10px;
         }
 
-        .chat-window.open {
-            display: flex;
-            animation: fadeSlide 0.3s ease;
+        .hero-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 20px;
         }
 
-        .chat-header {
-            background: var(--primary);
-            padding: 14px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: white;
-        }
-
-        .chat-header .chat-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-        }
-
-        .chat-header .chat-title i {
-            color: var(--gold);
-        }
-
-        .chat-header .chat-close {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .chat-header .chat-close:hover {
-            color: white;
-        }
-
-        .chat-messages {
-            padding: 16px 20px;
-            flex: 1;
-            overflow-y: auto;
-            max-height: 290px;
-            background: #f8faff;
-        }
-
-        .chat-message {
-            margin-bottom: 12px;
+        .hero-buttons {
             display: flex;
             gap: 10px;
-        }
-
-        .chat-message.bot {
-            justify-content: flex-start;
-        }
-
-        .chat-message.user {
-            justify-content: flex-end;
-        }
-
-        .chat-message .bubble {
-            padding: 10px 16px;
-            border-radius: 16px;
-            max-width: 85%;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .chat-message.bot .bubble {
-            background: var(--white);
-            border: 1px solid #e2e8f0;
-            color: #1a2639;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chat-message.user .bubble {
-            background: var(--gold-gradient);
-            color: var(--primary);
-            border-bottom-left-radius: 4px;
-        }
-
-        .chat-message .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 60px;
-            background: var(--gold-gradient);
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .chat-message.user .avatar {
-            background: var(--primary);
-            color: var(--gold);
-        }
-
-        .chat-input-area {
-            display: flex;
-            padding: 12px 16px;
-            border-top: 1px solid #e2e8f0;
-            background: white;
-            gap: 10px;
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            padding: 10px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 60px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .chat-input-area input:focus {
-            border-color: var(--gold);
-        }
-
-        .chat-input-area button {
-            background: var(--gold-gradient);
-            border: none;
-            border-radius: 60px;
-            width: 44px;
-            height: 44px;
-            color: var(--primary);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-
-        .chat-input-area button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* -------------------- تذييل -------------------- */
-        .footer {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.6);
-            padding: 50px 0 25px;
-            margin-top: 40px;
-            border-top: 4px solid var(--gold);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 30px;
-        }
-
-        .footer h4 {
-            color: var(--white);
-            font-weight: 700;
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .footer a {
-            color: inherit;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 6px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .footer a:hover {
-            color: var(--gold);
-            transform: translateX(-6px);
-        }
-
-        .footer .social-links {
-            display: flex;
-            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 10px;
         }
 
-        .footer .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 60px;
-            background: rgba(255, 255, 255, 0.05);
+        /* ==================== الإحصائيات ==================== */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 0;
         }
 
-        .footer .social-links a:hover {
-            background: var(--gold-gradient);
-            color: var(--primary);
+        .stat-item:hover {
+            border-color: var(--gold-main);
+            box-shadow: var(--shadow-md);
             transform: translateY(-3px);
         }
 
-        .footer .license-footer {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 10px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+        .stat-number {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--gold-main);
         }
 
-        .footer .license-footer i {
-            color: var(--gold);
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ==================== البطاقات ==================== */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            border-color: var(--gold-main);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ==================== النماذج ==================== */
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-heading);
+            font-size: 12px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 13px;
+            transition: var(--transition);
+            background: var(--bg-body);
+            color: var(--text-heading);
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--gold-main);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+            background: white;
+        }
+
+        /* ==================== شعارات SVG ==================== */
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* ==================== الأزرار العائمة ==================== */
+        .floating-buttons {
+            position: fixed;
+            left: 15px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .floating-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .floating-whatsapp {
+            background: var(--green-whatsapp);
+        }
+
+        .floating-chat {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-bright));
+        }
+
+        /* ==================== الفوتر ==================== */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--text-muted);
+            padding: 25px 20px 15px;
+            border-top: 1.5px solid var(--gold-main);
+            margin-top: 20px;
+        }
+
+        .footer-links-inline {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links-inline a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .footer-links-inline a:hover {
+            color: var(--gold-bright);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            margin-top: 25px;
-            font-size: 0.85rem;
+            font-size: 11px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 12px;
         }
 
-        /* -------------------- استجابة للجوالات -------------------- */
-        @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-badges {
-                justify-content: center;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .hero-image-box .floating-card {
-                max-width: 100%;
-            }
-
-            .ai-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header .container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .license-banner .container {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .license-info {
-                justify-content: center;
-            }
-
-            .chat-window {
-                width: 320px;
-                max-height: 400px;
-            }
-
-            .contracts-info ul {
-                grid-template-columns: 1fr;
-            }
-
-            .chat-widgets {
-                left: 15px;
-                bottom: 15px;
-            }
-
-            .chat-btn {
-                width: 52px;
-                height: 52px;
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 550px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .property-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-
-            .contact-item {
-                flex-direction: row;
-                text-align: right;
-            }
-
-            .section-header .section-title {
-                font-size: 1.8rem;
-            }
-
-            .ai-card {
-                padding: 25px 18px;
-            }
-
-            .floating-card {
-                padding: 20px !important;
-            }
-
-            .chat-window {
-                width: 290px;
-                max-height: 360px;
-                left: 10px;
-                right: 10px;
-            }
-
-            .chat-widgets {
-                left: 15px;
-                bottom: 15px;
-            }
-
-            .chat-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-            }
-
-            .offers-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .logo-area img {
-                height: 38px;
-            }
-
-            .logo-text {
-                font-size: 1.3rem;
-            }
-
-            .header-left {
-                gap: 10px;
-                justify-content: center;
-            }
-
-            .lang-btn {
-                padding: 4px 10px;
-                font-size: 0.7rem;
-            }
-
-            .lang-btn .flag {
-                font-size: 0.9rem;
-            }
-
-            .license-info .license-number {
-                font-size: 0.75rem;
-                padding: 2px 12px;
-            }
-
-            .add-property-btn {
-                padding: 30px 20px;
-                min-height: 220px;
-            }
-
-            .add-property-btn i {
-                font-size: 2.8rem;
-            }
-        }
-
-        /* -------------------- الترجمة (لغة إنجليزية) -------------------- */
-        body.en {
-            direction: ltr;
-            text-align: left;
-        }
-
-        body.en .section-header {
-            text-align: left;
-        }
-
-        body.en .section-header .section-title::after {
-            right: auto;
-            left: 0;
-        }
-
-        body.en .property-location {
-            direction: ltr;
-        }
-
-        body.en .nav-links a::after {
-            right: auto;
-            left: 0;
-        }
-
-        body.en .contact-item {
-            flex-direction: row-reverse;
-            text-align: left;
-        }
-
-        body.en .result-box {
-            border-right: none;
-            border-left: 6px solid var(--gold);
-        }
-
-        body.en .contracts-info {
-            border-right: none;
-            border-left: 6px solid var(--gold);
-        }
-
-        body.en .ai-form label {
-            text-align: left;
-        }
-
-        body.en .floating-card .city-tags {
-            direction: ltr;
-        }
-
-        body.en .license-info .license-icon {
-            flex-direction: row-reverse;
-        }
-
-        body.en .license-badge {
-            flex-direction: row-reverse;
+        /* ==================== التجاوب ==================== */
+        @media (max-width: 768px) {
+            .brand-text-ar { font-size: 11px; }
+            .brand-text-en { font-size: 7px; }
+            .brand-logo-img { width: 35px; height: 35px; }
+            .hero-title { font-size: 22px; }
+            .hero-subtitle { font-size: 15px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .stat-number { font-size: 24px; }
+            .floating-btn { width: 40px; height: 40px; }
+            .floating-btn svg { width: 20px; height: 20px; }
         }
     </style>
 </head>
-
 <body>
-    <header class="header" id="header">
-        <div class="container">
-            <button type="button" class="logo-area" onclick="showView('home')" aria-label="همة المدينة العقارية">
-                <img src="Himmat-Almedina.png" alt="همة المدينة العقارية | Himmat Al Madinah Real Estate" />
-            </button>
-            <div class="header-left">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" data-view="home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
-                    <li><a href="#properties" data-view="properties" data-ar="عقارات" data-en="Properties">عقارات</a></li>
-                    <li><a href="#offers" data-view="offers" data-ar="عروض" data-en="Offers">عروض</a></li>
-                    <li><a href="#valuation" data-view="valuation" data-ar="تقييم" data-en="Valuation">تقييم</a></li>
-                    <li><a href="#contracts" data-view="contracts" data-ar="عقود" data-en="Contracts">عقود</a></li>
-                    <li><a href="#contact" data-view="contact" data-ar="تواصل" data-en="Contact">تواصل</a></li>
-                </ul>
-                <div class="lang-group">
-                    <button type="button" class="lang-btn active" onclick="switchLanguage('ar')" id="langAr"><span class="flag">🇸🇦</span> ع</button>
-                    <button type="button" class="lang-btn" onclick="switchLanguage('en')" id="langEn"><span class="flag">🇬🇧</span> EN</button>
+    <!-- ========== شريط التنقل العلوي ========== -->
+    <nav class="navbar-top">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-brand" onclick="navigateTo('home'); return false;">
+                <img src="Himmat-Almedina.png" alt="شعار همة المدينة" class="brand-logo-img" id="brandLogoImg">
+                <div class="brand-text">
+                    <span class="brand-text-ar" data-ar="همة المدينة العقارية" data-en="Himmat Al Madinah">همة المدينة العقارية</span>
+                    <span class="brand-text-en">HIMMAT AL MADINAH</span>
                 </div>
-                <button type="button" class="btn-gold" onclick="showView('contact')" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active" data-page="home" onclick="navigateTo('home'); return false;"><span class="nav-icon">🏠</span><span class="nav-label" data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                <li><a href="#valuation" data-page="valuation" onclick="navigateTo('valuation'); return false;"><span class="nav-icon">🤖</span><span class="nav-label" data-ar="التقييم" data-en="Valuation">التقييم</span></a></li>
+                <li><a href="#offers" data-page="offers" onclick="navigateTo('offers'); return false;"><span class="nav-icon">💰</span><span class="nav-label" data-ar="العروض" data-en="Offers">العروض</span></a></li>
+                <li><a href="#contracts" data-page="contracts" onclick="navigateTo('contracts'); return false;"><span class="nav-icon">📄</span><span class="nav-label" data-ar="العقود" data-en="Contracts">العقود</span></a></li>
+                <li><a href="#add-property" data-page="add-property" onclick="navigateTo('add-property'); return false;"><span class="nav-icon">➕</span><span class="nav-label" data-ar="إضافة" data-en="Add">إضافة</span></a></li>
+                <li><a href="#services" data-page="services" onclick="navigateTo('services'); return false;"><span class="nav-icon">🛠️</span><span class="nav-label" data-ar="خدماتنا" data-en="Services">خدماتنا</span></a></li>
+                <li><a href="#faq" data-page="faq" onclick="navigateTo('faq'); return false;"><span class="nav-icon">❓</span><span class="nav-label" data-ar="الأسئلة" data-en="FAQ">الأسئلة</span></a></li>
+                <li><a href="#about" data-page="about" onclick="navigateTo('about'); return false;"><span class="nav-icon">🏢</span><span class="nav-label" data-ar="عن المكتب" data-en="About">عن المكتب</span></a></li>
+                <li><a href="#contact" data-page="contact" onclick="navigateTo('contact'); return false;"><span class="nav-icon">📞</span><span class="nav-label" data-ar="تواصل" data-en="Contact">تواصل</span></a></li>
+            </ul>
+
+            <!-- زر اللغة -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">🇸🇦 AR</button>
+                <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">🇬🇧 EN</button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="license-banner" id="licenseBanner">
-        <div class="container">
-            <div class="license-info">
-                <span class="license-icon">
-                    <i class="fas fa-certificate"></i>
-                    <span data-ar="ترخيص رقم:" data-en="License No.:">ترخيص رقم:</span>
-                </span>
-                <span class="license-number"><strong>5800012345</strong> | <span data-ar="الهيئة العامة للعقار" data-en="Real Estate General Authority">الهيئة العامة للعقار</span></span>
+    <!-- ========== شريط التنقل السفلي (موبايل فقط) ========== -->
+    <nav class="navbar-bottom">
+        <a href="#home" class="bottom-nav-item active" data-page="home" data-tooltip="الرئيسية" onclick="navigateTo('home'); return false;"><span class="nav-icon">🏠</span></a>
+        <a href="#valuation" class="bottom-nav-item" data-page="valuation" data-tooltip="التقييم" onclick="navigateTo('valuation'); return false;"><span class="nav-icon">🤖</span></a>
+        <a href="#offers" class="bottom-nav-item" data-page="offers" data-tooltip="العروض" onclick="navigateTo('offers'); return false;"><span class="nav-icon">💰</span></a>
+        <a href="#contracts" class="bottom-nav-item" data-page="contracts" data-tooltip="العقود" onclick="navigateTo('contracts'); return false;"><span class="nav-icon">📄</span></a>
+        <a href="#add-property" class="bottom-nav-item" data-page="add-property" data-tooltip="إضافة" onclick="navigateTo('add-property'); return false;"><span class="nav-icon">➕</span></a>
+        <a href="#services" class="bottom-nav-item" data-page="services" data-tooltip="خدماتنا" onclick="navigateTo('services'); return false;"><span class="nav-icon">🛠️</span></a>
+        <a href="#faq" class="bottom-nav-item" data-page="faq" data-tooltip="الأسئلة" onclick="navigateTo('faq'); return false;"><span class="nav-icon">❓</span></a>
+        <a href="#about" class="bottom-nav-item" data-page="about" data-tooltip="عن المكتب" onclick="navigateTo('about'); return false;"><span class="nav-icon">🏢</span></a>
+        <a href="#contact" class="bottom-nav-item" data-page="contact" data-tooltip="تواصل" onclick="navigateTo('contact'); return false;"><span class="nav-icon">📞</span></a>
+    </nav>
+
+    <!-- ========== الأزرار العائمة ========== -->
+    <div class="floating-buttons">
+        <button class="floating-btn floating-whatsapp" onclick="openWhatsApp()" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </button>
+        <button class="floating-btn floating-chat" onclick="openChatBot()" title="Chat">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h10v2H7zm0 4h7v2H7z"/></svg>
+        </button>
+    </div>
+
+    <!-- ========== الصفحة الرئيسية ========== -->
+    <div id="page-home" class="page-content active">
+        <div class="hero">
+            <div style="text-align: center; padding: 15px;">
+                <img src="Himmat-Almedina.png" alt="شعار همة المدينة" class="hero-logo-img" id="heroLogoImg">
+                <h1 class="hero-title" data-ar="🏛️ الذكاء الاصطناعي العقاري السعودي" data-en="🏛️ Saudi AI Real Estate">🏛️ الذكاء الاصطناعي العقاري السعودي</h1>
+                <p class="hero-subtitle" data-ar="منصتك الذكية لتقدير القيم السوقية للعقارات" data-en="Your smart platform for real estate valuation">منصتك الذكية لتقدير القيم السوقية للعقارات</p>
+                <p class="hero-description" data-ar="بدقة وسرعة باستخدام أحدث خوارزميات الذكاء الاصطناعي" data-en="Accurately using latest AI algorithms">بدقة وسرعة باستخدام أحدث خوارزميات الذكاء الاصطناعي</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="navigateTo('valuation')"><span data-ar="🚀 ابدأ التقييم" data-en="🚀 Start Valuation">🚀 ابدأ التقييم</span></button>
+                    <button class="btn-secondary" onclick="navigateTo('about')"><span data-ar="🏢 تعرف علينا" data-en="🏢 About Us">🏢 تعرف علينا</span></button>
+                </div>
             </div>
-            <div class="license-badge">
-                <i class="fas fa-check-circle check"></i>
-                <span data-ar="مكتب معتمد" data-en="Licensed office">مكتب معتمد</span>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-item"><div class="stat-number" data-count="4">0</div><div class="stat-label" data-ar="مدن" data-en="Cities">مدن</div></div>
+            <div class="stat-item"><div class="stat-number" data-count="85">0</div><div class="stat-label" data-ar="حي" data-en="Districts">حي</div></div>
+            <div class="stat-item"><div class="stat-number" data-count="100">0</div><div class="stat-label" data-ar="تقييم %" data-en="Valuation %">تقييم %</div></div>
+            <div class="stat-item"><div class="stat-number" data-count="15">0</div><div class="stat-label" data-ar="نوع عقار" data-en="Types">نوع عقار</div></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1100px; margin: 0 auto;">
+            <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">🤖</div><h4 style="font-size:13px;color:var(--text-heading);" data-ar="تقييم ذكي" data-en="Smart Valuation">تقييم ذكي</h4></div>
+            <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">📄</div><h4 style="font-size:13px;color:var(--text-heading);" data-ar="عقود موثقة" data-en="Contracts">عقود موثقة</h4></div>
+            <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">📍</div><h4 style="font-size:13px;color:var(--text-heading);" data-ar="تغطية واسعة" data-en="Coverage">تغطية واسعة</h4></div>
+            <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">🔒</div><h4 style="font-size:13px;color:var(--text-heading);" data-ar="موثوقية" data-en="Trust">موثوقية</h4></div>
+        </div>
+    </div>
+        <!-- ========== صفحة التقييم ========== -->
+    <div id="page-valuation" class="page-content">
+        <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">🤖 <span data-ar="تقييم فوري" data-en="Instant Valuation">تقييم فوري</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="المُقيّم العقاري الذكي" data-en="Smart Real Estate Valuator">المُقيّم العقاري الذكي</p>
+
+            <div class="glass-card" style="padding:15px;margin-bottom:12px;">
+                <!-- صف 1 -->
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px;">
+                    <div>
+                        <label class="form-label">🏙️ <span data-ar="المدينة" data-en="City">المدينة</span></label>
+                        <select class="form-select" id="valCity" onchange="updateDistricts();calculateValuation();">
+                            <option value="">--</option>
+                            <option value="madinah">المدينة المنورة</option>
+                            <option value="makkah">مكة المكرمة</option>
+                            <option value="jeddah">جدة</option>
+                            <option value="riyadh">الرياض</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">📍 <span data-ar="الحي" data-en="District">الحي</span></label>
+                        <select class="form-select" id="valDistrict" onchange="calculateValuation();">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">🏠 <span data-ar="نوع العقار" data-en="Type">نوع العقار</span></label>
+                        <select class="form-select" id="valPropertyType" onchange="calculateValuation();">
+                            <option value="">--</option>
+                            <option>فيلا</option><option>شقة في برج</option><option>شقة في عمارة</option><option>أرض</option><option>دبلكس</option><option>قصر</option><option>مزرعة</option><option>استراحة</option><option>مكتب</option><option>مخزن</option><option>منتجع</option><option>معرض</option><option>عمارة</option><option>محطة</option><option>دور</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">📐 <span data-ar="المساحة (م²)" data-en="Area (m²)">المساحة (م²)</span></label>
+                        <input type="number" class="form-input" id="valArea" placeholder="250" oninput="calculateValuation();">
+                    </div>
+                </div>
+
+                <!-- صف 2 -->
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px;">
+                    <div>
+                        <label class="form-label">🛏️ <span data-ar="عدد الغرف" data-en="Rooms">عدد الغرف</span></label>
+                        <input type="number" class="form-input" id="valRooms" placeholder="4" oninput="calculateValuation();">
+                    </div>
+                    <div>
+                        <label class="form-label">📅 <span data-ar="عمر العقار" data-en="Age">عمر العقار</span></label>
+                        <input type="number" class="form-input" id="valAge" placeholder="5" oninput="calculateValuation();">
+                    </div>
+                    <div>
+                        <label class="form-label">🧭 <span data-ar="الواجهة" data-en="Direction">الواجهة</span></label>
+                        <select class="form-select" id="valDirection" onchange="calculateValuation();">
+                            <option value="">--</option><option>شمالية</option><option>جنوبية</option><option>شرقية</option><option>غربية</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">🛣️ <span data-ar="عرض الشارع" data-en="Street Width">عرض الشارع</span></label>
+                        <input type="number" class="form-input" id="valStreetWidth" placeholder="15" oninput="calculateValuation();">
+                    </div>
+                </div>
+
+                <!-- صف 3 -->
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px;">
+                    <div>
+                        <label class="form-label">⭐ <span data-ar="تصنيف الحي" data-en="District Class">تصنيف الحي</span></label>
+                        <select class="form-select" id="valDistrictClass" onchange="calculateValuation();">
+                            <option value="">--</option><option>راقي</option><option>متوسط</option><option>شعبي</option><option>جديد</option>
+                        </select>
+                    </div>
+                    <div style="display:flex;align-items:flex-end;">
+                        <button class="btn-secondary" style="padding:8px 14px;font-size:11px;width:100%;" onclick="addNewCity()">➕ <span data-ar="إضافة مدينة" data-en="Add City">إضافة مدينة</span></button>
+                    </div>
+                </div>
+
+                <!-- خيارات -->
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valElevator" onchange="calculateValuation();"> <span data-ar="مصعد" data-en="Elevator">مصعد</span></label>
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valPool" onchange="calculateValuation();"> <span data-ar="مسبح" data-en="Pool">مسبح</span></label>
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valDriverRoom" onchange="calculateValuation();"> <span data-ar="غرفة سائق" data-en="Driver Room">غرفة سائق</span></label>
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valFurnished" onchange="calculateValuation();"> <span data-ar="مفروش" data-en="Furnished">مفروش</span></label>
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valCentralAC" onchange="calculateValuation();"> <span data-ar="تكييف مركزي" data-en="Central AC">تكييف مركزي</span></label>
+                    <label style="font-size:11px;display:flex;align-items:center;gap:3px;cursor:pointer;"><input type="checkbox" id="valMaidRoom" onchange="calculateValuation();"> <span data-ar="غرفة خادمة" data-en="Maid Room">غرفة خادمة</span></label>
+                </div>
+            </div>
+
+            <!-- النتيجة -->
+            <div class="glass-card" id="valuationResult" style="display:none;border-color:var(--gold-main);box-shadow:0 4px 25px rgba(13,27,42,0.08),0 0 25px var(--gold-glow);">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center;">
+                    <div>
+                        <h4 style="font-size:12px;color:var(--text-muted);">💰 <span data-ar="النطاق السعري" data-en="Price Range">النطاق السعري</span></h4>
+                        <div id="priceRange" style="font-size:20px;font-weight:700;color:var(--gold-main);">0 - 0</div>
+                    </div>
+                    <div>
+                        <h4 style="font-size:12px;color:var(--text-muted);">📊 <span data-ar="المتوسط" data-en="Average">المتوسط</span></h4>
+                        <div id="avgPrice" style="font-size:20px;font-weight:700;color:var(--text-heading);">0</div>
+                    </div>
+                    <div>
+                        <h4 style="font-size:12px;color:var(--text-muted);">📈 <span data-ar="مؤشر الاستثمار" data-en="Investment">مؤشر الاستثمار</span></h4>
+                        <div id="investmentIndex" style="font-size:18px;font-weight:700;color:var(--green-whatsapp);">✅ A</div>
+                    </div>
+                </div>
+                <p style="text-align:center;color:var(--text-muted);font-size:9px;margin-top:8px;">📅 <span data-ar="التقييم تقديري بناءً على متوسطات السوق" data-en="Estimate based on market averages">التقييم تقديري بناءً على متوسطات السوق</span></p>
+                <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
+                    <button class="btn-primary" style="padding:8px 18px;font-size:11px;" onclick="showValuationDetails()"><span data-ar="تفاصيل" data-en="Details">تفاصيل</span></button>
+                    <button class="btn-secondary" style="padding:8px 18px;font-size:11px;" onclick="shareValuation()"><span data-ar="مشاركة" data-en="Share">مشاركة</span></button>
+                    <button class="btn-secondary" style="padding:8px 18px;font-size:11px;" onclick="resetValuation()"><span data-ar="إعادة" data-en="Reset">إعادة</span></button>
+                </div>
             </div>
         </div>
     </div>
 
-    <section class="page-view active hero" id="view-home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="badge-office">
-                    <i class="fas fa-city"></i>
-                    <span data-ar="همة المدينة العقارية" data-en="Himmat Al Madinah Real Estate">همة المدينة العقارية</span>
-                </div>
-                <h1>
-                    <span class="gold-text" data-ar="همة المدينة العقارية" data-en="Himmat Al Madinah">همة المدينة العقارية</span><br />
-                    <span data-ar="وساطة وتسويق في قلب المدينة" data-en="Brokerage and marketing in Madinah">وساطة وتسويق في قلب المدينة</span>
-                </h1>
-                <p data-ar="نعرض العقارات، نقدّر القيمة بشكل تقريبي، ونساعدك على صياغة بنود العقد. للتقييم الرسمي أو العقد النهائي تواصل مع المكتب مباشرة." data-en="We list properties, provide an approximate estimate, and help draft contract terms. For an official appraisal or a final contract, contact the office directly.">نعرض العقارات، نقدّر القيمة بشكل تقريبي، ونساعدك على صياغة بنود العقد. للتقييم الرسمي أو العقد النهائي تواصل مع المكتب مباشرة.</p>
-                <div class="hero-badges">
-                    <span><i class="fas fa-building"></i> <span data-ar="عقارات" data-en="Listings">عقارات</span></span>
-                    <span><i class="fas fa-chart-line"></i> <span data-ar="تقدير سعري" data-en="Price estimate">تقدير سعري</span></span>
-                    <span><i class="fas fa-file-signature"></i> <span data-ar="مسودة عقد" data-en="Contract draft">مسودة عقد</span></span>
-                    <span><i class="fas fa-map-marker-alt"></i> <span data-ar="المدينة أوله" data-en="Madinah first">المدينة أوله</span></span>
-                </div>
-                <div class="hero-actions">
-                    <button type="button" class="btn-gold" onclick="showView('properties')"><i class="fas fa-building"></i> <span data-ar="استعرض العقارات" data-en="Browse properties">استعرض العقارات</span></button>
-                    <button type="button" class="btn-outline-gold" onclick="showView('valuation')"><i class="fas fa-chart-line"></i> <span data-ar="قدّر العقار" data-en="Estimate a property">قدّر العقار</span></button>
-                </div>
-            </div>
-            <div class="hero-logo-wrap">
-                <img src="Himmat-Almedina.png" alt="Himmat Al Madinah Real Estate logo" />
-            </div>
-        </div>
-    </section>
+    <!-- ========== صفحة الإضافة ========== -->
+    <div id="page-add-property" class="page-content">
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">➕ <span data-ar="إضافة عقار" data-en="Add Property">إضافة عقار</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="Excel أو يدوي" data-en="Excel or Manual">Excel أو يدوي</p>
 
-    <section class="page-view section-padding container" id="view-properties">
-        <div class="section-header">
-            <h2 class="section-title" data-ar="عقارات" data-en="Properties">عقارات</h2>
-            <p class="section-sub" data-ar="نماذج للعرض. الصور والتفاصيل النهائية تُحدَّث من المكتب." data-en="Sample listings. Final photos and details are updated by the office.">نماذج للعرض. الصور والتفاصيل النهائية تُحدَّث من المكتب.</p>
-        </div>
-        <div class="property-grid">
-            <div class="property-card">
-                <span class="card-badge sale" data-ar="للبيع" data-en="For sale">للبيع</span>
-                <div class="property-img"><i class="fas fa-building"></i></div>
-                <div class="property-body">
-                    <h3 data-ar="عمارة سكنية" data-en="Residential building">عمارة سكنية</h3>
-                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="حي الأنصار، المدينة المنورة" data-en="Al Ansar, Madinah">حي الأنصار، المدينة المنورة</span></div>
-                    <div class="property-meta">
-                        <span><i class="fas fa-layer-group"></i> 5 <span data-ar="أدوار" data-en="floors">أدوار</span></span>
-                        <span><i class="fas fa-bed"></i> 20 <span data-ar="شقة" data-en="apts">شقة</span></span>
-                        <span><i class="fas fa-vector-square"></i> 2,500 m²</span>
-                    </div>
-                    <div class="price-tag">8,500,000 <span class="currency">SAR</span></div>
+            <div class="glass-card" style="padding:15px;margin-bottom:12px;">
+                <div style="border:2px dashed var(--gold-main);border-radius:10px;padding:20px;text-align:center;cursor:pointer;" onclick="document.getElementById('excelFile').click()">
+                    <div style="font-size:30px;">📂</div>
+                    <p style="font-size:12px;color:var(--text-muted);" data-ar="اسحب Excel أو اضغط" data-en="Drag Excel or click">اسحب Excel أو اضغط</p>
+                    <input type="file" id="excelFile" accept=".xlsx,.xls" style="display:none;" onchange="handleExcelFile(event)">
                 </div>
             </div>
-            <div class="property-card">
-                <span class="card-badge rent" data-ar="للإيجار" data-en="For rent">للإيجار</span>
-                <div class="property-img"><i class="fas fa-home"></i></div>
-                <div class="property-body">
-                    <h3 data-ar="دبلكس" data-en="Duplex">دبلكس</h3>
-                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="حي العوالي، المدينة المنورة" data-en="Al Awali, Madinah">حي العوالي، المدينة المنورة</span></div>
-                    <div class="property-meta">
-                        <span><i class="fas fa-bed"></i> 4 <span data-ar="غرف" data-en="beds">غرف</span></span>
-                        <span><i class="fas fa-bath"></i> 3 <span data-ar="حمامات" data-en="baths">حمامات</span></span>
-                        <span><i class="fas fa-vector-square"></i> 320 m²</span>
-                    </div>
-                    <div class="price-tag">85,000 <span class="currency" data-ar="ر.س/سنة" data-en="SAR/year">ر.س/سنة</span></div>
-                </div>
-            </div>
-            <div class="property-card">
-                <span class="card-badge sale" data-ar="للبيع" data-en="For sale">للبيع</span>
-                <div class="property-img"><i class="fas fa-tree"></i></div>
-                <div class="property-body">
-                    <h3 data-ar="مزرعة" data-en="Farm">مزرعة</h3>
-                    <div class="property-location"><i class="fas fa-map-pin"></i> <span data-ar="طريق المدينة، المدينة المنورة" data-en="Madinah Road, Madinah">طريق المدينة، المدينة المنورة</span></div>
-                    <div class="property-meta">
-                        <span><i class="fas fa-vector-square"></i> 10,000 m²</span>
-                        <span><i class="fas fa-water"></i> <span data-ar="بئر" data-en="Well">بئر</span></span>
-                    </div>
-                    <div class="price-tag">3,200,000 <span class="currency">SAR</span></div>
-                </div>
-            </div>
-            <div class="add-property-btn" onclick="openAddProperty()">
-                <i class="fas fa-plus-circle"></i>
-                <h4 data-ar="إدراج عقار" data-en="List a property">إدراج عقار</h4>
-                <p data-ar="افتح النموذج وأرسل التفاصيل للمكتب" data-en="Open the form and send details to the office">افتح النموذج وأرسل التفاصيل للمكتب</p>
-            </div>
-            <form class="add-property-form ai-form" id="addPropertyForm" onsubmit="submitNewProperty(event)">
-                <h3 data-ar="بيانات العقار" data-en="Property details">بيانات العقار</h3>
-                <label data-ar="نوع العقار" data-en="Property type">نوع العقار</label>
-                <select id="newType" required>
-                    <option value="" data-ar="اختر النوع" data-en="Select type">اختر النوع</option>
-                    <option value="عمارة" data-ar="عمارة" data-en="Building">عمارة</option>
-                    <option value="دبلكس" data-ar="دبلكس" data-en="Duplex">دبلكس</option>
-                    <option value="شقة" data-ar="شقة" data-en="Apartment">شقة</option>
-                    <option value="أرض" data-ar="أرض" data-en="Land">أرض</option>
-                    <option value="مزرعة" data-ar="مزرعة" data-en="Farm">مزرعة</option>
-                </select>
-                <label data-ar="المدينة" data-en="City">المدينة</label>
-                <select id="newCity" required>
-                    <option value="المدينة المنورة" data-ar="المدينة المنورة" data-en="Madinah">المدينة المنورة</option>
-                    <option value="مكة المكرمة" data-ar="مكة المكرمة" data-en="Makkah">مكة المكرمة</option>
-                    <option value="جدة" data-ar="جدة" data-en="Jeddah">جدة</option>
-                    <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
-                </select>
-                <label data-ar="الحي" data-en="District">الحي</label>
-                <input type="text" id="newDistrict" required data-ar-placeholder="اسم الحي" data-en-placeholder="District name" placeholder="اسم الحي" />
-                <label data-ar="السعر (ر.س)" data-en="Price (SAR)">السعر (ر.س)</label>
-                <input type="number" id="newPrice" required />
-                <button type="submit" class="btn-gold" data-ar="إرسال عبر واتساب" data-en="Send via WhatsApp">إرسال عبر واتساب</button>
-            </form>
-        </div>
-    </section>
 
-    <section class="page-view" id="view-offers">
-        <div class="offers-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title" data-ar="عروض" data-en="Offers">عروض</h2>
-                    <p class="section-sub" data-ar="عروض المكتب الحالية. التفاصيل النهائية تُؤكد عند التواصل." data-en="Current office offers. Final terms are confirmed when you contact us.">عروض المكتب الحالية. التفاصيل النهائية تُؤكد عند التواصل.</p>
+            <div class="glass-card" style="padding:15px;">
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+                    <div>
+                        <label class="form-label">🏙️ <span data-ar="المدينة" data-en="City">المدينة</span></label>
+                        <select class="form-select" id="addCity" onchange="updateAddDistricts();">
+                            <option value="الرياض">الرياض</option><option value="جدة">جدة</option><option value="مكة المكرمة">مكة المكرمة</option><option value="المدينة المنورة">المدينة المنورة</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">📍 <span data-ar="الحي" data-en="District">الحي</span></label>
+                        <select class="form-select" id="addDistrict"><option value="">--</option></select>
+                    </div>
+                    <div>
+                        <label class="form-label">🏠 <span data-ar="النوع" data-en="Type">النوع</span></label>
+                        <select class="form-select" id="addPropertyType"><option>شقة سكنية</option><option>فيلا</option><option>أرض</option><option>مكتب</option><option>محل</option></select>
+                    </div>
                 </div>
-                <div class="offers-grid">
-                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-percent"></i></div><h4 data-ar="خصم على التقدير" data-en="Estimate discount">خصم على التقدير</h4><p data-ar="خصم للعملاء الجدد على خدمة التقدير العقاري" data-en="Discount for new clients on the estimate service">خصم للعملاء الجدد على خدمة التقدير العقاري</p></div>
-                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-file-contract"></i></div><h4 data-ar="مسودة عقد أولى" data-en="First contract draft">مسودة عقد أولى</h4><p data-ar="مسودة أولى عند طلب التقدير من المكتب" data-en="A first draft when you request an estimate from the office">مسودة أولى عند طلب التقدير من المكتب</p></div>
-                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-handshake"></i></div><h4 data-ar="عمولة البيع" data-en="Sale commission">عمولة البيع</h4><p data-ar="عمولة مخفضة على عقود البيع حتى نهاية الشهر" data-en="Reduced commission on sale contracts until month end">عمولة مخفضة على عقود البيع حتى نهاية الشهر</p></div>
-                    <div class="offer-card"><div class="offer-icon"><i class="fas fa-comments"></i></div><h4 data-ar="استشارة أولى" data-en="First consultation">استشارة أولى</h4><p data-ar="محادثة تعريفية عبر واتساب مع أول تواصل" data-en="An introductory WhatsApp chat with your first contact">محادثة تعريفية عبر واتساب مع أول تواصل</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page-view" id="view-valuation">
-        <div class="ai-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title" data-ar="تقدير عقاري تقريبي" data-en="Approximate estimate">تقدير عقاري تقريبي</h2>
-                    <p class="section-sub" data-ar="حساب مبدئي حسب المساحة. ليس تقييمًا رسميًا معتمدًا." data-en="A preliminary calculation by area. This is not an official licensed appraisal.">حساب مبدئي حسب المساحة. ليس تقييمًا رسميًا معتمدًا.</p>
-                </div>
-                <div class="ai-grid single">
-                    <div class="ai-card">
-                        <div class="icon-wrap"><i class="fas fa-chart-line"></i></div>
-                        <h3 data-ar="أدخل بيانات العقار" data-en="Enter property details">أدخل بيانات العقار</h3>
-                        <form class="ai-form" id="valuationForm">
-                            <label data-ar="الرغبة" data-en="Purpose">الرغبة <span class="required">*</span></label>
-                            <select id="purpose" required>
-                                <option value="" data-ar="اختر الرغبة" data-en="Select purpose">اختر الرغبة</option>
-                                <option value="بيع" data-ar="بيع" data-en="Sale">بيع</option>
-                                <option value="إيجار" data-ar="إيجار" data-en="Rent">إيجار</option>
-                            </select>
-                            <label data-ar="نوع العقار" data-en="Property type">نوع العقار <span class="required">*</span></label>
-                            <select id="propertyType" required>
-                                <option value="" data-ar="اختر النوع" data-en="Select type">اختر النوع</option>
-                                <option value="عمارة" data-ar="عمارة" data-en="Building">عمارة</option>
-                                <option value="شقة" data-ar="شقة" data-en="Apartment">شقة</option>
-                                <option value="دبلكس" data-ar="دبلكس" data-en="Duplex">دبلكس</option>
-                                <option value="مزرعة" data-ar="مزرعة" data-en="Farm">مزرعة</option>
-                                <option value="دور" data-ar="دور" data-en="Floor">دور</option>
-                                <option value="أرض" data-ar="أرض" data-en="Land">أرض</option>
-                                <option value="مكتب" data-ar="مكتب" data-en="Office">مكتب</option>
-                            </select>
-                            <label data-ar="المدينة" data-en="City">المدينة <span class="required">*</span></label>
-                            <select id="city" required onchange="updateNeighborhoods()">
-                                <option value="" data-ar="اختر المدينة" data-en="Select city">اختر المدينة</option>
-                                <option value="المدينة المنورة" data-ar="المدينة المنورة" data-en="Madinah">المدينة المنورة</option>
-                                <option value="مكة المكرمة" data-ar="مكة المكرمة" data-en="Makkah">مكة المكرمة</option>
-                                <option value="جدة" data-ar="جدة" data-en="Jeddah">جدة</option>
-                                <option value="الرياض" data-ar="الرياض" data-en="Riyadh">الرياض</option>
-                            </select>
-                            <label data-ar="الحي" data-en="District">الحي <span class="required">*</span></label>
-                            <select id="neighborhood" required><option value="" data-ar="اختر الحي" data-en="Select district">اختر الحي</option></select>
-                            <label data-ar="المساحة (م²)" data-en="Area (m2)">المساحة (م²) <span class="required">*</span></label>
-                            <input type="number" id="area" min="1" required data-ar-placeholder="المساحة بالمتر المربع" data-en-placeholder="Area in square meters" placeholder="المساحة بالمتر المربع" />
-                            <button type="button" class="btn-gold" onclick="showValuation()"><i class="fas fa-calculator"></i> <span data-ar="احسب التقدير" data-en="Calculate estimate">احسب التقدير</span></button>
-                        </form>
-                        <div class="result-box" id="valuationResult">
-                            <span data-ar="التقدير التقريبي:" data-en="Approximate estimate:">التقدير التقريبي:</span>
-                            <strong id="valuationPrice"></strong><br />
-                            <span style="font-size:0.85rem; color:#5a6a7e;" id="valuationDetails"></span>
-                        </div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                    <div>
+                        <label class="form-label">💰 <span data-ar="السعر" data-en="Price">السعر</span></label>
+                        <input type="number" class="form-input" id="addPrice" placeholder="850000">
+                    </div>
+                    <div>
+                        <label class="form-label">📐 <span data-ar="المساحة" data-en="Area">المساحة</span></label>
+                        <input type="number" class="form-input" id="addArea" placeholder="200">
+                    </div>
+                    <div style="display:flex;align-items:flex-end;">
+                        <button class="btn-primary" style="padding:9px;font-size:12px;width:100%;" onclick="addPropertyManually()">🚀 <span data-ar="إدراج" data-en="Add">إدراج</span></button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+        <!-- ========== صفحة العروض ========== -->
+    <div id="page-offers" class="page-content">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">💰 <span data-ar="عروض وخصومات" data-en="Offers & Discounts">عروض وخصومات</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="فرص لا تفوّت" data-en="Don't miss">فرص لا تفوّت</p>
 
-    <section class="page-view" id="view-contracts">
-        <div class="ai-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title" data-ar="مسودة العقد" data-en="Contract draft">مسودة العقد</h2>
-                    <p class="section-sub" data-ar="نص مبدئي للمراجعة. ليس عقدًا نهائيًا ملزمًا حتى يُعتمد من المكتب." data-en="A preliminary text for review. It is not a binding final contract until the office approves it.">نص مبدئي للمراجعة. ليس عقدًا نهائيًا ملزمًا حتى يُعتمد من المكتب.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:15px;">
+                <!-- عرض 1 -->
+                <div class="glass-card" style="padding:0;overflow:hidden;">
+                    <div style="position:relative;height:120px;background:linear-gradient(135deg,var(--primary-dark),var(--primary-mid));display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:45px;">🏠</span>
+                        <span style="position:absolute;top:8px;right:8px;background:#e74c3c;color:white;font-size:10px;padding:3px 10px;border-radius:15px;">8%</span>
+                    </div>
+                    <div style="padding:12px;">
+                        <h4 style="font-size:13px;color:var(--text-heading);">فيلا · النرجس</h4>
+                        <p style="font-size:11px;color:var(--text-muted);">الرياض، النرجس</p>
+                        <div style="display:flex;gap:10px;font-size:10px;color:var(--text-muted);margin:5px 0;"><span>410 م²</span><span>6 غرف</span></div>
+                        <div style="font-size:11px;text-decoration:line-through;color:var(--text-muted);">3,850,000</div>
+                        <div style="font-size:16px;font-weight:700;color:var(--gold-main);">3,542,000 <span data-ar="ريال" data-en="SAR" style="font-size:10px;">ريال</span></div>
+                        <button class="btn-secondary" style="width:100%;padding:6px;font-size:11px;margin-top:8px;" onclick="showOfferDetails('فيلا النرجس')"><span data-ar="التفاصيل" data-en="Details">التفاصيل</span></button>
+                    </div>
                 </div>
-                <div class="ai-grid single">
-                    <div class="ai-card">
-                        <div class="icon-wrap"><i class="fas fa-file-pen"></i></div>
-                        <h3 data-ar="بيانات الأطراف" data-en="Party details">بيانات الأطراف</h3>
-                        <div class="contracts-info">
-                            <h4><i class="fas fa-list-check"></i> <span data-ar="الأنواع المتاحة" data-en="Available types">الأنواع المتاحة</span></h4>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد بيع" data-en="Sale">عقد بيع</span></li>
-                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد إيجار" data-en="Rental">عقد إيجار</span></li>
-                                <li><i class="fas fa-check-circle"></i> <span data-ar="عقد وساطة" data-en="Brokerage">عقد وساطة</span></li>
-                            </ul>
-                        </div>
-                        <form class="ai-form" id="contractForm">
-                            <select id="contractType" required>
-                                <option value="" data-ar="نوع العقد" data-en="Contract type">نوع العقد</option>
-                                <option value="بيع" data-ar="عقد بيع" data-en="Sale contract">عقد بيع</option>
-                                <option value="إيجار" data-ar="عقد إيجار" data-en="Rental contract">عقد إيجار</option>
-                                <option value="وساطة" data-ar="عقد وساطة" data-en="Brokerage contract">عقد وساطة</option>
-                            </select>
-                            <input type="text" id="partyOne" required data-ar-placeholder="اسم الطرف الأول" data-en-placeholder="First party name" placeholder="اسم الطرف الأول" />
-                            <input type="text" id="partyTwo" required data-ar-placeholder="اسم الطرف الثاني" data-en-placeholder="Second party name" placeholder="اسم الطرف الثاني" />
-                            <input type="text" id="propertyDetails" required data-ar-placeholder="وصف العقار والموقع" data-en-placeholder="Property and location" placeholder="وصف العقار والموقع" />
-                            <button type="button" class="btn-gold" onclick="showContract()"><i class="fas fa-file-lines"></i> <span data-ar="إنشاء المسودة" data-en="Create draft">إنشاء المسودة</span></button>
-                        </form>
-                        <div class="result-box" id="contractResult">
-                            <span data-ar="مسودة للمراجعة:" data-en="Draft for review:">مسودة للمراجعة:</span>
-                            <div class="contract-preview" id="contractPreview"></div>
-                            <button type="button" class="btn-gold" style="margin-top:14px; width:100%; background: var(--primary); color: white; box-shadow: none;" onclick="printContract()"><i class="fas fa-print"></i> <span data-ar="طباعة المسودة" data-en="Print draft">طباعة المسودة</span></button>
-                        </div>
+
+                <!-- عرض 2 -->
+                <div class="glass-card" style="padding:0;overflow:hidden;">
+                    <div style="position:relative;height:120px;background:linear-gradient(135deg,var(--primary-mid),var(--primary-light));display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:45px;">🏢</span>
+                        <span style="position:absolute;top:8px;right:8px;background:#e74c3c;color:white;font-size:10px;padding:3px 10px;border-radius:15px;">12%</span>
+                    </div>
+                    <div style="padding:12px;">
+                        <h4 style="font-size:13px;color:var(--text-heading);">شقة · الشاطئ</h4>
+                        <p style="font-size:11px;color:var(--text-muted);">جدة، الشاطئ</p>
+                        <div style="display:flex;gap:10px;font-size:10px;color:var(--text-muted);margin:5px 0;"><span>165 م²</span><span>3 غرف</span></div>
+                        <div style="font-size:11px;text-decoration:line-through;color:var(--text-muted);">980,000</div>
+                        <div style="font-size:16px;font-weight:700;color:var(--gold-main);">862,400 <span data-ar="ريال" data-en="SAR" style="font-size:10px;">ريال</span></div>
+                        <button class="btn-secondary" style="width:100%;padding:6px;font-size:11px;margin-top:8px;" onclick="showOfferDetails('شقة الشاطئ')"><span data-ar="التفاصيل" data-en="Details">التفاصيل</span></button>
+                    </div>
+                </div>
+
+                <!-- عرض 3 -->
+                <div class="glass-card" style="padding:0;overflow:hidden;">
+                    <div style="position:relative;height:120px;background:linear-gradient(135deg,var(--primary-dark),var(--primary-light));display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:45px;">🕌</span>
+                        <span style="position:absolute;top:8px;right:8px;background:#e74c3c;color:white;font-size:10px;padding:3px 10px;border-radius:15px;">10%</span>
+                    </div>
+                    <div style="padding:12px;">
+                        <h4 style="font-size:13px;color:var(--text-heading);">شقة · العزيزية</h4>
+                        <p style="font-size:11px;color:var(--text-muted);">مكة، العزيزية</p>
+                        <div style="display:flex;gap:10px;font-size:10px;color:var(--text-muted);margin:5px 0;"><span>140 م²</span><span>3 غرف</span></div>
+                        <div style="font-size:11px;text-decoration:line-through;color:var(--text-muted);">750,000</div>
+                        <div style="font-size:16px;font-weight:700;color:var(--gold-main);">675,000 <span data-ar="ريال" data-en="SAR" style="font-size:10px;">ريال</span></div>
+                        <button class="btn-secondary" style="width:100%;padding:6px;font-size:11px;margin-top:8px;" onclick="showOfferDetails('شقة العزيزية')"><span data-ar="التفاصيل" data-en="Details">التفاصيل</span></button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="page-view contact-section container" id="view-contact">
-        <div class="section-header">
-            <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</h2>
-            <p class="section-sub" data-ar="واتساب والهاتف هما أسرع طريق للتواصل." data-en="WhatsApp and phone are the fastest way to reach us.">واتساب والهاتف هما أسرع طريق للتواصل.</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-item"><a href="https://wa.me/966530500906" class="c-icon whatsapp"><i class="fab fa-whatsapp"></i></a><div class="contact-info"><h4 data-ar="واتساب" data-en="WhatsApp">واتساب</h4><a href="https://wa.me/966530500906">+966 53 050 0906</a></div></div>
-            <div class="contact-item"><a href="tel:+966530500906" class="c-icon phone"><i class="fas fa-phone-alt"></i></a><div class="contact-info"><h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4><a href="tel:+966530500906">+966 53 050 0906</a></div></div>
-            <div class="contact-item"><a href="mailto:ffaaddhheell2323@gmail.com" class="c-icon email"><i class="fas fa-envelope"></i></a><div class="contact-info"><h4 data-ar="البريد" data-en="Email">البريد</h4><a href="mailto:ffaaddhheell2323@gmail.com">ffaaddhheell2323@gmail.com</a></div></div>
-            <div class="contact-item"><a href="https://www.tiktok.com/@fadhel_133" class="c-icon tiktok"><i class="fab fa-tiktok"></i></a><div class="contact-info"><h4 data-ar="تيك توك" data-en="TikTok">تيك توك</h4><a href="https://www.tiktok.com/@fadhel_133">@fadhel_133</a></div></div>
-            <div class="contact-item"><a href="https://www.snapchat.com/add/f.4018" class="c-icon snapchat"><i class="fab fa-snapchat-ghost"></i></a><div class="contact-info"><h4 data-ar="سناب شات" data-en="Snapchat">سناب شات</h4><a href="https://www.snapchat.com/add/f.4018">f.4018</a></div></div>
-            <div class="contact-item"><a href="https://www.instagram.com/f.4018" target="_blank" class="c-icon instagram"><i class="fab fa-instagram"></i></a><div class="contact-info"><h4 data-ar="إنستغرام" data-en="Instagram">إنستغرام</h4><a href="https://www.instagram.com/f.4018" target="_blank">f.4018</a></div></div>
-            <div class="contact-item"><div class="c-icon location"><i class="fas fa-location-dot"></i></div><div class="contact-info"><h4 data-ar="العنوان" data-en="Address">العنوان</h4><p>9263 الملك عبدالله بن عبد العزيز، DMAF9263</p></div></div>
-        </div>
-    </section>
-
-    <section class="page-view section-padding container" id="view-faq">
-        <div class="section-header">
-            <h2 class="section-title" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</h2>
-            <p class="section-sub" data-ar="إجابات مختصرة قبل التواصل مع المكتب." data-en="Short answers before you contact the office.">إجابات مختصرة قبل التواصل مع المكتب.</p>
-        </div>
-        <div class="ai-card">
-            <h3 data-ar="هل التقدير رسمي؟" data-en="Is the estimate official?">هل التقدير رسمي؟</h3>
-            <p data-ar="لا. التقدير على الموقع حساب مبدئي. التقييم المعتمد يتم عبر المكتب." data-en="No. The website estimate is preliminary. A licensed appraisal is done through the office.">لا. التقدير على الموقع حساب مبدئي. التقييم المعتمد يتم عبر المكتب.</p>
-            <h3 data-ar="هل المسودة عقد نهائي؟" data-en="Is the draft a final contract?">هل المسودة عقد نهائي؟</h3>
-            <p data-ar="لا. المسودة للمراجعة فقط حتى يعتمدها المكتب." data-en="No. The draft is for review until the office approves it.">لا. المسودة للمراجعة فقط حتى يعتمدها المكتب.</p>
-        </div>
-    </section>
-
-    <div class="chat-widgets">
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <div class="chat-title"><i class="fas fa-comments"></i> <span data-ar="مساعدة همة المدينة" data-en="Himmat Al Madinah help">مساعدة همة المدينة</span></div>
-                <button type="button" class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot"><div class="avatar"><i class="fas fa-building"></i></div><div class="bubble" data-ar="مرحباً. اكتب: عقارات، تقييم، عقود، أو عروض." data-en="Hello. Type: properties, valuation, contracts, or offers.">مرحباً. اكتب: عقارات، تقييم، عقود، أو عروض.</div></div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="chatInput" data-ar-placeholder="اكتب رسالتك" data-en-placeholder="Type your message" placeholder="اكتب رسالتك" onkeypress="if(event.key==='Enter') sendChatMessage()" />
-                <button type="button" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-        <a href="https://wa.me/966530500906" target="_blank" class="chat-btn whatsapp-chat" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <button type="button" class="chat-btn site-chat" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
     </div>
 
+    <!-- ========== صفحة الخدمات ========== -->
+    <div id="page-services" class="page-content">
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">🛠️ <span data-ar="خدماتنا" data-en="Our Services">خدماتنا</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="ماذا نقدم؟" data-en="What we offer?">ماذا نقدم؟</p>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">🏠</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="بيع وشراء" data-en="Buy & Sell">بيع وشراء</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="بأفضل الأسعار" data-en="Best prices">بأفضل الأسعار</p></div>
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">🤖</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="تقييم ذكي" data-en="Smart Valuation">تقييم ذكي</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="نطاق سعري فوري" data-en="Instant range">نطاق سعري فوري</p></div>
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">📄</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="صياغة عقود" data-en="Contracts">صياغة عقود</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="جاهزة للمراجعة" data-en="Ready for review">جاهزة للمراجعة</p></div>
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">🔑</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="إدارة أملاك" data-en="Management">إدارة أملاك</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="صيانة وتحصيل" data-en="Maintenance">صيانة وتحصيل</p></div>
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">💼</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="استشارات" data-en="Consulting">استشارات</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="فرص استثمارية" data-en="Investment">فرص استثمارية</p></div>
+                <div class="glass-card" style="text-align:center;"><div style="font-size:30px;">📣</div><h4 style="font-size:12px;color:var(--text-heading);" data-ar="تسويق" data-en="Marketing">تسويق</h4><p style="font-size:10px;color:var(--text-muted);" data-ar="عبر قنواتنا" data-en="Our channels">عبر قنواتنا</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== صفحة الأسئلة ========== -->
+    <div id="page-faq" class="page-content">
+        <div style="max-width: 800px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">❓ <span data-ar="الأسئلة الشائعة" data-en="FAQ">الأسئلة الشائعة</span></h2>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:15px;">
+                <div class="glass-card" style="cursor:pointer;padding:12px;" onclick="toggleFAQ(this)">
+                    <div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:12px;color:var(--text-heading);" data-ar="كيف أضيف عقاري؟" data-en="How to add?">كيف أضيف عقاري؟</h4><span class="faq-toggle">➕</span></div>
+                    <div class="faq-answer" style="display:none;margin-top:8px;font-size:11px;color:var(--text-muted);" data-ar="من صفحة إضافة" data-en="From Add page">من صفحة إضافة</div>
+                </div>
+                <div class="glass-card" style="cursor:pointer;padding:12px;" onclick="toggleFAQ(this)">
+                    <div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:12px;color:var(--text-heading);" data-ar="هل التقييم معتمد؟" data-en="Is valuation official?">هل التقييم معتمد؟</h4><span class="faq-toggle">➕</span></div>
+                    <div class="faq-answer" style="display:none;margin-top:8px;font-size:11px;color:var(--text-muted);" data-ar="تقديري بناءً على معايير الهيئة" data-en="Estimated per authority">تقديري بناءً على معايير الهيئة</div>
+                </div>
+                <div class="glass-card" style="cursor:pointer;padding:12px;" onclick="toggleFAQ(this)">
+                    <div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:12px;color:var(--text-heading);" data-ar="هل الأدوات مجانية؟" data-en="Are tools free?">هل الأدوات مجانية؟</h4><span class="faq-toggle">➕</span></div>
+                    <div class="faq-answer" style="display:none;margin-top:8px;font-size:11px;color:var(--text-muted);" data-ar="نعم مجاناً" data-en="Yes, free">نعم مجاناً</div>
+                </div>
+                <div class="glass-card" style="cursor:pointer;padding:12px;" onclick="toggleFAQ(this)">
+                    <div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:12px;color:var(--text-heading);" data-ar="هل تغطون مدناً أخرى؟" data-en="Other cities?">هل تغطون مدناً أخرى؟</h4><span class="faq-toggle">➕</span></div>
+                    <div class="faq-answer" style="display:none;margin-top:8px;font-size:11px;color:var(--text-muted);" data-ar="نعم 4 مدن + توسع" data-en="Yes, 4 cities +">نعم 4 مدن + توسع</div>
+                </div>
+                <div class="glass-card" style="cursor:pointer;padding:12px;" onclick="toggleFAQ(this)">
+                    <div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:12px;color:var(--text-heading);" data-ar="هل يمكن توقيع العقد؟" data-en="Can I sign?">هل يمكن توقيع العقد؟</h4><span class="faq-toggle">➕</span></div>
+                    <div class="faq-answer" style="display:none;margin-top:8px;font-size:11px;color:var(--text-muted);" data-ar="مسودة ثم توثيق رسمي" data-en="Draft then official">مسودة ثم توثيق رسمي</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== صفحة عن المكتب ========== -->
+    <div id="page-about" class="page-content">
+        <div style="max-width: 800px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:10px;">🏢 <span data-ar="عن المكتب" data-en="About Us">عن المكتب</span></h2>
+            
+            <div class="glass-card" style="text-align:center;padding:20px;margin-bottom:12px;">
+                <img src="Himmat-Almedina.png" alt="شعار" style="width:100px;height:100px;object-fit:cover;border-radius:12px;border:2px solid var(--gold-main);box-shadow:0 0 20px var(--gold-glow);margin-bottom:10px;">
+                <h3 style="font-size:16px;color:var(--text-heading);margin-bottom:8px;" data-ar="مكتب همة المدينة العقارية" data-en="Himmat Al Madinah">مكتب همة المدينة العقارية</h3>
+                <p style="font-size:12px;color:var(--text-muted);line-height:1.8;" data-ar="شريكك الموثوق في السوق العقاري السعودي" data-en="Your trusted partner in KSA real estate">شريكك الموثوق في السوق العقاري السعودي</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="glass-card">
+                    <h4 style="font-size:13px;color:var(--gold-main);margin-bottom:8px;">🎯 <span data-ar="رؤيتنا" data-en="Vision">رؤيتنا</span></h4>
+                    <p style="font-size:11px;color:var(--text-muted);" data-ar="الوجهة الأولى للحلول العقارية" data-en="First destination for real estate">الوجهة الأولى للحلول العقارية</p>
+                </div>
+                <div class="glass-card">
+                    <h4 style="font-size:13px;color:var(--gold-main);margin-bottom:8px;">💎 <span data-ar="قيمنا" data-en="Values">قيمنا</span></h4>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                        <span style="font-size:9px;background:var(--primary-dark);color:var(--gold-bright);padding:3px 10px;border-radius:15px;">الشفافية</span>
+                        <span style="font-size:9px;background:var(--primary-dark);color:var(--gold-bright);padding:3px 10px;border-radius:15px;">الاحترافية</span>
+                        <span style="font-size:9px;background:var(--primary-dark);color:var(--gold-bright);padding:3px 10px;border-radius:15px;">الابتكار</span>
+                        <span style="font-size:9px;background:var(--primary-dark);color:var(--gold-bright);padding:3px 10px;border-radius:15px;">الثقة</span>
+                        <span style="font-size:9px;background:var(--primary-dark);color:var(--gold-bright);padding:3px 10px;border-radius:15px;">الالتزام</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- ========== صفحة تواصل معنا ========== -->
+    <div id="page-contact" class="page-content">
+        <div style="max-width: 900px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">📞 <span data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="يسعدنا تواصلك" data-en="We're happy to hear from you">يسعدنا تواصلك</p>
+
+            <div class="glass-card" style="text-align:center;padding:20px;margin-bottom:12px;">
+                <!-- بيانات التواصل -->
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:20px;">
+                    <div>
+                        <h4 style="font-size:11px;color:var(--text-muted);">💬 <span data-ar="واتساب" data-en="WhatsApp">واتساب</span></h4>
+                        <p style="font-size:13px;color:var(--text-heading);font-weight:600;" dir="ltr">+966 53 050 0906</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size:11px;color:var(--text-muted);">📱 <span data-ar="هاتف" data-en="Phone">هاتف</span></h4>
+                        <p style="font-size:13px;color:var(--text-heading);font-weight:600;" dir="ltr">+966 53 050 0906</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size:11px;color:var(--text-muted);">📧 <span data-ar="بريد" data-en="Email">بريد</span></h4>
+                        <p style="font-size:13px;color:var(--text-heading);font-weight:600;">ffaaddhheell2323@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- شعارات التواصل SVG الحقيقية -->
+                <div style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap;">
+                    <!-- واتساب -->
+                    <button class="social-btn" style="background:#25D366;" onclick="window.open('https://wa.me/966530500906')" title="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </button>
+
+                    <!-- تيك توك -->
+                    <button class="social-btn" style="background:#000000;" onclick="window.open('https://www.tiktok.com/@fadhel_133')" title="TikTok">
+                        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </button>
+
+                    <!-- سناب شات -->
+                    <button class="social-btn" style="background:#FFFC00;" onclick="window.open('https://www.snapchat.com/add/f.4018')" title="Snapchat">
+                        <svg viewBox="0 0 24 24" style="fill:#000;"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/></svg>
+                    </button>
+
+                    <!-- إنستغرام -->
+                    <button class="social-btn" style="background:linear-gradient(45deg,#F09433,#E6683C,#DC2743,#CC2366,#BC1888);" onclick="window.open('https://www.instagram.com/f.4018')" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- العنوان -->
+            <div class="glass-card" style="text-align:center;padding:15px;">
+                <p style="font-size:12px;color:var(--text-muted);">📍 9263 الملك عبدالله بن عبد العزيز، DMAF9263</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== صفحة العقود ========== -->
+    <div id="page-contracts" class="page-content">
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <h2 style="text-align:center;color:var(--text-heading);font-size:22px;margin-bottom:5px;">📄 <span data-ar="العقود" data-en="Contracts">العقود</span></h2>
+            <p style="text-align:center;color:var(--text-muted);font-size:12px;margin-bottom:15px;" data-ar="سكني وتجاري" data-en="Residential & Commercial">سكني وتجاري</p>
+
+            <div style="display:flex;justify-content:center;gap:10px;margin-bottom:15px;">
+                <button class="btn-primary" style="padding:10px 25px;font-size:13px;" onclick="showResidentialContract()">🏠 <span data-ar="عقد سكني" data-en="Residential">عقد سكني</span></button>
+                <button class="btn-secondary" style="padding:10px 25px;font-size:13px;" onclick="showCommercialContract()">🏢 <span data-ar="عقد تجاري" data-en="Commercial">عقد تجاري</span></button>
+            </div>
+
+            <!-- العقد السكني -->
+            <div id="residentialContract" class="glass-card" style="display:none;padding:15px;">
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="المؤجر" data-en="Lessor">المؤجر</span></label><input type="text" class="form-input" id="resLessorName"></div>
+                    <div><label class="form-label"><span data-ar="هوية المؤجر" data-en="Lessor ID">هوية المؤجر</span></label><input type="text" class="form-input" id="resLessorID"></div>
+                    <div><label class="form-label"><span data-ar="المستأجر" data-en="Tenant">المستأجر</span></label><input type="text" class="form-input" id="resTenantName"></div>
+                    <div><label class="form-label"><span data-ar="هوية المستأجر" data-en="Tenant ID">هوية المستأجر</span></label><input type="text" class="form-input" id="resTenantID"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="المدينة" data-en="City">المدينة</span></label><select class="form-select" id="resCity"><option>المدينة المنورة</option><option>مكة</option><option>جدة</option><option>الرياض</option></select></div>
+                    <div><label class="form-label"><span data-ar="الحي" data-en="District">الحي</span></label><input type="text" class="form-input" id="resDistrict"></div>
+                    <div><label class="form-label"><span data-ar="النوع" data-en="Type">النوع</span></label><select class="form-select" id="resUnitType"><option>شقة</option><option>فيلا</option></select></div>
+                    <div><label class="form-label"><span data-ar="المساحة" data-en="Area">المساحة</span></label><input type="number" class="form-input" id="resArea"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="الإيجار" data-en="Rent">الإيجار</span></label><input type="number" class="form-input" id="resAnnualRent"></div>
+                    <div><label class="form-label"><span data-ar="المدة" data-en="Duration">المدة</span></label><input type="number" class="form-input" id="resDuration" value="12"></div>
+                    <div><label class="form-label"><span data-ar="البداية" data-en="Start">البداية</span></label><input type="date" class="form-input" id="resStartDate"></div>
+                    <div><label class="form-label"><span data-ar="الضمان" data-en="Deposit">الضمان</span></label><input type="number" class="form-input" id="resDeposit" value="0"></div>
+                </div>
+                <button class="btn-primary" style="width:100%;padding:10px;font-size:13px;" onclick="generateResidentialContract()">🤖 <span data-ar="توليد العقد" data-en="Generate">توليد العقد</span></button>
+                <div id="resContractOutput" style="display:none;margin-top:12px;background:var(--bg-body);padding:15px;border-radius:10px;border:1.5px solid var(--gold-main);"></div>
+                <!-- زر تحميل PDF الرسمي -->
+                <div style="text-align:center;margin-top:10px;">
+                    <a href="contracts/residential-contract.pdf" download style="font-size:11px;color:var(--gold-main);text-decoration:underline;" data-ar="📥 تحميل النسخة الرسمية PDF" data-en="📥 Download official PDF">📥 تحميل النسخة الرسمية PDF</a>
+                </div>
+            </div>
+
+            <!-- العقد التجاري -->
+            <div id="commercialContract" class="glass-card" style="display:none;padding:15px;">
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="المؤجر" data-en="Lessor">المؤجر</span></label><input type="text" class="form-input" id="comLessorName"></div>
+                    <div><label class="form-label"><span data-ar="سجل المؤجر" data-en="Lessor CR">سجل المؤجر</span></label><input type="text" class="form-input" id="comLessorCR"></div>
+                    <div><label class="form-label"><span data-ar="المستأجر" data-en="Tenant">المستأجر</span></label><input type="text" class="form-input" id="comTenantName"></div>
+                    <div><label class="form-label"><span data-ar="سجل المستأجر" data-en="Tenant CR">سجل المستأجر</span></label><input type="text" class="form-input" id="comTenantCR"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="المدينة" data-en="City">المدينة</span></label><select class="form-select" id="comCity"><option>المدينة المنورة</option><option>مكة</option><option>جدة</option><option>الرياض</option></select></div>
+                    <div><label class="form-label"><span data-ar="الحي" data-en="District">الحي</span></label><input type="text" class="form-input" id="comDistrict"></div>
+                    <div><label class="form-label"><span data-ar="النشاط" data-en="Activity">النشاط</span></label><input type="text" class="form-input" id="comActivity"></div>
+                    <div><label class="form-label"><span data-ar="المساحة" data-en="Area">المساحة</span></label><input type="number" class="form-input" id="comArea"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
+                    <div><label class="form-label"><span data-ar="الإيجار" data-en="Rent">الإيجار</span></label><input type="number" class="form-input" id="comAnnualRent"></div>
+                    <div><label class="form-label"><span data-ar="المدة" data-en="Duration">المدة</span></label><input type="number" class="form-input" id="comDuration" value="12"></div>
+                    <div><label class="form-label"><span data-ar="البداية" data-en="Start">البداية</span></label><input type="date" class="form-input" id="comStartDate"></div>
+                    <div><label class="form-label"><span data-ar="الضمان" data-en="Deposit">الضمان</span></label><input type="number" class="form-input" id="comDeposit" value="0"></div>
+                </div>
+                <button class="btn-primary" style="width:100%;padding:10px;font-size:13px;" onclick="generateCommercialContract()">🤖 <span data-ar="توليد العقد" data-en="Generate">توليد العقد</span></button>
+                <div id="comContractOutput" style="display:none;margin-top:12px;background:var(--bg-body);padding:15px;border-radius:10px;border:1.5px solid var(--gold-main);"></div>
+                <!-- زر تحميل PDF الرسمي -->
+                <div style="text-align:center;margin-top:10px;">
+                    <a href="contracts/commercial-contract.pdf" download style="font-size:11px;color:var(--gold-main);text-decoration:underline;" data-ar="📥 تحميل النسخة الرسمية PDF" data-en="📥 Download official PDF">📥 تحميل النسخة الرسمية PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- ========== الفوتر ========== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <img src="Himmat-Almedina.png" alt="همة المدينة العقارية" style="height:72px;border-radius:10px;margin-bottom:12px;" />
-                    <p style="max-width:220px;line-height:1.8;font-size:0.9rem;" data-ar="همة المدينة العقارية — وساطة وتسويق عقاري." data-en="Himmat Al Madinah Real Estate — brokerage and marketing.">همة المدينة العقارية — وساطة وتسويق عقاري.</p>
-                </div>
-                <div>
-                    <h4 data-ar="الأقسام" data-en="Sections">الأقسام</h4>
-                    <a href="#properties" data-view="properties" data-ar="عقارات" data-en="Properties">عقارات</a>
-                    <a href="#offers" data-view="offers" data-ar="عروض" data-en="Offers">عروض</a>
-                    <a href="#valuation" data-view="valuation" data-ar="تقييم" data-en="Valuation">تقييم</a>
-                    <a href="#contracts" data-view="contracts" data-ar="عقود" data-en="Contracts">عقود</a>
-                </div>
-                <div>
-                    <h4 data-ar="المكتب" data-en="Office">المكتب</h4>
-                    <a href="#contact" data-view="contact" data-ar="تواصل" data-en="Contact">تواصل</a>
-                    <a href="#faq" data-view="faq" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
-                </div>
-                <div>
-                    <h4 data-ar="المدن" data-en="Cities">المدن</h4>
-                    <span data-ar="المدينة المنورة · مكة · جدة · الرياض" data-en="Madinah · Makkah · Jeddah · Riyadh">المدينة المنورة · مكة · جدة · الرياض</span>
-                </div>
-            </div>
-            <div class="footer-bottom">© 2026 <span data-ar="همة المدينة العقارية. جميع الحقوق محفوظة." data-en="Himmat Al Madinah Real Estate. All rights reserved.">همة المدينة العقارية. جميع الحقوق محفوظة.</span></div>
+        <div class="footer-links-inline">
+            <a href="#" onclick="showPrivacy(); return false;">🔒 <span data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</span></a>
+            <span style="color:var(--text-muted);">|</span>
+            <a href="#" onclick="showTerms(); return false;">📋 <span data-ar="شروط الاستخدام" data-en="Terms of Use">شروط الاستخدام</span></a>
+            <span style="color:var(--text-muted);">|</span>
+            <a href="#contact" onclick="navigateTo('contact'); return false;">📞 <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a>
+        </div>
+        <div class="footer-bottom">
+            © 2026 <span data-ar="مكتب همة المدينة العقارية" data-en="Himmat Al Madinah Real Estate">مكتب همة المدينة العقارية</span> · <span data-ar="رقم الترخيص" data-en="License">رقم الترخيص</span>: 1200030428
         </div>
     </footer>
 
+    <!-- ========== الشات الذكي ========== -->
+    <div id="chatBotWindow" style="position:fixed;bottom:20px;left:80px;width:320px;max-width:85vw;height:400px;max-height:70vh;background:white;border-radius:16px;box-shadow:0 10px 40px rgba(13,27,42,0.3);border:1.5px solid var(--gold-main);display:none;flex-direction:column;z-index:998;overflow:hidden;">
+        <div style="background:var(--primary-dark);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:20px;">🤖</span>
+                <div>
+                    <h4 style="color:white;font-size:12px;"><span data-ar="المساعد الذكي" data-en="Smart Assistant">المساعد الذكي</span></h4>
+                    <p style="color:#25D366;font-size:9px;">● <span data-ar="متصل" data-en="Online">متصل</span></p>
+                </div>
+            </div>
+            <button onclick="closeChatBot()" style="background:none;border:none;color:white;font-size:16px;cursor:pointer;">✕</button>
+        </div>
+        <div id="chatMessages" style="flex:1;padding:15px;overflow-y:auto;background:var(--bg-body);">
+            <div style="background:rgba(13,27,42,0.08);padding:10px 12px;border-radius:12px;margin-bottom:10px;max-width:85%;">
+                <p style="color:var(--text-heading);font-size:11px;" data-ar="مرحباً! كيف أساعدك؟" data-en="Hello! How can I help?">مرحباً! كيف أساعدك؟</p>
+            </div>
+        </div>
+        <div style="padding:10px;display:flex;gap:8px;background:white;border-top:1px solid var(--border-light);">
+            <input type="text" id="chatInput" placeholder="اكتب هنا..." style="flex:1;padding:9px;border:1.5px solid var(--border-light);border-radius:20px;font-size:11px;outline:none;" onkeypress="if(event.key==='Enter')sendChatMessage()">
+            <button onclick="sendChatMessage()" style="background:var(--gold-main);color:var(--primary-dark);border:none;width:35px;height:35px;border-radius:50%;cursor:pointer;font-size:14px;">➤</button>
+        </div>
+    </div>
+
     <script>
-        const neighborhoodsData = {
-            'المدينة المنورة': ['الأنصار','العوالي','الحديقة','السلام','الإسكان','القبلتين','سيد الشهداء','المهاجرين','الأغوات'],
-            'مكة المكرمة': ['العزيزية','الزاهر','الشرائع','العوالي','المعابدة','الخالدية'],
-            'جدة': ['الروضة','السلامة','النعيم','الزهراء','الأندلس','الصفا'],
-            'الرياض': ['النرجس','الملقا','العقيق','الازدهار','الوادي']
+        // ========== التنقل ==========
+        const pages = {
+            'home': document.getElementById('page-home'),
+            'valuation': document.getElementById('page-valuation'),
+            'offers': document.getElementById('page-offers'),
+            'contracts': document.getElementById('page-contracts'),
+            'add-property': document.getElementById('page-add-property'),
+            'services': document.getElementById('page-services'),
+            'faq': document.getElementById('page-faq'),
+            'about': document.getElementById('page-about'),
+            'contact': document.getElementById('page-contact')
         };
-        let currentLang = 'ar';
-        function t(ar, en) { return currentLang === 'en' ? en : ar; }
-        function applyTranslations() {
-            document.querySelectorAll('[data-ar][data-en]').forEach(function(el) {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') return;
-                const text = el.getAttribute('data-' + currentLang);
-                if (!text) return;
-                if (el.querySelector('[data-ar]')) return;
-                el.textContent = text;
+
+        function navigateTo(pageName) {
+            Object.keys(pages).forEach(k => {
+                pages[k].style.display = 'none';
+                pages[k].classList.remove('active');
             });
-            document.querySelectorAll('[data-ar-placeholder][data-en-placeholder]').forEach(function(el) {
-                el.placeholder = currentLang === 'ar' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
+            if (pages[pageName]) {
+                pages[pageName].style.display = 'flex';
+                pages[pageName].classList.add('active');
+            }
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                if (a.dataset.page === pageName) a.classList.add('active');
+            });
+            document.querySelectorAll('.bottom-nav-item').forEach(a => {
+                a.classList.remove('active');
+                if (a.dataset.page === pageName) a.classList.add('active');
             });
         }
+
+        // ========== اللغة ==========
+        let currentLang = 'ar';
         function switchLanguage(lang) {
             currentLang = lang;
-            document.getElementById('langAr').classList.toggle('active', lang === 'ar');
-            document.getElementById('langEn').classList.toggle('active', lang === 'en');
-            document.body.classList.toggle('en', lang === 'en');
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
             document.documentElement.lang = lang;
-            applyTranslations();
-            updateNeighborhoods();
-        }
-        function showView(view) {
-            document.querySelectorAll('.page-view').forEach(function(section) { section.classList.remove('active'); });
-            const target = document.getElementById('view-' + view);
-            if (target) target.classList.add('active');
-            document.querySelectorAll('.nav-links a').forEach(function(link) {
-                link.classList.toggle('active', link.getAttribute('data-view') === view);
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                el.textContent = el.dataset[lang];
             });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        function updateNeighborhoods() {
-            const citySelect = document.getElementById('city');
-            const neighborhoodSelect = document.getElementById('neighborhood');
-            if (!citySelect || !neighborhoodSelect) return;
-            const selectedCity = citySelect.value;
-            const previous = neighborhoodSelect.value;
-            neighborhoodSelect.innerHTML = '';
-            const first = document.createElement('option');
-            first.value = '';
-            first.textContent = t('اختر الحي', 'Select district');
-            neighborhoodSelect.appendChild(first);
-            if (selectedCity && neighborhoodsData[selectedCity]) {
-                neighborhoodsData[selectedCity].forEach(function(name) {
-                    const option = document.createElement('option');
-                    option.value = name;
-                    option.textContent = name;
-                    if (name === previous) option.selected = true;
-                    neighborhoodSelect.appendChild(option);
+
+        // ========== العدادات ==========
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(c => {
+                const target = parseInt(c.dataset.count);
+                let current = 0;
+                const inc = target / 40;
+                const interval = setInterval(() => {
+                    current += inc;
+                    if (current >= target) { current = target; clearInterval(interval); }
+                    c.textContent = Math.round(current);
+                }, 25);
+            });
+        }
+
+        // ========== الأحياء ==========
+        const districtsData = {
+            madinah: ['العزيزية','العاقول','العريض','الخالدية','الزهرة','الملك فهد','الروابي','قباء','القصواء','العوالي','الهجرة','العصبة','الجامعة','الجرف','السلام','الدفاع','أحد','النصر','المناخة','طيبة'],
+            makkah: ['العوالي','الشوقية','الشرائع','النسيم','الزاهر','العتيبية','العمرة','التنعيم','الراشدية','الكعكية','ولي العهد','الزهراء','النزهة','المسفلة','جرهم','الروابي','الخالدية','المنصور','الشامية','المعابدة'],
+            jeddah: ['الروضة','الزهراء','السلامة','النهضة','الشاطئ','المحمدية','الخالدية','النعيم','النزهة','البوادي','الربوة','الصفا','الفيصلية','الرحاب','مشرفة','العزيزية','الورود','بني مالك','النسيم','الواحة','السامر','المنار','الريان','الجامعة','الفيحاء','السليمانية','البلد','الهدى','الفلاح','طيبة'],
+            riyadh: ['العليا','السليمانية','الملز','الورود','الرحمانية','المحمدية','الرائد','النخيل','أم الحمام','المعذر','الهدا','الشفا','بدر','المروة','ديراب','نمار','العريجاء','البديعة','السويدي','الديرة','الشميسي','العود','المرقب','الربوة','الريان','الروابي','النسيم','السلام','المنار','النهضة','الخليج','غرناطة','قرطبة','اليرموك','الرمال','القادسية','الملقا','حطين','العقيق','الصحافة','الياسمين','النرجس','العارض','القيروان','الربيع','الغدير','النفل','الوادي','التعاون','الازدهار','المرسلات','الفلاح','الواحة','الملك فهد','الملك عبدالله','الجزيرة','الفيحاء','المنصورة','العزيزية','الدار البيضاء']
+        };
+
+        function updateDistricts() {
+            const city = document.getElementById('valCity').value;
+            const select = document.getElementById('valDistrict');
+            select.innerHTML = '<option value="">--</option>';
+            if (city && districtsData[city]) {
+                districtsData[city].forEach(d => {
+                    const o = document.createElement('option');
+                    o.value = d; o.textContent = d;
+                    select.appendChild(o);
                 });
             }
         }
-        function showValuation() {
-            const purpose = document.getElementById('purpose').value;
-            const propertyType = document.getElementById('propertyType').value;
-            const city = document.getElementById('city').value;
-            const neighborhood = document.getElementById('neighborhood').value;
-            const area = document.getElementById('area').value;
-            if (!purpose || !propertyType || !city || !neighborhood || !area) {
-                alert(t('الرجاء تعبئة جميع الحقول', 'Please fill in all fields'));
-                return;
+
+        function updateAddDistricts() {
+            const city = document.getElementById('addCity').value;
+            const select = document.getElementById('addDistrict');
+            select.innerHTML = '<option value="">--</option>';
+            const map = { 'المدينة المنورة': 'madinah', 'مكة المكرمة': 'makkah', 'جدة': 'jeddah', 'الرياض': 'riyadh' };
+            const key = map[city];
+            if (key && districtsData[key]) {
+                districtsData[key].forEach(d => {
+                    const o = document.createElement('option');
+                    o.value = d; o.textContent = d;
+                    select.appendChild(o);
+                });
             }
-            const minPrice = (parseFloat(area) * 3500).toLocaleString();
-            const maxPrice = (parseFloat(area) * 4200).toLocaleString();
-            document.getElementById('valuationPrice').textContent = minPrice + ' – ' + maxPrice + ' SAR';
-            document.getElementById('valuationDetails').textContent = propertyType + ' | ' + purpose + ' | ' + city + ' | ' + neighborhood + ' | ' + area + ' m²';
-            document.getElementById('valuationResult').classList.add('show');
         }
-        function showContract() {
-            const type = document.getElementById('contractType').value;
-            const one = document.getElementById('partyOne').value.trim();
-            const two = document.getElementById('partyTwo').value.trim();
-            const details = document.getElementById('propertyDetails').value.trim();
-            if (!type || !one || !two || !details) {
-                alert(t('الرجاء تعبئة جميع الحقول', 'Please fill in all fields'));
-                return;
+
+        // ========== التقييم (بمتوسطات أسعار تقريبية لكل مدينة) ==========
+        const cityPricePerMeter = {
+            madinah: 2500,
+            makkah: 3000,
+            jeddah: 3500,
+            riyadh: 4000
+        };
+
+        function calculateValuation() {
+            const city = document.getElementById('valCity').value;
+            const area = parseFloat(document.getElementById('valArea').value) || 0;
+            const rooms = parseFloat(document.getElementById('valRooms').value) || 0;
+            const age = parseFloat(document.getElementById('valAge').value) || 0;
+            const districtClass = document.getElementById('valDistrictClass').value;
+            const propertyType = document.getElementById('valPropertyType').value;
+
+            if (area < 10 || !propertyType || !city) return;
+
+            let base = cityPricePerMeter[city] || 3000;
+            
+            // معامل تصنيف الحي
+            if (districtClass === 'راقي') base *= 1.4;
+            else if (districtClass === 'متوسط') base *= 1.1;
+            else if (districtClass === 'شعبي') base *= 0.8;
+            else if (districtClass === 'جديد') base *= 1.05;
+
+            // معامل نوع العقار
+            const typeFactor = { 'فيلا': 1.2, 'قصر': 1.6, 'دبلكس': 1.1, 'شقة في برج': 1.15, 'شقة في عمارة': 0.95, 'أرض': 0.7, 'مزرعة': 0.5, 'استراحة': 0.75, 'مكتب': 1.0, 'معرض': 1.1, 'عمارة': 1.3, 'مخزن': 0.55, 'منتجع': 1.25, 'محطة': 0.9, 'دور': 0.85 };
+            base *= (typeFactor[propertyType] || 1);
+
+            // معامل العمر
+            const ageFactor = Math.max(0.5, 1 - (age * 0.015));
+            // معامل الغرف
+            const roomsFactor = 1 + (rooms * 0.025);
+
+            const estimated = area * base * ageFactor * roomsFactor;
+            const low = Math.round(estimated * 0.9);
+            const high = Math.round(estimated * 1.1);
+            const avg = Math.round(estimated);
+
+            const unit = currentLang === 'ar' ? 'ر.س' : 'SAR';
+            document.getElementById('priceRange').textContent = `${low.toLocaleString()} - ${high.toLocaleString()} ${unit}`;
+            document.getElementById('avgPrice').textContent = `${avg.toLocaleString()} ${unit}`;
+
+            // مؤشر الاستثمار
+            const score = Math.min(100, Math.round(65 + (districtClass === 'راقي' ? 20 : districtClass === 'متوسط' ? 10 : 0) - (age * 1.5) + (rooms * 2)));
+            let text, color;
+            if (score >= 80) { text = currentLang === 'ar' ? '✅ ممتاز (A)' : '✅ Excellent (A)'; color = '#25D366'; }
+            else if (score >= 65) { text = currentLang === 'ar' ? '👍 جيد (B)' : '👍 Good (B)'; color = '#f39c12'; }
+            else if (score >= 50) { text = currentLang === 'ar' ? '⚠️ متوسط (C)' : '⚠️ Average (C)'; color = '#e67e22'; }
+            else { text = currentLang === 'ar' ? '👎 ضعيف (D)' : '👎 Weak (D)'; color = '#e74c3c'; }
+            document.getElementById('investmentIndex').textContent = text;
+            document.getElementById('investmentIndex').style.color = color;
+
+            document.getElementById('valuationResult').style.display = 'block';
+        }
+
+        function addNewCity() {
+            const name = prompt(currentLang === 'ar' ? 'أدخل اسم المدينة:' : 'Enter city name:');
+            if (name) {
+                const select = document.getElementById('valCity');
+                const o = document.createElement('option');
+                o.value = name.toLowerCase().replace(/\s+/g, '-');
+                o.textContent = name;
+                select.appendChild(o);
+                select.value = o.value;
+                cityPricePerMeter[o.value] = 3000;
+                updateDistricts();
+                calculateValuation();
             }
-            const text = currentLang === 'ar'
-                ? ('عقد ' + type + '\n\nحررت هذه المسودة بين الطرف الأول «' + one + '» والطرف الثاني «' + two + '» بخصوص: ' + details + '.\nهذه مسودة للمراجعة وليست عقدًا نهائيًا حتى يعتمدها مكتب همة المدينة العقارية.')
-                : (type + ' contract\n\nThis draft is between first party “' + one + '” and second party “' + two + '” regarding: ' + details + '.\nThis is a review draft, not a final contract, until Himmat Al Madinah Real Estate approves it.');
-            document.getElementById('contractPreview').textContent = text.replace(/\\n/g, '\n');
-            document.getElementById('contractResult').classList.add('show');
         }
-        function printContract() {
-            const preview = document.getElementById('contractPreview').textContent;
-            if (!preview) return;
-            const win = window.open('', '_blank');
-            win.document.write('<pre style="font-family:Tahoma,sans-serif;white-space:pre-wrap;padding:24px;">' + preview.replace(/</g, '') + '</pre>');
-            win.document.close();
-            win.print();
+
+        function showValuationDetails() {
+            const city = document.getElementById('valCity').value || '--';
+            const district = document.getElementById('valDistrict').value || '--';
+            const type = document.getElementById('valPropertyType').value || '--';
+            const area = document.getElementById('valArea').value || '--';
+            alert(`${currentLang === 'ar' ? 'تفاصيل التقييم' : 'Details'}:\n${city} - ${district}\n${type} - ${area} m²`);
         }
-        function openAddProperty() { document.getElementById('addPropertyForm').classList.toggle('show'); }
-        function submitNewProperty(event) {
-            event.preventDefault();
-            const type = document.getElementById('newType').value;
-            const city = document.getElementById('newCity').value;
-            const district = document.getElementById('newDistrict').value;
-            const price = document.getElementById('newPrice').value;
-            const msg = encodeURIComponent('طلب إدراج عقار:\n' + type + ' - ' + city + ' - ' + district + ' - ' + price + ' SAR');
-            window.open('https://wa.me/966530500906?text=' + msg, '_blank');
+
+        function shareValuation() {
+            const range = document.getElementById('priceRange').textContent;
+            if (navigator.share) {
+                navigator.share({ title: 'Himmat Al Madinah', text: range, url: location.href }).catch(() => {});
+            } else {
+                alert(range);
+            }
         }
-        function toggleChat() { document.getElementById('chatWindow').classList.toggle('open'); }
+
+        function resetValuation() {
+            ['valCity','valDistrict','valPropertyType','valArea','valRooms','valAge','valDirection','valStreetWidth','valDistrictClass'].forEach(id => document.getElementById(id).value = '');
+            ['valElevator','valPool','valDriverRoom','valFurnished','valCentralAC','valMaidRoom'].forEach(id => document.getElementById(id).checked = false);
+            document.getElementById('valuationResult').style.display = 'none';
+        }
+
+        // ========== إضافة ==========
+        function handleExcelFile(e) {
+            if (e.target.files[0]) alert(`${currentLang === 'ar' ? 'تم اختيار' : 'Selected'}: ${e.target.files[0].name}`);
+        }
+
+        function addPropertyManually() {
+            const district = document.getElementById('addDistrict').value;
+            const price = document.getElementById('addPrice').value;
+            const area = document.getElementById('addArea').value;
+            if (!district || !price || !area) { alert(currentLang === 'ar' ? 'عبئ جميع الحقول' : 'Fill all fields'); return; }
+            alert('✅ ' + (currentLang === 'ar' ? 'تم الإدراج' : 'Added'));
+            document.getElementById('addDistrict').value = '';
+            document.getElementById('addPrice').value = '';
+            document.getElementById('addArea').value = '';
+        }
+
+        // ========== أسئلة ==========
+        function toggleFAQ(el) {
+            const ans = el.querySelector('.faq-answer');
+            const tog = el.querySelector('.faq-toggle');
+            if (ans.style.display === 'none' || !ans.style.display) { ans.style.display = 'block'; tog.textContent = '➖'; }
+            else { ans.style.display = 'none'; tog.textContent = '➕'; }
+        }
+
+        // ========== عقود ==========
+        function showResidentialContract() { document.getElementById('residentialContract').style.display = 'block'; document.getElementById('commercialContract').style.display = 'none'; }
+        function showCommercialContract() { document.getElementById('commercialContract').style.display = 'block'; document.getElementById('residentialContract').style.display = 'none'; }
+
+        function generateResidentialContract() {
+            const l = id => document.getElementById(id).value || '____';
+            const html = `
+                <div style="text-align:center;margin-bottom:10px;"><h4 style="font-size:14px;color:var(--text-heading);">${currentLang === 'ar' ? 'عقد إيجار سكني' : 'Residential Lease'}</h4></div>
+                <hr style="border-color:var(--border-light);margin:8px 0;">
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'المؤجر' : 'Lessor'}:</strong> ${l('resLessorName')} (${l('resLessorID')})</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'المستأجر' : 'Tenant'}:</strong> ${l('resTenantName')} (${l('resTenantID')})</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'العقار' : 'Property'}:</strong> ${l('resCity')} - ${l('resDistrict')} - ${l('resUnitType')} - ${l('resArea')} m²</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'الإيجار' : 'Rent'}:</strong> ${Number(l('resAnnualRent')).toLocaleString()} SAR</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'المدة' : 'Duration'}:</strong> ${l('resDuration')} ${currentLang === 'ar' ? 'شهر' : 'months'}</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'الضمان' : 'Deposit'}:</strong> ${Number(l('resDeposit')).toLocaleString()} SAR</p>
+                <p style="text-align:center;font-size:9px;color:var(--text-muted);margin-top:8px;">${currentLang === 'ar' ? 'مسودة أولية - التوثيق عبر إيجار' : 'Draft - Official via Ejar'}</p>
+            `;
+            const out = document.getElementById('resContractOutput');
+            out.innerHTML = html; out.style.display = 'block';
+        }
+
+        function generateCommercialContract() {
+            const l = id => document.getElementById(id).value || '____';
+            const html = `
+                <div style="text-align:center;margin-bottom:10px;"><h4 style="font-size:14px;color:var(--text-heading);">${currentLang === 'ar' ? 'عقد إيجار تجاري' : 'Commercial Lease'}</h4></div>
+                <hr style="border-color:var(--border-light);margin:8px 0;">
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'المؤجر' : 'Lessor'}:</strong> ${l('comLessorName')} (CR: ${l('comLessorCR')})</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'المستأجر' : 'Tenant'}:</strong> ${l('comTenantName')} (CR: ${l('comTenantCR')})</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'النشاط' : 'Activity'}:</strong> ${l('comActivity')}</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'العقار' : 'Property'}:</strong> ${l('comCity')} - ${l('comDistrict')} - ${l('comArea')} m²</p>
+                <p style="font-size:11px;"><strong>${currentLang === 'ar' ? 'الإيجار' : 'Rent'}:</strong> ${Number(l('comAnnualRent')).toLocaleString()} SAR</p>
+                <p style="text-align:center;font-size:9px;color:var(--text-muted);margin-top:8px;">${currentLang === 'ar' ? 'مسودة أولية - التوثيق عبر إيجار' : 'Draft - Official via Ejar'}</p>
+            `;
+            const out = document.getElementById('comContractOutput');
+            out.innerHTML = html; out.style.display = 'block';
+        }
+
+        // ========== واتساب وشات ==========
+        function openWhatsApp() { window.open('https://wa.me/966530500906', '_blank'); }
+        function openChatBot() { document.getElementById('chatBotWindow').style.display = 'flex'; }
+        function closeChatBot() { document.getElementById('chatBotWindow').style.display = 'none'; }
+
         function sendChatMessage() {
             const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (!message) return;
-            const messagesContainer = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'chat-message user';
-            const userBubble = document.createElement('div');
-            userBubble.className = 'bubble';
-            userBubble.textContent = message;
-            const userAvatar = document.createElement('div');
-            userAvatar.className = 'avatar';
-            userAvatar.innerHTML = '<i class="fas fa-user"></i>';
-            userMsg.appendChild(userBubble);
-            userMsg.appendChild(userAvatar);
-            messagesContainer.appendChild(userMsg);
-            const msg = message.toLowerCase();
-            let response = t('يمكنك اختيار القسم من القائمة أعلاه.', 'Use the menu above to open a section.');
-            let view = '';
-            if (msg.indexOf('عقار') !== -1 || msg.indexOf('propert') !== -1) { response = t('قسم العقارات أمامك الآن.', 'Opening properties.'); view = 'properties'; }
-            else if (msg.indexOf('تقييم') !== -1 || msg.indexOf('valu') !== -1 || msg.indexOf('سعر') !== -1 || msg.indexOf('price') !== -1) { response = t('قسم التقدير أمامك الآن.', 'Opening valuation.'); view = 'valuation'; }
-            else if (msg.indexOf('عقد') !== -1 || msg.indexOf('contract') !== -1) { response = t('قسم العقود أمامك الآن.', 'Opening contracts.'); view = 'contracts'; }
-            else if (msg.indexOf('عرض') !== -1 || msg.indexOf('offer') !== -1) { response = t('قسم العروض أمامك الآن.', 'Opening offers.'); view = 'offers'; }
-            else if (msg.indexOf('تواصل') !== -1 || msg.indexOf('contact') !== -1 || msg.indexOf('واتس') !== -1) { response = t('قسم التواصل أمامك الآن.', 'Opening contact.'); view = 'contact'; }
-            setTimeout(function() {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'chat-message bot';
-                const avatar = document.createElement('div');
-                avatar.className = 'avatar';
-                avatar.innerHTML = '<i class="fas fa-building"></i>';
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.textContent = response;
-                botMsg.appendChild(avatar);
-                botMsg.appendChild(bubble);
-                messagesContainer.appendChild(botMsg);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                if (view) showView(view);
-            }, 300);
+            const msg = input.value.trim();
+            if (!msg) return;
+            const container = document.getElementById('chatMessages');
+            const userDiv = document.createElement('div');
+            userDiv.style.cssText = 'background:var(--gold-main);color:var(--primary-dark);padding:10px 12px;border-radius:12px;margin-bottom:10px;max-width:85%;margin-right:auto;';
+            userDiv.innerHTML = `<p style="font-size:11px;">${msg}</p>`;
+            container.appendChild(userDiv);
             input.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.style.cssText = 'background:rgba(13,27,42,0.08);padding:10px 12px;border-radius:12px;margin-bottom:10px;max-width:85%;margin-left:auto;';
+                let reply = currentLang === 'ar' ? 'شكراً! راسلنا واتساب' : 'Thanks! WhatsApp us';
+                const ml = msg.toLowerCase();
+                if (ml.includes('تقييم') || ml.includes('سعر')) reply = currentLang === 'ar' ? 'استخدم أداة التقييم 🤖' : 'Use valuation tool 🤖';
+                else if (ml.includes('عقد')) reply = currentLang === 'ar' ? 'تفضل صفحة العقود 📄' : 'Visit contracts 📄';
+                botDiv.innerHTML = `<p style="font-size:11px;color:var(--text-heading);">${reply}</p>`;
+                container.appendChild(botDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+            container.scrollTop = container.scrollHeight;
         }
-        document.addEventListener('click', function(event) {
-            const link = event.target.closest('[data-view]');
-            if (!link) return;
-            event.preventDefault();
-            showView(link.getAttribute('data-view'));
+
+        // ========== سياسة وشروط ==========
+        function showPrivacy() { alert(currentLang === 'ar' ? 'سياسة الخصوصية: بياناتكم محمية.' : 'Privacy Policy: Your data is protected.'); }
+        function showTerms() { alert(currentLang === 'ar' ? 'شروط الاستخدام: يرجى القراءة.' : 'Terms of Use: Please read.'); }
+
+        // ========== عروض ==========
+        function showOfferDetails(t) { alert(t); }
+
+        // ========== تهيئة ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            navigateTo('home');
         });
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            header.style.background = window.scrollY > 50 ? 'rgba(11, 26, 51, 0.97)' : 'rgba(11, 26, 51, 0.95)';
-        });
-        document.addEventListener('DOMContentLoaded', applyTranslations);
     </script>
 </body>
 </html>
