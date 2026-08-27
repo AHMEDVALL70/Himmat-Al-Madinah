@@ -396,6 +396,46 @@
         }
 
 
+        /* ===== Mortgage financing calculator ===== */
+        .valuation-tools-layout { display:grid; grid-template-columns:minmax(0,1.18fr) minmax(330px,.82fr); gap:18px; align-items:start; }
+        .valuation-primary-tool { min-width:0; }
+        .mortgage-card { padding:22px !important; position:sticky; top:94px; border:1px solid rgba(212,175,55,.28) !important; background:linear-gradient(145deg,rgba(212,175,55,.09),var(--bg-card) 34%); }
+        .mortgage-heading { display:flex; gap:12px; align-items:flex-start; padding-bottom:17px; border-bottom:1px solid var(--border-color); margin-bottom:17px; }
+        .mortgage-heading .finance-icon { width:43px; height:43px; display:grid; place-items:center; flex:none; color:var(--accent-gold); background:rgba(212,175,55,.13); border:1px solid rgba(212,175,55,.22); border-radius:14px; font-size:19px; }
+        .finance-badge { display:inline-flex; color:var(--accent-gold-bright); font-size:10px; font-weight:800; margin-bottom:5px; }
+        .mortgage-heading h3 { color:var(--text-main); font-size:20px; font-weight:900; margin-bottom:5px; }
+        .mortgage-heading p { color:var(--text-muted); font-size:11px; line-height:1.7; }
+        .finance-fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .finance-field.full { grid-column:1/-1; }
+        .finance-field label { display:block; color:var(--text-muted); font-size:11px; font-weight:800; margin-bottom:6px; }
+        .finance-input-wrap { position:relative; }
+        .finance-input-wrap .form-input { padding-inline-end:50px; }
+        .finance-input-unit { position:absolute; inset-inline-end:13px; top:50%; transform:translateY(-50%); color:var(--accent-gold); font-size:11px; font-weight:800; pointer-events:none; }
+        .finance-field input[type=number] { appearance:textfield; }
+        .finance-field input[type=number]::-webkit-inner-spin-button, .finance-field input[type=number]::-webkit-outer-spin-button { appearance:none; margin:0; }
+        .finance-helper { display:block; color:var(--text-muted); font-size:10px; margin-top:5px; line-height:1.5; }
+        .finance-use-valuation { margin-top:8px; min-height:34px !important; font-size:10px !important; }
+        .finance-note { margin-top:14px; padding:10px 12px; color:var(--text-muted); font-size:10px; line-height:1.7; background:rgba(9,13,22,.38); border:1px solid var(--border-color); border-radius:12px; }
+        .finance-results { margin-top:16px; padding-top:16px; border-top:1px solid var(--border-color); }
+        .finance-main-result { text-align:center; padding:13px 10px; background:rgba(212,175,55,.1); border:1px solid rgba(212,175,55,.25); border-radius:15px; }
+        .finance-main-result span { display:block; color:var(--text-muted); font-size:11px; font-weight:700; margin-bottom:4px; }
+        .finance-main-result strong { display:block; color:var(--accent-gold-bright); font-size:27px; line-height:1.3; font-weight:900; }
+        .finance-main-result small { display:block; color:var(--text-muted); font-size:10px; margin-top:4px; }
+        .finance-stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
+        .finance-stat { min-height:66px; padding:9px 6px; text-align:center; background:var(--bg-input); border:1px solid var(--border-color); border-radius:12px; }
+        .finance-stat span { display:block; color:var(--text-muted); font-size:9px; margin-bottom:5px; line-height:1.35; }
+        .finance-stat strong { display:block; color:var(--text-main); font-size:12px; line-height:1.3; }
+        .finance-breakdown { margin-top:15px; }
+        .breakdown-row { display:flex; justify-content:space-between; gap:10px; color:var(--text-muted); font-size:10px; margin-top:9px; }
+        .breakdown-row strong { color:var(--text-main); font-size:11px; }
+        .breakdown-bar { height:7px; margin-top:5px; overflow:hidden; border-radius:99px; background:var(--bg-input); border:1px solid var(--border-color); }
+        .breakdown-bar span { display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,var(--accent-gold-dark),var(--accent-gold-bright)); transition:width .2s ease; }
+        .breakdown-bar.financed span { background:linear-gradient(90deg,#5578a8,#8faed1); }
+        .breakdown-bar.profit span { background:linear-gradient(90deg,#b8794b,#e7b36a); }
+        .finance-disclaimer { margin-top:13px; color:var(--text-muted); font-size:9px; line-height:1.7; text-align:center; }
+        @media (max-width:900px) { .valuation-tools-layout { grid-template-columns:1fr; } .mortgage-card { position:relative; top:auto; } }
+        @media (max-width:520px) { .finance-fields { grid-template-columns:1fr; } .finance-field.full { grid-column:auto; } .finance-stat-grid { grid-template-columns:1fr 1fr 1fr; } .mortgage-card { padding:18px !important; } }
+
         /* ===== Global visual system ===== */
         :root { --content-width: 1180px; --section-gap: 26px; --ease-out: cubic-bezier(.23,1,.32,1); }
         body { background:radial-gradient(circle at 88% -10%, rgba(212,175,55,.13), transparent 28%), radial-gradient(circle at 8% 45%, rgba(28,52,92,.18), transparent 25%), var(--bg-primary); }
@@ -610,6 +650,8 @@
                 </div>
             </div>
 
+            <div class="valuation-tools-layout">
+                <div class="valuation-primary-tool">
             <div class="card wizard-card">
                 <div class="wizard-head">
                     <div>
@@ -751,6 +793,56 @@
                 <p class="valuation-disclaimer" data-i18n="valuation_disclaimer">النتيجة للاسترشاد العام ولا تغني عن التقييم العقاري الرسمي.</p>
             </div>
         </div>
+        <section class="card mortgage-card" id="mortgageCalculator">
+            <div class="mortgage-heading">
+                <div class="finance-icon"><i class="fa-solid fa-calculator" aria-hidden="true"></i></div>
+                <div>
+                    <span class="finance-badge" data-i18n="finance_badge">✦ تقدير تمويلي مبدئي</span>
+                    <h3 data-i18n="finance_title">حاسبة التمويل العقاري</h3>
+                    <p data-i18n="finance_subtitle">قدّر القسط الشهري ومبلغ التمويل بجانب نتيجة التقييم.</p>
+                </div>
+            </div>
+            <div class="finance-fields">
+                <div class="finance-field full">
+                    <label for="financePropertyPrice">🏠 <span data-i18n="finance_property_price">قيمة العقار</span></label>
+                    <div class="finance-input-wrap"><input id="financePropertyPrice" class="form-input" type="number" min="10000" step="10000" value="1500000" oninput="calculateMortgage()"><span class="finance-input-unit" data-i18n="finance_currency">ر.س</span></div>
+                    <button type="button" class="btn btn-outline btn-sm finance-use-valuation" onclick="useValuationPrice()" data-i18n="finance_use_valuation">↔ استخدام نتيجة التقييم</button>
+                </div>
+                <div class="finance-field">
+                    <label for="financeDownPayment">💰 <span data-i18n="finance_down_payment">الدفعة الأولى</span></label>
+                    <div class="finance-input-wrap"><input id="financeDownPayment" class="form-input" type="number" min="0" max="100" step="1" value="20" oninput="calculateMortgage()"><span class="finance-input-unit">%</span></div>
+                </div>
+                <div class="finance-field">
+                    <label for="financeRate">📊 <span data-i18n="finance_rate">نسبة الربح السنوية</span></label>
+                    <div class="finance-input-wrap"><input id="financeRate" class="form-input" type="number" min="0" max="30" step="0.1" value="5.5" oninput="calculateMortgage()"><span class="finance-input-unit">%</span></div>
+                    <small class="finance-helper" data-i18n="finance_rate_hint">أدخل النسبة التقديرية من جهة التمويل.</small>
+                </div>
+                <div class="finance-field full">
+                    <label for="financeTerm">🗓️ <span data-i18n="finance_term">مدة التمويل</span></label>
+                    <div class="finance-input-wrap"><input id="financeTerm" class="form-input" type="number" min="1" max="30" step="1" value="25" oninput="calculateMortgage()"><span class="finance-input-unit" data-i18n="finance_years">سنة</span></div>
+                </div>
+            </div>
+            <div class="finance-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> <span data-i18n="finance_note">الحسبة تقديرية للتخطيط الأولي، وقد تختلف الشروط والقسط الفعلي من جهة تمويل إلى أخرى.</span></div>
+            <div class="finance-results">
+                <div class="finance-main-result"><span data-i18n="finance_monthly_payment">القسط الشهري التقديري</span><strong id="monthlyPayment">--</strong><small data-i18n="finance_payment_note">قبل الرسوم والتأمين وأي التزامات إضافية</small></div>
+                <div class="finance-stat-grid">
+                    <div class="finance-stat"><span data-i18n="finance_loan_amount">مبلغ التمويل</span><strong id="loanAmountValue">--</strong></div>
+                    <div class="finance-stat"><span data-i18n="finance_total_profit">إجمالي الأرباح</span><strong id="totalProfitValue">--</strong></div>
+                    <div class="finance-stat"><span data-i18n="finance_total_payment">إجمالي السداد</span><strong id="totalPaymentValue">--</strong></div>
+                </div>
+                <div class="finance-breakdown">
+                    <div class="breakdown-row"><span data-i18n="finance_down_payment_label">الدفعة الأولى</span><strong id="downPaymentValue">--</strong></div>
+                    <div class="breakdown-bar"><span id="downPaymentBar"></span></div>
+                    <div class="breakdown-row"><span data-i18n="finance_financed_label">النسبة الممولة</span><strong id="financedValue">--</strong></div>
+                    <div class="breakdown-bar financed"><span id="financedBar"></span></div>
+                    <div class="breakdown-row"><span data-i18n="finance_profit_label">الأرباح من إجمالي السداد</span><strong id="profitShareValue">--</strong></div>
+                    <div class="breakdown-bar profit"><span id="profitBar"></span></div>
+                </div>
+            </div>
+            <p class="finance-disclaimer" data-i18n="finance_disclaimer">هذه الحاسبة تعليمية وليست عرضاً تمويلياً أو استشارة مالية. تحقق من الشروط النهائية مع الجهة الممولة.</p>
+        </section>
+        </div>
+    </div>
     </div>
 
     <div id="page-add-property" class="page-content">
@@ -1053,6 +1145,7 @@
                 'btn_start': '🚀 ابدأ التقييم', 'btn_about': '🏢 تعرف علينا',
                 'stat_cities': 'مدن', 'stat_districts': 'حي', 'stat_rating': 'تقييمات', 'stat_types': 'نوع عقار',
                 'valuation_title': 'التقييم العقاري الذكي', 'valuation_subtitle': 'أدخل بيانات العقار لتقدير القيمة السوقية',
+                'finance_badge': '✦ تقدير تمويلي مبدئي', 'finance_title': 'حاسبة التمويل العقاري', 'finance_subtitle': 'قدّر القسط الشهري ومبلغ التمويل بجانب نتيجة التقييم.', 'finance_property_price': 'قيمة العقار', 'finance_currency': 'ر.س', 'finance_use_valuation': '↔ استخدام نتيجة التقييم', 'finance_down_payment': 'الدفعة الأولى', 'finance_rate': 'نسبة الربح السنوية', 'finance_term': 'مدة التمويل', 'finance_years': 'سنة', 'finance_rate_hint': 'أدخل النسبة التقديرية من جهة التمويل.', 'finance_note': 'الحسبة تقديرية للتخطيط الأولي، وقد تختلف الشروط والقسط الفعلي من جهة تمويل إلى أخرى.', 'finance_monthly_payment': 'القسط الشهري التقديري', 'finance_payment_note': 'قبل الرسوم والتأمين وأي التزامات إضافية', 'finance_loan_amount': 'مبلغ التمويل', 'finance_total_profit': 'إجمالي الأرباح', 'finance_total_payment': 'إجمالي السداد', 'finance_down_payment_label': 'الدفعة الأولى', 'finance_financed_label': 'النسبة الممولة', 'finance_profit_label': 'الأرباح من إجمالي السداد', 'finance_disclaimer': 'هذه الحاسبة تعليمية وليست عرضاً تمويلياً أو استشارة مالية. تحقق من الشروط النهائية مع الجهة الممولة.',
                 'city': 'المدينة', 'district': 'الحي', 'property_type': 'نوع العقار', 'area': 'المساحة (م²)',
                 'rooms': 'عدد الغرف', 'age': 'العمر', 'direction': 'الواجهة', 'street_width': 'عرض الشارع (م)',
                 'district_class': 'تصنيف الحي', 'residential_ratio': 'نسبة سكنية',
@@ -1117,6 +1210,7 @@
                 'btn_start': '🚀 Start Valuation', 'btn_about': '🏢 About Us',
                 'stat_cities': 'Cities', 'stat_districts': 'Districts', 'stat_rating': 'Reviews', 'stat_types': 'Property Types',
                 'valuation_title': 'Smart Valuation', 'valuation_subtitle': 'Enter property data for valuation',
+                'finance_badge': '✦ Preliminary financing estimate', 'finance_title': 'Mortgage Financing Calculator', 'finance_subtitle': 'Estimate the monthly payment and financing amount beside your valuation.', 'finance_property_price': 'Property price', 'finance_currency': 'SAR', 'finance_use_valuation': '↔ Use valuation result', 'finance_down_payment': 'Down payment', 'finance_rate': 'Annual profit rate', 'finance_term': 'Financing term', 'finance_years': 'years', 'finance_rate_hint': 'Enter an estimated rate from the financing provider.', 'finance_note': 'This estimate is for initial planning. Actual terms and payments vary by financing provider.', 'finance_monthly_payment': 'Estimated monthly payment', 'finance_payment_note': 'Before fees, insurance, and other obligations', 'finance_loan_amount': 'Financing amount', 'finance_total_profit': 'Total profit', 'finance_total_payment': 'Total repayment', 'finance_down_payment_label': 'Down payment', 'finance_financed_label': 'Financed percentage', 'finance_profit_label': 'Profit as share of repayment', 'finance_disclaimer': 'This educational calculator is not a financing offer or financial advice. Confirm final terms with the financing provider.',
                 'city': 'City', 'district': 'District', 'property_type': 'Property Type', 'area': 'Area (m²)',
                 'rooms': 'Rooms', 'age': 'Age', 'direction': 'Direction', 'street_width': 'Street Width (m)',
                 'district_class': 'District Class', 'residential_ratio': 'Residential Ratio',
@@ -1295,6 +1389,7 @@
             syncLocationSearchInputs();
             renderLocationOptions('city', false);
             renderLocationOptions('district', false);
+            calculateMortgage();
         }
 
         function toggleTheme() {
@@ -1679,6 +1774,51 @@
             if(result) result.style.display = wizardSubmitted ? 'block' : 'none';
         }
 
+        function useValuationPrice() {
+            const avgText = document.getElementById('avgPrice')?.textContent || '';
+            const numeric = Number(avgText.replace(/[^0-9.]/g, ''));
+            if (!numeric || numeric <= 0) {
+                alert(currentLang === 'ar' ? 'أكمل بيانات التقييم أولاً للحصول على قيمة تقديرية.' : 'Complete the valuation details first to get an estimated price.');
+                return;
+            }
+            const priceInput = document.getElementById('financePropertyPrice');
+            if (priceInput) priceInput.value = Math.round(numeric);
+            calculateMortgage();
+        }
+
+        function formatFinanceMoney(value) {
+            const locale = currentLang === 'ar' ? 'ar-SA' : 'en-US';
+            const unit = currentLang === 'ar' ? 'ر.س' : 'SAR';
+            return Math.round(Math.max(0, Number(value) || 0)).toLocaleString(locale) + ' ' + unit;
+        }
+
+        function calculateMortgage() {
+            const price = Math.max(0, Number(document.getElementById('financePropertyPrice')?.value) || 0);
+            const downPercent = Math.min(100, Math.max(0, Number(document.getElementById('financeDownPayment')?.value) || 0));
+            const annualRate = Math.min(30, Math.max(0, Number(document.getElementById('financeRate')?.value) || 0));
+            const years = Math.min(30, Math.max(1, Number(document.getElementById('financeTerm')?.value) || 1));
+            const downPayment = price * (downPercent / 100);
+            const principal = Math.max(0, price - downPayment);
+            const months = years * 12;
+            const monthlyRate = annualRate / 100 / 12;
+            const monthlyPayment = principal === 0 ? 0 : monthlyRate === 0 ? principal / months : principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            const totalPayment = monthlyPayment * months;
+            const totalProfit = Math.max(0, totalPayment - principal);
+            const profitShare = totalPayment > 0 ? (totalProfit / totalPayment) * 100 : 0;
+            const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+            const setWidth = (id, value) => { const el = document.getElementById(id); if (el) el.style.width = Math.max(0, Math.min(100, value)) + '%'; };
+            setText('monthlyPayment', formatFinanceMoney(monthlyPayment));
+            setText('loanAmountValue', formatFinanceMoney(principal));
+            setText('totalProfitValue', formatFinanceMoney(totalProfit));
+            setText('totalPaymentValue', formatFinanceMoney(totalPayment));
+            setText('downPaymentValue', formatFinanceMoney(downPayment));
+            setText('financedValue', Math.round(100 - downPercent) + '%');
+            setText('profitShareValue', Math.round(profitShare) + '%');
+            setWidth('downPaymentBar', downPercent);
+            setWidth('financedBar', 100 - downPercent);
+            setWidth('profitBar', profitShare);
+        }
+
         function resetValuation() {
             const area = document.getElementById('valArea'); if(area) area.value = 250;
             const rooms = document.getElementById('valRooms'); if(rooms) rooms.value = 4;
@@ -1694,6 +1834,7 @@
             ['valPool','valDriverRoom','valFurnished','valGarage','valSecurity'].forEach(id => { const el = document.getElementById(id); if(el){el.checked=false; el.closest('label')?.classList.remove('active');} });
             updateDistricts();
             wizardReset();
+            calculateMortgage();
         }
 
         function addNewCity() {
@@ -1887,6 +2028,7 @@
                 if(toggle) toggle.textContent = '☀️';
             }
             animateCounters();
+            calculateMortgage();
             navigateTo('home');
             updateAddDistricts();
             
