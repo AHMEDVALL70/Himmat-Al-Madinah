@@ -87,12 +87,13 @@
             font-family: 'Cairo', 'Segoe UI', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.8;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 60px;
+            padding-bottom: 0;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 15px;
         }
 
         .navbar-modern {
@@ -102,193 +103,122 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px) saturate(1.3);
             border-radius: var(--radius-full);
-            padding: 6px 18px;
+            padding: 8px 20px;
             z-index: 1000;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
         }
-        .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-        .navbar-brand-modern { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; cursor: pointer; }
-        .navbar-logo { width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 0 8px var(--gold-glow)); }
-        .navbar-brand-ar { font-size: 12px; font-weight: 900; color: var(--text-main); }
+        .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .navbar-brand-modern { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; cursor: pointer; }
+        .navbar-logo { width: 45px; height: 45px; object-fit: contain; filter: drop-shadow(0 0 8px var(--gold-glow)); }
+        .navbar-brand-ar { font-size: 16px; font-weight: 900; color: var(--text-main); }
         .navbar-brand-ar .gold { color: var(--accent-gold); }
-        .navbar-brand-en { font-size: 6px; color: var(--text-muted); letter-spacing: 1px; }
+        .navbar-brand-en { font-size: 8px; color: var(--text-muted); letter-spacing: 1px; }
 
-        .nav-links-modern { display: flex; align-items: center; gap: 1px; list-style: none; flex: 1; justify-content: center; }
+        .nav-links-modern { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
         .nav-links-modern a {
-            color: var(--text-muted); text-decoration: none; font-size: 10px; font-weight: 700;
-            padding: 6px 10px; border-radius: var(--radius-full); transition: var(--transition);
-            display: flex; align-items: center; gap: 4px; cursor: pointer;
+            color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 700;
+            padding: 8px 12px; border-radius: var(--radius-full); transition: var(--transition);
+            display: flex; align-items: center; gap: 5px; cursor: pointer;
         }
         .nav-links-modern a:hover { color: var(--text-main); background: rgba(212,175,55,0.08); }
         .nav-links-modern a.active { color: var(--accent-gold); background: rgba(212,175,55,0.12); }
-        .nav-links-modern a svg { width: 14px; height: 14px; }
+        .nav-links-modern a svg { width: 16px; height: 16px; }
 
-        .lang-switcher-modern { display: flex; gap: 2px; background: var(--bg-input); border-radius: var(--radius-full); padding: 2px; border: 1px solid var(--border-color); }
-        .lang-btn-modern { padding: 4px 9px; border: none; border-radius: var(--radius-full); background: transparent; color: var(--text-muted); font-size: 8px; font-weight: 700; cursor: pointer; font-family: 'Cairo', sans-serif; transition: var(--transition-fast); }
+        .lang-switcher-modern { display: flex; gap: 2px; background: var(--bg-input); border-radius: var(--radius-full); padding: 3px; border: 1px solid var(--border-color); }
+        .lang-btn-modern { padding: 6px 12px; border: none; border-radius: var(--radius-full); background: transparent; color: var(--text-muted); font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'Cairo', sans-serif; transition: var(--transition-fast); }
         .lang-btn-modern.active { background: var(--accent-gold); color: var(--text-on-gold); }
-        .theme-toggle-btn { padding: 4px 7px; border: none; border-radius: var(--radius-full); background: transparent; color: var(--text-muted); font-size: 13px; cursor: pointer; }
-
-        /* ========== الشريط السفلي - مخفي افتراضياً ========== */
-        .navbar-bottom-mobile {
-    position: fixed; bottom: 70px; left: 0; right: 0;
-    margin: 0 auto;
-    width: 95%; max-width: 650px;
-    background: var(--bg-card);
-    border-radius: var(--radius-full);
-    z-index: 1000;
-    border: 1px solid var(--border-color);
-    display: none !important; /* مخفي نهائياً */
-    justify-content: space-around; align-items: center;
-    height: 45px; padding: 0 12px;
-    box-shadow: var(--shadow-lg);
-    transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s ease !important;
-    will-change: transform;
-}
-
-.navbar-bottom-mobile.visible {
-    display: flex !important; /* يظهر فقط مع هذه الكلاس */
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-        .navbar-bottom-mobile.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .navbar-bottom-mobile a { display: flex; align-items: center; justify-content: center; text-decoration: none; padding: 5px 8px; border-radius: var(--radius-full); transition: var(--transition); cursor: pointer; position: relative; }
-        .navbar-bottom-mobile a svg { width: 16px; height: 16px; color: var(--text-muted); }
-        .navbar-bottom-mobile a.active { background: rgba(212,175,55,0.12); }
-        .navbar-bottom-mobile a.active svg { color: var(--accent-gold); }
-
-        /* ========== زر تبديل الشريط ========== */
-      .nav-toggle-btn {
-    position: fixed;
-    bottom: 75px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: var(--bg-card);
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
-    cursor: pointer;
-    z-index: 1001;
-    display: none; /* مخفي افتراضياً */
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-}
-
-.nav-toggle-btn.visible {
-    display: flex; /* يظهر مع الكلاس */
-}
-        .nav-toggle-btn.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .nav-toggle-btn:hover {
-            background: rgba(212,175,55,0.15);
-            transform: translateX(-50%) scale(1.1);
-        }
+        .theme-toggle-btn { padding: 6px 10px; border: none; border-radius: var(--radius-full); background: transparent; color: var(--text-muted); font-size: 16px; cursor: pointer; }
 
         .main-footer {
-            position: fixed; bottom: 0; left: 0; right: 0;
+            position: relative;
             background: var(--bg-card);
             color: var(--text-main);
             text-align: center;
             border-top: 1px solid var(--border-color);
-            z-index: 999;
-            padding: 15px 20px 0;
-            transition: transform 0.4s ease;
-        }
-        .main-footer.hidden {
-            transform: translateY(100%);
+            padding: 25px 20px;
+            margin-top: 40px;
+            width: 100%;
         }
         .footer-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-        .footer-logo img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; margin-bottom: 8px; }
-        .footer-title { font-size: 18px; font-weight: 900; color: var(--text-main); margin-bottom: 6px; }
-        .footer-description { font-size: 11px; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; max-width: 500px; }
-        .footer-socials { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+        .footer-logo img { width: 60px; height: 60px; border-radius: 12px; object-fit: cover; margin-bottom: 10px; }
+        .footer-title { font-size: 22px; font-weight: 900; color: var(--text-main); margin-bottom: 8px; }
+        .footer-description { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 15px; max-width: 500px; }
+        .footer-socials { display: flex; justify-content: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
         .social-icon {
-            width: 36px; height: 36px;
+            width: 45px; height: 45px;
             background: var(--bg-input);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); font-size: 14px;
+            color: var(--accent-gold); font-size: 20px;
             text-decoration: none; transition: var(--transition-fast);
         }
-        .social-icon:hover { background: rgba(212,175,55,0.15); color: var(--accent-gold); border-color: var(--accent-gold); transform: translateY(-2px); }
-        .footer-bottom { border-top: 1px solid var(--border-color); padding: 10px; font-size: 10px; color: var(--text-muted); }
+        .social-icon:hover { background: rgba(212,175,55,0.15); color: var(--accent-gold-bright); border-color: var(--accent-gold); transform: translateY(-3px); box-shadow: 0 5px 15px var(--gold-glow); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 15px; font-size: 13px; color: var(--text-muted); width: 100%; text-align: center; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 12px; cursor: pointer; transition: var(--transition); border: none; border-radius: var(--radius-full); padding: 10px 22px; white-space: nowrap; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 14px; cursor: pointer; transition: var(--transition); border: none; border-radius: var(--radius-full); padding: 12px 26px; white-space: nowrap; }
         .btn-primary { background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark)); color: var(--text-on-gold); box-shadow: 0 4px 15px var(--gold-glow), inset 0 1px 0 rgba(255,255,255,0.4); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--gold-glow-strong); }
         .btn-outline { background: transparent; color: var(--text-main); border: 1.5px solid var(--border-color); }
         .btn-outline:hover { border-color: var(--accent-gold); background: rgba(212,175,55,0.06); }
-        .btn-sm { padding: 7px 15px; font-size: 10px; }
-        .btn-lg { padding: 12px 26px; font-size: 13px; }
+        .btn-sm { padding: 9px 18px; font-size: 13px; }
+        .btn-lg { padding: 14px 30px; font-size: 15px; }
         .btn-block { width: 100%; justify-content: center; }
 
-        .page-content { display: none; min-height: 100vh; padding: 85px 20px 100px; max-width: 900px; margin: 0 auto; }
+        .page-content { display: none; min-height: 100vh; padding: 90px 20px 40px; max-width: 900px; margin: 0 auto; }
         .page-content.active { display: block; }
-        @media (min-width: 1025px) { .page-content { height: 100vh; overflow-y: auto; } body { overflow: hidden; } }
-        .page-header { text-align: center; margin-bottom: 14px; }
-        .page-header h2 { font-size: 22px; font-weight: 900; color: var(--text-main); }
+        .page-header { text-align: center; margin-bottom: 20px; }
+        .page-header h2 { font-size: 28px; font-weight: 900; color: var(--text-main); }
         .page-header h2 .gold-underline { color: var(--accent-gold); }
-        .page-header p { color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+        .page-header p { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
 
         .card, .form-container, .calculator-card, .contact-info-card, .contact-form-3d, .hero-card, .about-card {
             background: var(--bg-card) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: var(--radius-lg) !important;
-            padding: 20px !important;
+            padding: 22px !important;
             box-shadow: var(--shadow-soft) !important;
             transition: var(--transition);
         }
         .card:hover { border-color: var(--accent-gold); }
 
-        .form-label { display: block; font-weight: 700; margin-bottom: 4px; color: var(--text-main); font-size: 10px; }
+        .form-label { display: block; font-weight: 700; margin-bottom: 6px; color: var(--text-main); font-size: 13px; }
         .form-input, .form-select, select, input, textarea {
             width: 100%;
-            height: 38px !important;
-            padding: 6px 12px !important;
+            height: 42px !important;
+            padding: 8px 14px !important;
             background: var(--bg-input) !important;
             color: var(--text-main) !important;
             border: 1px solid var(--border-color) !important;
             border-radius: 8px !important;
-            font-size: 13px !important;
+            font-size: 14px !important;
             box-shadow: var(--input-shadow-3d) !important;
             transition: all 0.25s ease;
             font-family: 'Cairo', sans-serif;
         }
-        textarea { height: auto !important; min-height: 60px !important; resize: vertical; }
+        textarea { height: auto !important; min-height: 70px !important; resize: vertical; }
         .form-input:focus, .form-select:focus, select:focus, input:focus, textarea:focus {
             border-color: var(--accent-gold) !important;
             box-shadow: inset 1px 1px 3px rgba(0,0,0,0.9), 0 0 10px var(--gold-glow) !important;
             outline: none;
         }
-        .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+        .form-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
         .checkbox-group label, .checkbox-chip {
-            font-size: 9px; display: flex; align-items: center; gap: 4px;
+            font-size: 12px; display: flex; align-items: center; gap: 5px;
             cursor: pointer; color: var(--text-muted); font-weight: 600;
-            padding: 5px 10px; border-radius: var(--radius-full);
+            padding: 7px 14px; border-radius: var(--radius-full);
             background: var(--bg-input); border: 1px solid var(--border-color);
             transition: var(--transition-fast);
         }
         .checkbox-group label.active { background: rgba(212,175,55,0.15); color: var(--accent-gold); border-color: var(--accent-gold); }
-        .checkbox-group label input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--accent-gold); }
+        .checkbox-group label input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent-gold); }
 
-        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 85px 15px 100px; }
-        .hero-container { max-width: 900px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center; margin: 0 auto; }
-        .hero-brand { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .hero-section { min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 90px 15px 40px; }
+        .hero-container { max-width: 900px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; margin: 0 auto; }
+        .hero-brand { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .hero-logo-wrapper { display: flex; justify-content: center; align-items: center; max-width: 400px; }
         .hero-logo-card {
             width: 100%; max-width: 380px;
@@ -301,59 +231,59 @@
         }
         .hero-logo-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px var(--gold-glow-strong); }
         .full-logo-img { width: 100%; height: auto; display: block; object-fit: cover; }
-        .badge-certified { background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.4); color: var(--accent-gold); padding: 5px 14px; border-radius: 20px; font-size: 9px; font-weight: 700; }
-        .hero-title { font-size: clamp(20px, 3vw, 32px); font-weight: 900; color: var(--text-main); line-height: 1.25; }
+        .badge-certified { background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.4); color: var(--accent-gold); padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+        .hero-title { font-size: clamp(26px, 4vw, 38px); font-weight: 900; color: var(--text-main); line-height: 1.3; }
         .hero-title .gold { color: var(--accent-gold); text-shadow: 0 0 15px var(--gold-glow); }
-        .hero-description { font-size: 11px; color: var(--text-muted); max-width: 380px; line-height: 1.8; }
-        .hero-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
-        .stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; width: 100%; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px; text-align: center; box-shadow: var(--box-shadow-3d); transition: var(--transition); }
-        .stat-number { font-size: 19px; font-weight: 900; color: var(--accent-gold); display: block; }
-        .stat-label { font-size: 8px; color: var(--text-muted); }
+        .hero-description { font-size: 15px; color: var(--text-muted); max-width: 380px; line-height: 1.8; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+        .stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; width: 100%; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 15px; text-align: center; box-shadow: var(--box-shadow-3d); transition: var(--transition); }
+        .stat-number { font-size: 24px; font-weight: 900; color: var(--accent-gold); display: block; }
+        .stat-label { font-size: 12px; color: var(--text-muted); }
 
-        .valuation-result { display: none; border: 2px solid var(--accent-gold); box-shadow: var(--shadow-soft), 0 0 20px var(--gold-glow); margin-top: 12px; padding: 15px; background: var(--bg-card); border-radius: var(--radius-lg); }
-        .valuation-result .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .valuation-result .result-item { text-align: center; padding: 9px; background: var(--bg-input); border-radius: var(--radius-sm); }
-        .valuation-result .result-item .label { font-size: 8px; color: var(--text-muted); font-weight: 700; }
-        .valuation-result .result-item .value { font-size: 12px; font-weight: 900; color: var(--accent-gold); margin-top: 2px; }
-        .confidence-bar { width: 100%; height: 6px; background: var(--bg-input); border-radius: 10px; overflow: hidden; margin-top: 5px; }
+        .valuation-result { display: none; border: 2px solid var(--accent-gold); box-shadow: var(--shadow-soft), 0 0 20px var(--gold-glow); margin-top: 15px; padding: 18px; background: var(--bg-card); border-radius: var(--radius-lg); }
+        .valuation-result .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .valuation-result .result-item { text-align: center; padding: 12px; background: var(--bg-input); border-radius: var(--radius-sm); }
+        .valuation-result .result-item .label { font-size: 11px; color: var(--text-muted); font-weight: 700; }
+        .valuation-result .result-item .value { font-size: 15px; font-weight: 900; color: var(--accent-gold); margin-top: 3px; }
+        .confidence-bar { width: 100%; height: 8px; background: var(--bg-input); border-radius: 10px; overflow: hidden; margin-top: 6px; }
         .confidence-fill { height: 100%; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold-bright)); border-radius: 10px; transition: width 0.5s ease; }
 
-        .floating-buttons { position: fixed; left: 12px; bottom: 130px; display: flex; flex-direction: column; gap: 7px; z-index: 998; }
-        .floating-btn { width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); box-shadow: var(--shadow-lg); }
-        .floating-btn svg { width: 20px; height: 20px; }
+        .floating-buttons { position: fixed; left: 15px; bottom: 25px; display: flex; flex-direction: column; gap: 10px; z-index: 998; }
+        .floating-btn { width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); box-shadow: var(--shadow-lg); }
+        .floating-btn svg { width: 24px; height: 24px; }
         .floating-whatsapp { background: var(--accent-gold); }
         .floating-whatsapp svg { fill: var(--text-on-gold); }
         .floating-chat { background: var(--bg-input); border: 2px solid var(--accent-gold); }
         .floating-chat svg { fill: var(--accent-gold); }
 
-        .contact-container { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; max-width: 900px !important; margin: 0 auto !important; }
-        .contact-socials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px; }
+        .contact-container { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; max-width: 900px !important; margin: 0 auto !important; }
+        .contact-socials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
         .contact-socials-grid a {
             background: var(--bg-input);
             border: 1px solid var(--border-color);
             color: var(--accent-gold) !important;
-            padding: 8px; border-radius: var(--radius-sm);
-            text-decoration: none; font-size: 11px;
+            padding: 12px; border-radius: var(--radius-sm);
+            text-decoration: none; font-size: 14px;
             text-align: center; transition: var(--transition-fast);
-            display: flex; align-items: center; justify-content: center; gap: 6px;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
         }
         .contact-socials-grid a:hover { background: rgba(212,175,55,0.15); transform: translateY(-2px); border-color: var(--accent-gold); }
 
-        .about-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .license-badge { display: inline-block; margin-top: 10px; background: rgba(212,175,55,0.15); color: var(--accent-gold); padding: 5px 14px; border-radius: 20px; font-size: 10px; font-weight: 700; border: 1px solid rgba(212,175,55,0.4); cursor: pointer; }
+        .about-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .license-badge { display: inline-block; margin-top: 12px; background: rgba(212,175,55,0.15); color: var(--accent-gold); padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; border: 1px solid rgba(212,175,55,0.4); cursor: pointer; }
         .license-badge:hover { background: rgba(212,175,55,0.25); }
 
-        .chat-window { position: fixed; bottom: 130px; left: 12px; width: 300px; max-width: 90vw; height: 380px; background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 2px solid var(--accent-gold); display: none; flex-direction: column; z-index: 997; overflow: hidden; }
+        .chat-window { position: fixed; bottom: 85px; left: 15px; width: 320px; max-width: 90vw; height: 400px; background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 2px solid var(--accent-gold); display: none; flex-direction: column; z-index: 997; overflow: hidden; }
         .chat-window.active { display: flex; }
         .contract-print-window { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .contract-print-window.active { display: flex; }
-        .contract-print-content { background: var(--bg-card); border-radius: var(--radius-lg); max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 20px; border: 2px solid var(--accent-gold); box-shadow: var(--shadow-xl); }
-        .contract-section { margin-bottom: 10px; padding: 8px; background: var(--bg-input); border-radius: 8px; border: 1px solid var(--border-color); }
+        .contract-print-content { background: var(--bg-card); border-radius: var(--radius-lg); max-width: 800px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 25px; border: 2px solid var(--accent-gold); box-shadow: var(--shadow-xl); }
+        .contract-section { margin-bottom: 12px; padding: 10px; background: var(--bg-input); border-radius: 8px; border: 1px solid var(--border-color); }
 
         @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 25px; }
             .hero-content { align-items: center; }
             .nav-links-modern a span.nav-label { display: none; }
             .form-grid { grid-template-columns: repeat(2, 1fr); }
@@ -362,22 +292,18 @@
         }
         @media (max-width: 768px) {
             .hero-logo-card { max-width: 280px; }
-            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-            .stat-number { font-size: 16px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .stat-number { font-size: 20px; }
             .form-grid { grid-template-columns: 1fr; }
-            .page-content { padding: 80px 15px 80px !important; }
-            .card, .contact-info-card, .contact-form-3d { padding: 15px !important; }
+            .page-content { padding: 85px 15px 30px !important; }
+            .card, .contact-info-card, .contact-form-3d { padding: 18px !important; }
             select, input, textarea { font-size: 16px !important; }
-            .navbar-bottom-mobile { bottom: 60px; width: 96%; }
-            .nav-toggle-btn { bottom: 65px; }
-            .footer-description { font-size: 10px; }
-            .social-icon { width: 32px; height: 32px; font-size: 12px; }
-            .lang-switcher-modern { display: flex !important; gap: 1px; padding: 1px; }
-            .lang-btn-modern { padding: 4px 8px !important; font-size: 7px !important; }
-            .btn { min-height: 40px !important; font-size: 11px !important; }
-            .page-header h2 { font-size: 18px !important; }
-            .navbar-bottom-mobile a::after { content: attr(data-page); position: absolute; bottom: -12px; font-size: 6px; color: var(--text-muted); white-space: nowrap; }
-            .navbar-bottom-mobile a { position: relative; overflow: visible; }
+            .footer-description { font-size: 12px; }
+            .social-icon { width: 40px; height: 40px; font-size: 17px; }
+            .lang-switcher-modern { display: flex !important; gap: 1px; padding: 2px; }
+            .lang-btn-modern { padding: 5px 10px !important; font-size: 10px !important; }
+            .btn { min-height: 44px !important; font-size: 13px !important; }
+            .page-header h2 { font-size: 22px !important; }
             .valuation-result .result-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -387,7 +313,7 @@
         <div class="navbar-inner">
             <div class="navbar-brand-modern" onclick="navigateTo('home'); return false;">
                 <img src="Himmat-Almedina.png" alt="شعار همة المدينة العقارية" class="navbar-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div style="display:none;width:40px;height:40px;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--accent-gold);">ه</div>
+                <div style="display:none;width:45px;height:45px;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--accent-gold);">ه</div>
                 <div>
                     <div class="navbar-brand-ar"><span data-i18n="brand_ar">همة</span> <span class="gold" data-i18n="brand_en">المدينة</span></div>
                     <div class="navbar-brand-en">HIMMAT AL MADINAH</div>
@@ -406,7 +332,7 @@
                 <li><a data-page="contact" onclick="navigateTo('contact'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nav-label" data-i18n="nav_contact">تواصل</span></a></li>
             </ul>
 
-            <div style="display:flex;align-items:center;gap:4px;">
+            <div style="display:flex;align-items:center;gap:6px;">
                 <div class="lang-switcher-modern">
                     <button class="lang-btn-modern active" data-lang="ar" onclick="switchLanguage('ar')" aria-label="العربية">🇸🇦 عربي</button>
                     <button class="lang-btn-modern" data-lang="en" onclick="switchLanguage('en')" aria-label="English">🇬🇧 EN</button>
@@ -414,22 +340,6 @@
                 <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="تبديل الوضع" id="themeToggle">🌙</button>
             </div>
         </div>
-    </nav>
-
-    <!-- زر تبديل الشريط -->
-    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNavbar()" aria-label="إظهار/إخفاء القائمة">☰</button>
-
-    <!-- الشريط السفلي -->
-    <nav class="navbar-bottom-mobile" id="navbarBottomMobile" aria-label="القائمة السفلية">
-        <a class="active" data-page="home" onclick="navigateTo('home'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
-        <a data-page="valuation" onclick="navigateTo('valuation'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></a>
-        <a data-page="offers" onclick="navigateTo('offers'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></a>
-        <a data-page="contracts" onclick="navigateTo('contracts'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></a>
-        <a data-page="add-property" onclick="navigateTo('add-property'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></a>
-        <a data-page="services" onclick="navigateTo('services'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></a>
-        <a data-page="faq" onclick="navigateTo('faq'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></a>
-        <a data-page="about" onclick="navigateTo('about'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/></svg></a>
-        <a data-page="contact" onclick="navigateTo('contact'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
     </nav>
 
     <div class="floating-buttons">
@@ -481,20 +391,20 @@
             <p data-i18n="valuation_subtitle">أدخل بيانات العقار لتقدير القيمة السوقية</p>
         </div>
 
-        <div class="card" style="padding:16px;">
-            <div class="form-grid" style="margin-bottom:6px;">
+        <div class="card" style="padding:18px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">🏙️ <span data-i18n="city">المدينة</span></label><select class="form-select" id="valCity" onchange="updateDistricts();"><option value="">--</option><option value="riyadh">الرياض</option><option value="jeddah">جدة</option><option value="makkah">مكة المكرمة</option><option value="madinah">المدينة المنورة</option></select></div>
                 <div><label class="form-label">📍 <span data-i18n="district">الحي</span></label><select class="form-select" id="valDistrict" onchange="calculateValuation();"><option value="">--</option></select></div>
                 <div><label class="form-label">🏠 <span data-i18n="property_type">نوع العقار</span></label><select class="form-select" id="valPropertyType" onchange="calculateValuation();"><option value="">--</option><option>فيلا</option><option>شقة في عمارة</option><option>شقة في برج</option><option>أرض</option><option>دبلكس</option><option>قصر</option><option>مكتب</option><option>عمارة</option></select></div>
                 <div><label class="form-label">📐 <span data-i18n="area">المساحة (م²)</span></label><input type="number" class="form-input" id="valArea" value="250" oninput="calculateValuation();"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">🛏️ <span data-i18n="rooms">عدد الغرف</span></label><select class="form-select" id="valRooms" onchange="calculateValuation();"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
                 <div><label class="form-label">📅 <span data-i18n="age">العمر</span></label><input type="number" class="form-input" id="valAge" value="5" oninput="calculateValuation();"></div>
                 <div><label class="form-label">🧭 <span data-i18n="direction">الواجهة</span></label><select class="form-select" id="valDirection" onchange="calculateValuation();"><option value="شمالية">شمالية</option><option value="جنوبية" selected>جنوبية</option><option value="شرقية">شرقية</option><option value="غربية">غربية</option></select></div>
                 <div><label class="form-label">🛣️ <span data-i18n="street_width">عرض الشارع (م)</span></label><input type="number" class="form-input" id="valStreetWidth" value="15" oninput="calculateValuation();"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">⭐ <span data-i18n="district_class">تصنيف الحي</span></label><select class="form-select" id="valDistrictClass" onchange="calculateValuation();"><option value="راقي">راقي</option><option value="متوسط" selected>متوسط</option><option value="شعبي">شعبي</option><option value="جديد">جديد</option></select></div>
                 <div><label class="form-label">📊 <span data-i18n="residential_ratio">نسبة سكنية</span></label><select class="form-select" id="valResidentialRatio" onchange="calculateValuation();"><option value="20">20%</option><option value="50" selected>50%</option><option value="80">80%</option><option value="100">100%</option></select></div>
                 <div style="display:flex;align-items:flex-end;"><button class="btn btn-primary btn-sm btn-block" onclick="addNewCity()" data-i18n="add_city">➕ إضافة مدينة</button></div>
@@ -513,7 +423,7 @@
         </div>
 
         <div class="valuation-result" id="valuationResult">
-            <div style="text-align:center;margin-bottom:8px;"><span style="font-size:13px;font-weight:900;color:var(--text-main);">📊 <span style="color:var(--accent-gold);" data-i18n="result_title">نتيجة التقييم</span></span></div>
+            <div style="text-align:center;margin-bottom:10px;"><span style="font-size:15px;font-weight:900;color:var(--text-main);">📊 <span style="color:var(--accent-gold);" data-i18n="result_title">نتيجة التقييم</span></span></div>
             <div class="result-grid">
                 <div class="result-item"><div class="label" data-i18n="price_range">💰 النطاق السعري</div><div class="value" id="priceRange">--</div></div>
                 <div class="result-item"><div class="label" data-i18n="avg_price">📊 المتوسط</div><div class="value" id="avgPrice">--</div></div>
@@ -522,7 +432,7 @@
                 <div class="result-item"><div class="label">🏠 <span data-i18n="rental_value">الإيجار المتوقع</span></div><div class="value" id="rentalValue">--</div></div>
                 <div class="result-item"><div class="label">🎯 <span data-i18n="confidence">نسبة الثقة</span></div><div class="value" id="confidenceValue">--</div><div class="confidence-bar"><div class="confidence-fill" id="confidenceFill" style="width:0%"></div></div></div>
             </div>
-            <div style="display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap;">
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
                 <button class="btn btn-primary btn-sm" onclick="shareValuation()">📤 <span data-i18n="share">مشاركة</span></button>
                 <button class="btn btn-outline btn-sm" onclick="showValuationDetails()">📋 <span data-i18n="details">تفاصيل</span></button>
                 <button class="btn btn-outline btn-sm" onclick="downloadPDFReport()">📄 <span data-i18n="download_pdf">تقرير PDF</span></button>
@@ -536,33 +446,33 @@
             <p data-i18n="add_property_subtitle">أدخل بيانات العقار كاملة</p>
         </div>
 
-        <div class="card" style="margin-bottom:8px;padding:14px;">
-            <div style="border:2px dashed var(--accent-gold);border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:var(--transition);" onclick="document.getElementById('excelFile').click()">
-                <div style="font-size:24px;margin-bottom:3px;">📂</div>
-                <p style="font-size:10px;color:var(--text-muted);font-weight:700;" data-i18n="excel_drop">اسحب Excel هنا أو اضغط</p>
+        <div class="card" style="margin-bottom:10px;padding:16px;">
+            <div style="border:2px dashed var(--accent-gold);border-radius:12px;padding:18px;text-align:center;cursor:pointer;transition:var(--transition);" onclick="document.getElementById('excelFile').click()">
+                <div style="font-size:28px;margin-bottom:5px;">📂</div>
+                <p style="font-size:14px;color:var(--text-muted);font-weight:700;" data-i18n="excel_drop">اسحب Excel هنا أو اضغط</p>
                 <input type="file" id="excelFile" accept=".xlsx,.xls,.csv" style="display:none;" onchange="handleExcelFile(event)">
             </div>
-            <div id="excelPreview" style="display:none;margin-top:10px;overflow-x:auto;max-height:200px;overflow-y:auto;"></div>
+            <div id="excelPreview" style="display:none;margin-top:12px;overflow-x:auto;max-height:250px;overflow-y:auto;"></div>
         </div>
 
-        <div class="card" style="padding:16px;">
-            <div class="form-grid" style="margin-bottom:6px;">
+        <div class="card" style="padding:18px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">🏙️ <span data-i18n="city">المدينة</span></label><select class="form-select" id="addCity" onchange="updateAddDistricts();"><option value="الرياض">الرياض</option><option value="جدة">جدة</option><option value="مكة المكرمة">مكة المكرمة</option><option value="المدينة المنورة">المدينة المنورة</option></select></div>
                 <div><label class="form-label">📍 <span data-i18n="district">الحي</span></label><select class="form-select" id="addDistrict"><option value="">--</option></select></div>
                 <div><label class="form-label">🏠 <span data-i18n="property_type">النوع</span></label><select class="form-select" id="addPropertyType"><option>فيلا</option><option>شقة في عمارة</option><option>شقة في برج</option><option>أرض</option><option>دبلكس</option><option>مكتب</option><option>عمارة</option></select></div>
                 <div><label class="form-label">📐 <span data-i18n="area">المساحة (م²)</span></label><input type="number" class="form-input" id="addArea" placeholder="250"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">💰 <span data-i18n="price">السعر (ر.س)</span></label><input type="number" class="form-input" id="addPrice" placeholder="850000"></div>
                 <div><label class="form-label">🛏️ <span data-i18n="rooms">الغرف</span></label><select class="form-select" id="addRooms"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
                 <div><label class="form-label">📅 <span data-i18n="age">العمر</span></label><input type="number" class="form-input" id="addAge" value="5"></div>
                 <div><label class="form-label">🧭 <span data-i18n="direction">الواجهة</span></label><select class="form-select" id="addDirection"><option>شمالية</option><option selected>جنوبية</option><option>شرقية</option><option>غربية</option></select></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">🛣️ <span data-i18n="street_width">عرض الشارع</span></label><input type="number" class="form-input" id="addStreetWidth" value="15"></div>
                 <div><label class="form-label">⭐ <span data-i18n="district_class">تصنيف الحي</span></label><select class="form-select" id="addDistrictClass"><option>راقي</option><option selected>متوسط</option><option>شعبي</option><option>جديد</option></select></div>
                 <div><label class="form-label">📊 <span data-i18n="residential_ratio">نسبة سكنية</span></label><select class="form-select" id="addRatio"><option>20%</option><option selected>50%</option><option>80%</option><option>100%</option></select></div>
-                <div><label class="form-label" data-i18n="photos">🖼️ صور العقار</label><input type="file" class="form-input" id="addPhotos" multiple accept="image/*" style="padding:5px;"></div>
+                <div><label class="form-label" data-i18n="photos">🖼️ صور العقار</label><input type="file" class="form-input" id="addPhotos" multiple accept="image/*" style="padding:6px;"></div>
             </div>
             <div class="checkbox-group">
                 <label class="active"><input type="checkbox" id="addElevator" checked> 🔝 <span data-i18n="elevator">مصعد</span></label>
@@ -574,9 +484,9 @@
                 <label><input type="checkbox" id="addGarage"> 🅿️ <span data-i18n="garage">موقف</span></label>
                 <label><input type="checkbox" id="addSecurity"> 🔐 <span data-i18n="security">أمن</span></label>
             </div>
-            <div style="margin-bottom:6px;">
+            <div style="margin-bottom:8px;">
                 <label class="form-label" data-i18n="description">📝 وصف العقار</label>
-                <textarea class="form-input" id="addDescription" rows="2" placeholder="وصف مختصر..." style="resize:vertical;"></textarea>
+                <textarea class="form-input" id="addDescription" rows="3" placeholder="وصف مختصر..." style="resize:vertical;"></textarea>
             </div>
             <button class="btn btn-primary btn-block" onclick="addPropertyManually()" data-i18n="add_btn">🚀 إدراج وتقييم</button>
         </div>
@@ -587,47 +497,47 @@
             <h2>💰 <span class="gold-underline" data-i18n="offers_title">عروض وخصومات</span></h2>
             <p data-i18n="offers_subtitle">فرص لا تفوّت</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:90px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:28px;">🏠</span>
-                    <span style="position:absolute;top:8px;right:8px;background:var(--accent-gold);color:var(--text-on-gold);font-size:8px;font-weight:800;padding:2px 10px;border-radius:12px;">-8%</span>
+                <div style="height:100px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
+                    <span style="font-size:32px;">🏠</span>
+                    <span style="position:absolute;top:10px;right:10px;background:var(--accent-gold);color:var(--text-on-gold);font-size:11px;font-weight:800;padding:3px 12px;border-radius:12px;">-8%</span>
                 </div>
-                <div style="padding:10px;">
-                    <h4 style="font-size:11px;color:var(--text-main);font-weight:800;">فيلا · النرجس</h4>
-                    <p style="font-size:8px;color:var(--text-muted);">الرياض، النرجس</p>
-                    <div style="font-size:8px;color:var(--text-muted);margin:2px 0;">410 م² · 6 غرف</div>
-                    <div style="font-size:8px;text-decoration:line-through;color:var(--text-muted);">3,850,000</div>
-                    <div style="font-size:12px;font-weight:900;color:var(--accent-gold);">3,542,000 ريال</div>
-                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:5px;" onclick="showOfferDetails('فيلا النرجس')">📋 التفاصيل</button>
+                <div style="padding:14px;">
+                    <h4 style="font-size:15px;color:var(--text-main);font-weight:800;">فيلا · النرجس</h4>
+                    <p style="font-size:12px;color:var(--text-muted);">الرياض، النرجس</p>
+                    <div style="font-size:12px;color:var(--text-muted);margin:3px 0;">410 م² · 6 غرف</div>
+                    <div style="font-size:12px;text-decoration:line-through;color:var(--text-muted);">3,850,000</div>
+                    <div style="font-size:16px;font-weight:900;color:var(--accent-gold);">3,542,000 ريال</div>
+                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:8px;" onclick="showOfferDetails('فيلا النرجس')">📋 التفاصيل</button>
                 </div>
             </div>
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:90px;background:linear-gradient(135deg,#1a2744,#243b5e);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:28px;">🏢</span>
-                    <span style="position:absolute;top:8px;right:8px;background:var(--accent-gold);color:var(--text-on-gold);font-size:8px;font-weight:800;padding:2px 10px;border-radius:12px;">-12%</span>
+                <div style="height:100px;background:linear-gradient(135deg,#1a2744,#243b5e);display:flex;align-items:center;justify-content:center;position:relative;">
+                    <span style="font-size:32px;">🏢</span>
+                    <span style="position:absolute;top:10px;right:10px;background:var(--accent-gold);color:var(--text-on-gold);font-size:11px;font-weight:800;padding:3px 12px;border-radius:12px;">-12%</span>
                 </div>
-                <div style="padding:10px;">
-                    <h4 style="font-size:11px;color:var(--text-main);font-weight:800;">شقة · الشاطئ</h4>
-                    <p style="font-size:8px;color:var(--text-muted);">جدة، الشاطئ</p>
-                    <div style="font-size:8px;color:var(--text-muted);margin:2px 0;">165 م² · 3 غرف</div>
-                    <div style="font-size:8px;text-decoration:line-through;color:var(--text-muted);">980,000</div>
-                    <div style="font-size:12px;font-weight:900;color:var(--accent-gold);">862,400 ريال</div>
-                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:5px;" onclick="showOfferDetails('شقة الشاطئ')">📋 التفاصيل</button>
+                <div style="padding:14px;">
+                    <h4 style="font-size:15px;color:var(--text-main);font-weight:800;">شقة · الشاطئ</h4>
+                    <p style="font-size:12px;color:var(--text-muted);">جدة، الشاطئ</p>
+                    <div style="font-size:12px;color:var(--text-muted);margin:3px 0;">165 م² · 3 غرف</div>
+                    <div style="font-size:12px;text-decoration:line-through;color:var(--text-muted);">980,000</div>
+                    <div style="font-size:16px;font-weight:900;color:var(--accent-gold);">862,400 ريال</div>
+                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:8px;" onclick="showOfferDetails('شقة الشاطئ')">📋 التفاصيل</button>
                 </div>
             </div>
             <div class="card" style="padding:0;overflow:hidden;">
-                <div style="height:90px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
-                    <span style="font-size:28px;">🕌</span>
-                    <span style="position:absolute;top:8px;right:8px;background:var(--accent-gold);color:var(--text-on-gold);font-size:8px;font-weight:800;padding:2px 10px;border-radius:12px;">-10%</span>
+                <div style="height:100px;background:linear-gradient(135deg,var(--bg-input),#1a2744);display:flex;align-items:center;justify-content:center;position:relative;">
+                    <span style="font-size:32px;">🕌</span>
+                    <span style="position:absolute;top:10px;right:10px;background:var(--accent-gold);color:var(--text-on-gold);font-size:11px;font-weight:800;padding:3px 12px;border-radius:12px;">-10%</span>
                 </div>
-                <div style="padding:10px;">
-                    <h4 style="font-size:11px;color:var(--text-main);font-weight:800;">شقة · العزيزية</h4>
-                    <p style="font-size:8px;color:var(--text-muted);">مكة، العزيزية</p>
-                    <div style="font-size:8px;color:var(--text-muted);margin:2px 0;">140 م² · 3 غرف</div>
-                    <div style="font-size:8px;text-decoration:line-through;color:var(--text-muted);">750,000</div>
-                    <div style="font-size:12px;font-weight:900;color:var(--accent-gold);">675,000 ريال</div>
-                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:5px;" onclick="showOfferDetails('شقة العزيزية')">📋 التفاصيل</button>
+                <div style="padding:14px;">
+                    <h4 style="font-size:15px;color:var(--text-main);font-weight:800;">شقة · العزيزية</h4>
+                    <p style="font-size:12px;color:var(--text-muted);">مكة، العزيزية</p>
+                    <div style="font-size:12px;color:var(--text-muted);margin:3px 0;">140 م² · 3 غرف</div>
+                    <div style="font-size:12px;text-decoration:line-through;color:var(--text-muted);">750,000</div>
+                    <div style="font-size:16px;font-weight:900;color:var(--accent-gold);">675,000 ريال</div>
+                    <button class="btn btn-primary btn-sm btn-block" style="margin-top:8px;" onclick="showOfferDetails('شقة العزيزية')">📋 التفاصيل</button>
                 </div>
             </div>
         </div>
@@ -638,13 +548,13 @@
             <h2>🛠️ <span class="gold-underline" data-i18n="services_title">خدماتنا</span></h2>
             <p data-i18n="services_subtitle">اضغط على الخدمة للانتقال</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('offers')"><div style="font-size:24px;margin-bottom:4px;">🏠</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">بيع وشراء العقارات</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">تصفح العروض</p></div>
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('valuation')"><div style="font-size:24px;margin-bottom:4px;">📊</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">التقييم الذكي</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">قيّم عقارك</p></div>
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('contracts')"><div style="font-size:24px;margin-bottom:4px;">📄</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">صياغة العقود</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">أنشئ عقدك</p></div>
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:24px;margin-bottom:4px;">🔑</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">إدارة الأملاك</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">تواصل معنا</p></div>
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:24px;margin-bottom:4px;">💼</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">استشارات عقارية</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">احصل على استشارة</p></div>
-            <div class="card" style="text-align:center;padding:14px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:24px;margin-bottom:4px;">📣</div><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">تسويق عقاري</h4><p style="font-size:8px;color:var(--text-muted);margin-top:2px;">سوّق عقارك</p></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('offers')"><div style="font-size:30px;margin-bottom:6px;">🏠</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">بيع وشراء العقارات</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">تصفح العروض</p></div>
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('valuation')"><div style="font-size:30px;margin-bottom:6px;">📊</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">التقييم الذكي</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">قيّم عقارك</p></div>
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('contracts')"><div style="font-size:30px;margin-bottom:6px;">📄</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">صياغة العقود</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">أنشئ عقدك</p></div>
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:30px;margin-bottom:6px;">🔑</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">إدارة الأملاك</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">تواصل معنا</p></div>
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:30px;margin-bottom:6px;">💼</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">استشارات عقارية</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">احصل على استشارة</p></div>
+            <div class="card" style="text-align:center;padding:18px;cursor:pointer;" onclick="navigateTo('contact')"><div style="font-size:30px;margin-bottom:6px;">📣</div><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">تسويق عقاري</h4><p style="font-size:12px;color:var(--text-muted);margin-top:3px;">سوّق عقارك</p></div>
         </div>
     </div>
 
@@ -652,12 +562,12 @@
         <div class="page-header">
             <h2>❓ <span class="gold-underline" data-i18n="faq_title">الأسئلة الشائعة</span></h2>
         </div>
-        <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:6px;">
-            <div class="card" style="cursor:pointer;padding:11px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">كيف أضيف عقاري؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:14px;">➕</span></div><div class="faq-answer" style="display:none;font-size:9px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border-color);">من صفحة «إضافة عقار» يدوياً أو رفع Excel.</div></div>
-            <div class="card" style="cursor:pointer;padding:11px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">هل التقييم معتمد رسمياً؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:14px;">➕</span></div><div class="faq-answer" style="display:none;font-size:9px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border-color);">نعم، يعتمد على معايير الهيئة العامة للعقار.</div></div>
-            <div class="card" style="cursor:pointer;padding:11px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">هل يمكنني توقيع العقد مباشرة؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:14px;">➕</span></div><div class="faq-answer" style="display:none;font-size:9px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border-color);">العقد مسودة والتوقيع عبر منصة إيجار.</div></div>
-            <div class="card" style="cursor:pointer;padding:11px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">هل تغطون مدناً أخرى؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:14px;">➕</span></div><div class="faq-answer" style="display:none;font-size:9px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border-color);">نعم، 4 مدن رئيسية مع خطة توسع.</div></div>
-            <div class="card" style="cursor:pointer;padding:11px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:11px;color:var(--text-main);font-weight:800;">هل الأدوات مجانية؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:14px;">➕</span></div><div class="faq-answer" style="display:none;font-size:9px;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border-color);">نعم، مجانية لجميع عملاء المكتب.</div></div>
+        <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px;">
+            <div class="card" style="cursor:pointer;padding:14px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">كيف أضيف عقاري؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:18px;">➕</span></div><div class="faq-answer" style="display:none;font-size:13px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color);">من صفحة «إضافة عقار» يدوياً أو رفع Excel.</div></div>
+            <div class="card" style="cursor:pointer;padding:14px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">هل التقييم معتمد رسمياً؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:18px;">➕</span></div><div class="faq-answer" style="display:none;font-size:13px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color);">نعم، يعتمد على معايير الهيئة العامة للعقار.</div></div>
+            <div class="card" style="cursor:pointer;padding:14px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">هل يمكنني توقيع العقد مباشرة؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:18px;">➕</span></div><div class="faq-answer" style="display:none;font-size:13px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color);">العقد مسودة والتوقيع عبر منصة إيجار.</div></div>
+            <div class="card" style="cursor:pointer;padding:14px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">هل تغطون مدناً أخرى؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:18px;">➕</span></div><div class="faq-answer" style="display:none;font-size:13px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color);">نعم، 4 مدن رئيسية مع خطة توسع.</div></div>
+            <div class="card" style="cursor:pointer;padding:14px;" onclick="toggleFAQ(this)"><div style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:15px;color:var(--text-main);font-weight:800;">هل الأدوات مجانية؟</h4><span class="faq-toggle" style="color:var(--accent-gold);font-size:18px;">➕</span></div><div class="faq-answer" style="display:none;font-size:13px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border-color);">نعم، مجانية لجميع عملاء المكتب.</div></div>
         </div>
     </div>
 
@@ -667,13 +577,13 @@
         </div>
         <div class="about-container">
             <div class="about-card main-about">
-                <h2 style="font-size:18px;color:var(--text-main);font-weight:900;">مكتب همة المدينة العقارية</h2>
-                <p style="font-size:11px;color:var(--text-muted);margin-top:8px;line-height:2;">شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.</p>
+                <h2 style="font-size:22px;color:var(--text-main);font-weight:900;">مكتب همة المدينة العقارية</h2>
+                <p style="font-size:14px;color:var(--text-muted);margin-top:10px;line-height:2;">شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.</p>
                 <div class="license-badge" onclick="verifyLicense()">رخصة فال العقارية: 1200030428 ✓</div>
             </div>
             <div class="about-grid">
-                <div class="about-card"><h3 style="font-size:14px;color:var(--accent-gold);margin-bottom:5px;font-weight:900;">🎯 رؤيتنا</h3><p style="font-size:10px;color:var(--text-muted);line-height:1.8;">أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.</p></div>
-                <div class="about-card"><h3 style="font-size:14px;color:var(--accent-gold);margin-bottom:5px;font-weight:900;">💡 رسالتنا</h3><p style="font-size:10px;color:var(--text-muted);line-height:1.8;">تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.</p></div>
+                <div class="about-card"><h3 style="font-size:17px;color:var(--accent-gold);margin-bottom:8px;font-weight:900;">🎯 رؤيتنا</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;">أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.</p></div>
+                <div class="about-card"><h3 style="font-size:17px;color:var(--accent-gold);margin-bottom:8px;font-weight:900;">💡 رسالتنا</h3><p style="font-size:14px;color:var(--text-muted);line-height:1.8;">تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.</p></div>
             </div>
         </div>
     </div>
@@ -684,11 +594,11 @@
         </div>
         <div class="contact-container">
             <div class="contact-info-card">
-                <img src="Himmat-Almedina.png" alt="شعار همة المدينة" style="width:80px;height:80px;object-fit:contain;margin-bottom:8px;filter:drop-shadow(0 4px 8px var(--gold-glow));" loading="lazy" onerror="this.style.display='none';">
-                <h3 style="font-size:16px;color:var(--accent-gold);font-weight:900;margin-bottom:10px;" data-i18n="contact_info">معلومات التواصل</h3>
-                <p style="font-size:11px;color:var(--text-main);margin:6px 0;" data-i18n="location">📍 المدينة المنورة، السعودية</p>
-                <p style="font-size:11px;color:var(--text-main);margin:6px 0;" data-i18n="phone_number">📞 +966 53 050 0906</p>
-                <p style="font-size:11px;color:var(--text-main);margin:6px 0;" data-i18n="email">✉️ ffaaddhheell2323@gmail.com</p>
+                <img src="Himmat-Almedina.png" alt="شعار همة المدينة" style="width:90px;height:90px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 4px 8px var(--gold-glow));" loading="lazy" onerror="this.style.display='none';">
+                <h3 style="font-size:18px;color:var(--accent-gold);font-weight:900;margin-bottom:12px;" data-i18n="contact_info">معلومات التواصل</h3>
+                <p style="font-size:14px;color:var(--text-main);margin:8px 0;" data-i18n="location">📍 المدينة المنورة، السعودية</p>
+                <p style="font-size:14px;color:var(--text-main);margin:8px 0;" data-i18n="phone_number">📞 +966 53 050 0906</p>
+                <p style="font-size:14px;color:var(--text-main);margin:8px 0;" data-i18n="email">✉️ ffaaddhheell2323@gmail.com</p>
                 <div class="contact-socials-grid">
                     <a href="https://wa.me/966530500906" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> <span data-i18n="whatsapp">واتساب</span></a>
                     <a href="https://www.tiktok.com/@fadhel_133" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> <span data-i18n="tiktok">تيك توك</span></a>
@@ -697,10 +607,10 @@
                 </div>
             </div>
             <form class="contact-form-3d card" onsubmit="event.preventDefault(); alert('✅ تم إرسال رسالتك بنجاح!');">
-                <h3 style="color:var(--accent-gold);margin-bottom:10px;font-weight:900;font-size:16px;" data-i18n="contact_form">أرسل لنا رسالة</h3>
-                <input type="text" placeholder="الاسم الكامل" data-i18n-placeholder="full_name" required style="margin-bottom:6px;">
-                <input type="tel" placeholder="رقم الجوال" data-i18n-placeholder="phone" required style="margin-bottom:6px;">
-                <textarea rows="3" placeholder="نص الرسالة..." data-i18n-placeholder="message" required style="margin-bottom:8px;resize:vertical;"></textarea>
+                <h3 style="color:var(--accent-gold);margin-bottom:12px;font-weight:900;font-size:18px;" data-i18n="contact_form">أرسل لنا رسالة</h3>
+                <input type="text" placeholder="الاسم الكامل" data-i18n-placeholder="full_name" required style="margin-bottom:8px;">
+                <input type="tel" placeholder="رقم الجوال" data-i18n-placeholder="phone" required style="margin-bottom:8px;">
+                <textarea rows="3" placeholder="نص الرسالة..." data-i18n-placeholder="message" required style="margin-bottom:10px;resize:vertical;"></textarea>
                 <button type="submit" class="btn btn-primary btn-block" data-i18n="send">إرسال الرسالة</button>
             </form>
         </div>
@@ -712,25 +622,25 @@
             <p data-i18n="contracts_subtitle">عقود كاملة بجميع البنود</p>
         </div>
 
-        <div style="display:flex;justify-content:center;gap:8px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:center;gap:10px;margin-bottom:12px;">
             <button class="btn btn-primary btn-sm" onclick="showContract('residential')" data-i18n="residential_contract">🏠 عقد سكني</button>
             <button class="btn btn-outline btn-sm" onclick="showContract('commercial')" data-i18n="commercial_contract">🏢 عقد تجاري</button>
         </div>
 
-        <div class="card" id="residentialContract" style="display:block;padding:14px;">
-            <div class="form-grid" style="margin-bottom:5px;">
+        <div class="card" id="residentialContract" style="display:block;padding:18px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">المؤجر</label><input type="text" class="form-input" id="resLessorName" placeholder="اسم المؤجر"></div>
                 <div><label class="form-label">هوية المؤجر</label><input type="text" class="form-input" id="resLessorID" placeholder="رقم الهوية"></div>
                 <div><label class="form-label">المستأجر</label><input type="text" class="form-input" id="resTenantName" placeholder="اسم المستأجر"></div>
                 <div><label class="form-label">هوية المستأجر</label><input type="text" class="form-input" id="resTenantID" placeholder="رقم الهوية"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:5px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">المدينة</label><select class="form-select" id="resCity"><option>المدينة المنورة</option><option>مكة المكرمة</option><option>جدة</option><option>الرياض</option></select></div>
                 <div><label class="form-label">الحي</label><input type="text" class="form-input" id="resDistrict" placeholder="الحي"></div>
                 <div><label class="form-label">نوع الوحدة</label><select class="form-select" id="resUnitType"><option>شقة</option><option>فيلا</option><option>دور</option></select></div>
                 <div><label class="form-label">المساحة (م²)</label><input type="number" class="form-input" id="resArea" placeholder="200"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:10px;">
                 <div><label class="form-label">الإيجار السنوي</label><input type="number" class="form-input" id="resAnnualRent" placeholder="50000"></div>
                 <div><label class="form-label">المدة (شهر)</label><input type="number" class="form-input" id="resDuration" value="12"></div>
                 <div><label class="form-label">تاريخ البداية</label><input type="date" class="form-input" id="resStartDate"></div>
@@ -739,20 +649,20 @@
             <button class="btn btn-primary btn-sm btn-block" onclick="generateFullResidentialContract()">🤖 توليد العقد الكامل</button>
         </div>
 
-        <div class="card" id="commercialContract" style="display:none;padding:14px;">
-            <div class="form-grid" style="margin-bottom:5px;">
+        <div class="card" id="commercialContract" style="display:none;padding:18px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">المؤجر</label><input type="text" class="form-input" id="comLessorName" placeholder="اسم المؤجر"></div>
                 <div><label class="form-label">سجل المؤجر</label><input type="text" class="form-input" id="comLessorCR" placeholder="رقم السجل"></div>
                 <div><label class="form-label">المستأجر</label><input type="text" class="form-input" id="comTenantName" placeholder="اسم المستأجر"></div>
                 <div><label class="form-label">سجل المستأجر</label><input type="text" class="form-input" id="comTenantCR" placeholder="رقم السجل"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:5px;">
+            <div class="form-grid" style="margin-bottom:8px;">
                 <div><label class="form-label">المدينة</label><select class="form-select" id="comCity"><option>المدينة المنورة</option><option>مكة المكرمة</option><option>جدة</option><option>الرياض</option></select></div>
                 <div><label class="form-label">الحي</label><input type="text" class="form-input" id="comDistrict" placeholder="الحي"></div>
                 <div><label class="form-label">النشاط</label><input type="text" class="form-input" id="comActivity" placeholder="مطعم، متجر..."></div>
                 <div><label class="form-label">المساحة (م²)</label><input type="number" class="form-input" id="comArea" placeholder="150"></div>
             </div>
-            <div class="form-grid" style="margin-bottom:6px;">
+            <div class="form-grid" style="margin-bottom:10px;">
                 <div><label class="form-label">الإيجار السنوي</label><input type="number" class="form-input" id="comAnnualRent" placeholder="80000"></div>
                 <div><label class="form-label">المدة (شهر)</label><input type="number" class="form-input" id="comDuration" value="12"></div>
                 <div><label class="form-label">تاريخ البداية</label><input type="date" class="form-input" id="comStartDate"></div>
@@ -767,16 +677,16 @@
     </div>
 
     <div class="chat-window" id="chatWindow">
-        <div style="background:var(--bg-card);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:16px;">🤖</span><div><h4 style="color:var(--text-main);font-size:11px;font-weight:800;" data-i18n="chat_title">المساعد الذكي</h4><span style="color:var(--accent-gold);font-size:8px;" data-i18n="chat_status">● متصل</span></div></div>
-            <button onclick="toggleChat()" style="background:none;border:none;color:var(--text-muted);font-size:14px;cursor:pointer;">✕</button>
+        <div style="background:var(--bg-card);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🤖</span><div><h4 style="color:var(--text-main);font-size:14px;font-weight:800;" data-i18n="chat_title">المساعد الذكي</h4><span style="color:var(--accent-gold);font-size:11px;" data-i18n="chat_status">● متصل</span></div></div>
+            <button onclick="toggleChat()" style="background:none;border:none;color:var(--text-muted);font-size:16px;cursor:pointer;">✕</button>
         </div>
-        <div id="chatMessages" style="flex:1;padding:12px;overflow-y:auto;background:var(--bg-card);">
-            <div style="background:var(--bg-input);padding:8px 12px;border-radius:10px;font-size:10px;color:var(--text-main);margin-bottom:6px;border:1px solid var(--border-color);" data-i18n="chat_welcome">مرحباً! كيف أساعدك؟ 🏠</div>
+        <div id="chatMessages" style="flex:1;padding:14px;overflow-y:auto;background:var(--bg-card);">
+            <div style="background:var(--bg-input);padding:10px 14px;border-radius:10px;font-size:13px;color:var(--text-main);margin-bottom:8px;border:1px solid var(--border-color);" data-i18n="chat_welcome">مرحباً! كيف أساعدك؟ 🏠</div>
         </div>
-        <div style="padding:8px;display:flex;gap:6px;background:var(--bg-card);border-top:1px solid var(--border-color);">
-            <input type="text" id="chatInput" placeholder="اكتب هنا..." data-i18n-placeholder="chat_placeholder" style="flex:1;padding:8px 12px;border:1px solid var(--border-color);border-radius:20px;font-size:10px;outline:none;background:var(--bg-input);color:var(--text-main);font-family:'Cairo',sans-serif;" onkeypress="if(event.key==='Enter')sendChat()">
-            <button onclick="sendChat()" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--accent-gold);color:var(--text-on-gold);font-size:11px;cursor:pointer;">➤</button>
+        <div style="padding:10px;display:flex;gap:8px;background:var(--bg-card);border-top:1px solid var(--border-color);">
+            <input type="text" id="chatInput" placeholder="اكتب هنا..." data-i18n-placeholder="chat_placeholder" style="flex:1;padding:10px 14px;border:1px solid var(--border-color);border-radius:20px;font-size:13px;outline:none;background:var(--bg-input);color:var(--text-main);font-family:'Cairo',sans-serif;" onkeypress="if(event.key==='Enter')sendChat()">
+            <button onclick="sendChat()" style="width:38px;height:38px;border-radius:50%;border:none;background:var(--accent-gold);color:var(--text-on-gold);font-size:14px;cursor:pointer;">➤</button>
         </div>
     </div>
 
@@ -805,6 +715,38 @@
             makkah: {'العوالي':1.2,'الشوقية':1.1,'الشرائع':0.9,'النسيم':1.0,'الزاهر':1.2,'العتيبية':1.0,'العمرة':0.9,'التنعيم':1.0,'الراشدية':1.2,'الكعكية':1.2,'ولي العهد':1.3,'الزهراء':1.1,'النزهة':1.1,'المسفلة':0.9,'جرهم':1.0,'الروابي':1.0,'الخالدية':1.1,'المنصور':0.9,'الشامية':1.0,'المعابدة':1.0},
             madinah: {'العزيزية':1.3,'العاقول':0.9,'العريض':1.0,'الخالدية':1.2,'الزهرة':1.1,'الملك فهد':1.2,'الروابي':1.1,'قباء':1.3,'القصواء':1.2,'العوالي':1.1,'الهجرة':1.0,'العصبة':0.9,'الجامعة':1.1,'الجرف':1.0,'السلام':1.1,'الدفاع':1.0,'أحد':1.1,'النصر':1.0,'المناخة':0.9,'طيبة':1.1}
         };
+        
+        // ========== ترجمة الأحياء (Transliteration) ==========
+        const districtTranslations = {
+            'العليا': 'Al Olaya', 'السليمانية': 'Al Sulaymaniyah', 'الملز': 'Al Malaz', 'الورود': 'Al Woroud',
+            'الرحمانية': 'Al Rahmaniyah', 'المحمدية': 'Al Muhammadiyah', 'الرائد': 'Al Raed', 'النخيل': 'Al Nakheel',
+            'أم الحمام': 'Um Al Hamam', 'المعذر': 'Al Mathar', 'الهدا': 'Al Hada', 'الشفا': 'Al Shifa',
+            'بدر': 'Badr', 'المروة': 'Al Marwah', 'ديراب': 'Dirab', 'نمار': 'Namar',
+            'العريجاء': 'Al Uraija', 'البديعة': 'Al Badeea', 'السويدي': 'Al Suwaidi', 'الديرة': 'Al Deerah',
+            'الشميسي': 'Al Shumaysi', 'العود': 'Al Oud', 'المرقب': 'Al Marqab', 'الربوة': 'Al Rabwah',
+            'الريان': 'Al Rayyan', 'الروابي': 'Al Rawabi', 'النسيم': 'Al Naseem', 'المنار': 'Al Manar',
+            'النهضة': 'Al Nahdah', 'الخليج': 'Al Khaleej', 'غرناطة': 'Granada', 'قرطبة': 'Cordoba',
+            'اليرموك': 'Al Yarmouk', 'الرمال': 'Al Rimal', 'القادسية': 'Al Qadisiyah', 'الملقا': 'Al Malqa',
+            'حطين': 'Hittin', 'العقيق': 'Al Aqeeq', 'الصحافة': 'Al Sahafah', 'الياسمين': 'Al Yasmin',
+            'النرجس': 'Al Narjis', 'العارض': 'Al Arid', 'القيروان': 'Al Qairawan', 'الربيع': 'Al Rabee',
+            'الغدير': 'Al Ghadeer', 'النفل': 'Al Nafal', 'الوادي': 'Al Wadi', 'التعاون': 'Al Taawun',
+            'الازدهار': 'Al Izdihar', 'المرسلات': 'Al Mursalat', 'الفلاح': 'Al Falah', 'الواحة': 'Al Wahah',
+            'الملك فهد': 'King Fahd', 'الملك عبدالله': 'King Abdullah', 'الجزيرة': 'Al Jazeerah', 'الفيحاء': 'Al Fayha',
+            'المنصورة': 'Al Mansourah', 'العزيزية': 'Al Aziziyah', 'الدار البيضاء': 'Al Dar Al Baida',
+            'الروضة': 'Al Rawdah', 'الزهراء': 'Al Zahra', 'السلامة': 'Al Salamah', 'الشاطئ': 'Al Shati',
+            'الخالدية': 'Al Khalidiyah', 'النعيم': 'Al Naeem', 'النزهة': 'Al Nuzhah', 'البوادي': 'Al Bawadi',
+            'الصفا': 'Al Safa', 'الفيصلية': 'Al Faisaliyah', 'الرحاب': 'Al Rehab', 'مشرفة': 'Mishrifah',
+            'بني مالك': 'Bani Malik', 'السامر': 'Al Samer', 'الجامعة': 'Al Jameah', 'السليمانية': 'Al Sulaymaniyah',
+            'البلد': 'Al Balad', 'الهدى': 'Al Huda', 'طيبة': 'Taybah', 'العوالي': 'Al Awali',
+            'الشوقية': 'Al Shawqiyah', 'الشرائع': 'Al Sharai', 'الزاهر': 'Al Zaher', 'العتيبية': 'Al Utaibiyah',
+            'العمرة': 'Al Umrah', 'التنعيم': 'Al Tanim', 'الراشدية': 'Al Rashidiyah', 'الكعكية': 'Al Kakiyah',
+            'ولي العهد': 'Wali Al Ahd', 'المسفلة': 'Al Misfalah', 'جرهم': 'Jurhum', 'المنصور': 'Al Mansour',
+            'الشامية': 'Al Shamiyah', 'المعابدة': 'Al Maabdah', 'العاقول': 'Al Aqool', 'العريض': 'Al Areed',
+            'الزهرة': 'Al Zahrah', 'قباء': 'Quba', 'القصواء': 'Al Qaswa', 'الهجرة': 'Al Hijrah',
+            'العصبة': 'Al Usbah', 'الجرف': 'Al Jurf', 'السلام': 'Al Salam', 'الدفاع': 'Al Difa',
+            'أحد': 'Uhud', 'النصر': 'Al Nasr', 'المناخة': 'Al Manakhah'
+        };
+
         const cityPricePerMeter = { riyadh: 4000, jeddah: 3500, makkah: 3000, madinah: 2500 };
         const typeFactors = {'فيلا':1.2,'قصر':1.6,'دبلكس':1.1,'شقة في برج':1.15,'شقة في عمارة':0.95,'أرض':0.7,'مزرعة':0.5,'استراحة':0.75,'مكتب':1.0,'معرض':1.1,'عمارة':1.3,'مخزن':0.55,'منتجع':1.25,'محطة':0.9,'دور':0.85};
         const directionFactors = {'شمالية':1.05,'جنوبية':0.95,'شرقية':1.0,'غربية':0.98};
@@ -845,7 +787,21 @@
                 'chat_title': 'المساعد الذكي', 'chat_status': 'متصل', 'chat_welcome': 'مرحباً! كيف أساعدك؟ 🏠',
                 'chat_placeholder': 'اكتب هنا...', 'whatsapp': 'واتساب', 'tiktok': 'تيك توك',
                 'instagram': 'إنستغرام', 'snapchat': 'سناب شات', 'location': 'المدينة المنورة، السعودية',
-                'phone_number': '+966 53 050 0906', 'email': 'ffaaddhheell2323@gmail.com'
+                'phone_number': '+966 53 050 0906', 'email': 'ffaaddhheell2323@gmail.com',
+                'about_office': 'مكتب همة المدينة العقارية',
+                'about_desc': 'شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.',
+                'vision': 'رؤيتنا', 'mission': 'رسالتنا',
+                'vision_text': 'أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.',
+                'mission_text': 'تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.',
+                'lessor': 'المؤجر', 'lessor_id': 'هوية المؤجر', 'tenant': 'المستأجر', 'tenant_id': 'هوية المستأجر',
+                'district_name': 'الحي', 'unit_type': 'نوع الوحدة', 'annual_rent': 'الإيجار السنوي',
+                'duration': 'المدة (شهر)', 'start_date': 'تاريخ البداية', 'deposit': 'الضمان',
+                'lessor_cr': 'سجل المؤجر', 'tenant_cr': 'سجل المستأجر', 'activity': 'النشاط',
+                'generate_contract': 'توليد العقد الكامل',
+                'buy_sell': 'بيع وشراء العقارات', 'smart_valuation': 'التقييم الذكي', 'contract_drafting': 'صياغة العقود',
+                'property_management': 'إدارة الأملاك', 'real_estate_consulting': 'استشارات عقارية', 'real_estate_marketing': 'تسويق عقاري',
+                'browse_offers': 'تصفح العروض', 'evaluate_property': 'قيّم عقارك', 'create_contract': 'أنشئ عقدك',
+                'contact_us': 'تواصل معنا', 'get_consultation': 'احصل على استشارة', 'market_property': 'سوّق عقارك'
             },
             en: {
                 'brand_ar': 'Himmat', 'brand_en': 'Al Madinah',
@@ -881,12 +837,27 @@
                 'chat_title': 'Smart Assistant', 'chat_status': 'Online', 'chat_welcome': 'Hello! How can I help? 🏠',
                 'chat_placeholder': 'Type here...', 'whatsapp': 'WhatsApp', 'tiktok': 'TikTok',
                 'instagram': 'Instagram', 'snapchat': 'Snapchat', 'location': 'Madinah, Saudi Arabia',
-                'phone_number': '+966 53 050 0906', 'email': 'ffaaddhheell2323@gmail.com'
+                'phone_number': '+966 53 050 0906', 'email': 'ffaaddhheell2323@gmail.com',
+                'about_office': 'Himmat Al Madinah Real Estate Office',
+                'about_desc': 'Your trusted real estate partner in Madinah. We provide integrated solutions in smart valuation, property management, and marketing.',
+                'vision': 'Our Vision', 'mission': 'Our Mission',
+                'vision_text': 'To be the leading real estate platform in Madinah providing high-precision digital valuation solutions.',
+                'mission_text': 'Providing reliable real estate services based on transparency and innovation.',
+                'lessor': 'Lessor', 'lessor_id': 'Lessor ID', 'tenant': 'Tenant', 'tenant_id': 'Tenant ID',
+                'district_name': 'District', 'unit_type': 'Unit Type', 'annual_rent': 'Annual Rent',
+                'duration': 'Duration (months)', 'start_date': 'Start Date', 'deposit': 'Deposit',
+                'lessor_cr': 'Lessor CR', 'tenant_cr': 'Tenant CR', 'activity': 'Activity',
+                'generate_contract': 'Generate Full Contract',
+                'buy_sell': 'Buy & Sell Properties', 'smart_valuation': 'Smart Valuation', 'contract_drafting': 'Contract Drafting',
+                'property_management': 'Property Management', 'real_estate_consulting': 'Real Estate Consulting', 'real_estate_marketing': 'Real Estate Marketing',
+                'browse_offers': 'Browse Offers', 'evaluate_property': 'Evaluate Property', 'create_contract': 'Create Contract',
+                'contact_us': 'Contact Us', 'get_consultation': 'Get Consultation', 'market_property': 'Market Property'
             }
         };
 
         function translateText(text, lang) {
             if (lang === 'ar') return text;
+            if (districtTranslations[text]) return districtTranslations[text];
             const textMap = {
                 'الرياض': 'Riyadh', 'جدة': 'Jeddah', 'مكة المكرمة': 'Makkah', 'المدينة المنورة': 'Madinah',
                 'فيلا': 'Villa', 'شقة في عمارة': 'Apartment', 'شقة في برج': 'Tower Apartment',
@@ -918,22 +889,20 @@
                 'هل الأدوات مجانية؟': 'Are tools free?',
                 'نعم، مجانية لجميع عملاء المكتب.': 'Yes, free for all clients.',
                 'مكتب همة المدينة العقارية': 'Himmat Al Madinah Real Estate',
-                'شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.': 'Your trusted real estate partner in Madinah.',
                 'رخصة فال العقارية: 1200030428 ✓': 'Fal Real Estate License: 1200030428 ✓',
                 'رؤيتنا': 'Our Vision', 'رسالتنا': 'Our Mission',
-                'أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.': 'To be the leading real estate platform in Madinah.',
-                'تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.': 'Providing reliable real estate services.',
                 'معلومات التواصل': 'Contact Information', 'أرسل لنا رسالة': 'Send us a message',
                 'الاسم الكامل': 'Full Name', 'رقم الجوال': 'Phone Number', 'نص الرسالة...': 'Your message...',
                 'إرسال الرسالة': 'Send Message', 'عقد سكني': 'Residential', 'عقد تجاري': 'Commercial',
                 'همة المدينة': 'Himmat Al Madinah', 'المساعد الذكي': 'Smart Assistant',
                 'متصل': 'Online', 'مرحباً! كيف أساعدك؟ 🏠': 'Hello! How can I help? 🏠',
                 'اكتب هنا...': 'Type here...', 'واتساب': 'WhatsApp', 'تيك توك': 'TikTok',
-                'إنستغرام': 'Instagram', 'سناب شات': 'Snapchat', 'همة المدينة العقارية': 'Himmat Al Madinah Real Estate',
+                'إنستغرام': 'Instagram', 'سناب شات': 'Snapchat',
                 'المدينة المنورة، السعودية': 'Madinah, Saudi Arabia', 'الإيجار': 'Rent', 'المدة': 'Duration',
                 'شهر': 'months', 'ريال': 'SAR', 'المكان': 'Location', 'رقم': 'No',
                 'بيانات العقد': 'Contract Data', 'المالية': 'Financial', 'العقار': 'Property',
-                'طباعة': 'Print', 'إغلاق': 'Close', 'التفاصيل': 'Details', 'الإيجار المتوقع': 'Expected Rent'
+                'طباعة': 'Print', 'إغلاق': 'Close', 'التفاصيل': 'Details',
+                'الحي': 'District', 'المدينة': 'City', 'المساحة (م²)': 'Area (m²)'
             };
             return textMap[text] || text;
         }
@@ -954,7 +923,6 @@
             Object.keys(pages).forEach(k => { if(pages[k]) { pages[k].style.display='none'; pages[k].classList.remove('active'); } });
             if(pages[name]) { pages[name].style.display='block'; pages[name].classList.add('active'); }
             document.querySelectorAll('.nav-links-modern a').forEach(a => a.classList.toggle('active', a.dataset.page===name));
-            document.querySelectorAll('.navbar-bottom-mobile a').forEach(a => a.classList.toggle('active', a.dataset.page===name));
             document.getElementById('chatWindow').classList.remove('active');
             window.scrollTo({top:0, behavior:'smooth'});
         }
@@ -974,8 +942,10 @@
             document.querySelectorAll('select').forEach(select => {
                 Array.from(select.options).forEach(option => {
                     const text = option.textContent.trim();
-                    const translatedText = translateText(text, lang);
-                    if (translatedText) option.textContent = translatedText;
+                    if(text && text !== '--' && text !== '') {
+                        const translatedText = translateText(text, lang);
+                        if (translatedText) option.textContent = translatedText;
+                    }
                 });
             });
             document.querySelectorAll('label, h4, h3, h2, h1, p, span, button, div').forEach(el => {
@@ -1001,72 +971,9 @@
             if(document.getElementById('valArea')?.value) {
                 calculateValuation();
             }
+            updateDistricts();
+            updateAddDistricts();
         }
-
-        // ========== إظهار/إخفاء الشريط السفلي ==========
-        let lastScrollTop = 0;
-        let isNavbarVisible = false;
-        let hideTimeout;
-
-        function showBottomNav() {
-            const navbarBottom = document.getElementById('navbarBottomMobile');
-            const toggleBtn = document.getElementById('navToggleBtn');
-            if (navbarBottom) {
-                navbarBottom.classList.add('visible');
-                isNavbarVisible = true;
-                if (toggleBtn) toggleBtn.classList.add('visible');
-                
-                clearTimeout(hideTimeout);
-                hideTimeout = setTimeout(() => {
-                    hideBottomNav();
-                }, 3000);
-            }
-        }
-
-        function hideBottomNav() {
-            const navbarBottom = document.getElementById('navbarBottomMobile');
-            const toggleBtn = document.getElementById('navToggleBtn');
-            if (navbarBottom) {
-                navbarBottom.classList.remove('visible');
-                isNavbarVisible = false;
-                if (toggleBtn) toggleBtn.classList.remove('visible');
-            }
-        }
-
-        function toggleNavbar() {
-            if (isNavbarVisible) {
-                hideBottomNav();
-            } else {
-                showBottomNav();
-            }
-        }
-
-        // إظهار عند التمرير للأعلى
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (currentScroll < lastScrollTop) {
-                showBottomNav();
-            } else if (currentScroll > lastScrollTop && currentScroll > 50) {
-                hideBottomNav();
-            }
-            
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        });
-
-        // إظهار عند لمس المنطقة السفلية
-        document.addEventListener('touchstart', (e) => {
-            if (e.touches[0].clientY > window.innerHeight - 150) {
-                showBottomNav();
-            }
-        });
-
-        // إظهار عند تحريك الماوس للمنطقة السفلية
-        document.addEventListener('mousemove', (e) => {
-            if (e.clientY > window.innerHeight - 150) {
-                showBottomNav();
-            }
-        });
 
         function toggleTheme() {
             const body = document.body;
@@ -1090,7 +997,12 @@
             if(!select) return;
             select.innerHTML = '<option value="">--</option>';
             if(city && districtsData[city]) {
-                Object.keys(districtsData[city]).forEach(d => { const o = document.createElement('option'); o.value = d; o.textContent = d; select.appendChild(o); });
+                Object.keys(districtsData[city]).forEach(d => {
+                    const o = document.createElement('option');
+                    o.value = d;
+                    o.textContent = currentLang === 'en' ? (districtTranslations[d] || d) : d;
+                    select.appendChild(o);
+                });
                 select.value = Object.keys(districtsData[city])[0];
             }
             calculateValuation();
@@ -1222,7 +1134,7 @@
                   '🏙️ '+(currentLang==='ar'?'المدينة':'City')+': '+city+'\n'+
                   '📍 '+(currentLang==='ar'?'الحي':'District')+': '+district+'\n'+
                   '🏠 '+(currentLang==='ar'?'النوع':'Type')+': '+type+'\n'+
-                  '📐 '+(currentLang==='ar'?'المساحة':'Area')+': '+area+' م²\n'+
+                  '📐 '+(currentLang==='ar'?'المساحة':'Area')+': '+area+' m²\n'+
                   '💰 '+(currentLang==='ar'?'المتوسط':'Average')+': '+avg+'\n'+
                   '📈 ROI: '+roi+'\n'+
                   '🏠 '+(currentLang==='ar'?'الإيجار':'Rent')+': '+rent+'\n'+
@@ -1241,14 +1153,14 @@
             const avg = document.getElementById('avgPrice')?.textContent || '--';
             const roi = document.getElementById('roiValue')?.textContent || '--';
             const conf = document.getElementById('confidenceValue')?.textContent || '--';
-            const content = 'تقرير تقييم عقاري\n\n'+
-                           'المدينة: '+city+'\n'+
-                           'الحي: '+district+'\n'+
-                           'السعر المتوقع: '+avg+'\n'+
-                           'عائد الاستثمار: '+roi+'\n'+
-                           'نسبة الثقة: '+conf+'\n\n'+
-                           'مكتب همة المدينة العقارية\n'+
-                           'رخصة فال: 1200030428';
+            const content = (currentLang==='ar'?'تقرير تقييم عقاري':'Property Valuation Report')+'\n\n'+
+                           (currentLang==='ar'?'المدينة':'City')+': '+city+'\n'+
+                           (currentLang==='ar'?'الحي':'District')+': '+district+'\n'+
+                           (currentLang==='ar'?'السعر المتوقع':'Estimated Price')+': '+avg+'\n'+
+                           'ROI: '+roi+'\n'+
+                           (currentLang==='ar'?'نسبة الثقة':'Confidence')+': '+conf+'\n\n'+
+                           'Himmat Al Madinah Real Estate\n'+
+                           'Fal License: 1200030428';
             const blob = new Blob([content], {type:'text/plain;charset=utf-8'});
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1265,7 +1177,12 @@
             sel.innerHTML = '<option value="">--</option>';
             const map = {'الرياض':'riyadh','جدة':'jeddah','مكة المكرمة':'makkah','المدينة المنورة':'madinah'};
             const key = map[city];
-            if(key && districtsData[key]) Object.keys(districtsData[key]).forEach(d => { const o=document.createElement('option'); o.value=d; o.textContent=d; sel.appendChild(o); });
+            if(key && districtsData[key]) Object.keys(districtsData[key]).forEach(d => {
+                const o=document.createElement('option');
+                o.value=d;
+                o.textContent = currentLang === 'en' ? (districtTranslations[d] || d) : d;
+                sel.appendChild(o);
+            });
         }
         
         function handleExcelFile(e) {
@@ -1275,7 +1192,7 @@
                 const preview = document.getElementById('excelPreview');
                 if(preview) {
                     preview.style.display = 'block';
-                    preview.innerHTML = '<p style="font-size:10px;color:var(--accent-gold);font-weight:700;">✅ '+(currentLang==='ar'?'تم تحميل الملف بنجاح':'File uploaded successfully')+'</p>';
+                    preview.innerHTML = '<p style="font-size:13px;color:var(--accent-gold);font-weight:700;">✅ '+(currentLang==='ar'?'تم تحميل الملف بنجاح':'File uploaded successfully')+'</p>';
                 }
             }
         }
@@ -1304,27 +1221,27 @@
         function generateFullResidentialContract() {
             const isAr = currentLang === 'ar';
             const html = `
-            <div style="text-align:center;margin-bottom:10px;"><h3 style="color:var(--text-main);font-size:14px;font-weight:900;">${isAr?'عقد إيجار سكني':'Residential Lease Contract'}</h3></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'١. بيانات العقد':'1. Contract Data'}</h4><p style="color:var(--text-muted);font-size:9px;">${isAr?'رقم':'No'}: 1-0/${Date.now().toString().slice(-10)} | ${isAr?'المكان':'Location'}: ${gv('resCity')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٢. المؤجر':'2. Lessor'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('resLessorName')} - ${gv('resLessorID')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٣. المستأجر':'3. Tenant'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('resTenantName')} - ${gv('resTenantID')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٤. العقار':'4. Property'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('resCity')} - ${gv('resDistrict')} - ${gv('resUnitType')} - ${gv('resArea')} ${isAr?'م²':'m²'}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٥. المالية':'5. Financial'}</h4><p style="color:var(--text-muted);font-size:9px;">${isAr?'الإيجار':'Rent'}: ${Number(gv('resAnnualRent')).toLocaleString()} ${isAr?'ريال':'SAR'} | ${isAr?'المدة':'Duration'}: ${gv('resDuration')} ${isAr?'شهر':'months'}</p></div>
-            <div style="text-align:center;margin-top:10px;display:flex;gap:6px;justify-content:center;"><button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ ${isAr?'طباعة':'Print'}</button><button class="btn btn-outline btn-sm" onclick="closePrintWindow()">${isAr?'إغلاق':'Close'}</button></div>`;
+            <div style="text-align:center;margin-bottom:10px;"><h3 style="color:var(--text-main);font-size:16px;font-weight:900;">${isAr?'عقد إيجار سكني':'Residential Lease Contract'}</h3></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'١. بيانات العقد':'1. Contract Data'}</h4><p style="color:var(--text-muted);font-size:11px;">${isAr?'رقم':'No'}: 1-0/${Date.now().toString().slice(-10)} | ${isAr?'المكان':'Location'}: ${gv('resCity')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٢. المؤجر':'2. Lessor'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('resLessorName')} - ${gv('resLessorID')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٣. المستأجر':'3. Tenant'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('resTenantName')} - ${gv('resTenantID')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٤. العقار':'4. Property'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('resCity')} - ${gv('resDistrict')} - ${gv('resUnitType')} - ${gv('resArea')} ${isAr?'م²':'m²'}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٥. المالية':'5. Financial'}</h4><p style="color:var(--text-muted);font-size:11px;">${isAr?'الإيجار':'Rent'}: ${Number(gv('resAnnualRent')).toLocaleString()} ${isAr?'ريال':'SAR'} | ${isAr?'المدة':'Duration'}: ${gv('resDuration')} ${isAr?'شهر':'months'}</p></div>
+            <div style="text-align:center;margin-top:10px;display:flex;gap:8px;justify-content:center;"><button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ ${isAr?'طباعة':'Print'}</button><button class="btn btn-outline btn-sm" onclick="closePrintWindow()">${isAr?'إغلاق':'Close'}</button></div>`;
             openPrintWindow(html);
         }
 
         function generateFullCommercialContract() {
             const isAr = currentLang === 'ar';
             const html = `
-            <div style="text-align:center;margin-bottom:10px;"><h3 style="color:var(--text-main);font-size:14px;font-weight:900;">${isAr?'عقد إيجار تجاري موحد':'Commercial Lease Contract'}</h3></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'١. بيانات العقد':'1. Contract Data'}</h4><p style="color:var(--text-muted);font-size:9px;">${isAr?'رقم':'No'}: 1-0/${Date.now().toString().slice(-10)} | ${isAr?'المكان':'Location'}: ${gv('comCity')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٢. المؤجر':'2. Lessor'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('comLessorName')} - ${isAr?'سجل':'CR'}: ${gv('comLessorCR')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٣. المستأجر':'3. Tenant'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('comTenantName')} - ${isAr?'سجل':'CR'}: ${gv('comTenantCR')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٤. النشاط':'4. Activity'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('comActivity')}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٥. العقار':'5. Property'}</h4><p style="color:var(--text-muted);font-size:9px;">${gv('comCity')} - ${gv('comDistrict')} - ${gv('comArea')} ${isAr?'م²':'m²'}</p></div>
-            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:10px;">${isAr?'٦. المالية':'6. Financial'}</h4><p style="color:var(--text-muted);font-size:9px;">${isAr?'الإيجار':'Rent'}: ${Number(gv('comAnnualRent')).toLocaleString()} ${isAr?'ريال':'SAR'} | ${isAr?'المدة':'Duration'}: ${gv('comDuration')} ${isAr?'شهر':'months'}</p></div>
-            <div style="text-align:center;margin-top:10px;display:flex;gap:6px;justify-content:center;"><button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ ${isAr?'طباعة':'Print'}</button><button class="btn btn-outline btn-sm" onclick="closePrintWindow()">${isAr?'إغلاق':'Close'}</button></div>`;
+            <div style="text-align:center;margin-bottom:10px;"><h3 style="color:var(--text-main);font-size:16px;font-weight:900;">${isAr?'عقد إيجار تجاري موحد':'Commercial Lease Contract'}</h3></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'١. بيانات العقد':'1. Contract Data'}</h4><p style="color:var(--text-muted);font-size:11px;">${isAr?'رقم':'No'}: 1-0/${Date.now().toString().slice(-10)} | ${isAr?'المكان':'Location'}: ${gv('comCity')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٢. المؤجر':'2. Lessor'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('comLessorName')} - ${isAr?'سجل':'CR'}: ${gv('comLessorCR')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٣. المستأجر':'3. Tenant'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('comTenantName')} - ${isAr?'سجل':'CR'}: ${gv('comTenantCR')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٤. النشاط':'4. Activity'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('comActivity')}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٥. العقار':'5. Property'}</h4><p style="color:var(--text-muted);font-size:11px;">${gv('comCity')} - ${gv('comDistrict')} - ${gv('comArea')} ${isAr?'م²':'m²'}</p></div>
+            <div class="contract-section"><h4 style="color:var(--accent-gold);font-size:12px;">${isAr?'٦. المالية':'6. Financial'}</h4><p style="color:var(--text-muted);font-size:11px;">${isAr?'الإيجار':'Rent'}: ${Number(gv('comAnnualRent')).toLocaleString()} ${isAr?'ريال':'SAR'} | ${isAr?'المدة':'Duration'}: ${gv('comDuration')} ${isAr?'شهر':'months'}</p></div>
+            <div style="text-align:center;margin-top:10px;display:flex;gap:8px;justify-content:center;"><button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ ${isAr?'طباعة':'Print'}</button><button class="btn btn-outline btn-sm" onclick="closePrintWindow()">${isAr?'إغلاق':'Close'}</button></div>`;
             openPrintWindow(html);
         }
 
@@ -1342,14 +1259,14 @@
             if(!msg) return;
             const container = document.getElementById('chatMessages');
             const userDiv = document.createElement('div');
-            userDiv.style.cssText = 'background:var(--accent-gold);color:var(--text-on-gold);padding:8px 12px;border-radius:10px;margin-bottom:6px;max-width:85%;margin-right:auto;font-size:10px;font-weight:700;';
+            userDiv.style.cssText = 'background:var(--accent-gold);color:var(--text-on-gold);padding:10px 14px;border-radius:10px;margin-bottom:8px;max-width:85%;margin-right:auto;font-size:13px;font-weight:700;';
             userDiv.textContent = msg;
             container.appendChild(userDiv);
             input.value = '';
             container.scrollTop = container.scrollHeight;
             setTimeout(() => {
                 const botDiv = document.createElement('div');
-                botDiv.style.cssText = 'background:var(--bg-input);padding:8px 12px;border-radius:10px;margin-bottom:6px;max-width:85%;font-size:10px;color:var(--text-main);border:1px solid var(--border-color);';
+                botDiv.style.cssText = 'background:var(--bg-input);padding:10px 14px;border-radius:10px;margin-bottom:8px;max-width:85%;font-size:13px;color:var(--text-main);border:1px solid var(--border-color);';
                 const lower = msg.toLowerCase();
                 if(lower.includes('تقييم')||lower.includes('سعر')||lower.includes('valuation')||lower.includes('price')) botDiv.textContent = currentLang==='ar'?'استخدم أداة التقييم 📊':'Use valuation tool 📊';
                 else if(lower.includes('عقد')||lower.includes('contract')) botDiv.textContent = currentLang==='ar'?'تفضل صفحة العقود 📄':'Check contracts page 📄';
@@ -1380,11 +1297,6 @@
             animateCounters();
             navigateTo('home');
             updateAddDistricts();
-            
-            // إظهار الشريط لفترة قصيرة عند التحميل
-            setTimeout(() => {
-                showBottomNav();
-            }, 1000);
             
             setTimeout(() => {
                 const cityEl = document.getElementById('valCity');
