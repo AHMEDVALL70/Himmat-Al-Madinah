@@ -90,7 +90,7 @@
             line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 100px;
+            padding-bottom: 60px;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -130,24 +130,72 @@
         .lang-btn-modern.active { background: var(--accent-gold); color: var(--text-on-gold); }
         .theme-toggle-btn { padding: 4px 7px; border: none; border-radius: var(--radius-full); background: transparent; color: var(--text-muted); font-size: 13px; cursor: pointer; }
 
+        /* ========== الشريط السفلي - مخفي افتراضياً ========== */
         .navbar-bottom-mobile {
-            position: fixed; bottom: 70px; left: 0; right: 0;
-            margin: 0 auto;
-            width: 95%; max-width: 650px;
-            background: var(--bg-card);
-            border-radius: var(--radius-full);
-            z-index: 1000;
-            border: 1px solid var(--border-color);
-            display: flex; justify-content: space-around; align-items: center;
-            height: 45px; padding: 0 12px;
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s ease !important;
-            will-change: transform;
+    position: fixed; bottom: 70px; left: 0; right: 0;
+    margin: 0 auto;
+    width: 95%; max-width: 650px;
+    background: var(--bg-card);
+    border-radius: var(--radius-full);
+    z-index: 1000;
+    border: 1px solid var(--border-color);
+    display: none !important; /* مخفي نهائياً */
+    justify-content: space-around; align-items: center;
+    height: 45px; padding: 0 12px;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s ease !important;
+    will-change: transform;
+}
+
+.navbar-bottom-mobile.visible {
+    display: flex !important; /* يظهر فقط مع هذه الكلاس */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+        .navbar-bottom-mobile.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
         .navbar-bottom-mobile a { display: flex; align-items: center; justify-content: center; text-decoration: none; padding: 5px 8px; border-radius: var(--radius-full); transition: var(--transition); cursor: pointer; position: relative; }
         .navbar-bottom-mobile a svg { width: 16px; height: 16px; color: var(--text-muted); }
         .navbar-bottom-mobile a.active { background: rgba(212,175,55,0.12); }
         .navbar-bottom-mobile a.active svg { color: var(--accent-gold); }
+
+        /* ========== زر تبديل الشريط ========== */
+      .nav-toggle-btn {
+    position: fixed;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    cursor: pointer;
+    z-index: 1001;
+    display: none; /* مخفي افتراضياً */
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.nav-toggle-btn.visible {
+    display: flex; /* يظهر مع الكلاس */
+}
+        .nav-toggle-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .nav-toggle-btn:hover {
+            background: rgba(212,175,55,0.15);
+            transform: translateX(-50%) scale(1.1);
+        }
 
         .main-footer {
             position: fixed; bottom: 0; left: 0; right: 0;
@@ -157,6 +205,10 @@
             border-top: 1px solid var(--border-color);
             z-index: 999;
             padding: 15px 20px 0;
+            transition: transform 0.4s ease;
+        }
+        .main-footer.hidden {
+            transform: translateY(100%);
         }
         .footer-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
         .footer-logo img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; margin-bottom: 8px; }
@@ -184,7 +236,7 @@
         .btn-lg { padding: 12px 26px; font-size: 13px; }
         .btn-block { width: 100%; justify-content: center; }
 
-        .page-content { display: none; min-height: 100vh; padding: 85px 20px 120px; max-width: 900px; margin: 0 auto; }
+        .page-content { display: none; min-height: 100vh; padding: 85px 20px 100px; max-width: 900px; margin: 0 auto; }
         .page-content.active { display: block; }
         @media (min-width: 1025px) { .page-content { height: 100vh; overflow-y: auto; } body { overflow: hidden; } }
         .page-header { text-align: center; margin-bottom: 14px; }
@@ -234,7 +286,7 @@
         .checkbox-group label.active { background: rgba(212,175,55,0.15); color: var(--accent-gold); border-color: var(--accent-gold); }
         .checkbox-group label input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--accent-gold); }
 
-        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 85px 15px 120px; }
+        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 85px 15px 100px; }
         .hero-container { max-width: 900px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: center; margin: 0 auto; }
         .hero-brand { display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .hero-logo-wrapper { display: flex; justify-content: center; align-items: center; max-width: 400px; }
@@ -267,7 +319,7 @@
         .confidence-bar { width: 100%; height: 6px; background: var(--bg-input); border-radius: 10px; overflow: hidden; margin-top: 5px; }
         .confidence-fill { height: 100%; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold-bright)); border-radius: 10px; transition: width 0.5s ease; }
 
-        .floating-buttons { position: fixed; left: 12px; bottom: 180px; display: flex; flex-direction: column; gap: 7px; z-index: 998; }
+        .floating-buttons { position: fixed; left: 12px; bottom: 130px; display: flex; flex-direction: column; gap: 7px; z-index: 998; }
         .floating-btn { width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); box-shadow: var(--shadow-lg); }
         .floating-btn svg { width: 20px; height: 20px; }
         .floating-whatsapp { background: var(--accent-gold); }
@@ -293,7 +345,7 @@
         .license-badge { display: inline-block; margin-top: 10px; background: rgba(212,175,55,0.15); color: var(--accent-gold); padding: 5px 14px; border-radius: 20px; font-size: 10px; font-weight: 700; border: 1px solid rgba(212,175,55,0.4); cursor: pointer; }
         .license-badge:hover { background: rgba(212,175,55,0.25); }
 
-        .chat-window { position: fixed; bottom: 185px; left: 12px; width: 300px; max-width: 90vw; height: 380px; background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 2px solid var(--accent-gold); display: none; flex-direction: column; z-index: 997; overflow: hidden; }
+        .chat-window { position: fixed; bottom: 130px; left: 12px; width: 300px; max-width: 90vw; height: 380px; background: var(--bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 2px solid var(--accent-gold); display: none; flex-direction: column; z-index: 997; overflow: hidden; }
         .chat-window.active { display: flex; }
         .contract-print-window { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .contract-print-window.active { display: flex; }
@@ -313,10 +365,11 @@
             .stats-container { grid-template-columns: repeat(2, 1fr); gap: 6px; }
             .stat-number { font-size: 16px; }
             .form-grid { grid-template-columns: 1fr; }
-            .page-content { padding: 80px 15px 100px !important; }
+            .page-content { padding: 80px 15px 80px !important; }
             .card, .contact-info-card, .contact-form-3d { padding: 15px !important; }
             select, input, textarea { font-size: 16px !important; }
-            .navbar-bottom-mobile { bottom: 65px; width: 96%; }
+            .navbar-bottom-mobile { bottom: 60px; width: 96%; }
+            .nav-toggle-btn { bottom: 65px; }
             .footer-description { font-size: 10px; }
             .social-icon { width: 32px; height: 32px; font-size: 12px; }
             .lang-switcher-modern { display: flex !important; gap: 1px; padding: 1px; }
@@ -363,7 +416,11 @@
         </div>
     </nav>
 
-    <nav class="navbar-bottom-mobile" aria-label="القائمة السفلية">
+    <!-- زر تبديل الشريط -->
+    <button class="nav-toggle-btn" id="navToggleBtn" onclick="toggleNavbar()" aria-label="إظهار/إخفاء القائمة">☰</button>
+
+    <!-- الشريط السفلي -->
+    <nav class="navbar-bottom-mobile" id="navbarBottomMobile" aria-label="القائمة السفلية">
         <a class="active" data-page="home" onclick="navigateTo('home'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
         <a data-page="valuation" onclick="navigateTo('valuation'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></a>
         <a data-page="offers" onclick="navigateTo('offers'); return false;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></a>
@@ -946,37 +1003,68 @@
             }
         }
 
+        // ========== إظهار/إخفاء الشريط السفلي ==========
         let lastScrollTop = 0;
-        let isNavbarVisible = true;
+        let isNavbarVisible = false;
+        let hideTimeout;
 
+        function showBottomNav() {
+            const navbarBottom = document.getElementById('navbarBottomMobile');
+            const toggleBtn = document.getElementById('navToggleBtn');
+            if (navbarBottom) {
+                navbarBottom.classList.add('visible');
+                isNavbarVisible = true;
+                if (toggleBtn) toggleBtn.classList.add('visible');
+                
+                clearTimeout(hideTimeout);
+                hideTimeout = setTimeout(() => {
+                    hideBottomNav();
+                }, 3000);
+            }
+        }
+
+        function hideBottomNav() {
+            const navbarBottom = document.getElementById('navbarBottomMobile');
+            const toggleBtn = document.getElementById('navToggleBtn');
+            if (navbarBottom) {
+                navbarBottom.classList.remove('visible');
+                isNavbarVisible = false;
+                if (toggleBtn) toggleBtn.classList.remove('visible');
+            }
+        }
+
+        function toggleNavbar() {
+            if (isNavbarVisible) {
+                hideBottomNav();
+            } else {
+                showBottomNav();
+            }
+        }
+
+        // إظهار عند التمرير للأعلى
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            const navbarBottom = document.querySelector('.navbar-bottom-mobile');
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                if (isNavbarVisible) {
-                    navbarBottom.style.transform = 'translateY(80px)';
-                    navbarBottom.style.opacity = '0';
-                    navbarBottom.style.pointerEvents = 'none';
-                    isNavbarVisible = false;
-                }
-            } else {
-                if (!isNavbarVisible) {
-                    navbarBottom.style.transform = 'translateY(0)';
-                    navbarBottom.style.opacity = '1';
-                    navbarBottom.style.pointerEvents = 'auto';
-                    isNavbarVisible = true;
-                }
+            
+            if (currentScroll < lastScrollTop) {
+                showBottomNav();
+            } else if (currentScroll > lastScrollTop && currentScroll > 50) {
+                hideBottomNav();
             }
+            
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
 
+        // إظهار عند لمس المنطقة السفلية
         document.addEventListener('touchstart', (e) => {
-            if (e.touches[0].clientY > window.innerHeight - 100) {
-                const navbarBottom = document.querySelector('.navbar-bottom-mobile');
-                navbarBottom.style.transform = 'translateY(0)';
-                navbarBottom.style.opacity = '1';
-                navbarBottom.style.pointerEvents = 'auto';
-                isNavbarVisible = true;
+            if (e.touches[0].clientY > window.innerHeight - 150) {
+                showBottomNav();
+            }
+        });
+
+        // إظهار عند تحريك الماوس للمنطقة السفلية
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientY > window.innerHeight - 150) {
+                showBottomNav();
             }
         });
 
@@ -1057,15 +1145,9 @@
             const high = Math.round(final*1.1);
             const avg = Math.round(final);
             
-            // حساب ROI (عائد الاستثمار)
             const roi = Math.round((8.5 - age * 0.15 + (districtFactor - 1) * 3 + (extraF - 1) * 5) * 100) / 100;
             const roiDisplay = roi.toFixed(1) + '%';
-            
-            // حساب الإيجار المتوقع (سنوي)
             const annualRent = Math.round(avg * roi / 100);
-            
-            // حساب نسبة الثقة
-            const dataPoints = Math.floor(10 + districtFactor * 15 + (residentialRatio/20));
             const confidence = Math.min(95, Math.max(60, Math.round(75 + (districtFactor-1)*15 + (extraF-1)*20 - age*0.5)));
             
             const unit = currentLang==='ar' ? 'ر.س' : 'SAR';
@@ -1190,7 +1272,6 @@
             if(e.target.files && e.target.files[0]) {
                 const file = e.target.files[0];
                 alert('📂 '+file.name+' - '+(currentLang==='ar'?'جاري المعالجة':'Processing'));
-                // هنا يمكن إضافة معالجة Excel
                 const preview = document.getElementById('excelPreview');
                 if(preview) {
                     preview.style.display = 'block';
@@ -1299,6 +1380,12 @@
             animateCounters();
             navigateTo('home');
             updateAddDistricts();
+            
+            // إظهار الشريط لفترة قصيرة عند التحميل
+            setTimeout(() => {
+                showBottomNav();
+            }, 1000);
+            
             setTimeout(() => {
                 const cityEl = document.getElementById('valCity');
                 if(cityEl) {
