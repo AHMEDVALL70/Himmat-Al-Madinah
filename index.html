@@ -306,6 +306,95 @@
             .page-header h2 { font-size: 22px !important; }
             .valuation-result .result-grid { grid-template-columns: 1fr; }
         }
+
+        /* ===== Smart valuation wizard redesign ===== */
+        .valuation-shell { max-width: 980px; margin: 0 auto; }
+        .valuation-intro { display:grid; grid-template-columns:1.25fr .75fr; gap:18px; align-items:stretch; margin-bottom:18px; }
+        .valuation-intro-copy { padding:24px; border-radius:22px; background:linear-gradient(135deg, rgba(212,175,55,.14), rgba(15,23,42,.96) 55%); border:1px solid rgba(212,175,55,.28); box-shadow:var(--shadow-soft); }
+        .valuation-kicker { display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; color:var(--accent-gold-bright); background:rgba(212,175,55,.1); border:1px solid rgba(212,175,55,.3); font-size:12px; font-weight:800; margin-bottom:10px; }
+        .valuation-intro-copy h3 { font-size:clamp(21px,3vw,30px); line-height:1.45; margin-bottom:7px; font-weight:900; color:var(--text-main); }
+        .valuation-intro-copy h3 span { color:var(--accent-gold); }
+        .valuation-intro-copy p { color:var(--text-muted); font-size:14px; max-width:580px; }
+        .valuation-trust { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-top:18px; }
+        .valuation-trust-item { padding:11px 8px; text-align:center; border-radius:14px; background:rgba(9,13,22,.45); border:1px solid var(--border-color); }
+        .valuation-trust-item strong { display:block; color:var(--accent-gold); font-size:17px; line-height:1.3; }
+        .valuation-trust-item small { color:var(--text-muted); font-size:10px; }
+        .valuation-side-note { display:flex; flex-direction:column; justify-content:center; padding:22px; border-radius:22px; background:var(--bg-card); border:1px solid var(--border-color); box-shadow:var(--shadow-soft); }
+        .valuation-side-note .note-icon { width:44px; height:44px; display:grid; place-items:center; border-radius:14px; background:rgba(212,175,55,.13); color:var(--accent-gold); font-size:22px; margin-bottom:12px; }
+        .valuation-side-note h4 { color:var(--text-main); font-size:15px; margin-bottom:4px; }
+        .valuation-side-note p { color:var(--text-muted); font-size:12px; line-height:1.8; }
+        .wizard-card { padding:24px !important; }
+        .wizard-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:20px; }
+        .wizard-step-title { color:var(--text-main); font-size:20px; font-weight:900; margin-bottom:3px; }
+        .wizard-step-subtitle { color:var(--text-muted); font-size:12px; }
+        .wizard-step-counter { color:var(--accent-gold); font-size:12px; font-weight:800; white-space:nowrap; padding-top:3px; }
+        .wizard-progress { height:8px; width:100%; overflow:hidden; border-radius:999px; background:var(--bg-input); border:1px solid var(--border-color); margin-bottom:22px; }
+        .wizard-progress-fill { height:100%; width:16.66%; background:linear-gradient(90deg,var(--accent-gold-dark),var(--accent-gold-bright)); border-radius:inherit; transition:width .35s ease; }
+        .wizard-step { display:none; animation:wizardFade .25s ease; }
+        .wizard-step.active { display:block; }
+        @keyframes wizardFade { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
+        .wizard-question { color:var(--text-main); font-size:18px; font-weight:900; margin-bottom:5px; }
+        .wizard-hint { color:var(--text-muted); font-size:12px; margin-bottom:16px; }
+        .wizard-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+        .wizard-field { min-width:0; }
+        .wizard-field.full { grid-column:1/-1; }
+        .wizard-field .form-label { margin-bottom:7px; }
+        .wizard-choice-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+        .wizard-choice { position:relative; cursor:pointer; }
+        .wizard-choice input { position:absolute; opacity:0; pointer-events:none; }
+        .wizard-choice-content { min-height:88px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:6px; padding:10px 8px; text-align:center; color:var(--text-muted); background:var(--bg-input); border:1px solid var(--border-color); border-radius:15px; transition:var(--transition-fast); }
+        .wizard-choice-content strong { color:var(--text-main); font-size:13px; }
+        .wizard-choice-content small { font-size:10px; }
+        .wizard-choice-content .choice-icon { color:var(--accent-gold); font-size:22px; }
+        .wizard-choice input:checked + .wizard-choice-content { color:var(--accent-gold); border-color:var(--accent-gold); background:rgba(212,175,55,.12); box-shadow:0 0 0 2px rgba(212,175,55,.12); }
+        .wizard-choice input:focus-visible + .wizard-choice-content { outline:2px solid var(--accent-gold-bright); outline-offset:2px; }
+        .wizard-extra-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+        .wizard-extra { display:flex; align-items:center; gap:8px; min-height:50px; padding:10px 12px; border-radius:14px; cursor:pointer; background:var(--bg-input); border:1px solid var(--border-color); color:var(--text-muted); transition:var(--transition-fast); font-size:12px; font-weight:700; }
+        .wizard-extra:hover { border-color:rgba(212,175,55,.6); }
+        .wizard-extra.active { color:var(--accent-gold); border-color:var(--accent-gold); background:rgba(212,175,55,.12); }
+        .wizard-extra input { width:17px; height:17px; accent-color:var(--accent-gold); }
+        .wizard-review { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:15px; }
+        .review-item { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-radius:13px; background:var(--bg-input); border:1px solid var(--border-color); }
+        .review-item span { color:var(--text-muted); font-size:12px; }
+        .review-item strong { color:var(--text-main); font-size:13px; text-align:left; }
+        .wizard-notice { min-height:22px; margin-top:12px; color:#fbbf24; font-size:12px; font-weight:700; }
+        .wizard-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:22px; padding-top:18px; border-top:1px solid var(--border-color); }
+        .wizard-actions-right { display:flex; gap:9px; margin-inline-start:auto; }
+        .wizard-actions .btn { min-width:118px; }
+        .valuation-result { margin-top:18px; }
+        .result-hero { text-align:center; padding:14px 10px 19px; margin-bottom:12px; border-radius:16px; background:linear-gradient(135deg,rgba(212,175,55,.15),rgba(9,13,22,.3)); border:1px solid rgba(212,175,55,.23); }
+        .result-hero .result-caption { display:block; color:var(--text-muted); font-size:12px; font-weight:700; margin-bottom:4px; }
+        .result-hero .result-average { display:block; color:var(--accent-gold-bright); font-size:clamp(27px,5vw,40px); font-weight:900; line-height:1.3; }
+        .result-hero .result-range { display:block; color:var(--text-muted); font-size:12px; margin-top:4px; }
+        .result-explanation { margin-top:14px; padding:13px 14px; border-radius:14px; background:var(--bg-input); border:1px solid var(--border-color); color:var(--text-muted); font-size:12px; line-height:1.85; }
+        .result-explanation strong { color:var(--text-main); }
+        .result-cta { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin-top:15px; }
+        .btn-whatsapp { background:#20b15a; color:#fff; box-shadow:0 4px 15px rgba(32,177,90,.24); }
+        .btn-whatsapp:hover { background:#159447; transform:translateY(-2px); }
+        .valuation-disclaimer { text-align:center; color:var(--text-muted); font-size:10px; margin-top:13px; }
+        @media (max-width:768px) {
+            .valuation-intro { grid-template-columns:1fr; }
+            .valuation-side-note { display:none; }
+            .valuation-intro-copy { padding:19px; }
+            .valuation-trust-item strong { font-size:15px; }
+            .wizard-card { padding:18px !important; }
+            .wizard-head { margin-bottom:15px; }
+            .wizard-step-title { font-size:18px; }
+            .wizard-choice-grid { grid-template-columns:repeat(2,1fr); }
+            .wizard-extra-grid { grid-template-columns:repeat(2,1fr); }
+            .wizard-review { grid-template-columns:1fr; }
+            .wizard-actions .btn { min-width:0; flex:1; }
+        }
+        @media (max-width:420px) {
+            .wizard-grid { grid-template-columns:1fr; }
+            .wizard-field.full { grid-column:auto; }
+            .wizard-extra { padding:9px; font-size:11px; }
+            .wizard-actions { flex-direction:column-reverse; align-items:stretch; }
+            .wizard-actions-right { width:100%; margin-inline-start:0; }
+            .wizard-actions-right .btn { width:100%; }
+            .wizard-actions > .btn { width:100%; }
+        }
+
     </style>
 </head>
 <body class="dark-theme">
@@ -386,56 +475,145 @@
     </div>
 
     <div id="page-valuation" class="page-content">
-        <div class="page-header">
-            <h2>📊 <span class="gold-underline" data-i18n="valuation_title">التقييم العقاري الذكي</span></h2>
-            <p data-i18n="valuation_subtitle">أدخل بيانات العقار لتقدير القيمة السوقية</p>
-        </div>
+        <div class="valuation-shell">
+            <div class="page-header">
+                <h2>📊 <span class="gold-underline" data-i18n="valuation_title">التقييم العقاري الذكي</span></h2>
+                <p data-i18n="valuation_subtitle">أدخل بيانات العقار لتقدير القيمة السوقية</p>
+            </div>
 
-        <div class="card" style="padding:18px;">
-            <div class="form-grid" style="margin-bottom:8px;">
-                <div><label class="form-label">🏙️ <span data-i18n="city">المدينة</span></label><select class="form-select" id="valCity" onchange="updateDistricts();"><option value="">--</option><option value="riyadh">الرياض</option><option value="jeddah">جدة</option><option value="makkah">مكة المكرمة</option><option value="madinah">المدينة المنورة</option></select></div>
-                <div><label class="form-label">📍 <span data-i18n="district">الحي</span></label><select class="form-select" id="valDistrict" onchange="calculateValuation();"><option value="">--</option></select></div>
-                <div><label class="form-label">🏠 <span data-i18n="property_type">نوع العقار</span></label><select class="form-select" id="valPropertyType" onchange="calculateValuation();"><option value="">--</option><option>فيلا</option><option>شقة في عمارة</option><option>شقة في برج</option><option>أرض</option><option>دبلكس</option><option>قصر</option><option>مكتب</option><option>عمارة</option></select></div>
-                <div><label class="form-label">📐 <span data-i18n="area">المساحة (م²)</span></label><input type="number" class="form-input" id="valArea" value="250" oninput="calculateValuation();"></div>
+            <div class="valuation-intro">
+                <div class="valuation-intro-copy">
+                    <span class="valuation-kicker">✦ تقييم مبدئي سريع</span>
+                    <h3>اعرف القيمة التقديرية لعقارك <span>خلال دقائق</span></h3>
+                    <p>أجب عن أسئلة بسيطة، وسنحسب لك نطاقاً تقديرياً يساعدك على اتخاذ قرار عقاري أوضح.</p>
+                    <div class="valuation-trust">
+                        <div class="valuation-trust-item"><strong>6</strong><small>خطوات سهلة</small></div>
+                        <div class="valuation-trust-item"><strong>4</strong><small>مدن مغطاة</small></div>
+                        <div class="valuation-trust-item"><strong>82%</strong><small>مؤشر الثقة</small></div>
+                    </div>
+                </div>
+                <div class="valuation-side-note">
+                    <div class="note-icon">🔒</div>
+                    <h4>بياناتك تحت سيطرتك</h4>
+                    <p>لا تحتاج إلى إنشاء حساب. يمكنك الرجوع بين الخطوات وتعديل إجاباتك قبل إصدار النتيجة.</p>
+                </div>
             </div>
-            <div class="form-grid" style="margin-bottom:8px;">
-                <div><label class="form-label">🛏️ <span data-i18n="rooms">عدد الغرف</span></label><select class="form-select" id="valRooms" onchange="calculateValuation();"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
-                <div><label class="form-label">📅 <span data-i18n="age">العمر</span></label><input type="number" class="form-input" id="valAge" value="5" oninput="calculateValuation();"></div>
-                <div><label class="form-label">🧭 <span data-i18n="direction">الواجهة</span></label><select class="form-select" id="valDirection" onchange="calculateValuation();"><option value="شمالية">شمالية</option><option value="جنوبية" selected>جنوبية</option><option value="شرقية">شرقية</option><option value="غربية">غربية</option></select></div>
-                <div><label class="form-label">🛣️ <span data-i18n="street_width">عرض الشارع (م)</span></label><input type="number" class="form-input" id="valStreetWidth" value="15" oninput="calculateValuation();"></div>
-            </div>
-            <div class="form-grid" style="margin-bottom:8px;">
-                <div><label class="form-label">⭐ <span data-i18n="district_class">تصنيف الحي</span></label><select class="form-select" id="valDistrictClass" onchange="calculateValuation();"><option value="راقي">راقي</option><option value="متوسط" selected>متوسط</option><option value="شعبي">شعبي</option><option value="جديد">جديد</option></select></div>
-                <div><label class="form-label">📊 <span data-i18n="residential_ratio">نسبة سكنية</span></label><select class="form-select" id="valResidentialRatio" onchange="calculateValuation();"><option value="20">20%</option><option value="50" selected>50%</option><option value="80">80%</option><option value="100">100%</option></select></div>
-                <div style="display:flex;align-items:flex-end;"><button class="btn btn-primary btn-sm btn-block" onclick="addNewCity()" data-i18n="add_city">➕ إضافة مدينة</button></div>
-                <div style="display:flex;align-items:flex-end;"><button class="btn btn-outline btn-sm btn-block" onclick="resetValuation()" data-i18n="reset">🔄 إعادة</button></div>
-            </div>
-            <div class="checkbox-group" id="valCheckboxes">
-                <label class="active"><input type="checkbox" id="valElevator" onchange="calculateValuation(); toggleChip(this);" checked> 🔝 <span data-i18n="elevator">مصعد</span></label>
-                <label><input type="checkbox" id="valPool" onchange="calculateValuation(); toggleChip(this);"> 🏊 <span data-i18n="pool">مسبح</span></label>
-                <label class="active"><input type="checkbox" id="valMaidRoom" onchange="calculateValuation(); toggleChip(this);" checked> 🧹 <span data-i18n="maid_room">غرفة خادمة</span></label>
-                <label><input type="checkbox" id="valDriverRoom" onchange="calculateValuation(); toggleChip(this);"> 🚗 <span data-i18n="driver_room">غرفة سائق</span></label>
-                <label><input type="checkbox" id="valFurnished" onchange="calculateValuation(); toggleChip(this);"> 🛋️ <span data-i18n="furnished">مفروش</span></label>
-                <label class="active"><input type="checkbox" id="valCentralAC" onchange="calculateValuation(); toggleChip(this);" checked> ❄️ <span data-i18n="central_ac">تكييف</span></label>
-                <label><input type="checkbox" id="valGarage" onchange="calculateValuation(); toggleChip(this);"> 🅿️ <span data-i18n="garage">موقف</span></label>
-                <label><input type="checkbox" id="valSecurity" onchange="calculateValuation(); toggleChip(this);"> 🔐 <span data-i18n="security">أمن</span></label>
-            </div>
-        </div>
 
-        <div class="valuation-result" id="valuationResult">
-            <div style="text-align:center;margin-bottom:10px;"><span style="font-size:15px;font-weight:900;color:var(--text-main);">📊 <span style="color:var(--accent-gold);" data-i18n="result_title">نتيجة التقييم</span></span></div>
-            <div class="result-grid">
-                <div class="result-item"><div class="label" data-i18n="price_range">💰 النطاق السعري</div><div class="value" id="priceRange">--</div></div>
-                <div class="result-item"><div class="label" data-i18n="avg_price">📊 المتوسط</div><div class="value" id="avgPrice">--</div></div>
-                <div class="result-item"><div class="label">📈 <span data-i18n="investment_index">مؤشر الاستثمار</span></div><div class="value" id="investmentIndex">--</div></div>
-                <div class="result-item"><div class="label">💎 <span data-i18n="roi">عائد الاستثمار</span></div><div class="value" id="roiValue">--</div></div>
-                <div class="result-item"><div class="label">🏠 <span data-i18n="rental_value">الإيجار المتوقع</span></div><div class="value" id="rentalValue">--</div></div>
-                <div class="result-item"><div class="label">🎯 <span data-i18n="confidence">نسبة الثقة</span></div><div class="value" id="confidenceValue">--</div><div class="confidence-bar"><div class="confidence-fill" id="confidenceFill" style="width:0%"></div></div></div>
+            <div class="card wizard-card">
+                <div class="wizard-head">
+                    <div>
+                        <div class="wizard-step-title" id="wizardStepTitle">هدف التقييم</div>
+                        <div class="wizard-step-subtitle" id="wizardStepSubtitle">اختر الغرض الأقرب لاستخدامك</div>
+                    </div>
+                    <div class="wizard-step-counter" id="wizardStepCounter">الخطوة 1 من 6</div>
+                </div>
+                <div class="wizard-progress" aria-label="تقدم التقييم"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
+
+                <div class="wizard-step active" data-step="1">
+                    <div class="wizard-question">لماذا تريد تقييم العقار؟</div>
+                    <div class="wizard-hint">يساعدنا ذلك على عرض المعلومات المناسبة لك.</div>
+                    <div class="wizard-choice-grid">
+                        <label class="wizard-choice"><input type="radio" name="valuationPurpose" value="sell" checked><span class="wizard-choice-content"><span class="choice-icon">🏷️</span><strong>أريد البيع</strong><small>أعرف السعر المناسب</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="valuationPurpose" value="buy"><span class="wizard-choice-content"><span class="choice-icon">🏠</span><strong>أريد الشراء</strong><small>أتحقق من السعر</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="valuationPurpose" value="invest"><span class="wizard-choice-content"><span class="choice-icon">📈</span><strong>أريد الاستثمار</strong><small>أحسب العائد</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="valuationPurpose" value="know"><span class="wizard-choice-content"><span class="choice-icon">💡</span><strong>للمعرفة</strong><small>أستكشف القيمة</small></span></label>
+                    </div>
+                </div>
+
+                <div class="wizard-step" data-step="2">
+                    <div class="wizard-question">أين يقع العقار؟</div>
+                    <div class="wizard-hint">اختر المدينة ثم الحي للحصول على تقدير أقرب للسوق.</div>
+                    <div class="wizard-grid">
+                        <div class="wizard-field"><label class="form-label">🏙️ <span data-i18n="city">المدينة</span></label><select class="form-select" id="valCity" onchange="updateDistricts(); updateReviewSummary();"><option value="">-- اختر المدينة --</option><option value="riyadh">الرياض</option><option value="jeddah">جدة</option><option value="makkah">مكة المكرمة</option><option value="madinah">المدينة المنورة</option></select></div>
+                        <div class="wizard-field"><label class="form-label">📍 <span data-i18n="district">الحي</span></label><select class="form-select" id="valDistrict" onchange="calculateValuation(); updateReviewSummary();"><option value="">-- اختر الحي --</option></select></div>
+                    </div>
+                    <div class="wizard-notice" id="locationNotice"></div>
+                </div>
+
+                <div class="wizard-step" data-step="3">
+                    <div class="wizard-question">ما نوع العقار؟</div>
+                    <div class="wizard-hint">اختر النوع الأقرب، وستتغير الأسئلة التالية حسب اختيارك.</div>
+                    <div class="wizard-choice-grid">
+                        <label class="wizard-choice"><input type="radio" name="propertyTypeChoice" value="فيلا" onchange="setPropertyType(this.value)" checked><span class="wizard-choice-content"><span class="choice-icon">🏡</span><strong>فيلا</strong><small>منزل مستقل</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="propertyTypeChoice" value="شقة في عمارة" onchange="setPropertyType(this.value)"><span class="wizard-choice-content"><span class="choice-icon">🏢</span><strong>شقة</strong><small>في عمارة</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="propertyTypeChoice" value="أرض" onchange="setPropertyType(this.value)"><span class="wizard-choice-content"><span class="choice-icon">📐</span><strong>أرض</strong><small>سكنية أو تجارية</small></span></label>
+                        <label class="wizard-choice"><input type="radio" name="propertyTypeChoice" value="عمارة" onchange="setPropertyType(this.value)"><span class="wizard-choice-content"><span class="choice-icon">🏙️</span><strong>عمارة</strong><small>عدة وحدات</small></span></label>
+                    </div>
+                    <select id="valPropertyType" aria-hidden="true" tabindex="-1" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;"><option value="فيلا">فيلا</option><option value="شقة في عمارة">شقة في عمارة</option><option value="شقة في برج">شقة في برج</option><option value="أرض">أرض</option><option value="دبلكس">دبلكس</option><option value="قصر">قصر</option><option value="مكتب">مكتب</option><option value="عمارة">عمارة</option></select>
+                </div>
+
+                <div class="wizard-step" data-step="4">
+                    <div class="wizard-question">ما مواصفات العقار الأساسية؟</div>
+                    <div class="wizard-hint">كلما زادت البيانات، أصبح التقدير أكثر فائدة. الحقول الأساسية مطلوبة.</div>
+                    <div class="wizard-grid">
+                        <div class="wizard-field"><label class="form-label">📐 <span data-i18n="area">المساحة (م²)</span> <span style="color:var(--accent-gold)">*</span></label><input type="number" min="10" class="form-input" id="valArea" value="250" placeholder="مثال: 250" oninput="calculateValuation(); updateReviewSummary();"></div>
+                        <div class="wizard-field"><label class="form-label">🛏️ <span data-i18n="rooms">عدد الغرف</span></label><select class="form-select" id="valRooms" onchange="calculateValuation(); updateReviewSummary();"><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div>
+                        <div class="wizard-field"><label class="form-label">📅 <span data-i18n="age">العمر</span> <span style="color:var(--text-muted)">(اختياري)</span></label><input type="number" min="0" class="form-input" id="valAge" value="5" placeholder="مثال: 5" oninput="calculateValuation(); updateReviewSummary();"></div>
+                        <div class="wizard-field"><label class="form-label">🛣️ <span data-i18n="street_width">عرض الشارع (م)</span></label><input type="number" min="0" class="form-input" id="valStreetWidth" value="15" placeholder="مثال: 15" oninput="calculateValuation(); updateReviewSummary();"></div>
+                        <div class="wizard-field"><label class="form-label">🧭 <span data-i18n="direction">الواجهة</span></label><select class="form-select" id="valDirection" onchange="calculateValuation(); updateReviewSummary();"><option value="شمالية">شمالية</option><option value="جنوبية" selected>جنوبية</option><option value="شرقية">شرقية</option><option value="غربية">غربية</option></select></div>
+                        <div class="wizard-field"><label class="form-label">⭐ <span data-i18n="district_class">تصنيف الحي</span></label><select class="form-select" id="valDistrictClass" onchange="calculateValuation(); updateReviewSummary();"><option value="راقي">راقي</option><option value="متوسط" selected>متوسط</option><option value="شعبي">شعبي</option><option value="جديد">جديد</option></select></div>
+                        <div class="wizard-field full"><label class="form-label">📊 <span data-i18n="residential_ratio">النسبة السكنية</span></label><select class="form-select" id="valResidentialRatio" onchange="calculateValuation(); updateReviewSummary();"><option value="20">20%</option><option value="50" selected>50%</option><option value="80">80%</option><option value="100">100%</option></select></div>
+                    </div>
+                </div>
+
+                <div class="wizard-step" data-step="5">
+                    <div class="wizard-question">هل توجد مزايا إضافية؟</div>
+                    <div class="wizard-hint">هذه الاختيارات اختيارية، وقد تساعد في تحسين التقدير.</div>
+                    <div class="wizard-extra-grid" id="valCheckboxes">
+                        <label class="wizard-extra active"><input type="checkbox" id="valElevator" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();" checked> 🔝 مصعد</label>
+                        <label class="wizard-extra"><input type="checkbox" id="valPool" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();"> 🏊 مسبح</label>
+                        <label class="wizard-extra active"><input type="checkbox" id="valMaidRoom" onchange="calculateValuation(); toggleChip(this);" checked> 🧹 غرفة خادمة</label>
+                        <label class="wizard-extra"><input type="checkbox" id="valDriverRoom" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();"> 🚗 غرفة سائق</label>
+                        <label class="wizard-extra"><input type="checkbox" id="valFurnished" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();"> 🛋️ مفروش</label>
+                        <label class="wizard-extra active"><input type="checkbox" id="valCentralAC" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();" checked> ❄️ تكييف مركزي</label>
+                        <label class="wizard-extra"><input type="checkbox" id="valGarage" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();"> 🅿️ موقف</label>
+                        <label class="wizard-extra"><input type="checkbox" id="valSecurity" onchange="calculateValuation(); toggleChip(this); updateReviewSummary();"> 🔐 أمن</label>
+                    </div>
+                </div>
+
+                <div class="wizard-step" data-step="6">
+                    <div class="wizard-question">راجع بياناتك قبل الحساب</div>
+                    <div class="wizard-hint">تأكد من البيانات، ثم اضغط على زر الحساب لإظهار القيمة التقديرية.</div>
+                    <div class="wizard-review">
+                        <div class="review-item"><span>المدينة</span><strong id="reviewCity">--</strong></div>
+                        <div class="review-item"><span>الحي</span><strong id="reviewDistrict">--</strong></div>
+                        <div class="review-item"><span>نوع العقار</span><strong id="reviewType">--</strong></div>
+                        <div class="review-item"><span>المساحة</span><strong id="reviewArea">--</strong></div>
+                        <div class="review-item"><span>الغرف والعمر</span><strong id="reviewRoomsAge">--</strong></div>
+                        <div class="review-item"><span>المزايا</span><strong id="reviewExtras">--</strong></div>
+                    </div>
+                    <div class="wizard-notice" id="wizardNotice"></div>
+                </div>
+
+                <div class="wizard-actions">
+                    <button class="btn btn-outline" id="wizardBackBtn" onclick="wizardBack()" style="display:none">← رجوع</button>
+                    <div class="wizard-actions-right">
+                        <button class="btn btn-outline" onclick="resetValuation(); wizardReset();">إعادة</button>
+                        <button class="btn btn-primary" id="wizardNextBtn" onclick="wizardNext()">التالي ←</button>
+                    </div>
+                </div>
             </div>
-            <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
-                <button class="btn btn-primary btn-sm" onclick="shareValuation()">📤 <span data-i18n="share">مشاركة</span></button>
-                <button class="btn btn-outline btn-sm" onclick="showValuationDetails()">📋 <span data-i18n="details">تفاصيل</span></button>
-                <button class="btn btn-outline btn-sm" onclick="downloadPDFReport()">📄 <span data-i18n="download_pdf">تقرير PDF</span></button>
+
+            <div class="valuation-result" id="valuationResult">
+                <div class="result-hero">
+                    <span class="result-caption">القيمة السوقية التقديرية</span>
+                    <span class="result-average" id="avgPrice">--</span>
+                    <span class="result-range">النطاق المتوقع: <strong id="priceRange">--</strong></span>
+                </div>
+                <div class="result-grid">
+                    <div class="result-item"><div class="label">📈 <span data-i18n="investment_index">مؤشر الاستثمار</span></div><div class="value" id="investmentIndex">--</div></div>
+                    <div class="result-item"><div class="label">💎 <span data-i18n="roi">عائد الاستثمار</span></div><div class="value" id="roiValue">--</div></div>
+                    <div class="result-item"><div class="label">🏠 <span data-i18n="rental_value">الإيجار المتوقع</span></div><div class="value" id="rentalValue">--</div></div>
+                    <div class="result-item"><div class="label">🎯 <span data-i18n="confidence">نسبة الثقة</span></div><div class="value" id="confidenceValue">--</div><div class="confidence-bar"><div class="confidence-fill" id="confidenceFill" style="width:0%"></div></div></div>
+                </div>
+                <div class="result-explanation"><strong>تنبيه مهم:</strong> هذه نتيجة تقديرية مبنية على البيانات المدخلة، وليست تقرير تقييم رسمي. للحصول على رأي متخصص أو تقرير معتمد، تواصل مع فريق همة المدينة.</div>
+                <div class="result-cta">
+                    <a class="btn btn-whatsapp" id="valuationWhatsapp" href="https://wa.me/966530500906" target="_blank" rel="noopener noreferrer">تحدث مع خبير عبر واتساب</a>
+                    <button class="btn btn-outline btn-sm" onclick="shareValuation()">📤 <span data-i18n="share">مشاركة</span></button>
+                    <button class="btn btn-outline btn-sm" onclick="showValuationDetails()">📋 <span data-i18n="details">تفاصيل</span></button>
+                    <button class="btn btn-outline btn-sm" onclick="downloadPDFReport()">📄 <span data-i18n="download_pdf">تقرير PDF</span></button>
+                </div>
+                <p class="valuation-disclaimer">النتيجة للاسترشاد العام ولا تغني عن التقييم العقاري الرسمي.</p>
             </div>
         </div>
     </div>
@@ -991,6 +1169,117 @@
             });
         }
 
+
+        // ========== Valuation wizard ==========
+        let wizardStep = 1;
+        let wizardSubmitted = false;
+        const wizardMeta = {
+            1: { title: 'هدف التقييم', subtitle: 'اختر الغرض الأقرب لاستخدامك' },
+            2: { title: 'موقع العقار', subtitle: 'اختر المدينة والحي' },
+            3: { title: 'نوع العقار', subtitle: 'اختر النوع الأقرب لعقارك' },
+            4: { title: 'المواصفات الأساسية', subtitle: 'أدخل البيانات التي تعرفها' },
+            5: { title: 'المزايا الإضافية', subtitle: 'اختيارات اختيارية لتحسين التقدير' },
+            6: { title: 'مراجعة البيانات', subtitle: 'تأكد من البيانات قبل الحساب' }
+        };
+
+        function setPropertyType(value) {
+            const type = document.getElementById('valPropertyType');
+            if (type) type.value = value;
+            calculateValuation();
+            updateReviewSummary();
+        }
+
+        function getSelectedText(id) {
+            const el = document.getElementById(id);
+            return el?.selectedOptions?.[0]?.textContent?.trim() || '--';
+        }
+
+        function updateReviewSummary() {
+            const extraNames = [
+                ['valElevator','مصعد'], ['valPool','مسبح'], ['valMaidRoom','غرفة خادمة'], ['valDriverRoom','غرفة سائق'],
+                ['valFurnished','مفروش'], ['valCentralAC','تكييف مركزي'], ['valGarage','موقف'], ['valSecurity','أمن']
+            ];
+            const extras = extraNames.filter(([id]) => document.getElementById(id)?.checked).map(([,name]) => name);
+            const city = getSelectedText('valCity');
+            const district = getSelectedText('valDistrict');
+            const type = document.getElementById('valPropertyType')?.value || '--';
+            const area = document.getElementById('valArea')?.value || '--';
+            const rooms = document.getElementById('valRooms')?.value || '--';
+            const age = document.getElementById('valAge')?.value || '--';
+            const values = {
+                reviewCity: city, reviewDistrict: district, reviewType: type,
+                reviewArea: area === '--' ? '--' : area + ' م²',
+                reviewRoomsAge: rooms + ' غرف / ' + age + ' سنوات',
+                reviewExtras: extras.length ? extras.join('، ') : 'بدون مزايا إضافية'
+            };
+            Object.entries(values).forEach(([id, value]) => { const el = document.getElementById(id); if (el) el.textContent = value; });
+            const link = document.getElementById('valuationWhatsapp');
+            const avg = document.getElementById('avgPrice')?.textContent || '--';
+            if (link) link.href = 'https://wa.me/966530500906?text=' + encodeURIComponent('مرحباً، أحتاج التحدث مع خبير بخصوص تقييم عقاري. النوع: ' + type + '، المدينة: ' + city + '، الحي: ' + district + '، المتوسط التقديري: ' + avg);
+        }
+
+        function showWizardStep(step) {
+            wizardStep = Math.min(6, Math.max(1, step));
+            document.querySelectorAll('.wizard-step').forEach(el => el.classList.toggle('active', Number(el.dataset.step) === wizardStep));
+            const meta = wizardMeta[wizardStep];
+            const title = document.getElementById('wizardStepTitle');
+            const subtitle = document.getElementById('wizardStepSubtitle');
+            const counter = document.getElementById('wizardStepCounter');
+            const progress = document.getElementById('wizardProgressFill');
+            const back = document.getElementById('wizardBackBtn');
+            const next = document.getElementById('wizardNextBtn');
+            if (title) title.textContent = currentLang === 'en' ? ['','Valuation purpose','Property location','Property type','Basic details','Extra features','Review details'][wizardStep] : meta.title;
+            if (subtitle) subtitle.textContent = currentLang === 'en' ? ['','Choose the reason closest to your goal','Choose the city and district','Choose the closest property type','Enter the details you know','Optional features to improve the estimate','Confirm your details before calculating'][wizardStep] : meta.subtitle;
+            if (counter) counter.textContent = currentLang === 'en' ? 'Step ' + wizardStep + ' of 6' : 'الخطوة ' + wizardStep + ' من 6';
+            if (progress) progress.style.width = (wizardStep / 6 * 100) + '%';
+            if (back) back.style.display = wizardStep > 1 ? 'inline-flex' : 'none';
+            if (next) next.textContent = wizardStep === 6 ? (currentLang === 'en' ? 'Calculate value' : 'احسب القيمة') : (currentLang === 'en' ? 'Next →' : 'التالي ←');
+            updateReviewSummary();
+            if (wizardStep === 2 && !document.getElementById('valCity')?.value) {
+                const notice = document.getElementById('locationNotice');
+                if (notice) notice.textContent = currentLang === 'en' ? 'Select a city to continue.' : 'اختر المدينة للمتابعة.';
+            }
+        }
+
+        function wizardNext() {
+            const notice = document.getElementById('wizardNotice');
+            if (notice) notice.textContent = '';
+            if (wizardStep === 2 && !document.getElementById('valCity')?.value) {
+                const locationNotice = document.getElementById('locationNotice');
+                if (locationNotice) locationNotice.textContent = currentLang === 'en' ? 'Select a city to continue.' : 'اختر المدينة للمتابعة.';
+                return;
+            }
+            if (wizardStep === 4 && (parseFloat(document.getElementById('valArea')?.value) || 0) < 10) {
+                if (notice) notice.textContent = currentLang === 'en' ? 'Enter an area of at least 10 m².' : 'أدخل مساحة لا تقل عن 10 م².';
+                return;
+            }
+            if (wizardStep < 6) {
+                showWizardStep(wizardStep + 1);
+                return;
+            }
+            wizardSubmitted = true;
+            calculateValuation();
+            updateReviewSummary();
+            const result = document.getElementById('valuationResult');
+            if (result) result.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+
+        function wizardBack() {
+            if (wizardStep > 1) showWizardStep(wizardStep - 1);
+        }
+
+        function wizardReset() {
+            wizardStep = 1;
+            wizardSubmitted = false;
+            const result = document.getElementById('valuationResult');
+            if (result) result.style.display = 'none';
+            const locationNotice = document.getElementById('locationNotice');
+            if (locationNotice) locationNotice.textContent = '';
+            const notice = document.getElementById('wizardNotice');
+            if (notice) notice.textContent = '';
+            showWizardStep(1);
+        }
+
         function updateDistricts() {
             const city = document.getElementById('valCity')?.value;
             const select = document.getElementById('valDistrict');
@@ -1087,7 +1376,7 @@
                 else {idx.textContent='👎 '+(currentLang==='ar'?'ضعيف':'Poor')+' ('+score+'%)'; idx.style.color='var(--text-muted)';}
             }
             const result = document.getElementById('valuationResult');
-            if(result) result.style.display = 'block';
+            if(result) result.style.display = wizardSubmitted ? 'block' : 'none';
         }
 
         function resetValuation() {
@@ -1099,10 +1388,12 @@
             const city = document.getElementById('valCity'); if(city) city.value = 'riyadh';
             const cls = document.getElementById('valDistrictClass'); if(cls) cls.value = 'متوسط';
             const dir = document.getElementById('valDirection'); if(dir) dir.value = 'جنوبية';
-            const type = document.getElementById('valPropertyType'); if(type) type.value = 'شقة في عمارة';
+            const type = document.getElementById('valPropertyType'); if(type) type.value = 'فيلا';
+            document.querySelectorAll('input[name="propertyTypeChoice"]').forEach(el => { el.checked = el.value === 'فيلا'; });
             ['valElevator','valMaidRoom','valCentralAC'].forEach(id => { const el = document.getElementById(id); if(el){el.checked=true; el.closest('label')?.classList.add('active');} });
             ['valPool','valDriverRoom','valFurnished','valGarage','valSecurity'].forEach(id => { const el = document.getElementById(id); if(el){el.checked=false; el.closest('label')?.classList.remove('active');} });
             updateDistricts();
+            wizardReset();
         }
 
         function addNewCity() {
@@ -1305,7 +1596,10 @@
                     updateDistricts();
                     const typeEl = document.getElementById('valPropertyType');
                     if(typeEl) typeEl.value = 'شقة في عمارة';
+                    const defaultTypeChoice = document.querySelector('input[name="propertyTypeChoice"][value="شقة في عمارة"]');
+                    if(defaultTypeChoice) defaultTypeChoice.checked = true;
                     calculateValuation();
+                    wizardReset();
                 }
             }, 200);
             const cpw = document.getElementById('contractPrintWindow');
