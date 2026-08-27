@@ -523,7 +523,9 @@
             .location-results { max-height:190px; }
             .about-value-card { gap:12px; }
         }
-        .contracts-switcher { display:flex; justify-content:center; gap:10px; margin-bottom:18px; }
+        .contracts-switcher { display:flex; justify-content:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+        .contracts-direct-links { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:0 auto 18px; }
+        .contracts-direct-links .btn { text-decoration:none; font-size:11px; }
         .contracts-card { padding:24px !important; }
         .contracts-card .btn-block { margin-top:5px; }
         .chat-window { box-shadow:0 18px 50px rgba(0,0,0,.38); }
@@ -546,6 +548,30 @@
             .page-content.active, .btn, .card, .service-icon { animation:none !important; transition:none !important; }
         }
 
+        /* ===== Phase 1: footer safety + finance layout polish ===== */
+        body { padding-bottom: 92px; }
+        .main-footer { position:relative; z-index:1; margin-top:34px; padding:42px 20px 112px; }
+        .footer-bottom { margin-top:24px; padding-top:18px; border-top:1px solid rgba(212,175,55,.18); }
+        .floating-buttons { bottom:calc(18px + env(safe-area-inset-bottom)); }
+        .floating-btn { width:52px; height:52px; }
+        .valuation-tools-layout { grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr); gap:22px; }
+        .valuation-primary-tool, .mortgage-card { min-width:0; }
+        .mortgage-card { top:104px; }
+        .finance-input-range { width:100%; margin:9px 0 0; accent-color:var(--accent-gold); cursor:pointer; }
+        .finance-range-meta { display:flex; justify-content:space-between; gap:10px; color:var(--text-muted); font-size:10px; }
+        .finance-range-meta strong { color:var(--accent-gold); }
+        .finance-live-note { display:flex; gap:8px; align-items:flex-start; margin-top:10px; padding:9px 11px; color:var(--text-muted); font-size:10px; line-height:1.65; background:rgba(212,175,55,.07); border:1px solid rgba(212,175,55,.18); border-radius:11px; }
+        .finance-live-note i { color:var(--accent-gold); margin-top:2px; }
+        @media (max-width:900px) {
+            body { padding-bottom:126px; }
+            .valuation-tools-layout { grid-template-columns:1fr; gap:16px; }
+            .mortgage-card { position:relative; top:auto; }
+        }
+        @media (max-width:520px) {
+            .main-footer { padding-bottom:138px; }
+            .floating-buttons { inset-inline-start:12px; }
+            .floating-btn { width:48px; height:48px; }
+        }
     </style>
 </head>
 <body class="dark-theme">
@@ -805,7 +831,9 @@
             <div class="finance-fields">
                 <div class="finance-field full">
                     <label for="financePropertyPrice">🏠 <span data-i18n="finance_property_price">قيمة العقار</span></label>
-                    <div class="finance-input-wrap"><input id="financePropertyPrice" class="form-input" type="number" min="10000" step="10000" value="1500000" oninput="calculateMortgage()"><span class="finance-input-unit" data-i18n="finance_currency">ر.س</span></div>
+                    <div class="finance-input-wrap"><input id="financePropertyPrice" class="form-input" type="number" min="10000" step="10000" value="1500000" oninput="syncFinanceRange(this.value); calculateMortgage();"><span class="finance-input-unit" data-i18n="finance_currency">ر.س</span></div>
+                    <input type="range" id="financePropertyRange" class="finance-input-range" min="100000" max="10000000" step="50000" value="1500000" oninput="syncFinanceInput(this.value); calculateMortgage();">
+                    <div class="finance-range-meta"><span>100k</span><strong id="rangeCurrentValue">1.5M</strong><span>10M</span></div>
                     <button type="button" class="btn btn-outline btn-sm finance-use-valuation" onclick="useValuationPrice()" data-i18n="finance_use_valuation">↔ استخدام نتيجة التقييم</button>
                 </div>
                 <div class="finance-field">
@@ -1008,6 +1036,10 @@
             <button class="btn btn-primary btn-sm" onclick="showContract('residential')" data-i18n="residential_contract">🏠 عقد سكني</button>
             <button class="btn btn-outline btn-sm" onclick="showContract('commercial')" data-i18n="commercial_contract">🏢 عقد تجاري</button>
         </div>
+        <div class="contracts-direct-links">
+            <a class="btn btn-outline btn-sm" href="residential-editor.html" target="_blank" rel="noopener" data-i18n="direct_residential_editor">✎ فتح محرر العقد السكني المباشر</a>
+            <a class="btn btn-outline btn-sm" href="commercial-editor.html" target="_blank" rel="noopener" data-i18n="direct_commercial_editor">✎ فتح محرر العقد التجاري المباشر</a>
+        </div>
 
         <div class="card contracts-card" id="residentialContract" style="display:block;padding:18px;">
             <div class="form-grid" style="margin-bottom:8px;">
@@ -1164,7 +1196,7 @@
                 'contact_info': 'معلومات التواصل', 'contact_form': 'أرسل لنا رسالة',
                 'full_name': 'الاسم الكامل', 'phone': 'رقم الجوال', 'message': 'نص الرسالة...', 'send': 'إرسال الرسالة',
                 'contracts_title': 'العقود', 'contracts_subtitle': 'عقود كاملة بجميع البنود',
-                'residential_contract': 'عقد سكني', 'commercial_contract': 'عقد تجاري',
+                'residential_contract': 'عقد سكني', 'commercial_contract': 'عقد تجاري', 'direct_residential_editor': '✎ فتح محرر العقد السكني المباشر', 'direct_commercial_editor': '✎ فتح محرر العقد التجاري المباشر',
                 'footer_desc': 'مكتب عقاري سعودي معتمد يقدم خدمات تصفح العقارات، والتقييم، وصياغة العقود بمساعدة الذكاء الاصطناعي.',
                 'footer_rights': '© 2026 مكتب همة المدينة العقارية. جميع الحقوق محفوظة. • رقم الترخيص: 1200030428',
                 'chat_title': 'المساعد الذكي', 'chat_status': 'متصل', 'chat_welcome': 'مرحباً! كيف أساعدك؟ 🏠',
@@ -1229,7 +1261,7 @@
                 'contact_info': 'Contact Information', 'contact_form': 'Send us a message',
                 'full_name': 'Full Name', 'phone': 'Phone Number', 'message': 'Your message...', 'send': 'Send Message',
                 'contracts_title': 'Contracts', 'contracts_subtitle': 'Complete contracts with all clauses',
-                'residential_contract': 'Residential', 'commercial_contract': 'Commercial',
+                'residential_contract': 'Residential', 'commercial_contract': 'Commercial', 'direct_residential_editor': '✎ Open Residential Editor', 'direct_commercial_editor': '✎ Open Commercial Editor',
                 'footer_desc': 'Licensed Saudi real estate office providing property browsing, valuation, and AI-assisted contract drafting services.',
                 'footer_rights': '© 2026 Himmat Al Madinah Real Estate. All rights reserved. • License: 1200030428',
                 'chat_title': 'Smart Assistant', 'chat_status': 'Online', 'chat_welcome': 'Hello! How can I help? 🏠',
@@ -1774,6 +1806,27 @@
             if(result) result.style.display = wizardSubmitted ? 'block' : 'none';
         }
 
+        function formatRangePrice(value) {
+            const number = Math.round(Number(value) || 0);
+            if (number >= 1000000) return (number / 1000000).toFixed(number % 1000000 ? 1 : 0) + 'M';
+            if (number >= 1000) return Math.round(number / 1000) + 'k';
+            return String(number);
+        }
+
+        function syncFinanceInput(value) {
+            const input = document.getElementById('financePropertyPrice');
+            if (input) input.value = Math.max(100000, Math.min(10000000, Number(value) || 100000));
+            syncFinanceRange(input?.value || value);
+        }
+
+        function syncFinanceRange(value) {
+            const number = Math.max(100000, Math.min(10000000, Number(value) || 100000));
+            const range = document.getElementById('financePropertyRange');
+            const label = document.getElementById('rangeCurrentValue');
+            if (range) range.value = number;
+            if (label) label.textContent = formatRangePrice(number);
+        }
+
         function useValuationPrice() {
             const avgText = document.getElementById('avgPrice')?.textContent || '';
             const numeric = Number(avgText.replace(/[^0-9.]/g, ''));
@@ -1782,7 +1835,10 @@
                 return;
             }
             const priceInput = document.getElementById('financePropertyPrice');
-            if (priceInput) priceInput.value = Math.round(numeric);
+            if (priceInput) {
+                priceInput.value = Math.round(numeric);
+                syncFinanceRange(priceInput.value);
+            }
             calculateMortgage();
         }
 
@@ -1793,6 +1849,7 @@
         }
 
         function calculateMortgage() {
+            syncFinanceRange(document.getElementById('financePropertyPrice')?.value || 0);
             const price = Math.max(0, Number(document.getElementById('financePropertyPrice')?.value) || 0);
             const downPercent = Math.min(100, Math.max(0, Number(document.getElementById('financeDownPayment')?.value) || 0));
             const annualRate = Math.min(30, Math.max(0, Number(document.getElementById('financeRate')?.value) || 0));
