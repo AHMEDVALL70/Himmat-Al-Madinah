@@ -460,6 +460,29 @@
         .contact-info-card { display:flex; flex-direction:column; justify-content:center; }
         .contact-info-card > img { align-self:flex-start; }
         .contact-socials-grid a { min-height:47px; }
+        .location-search-grid { align-items:start; }
+        .location-search-field { position:relative; }
+        .location-search-control { position:relative; }
+        .location-search-control > i { position:absolute; inset-inline-start:15px; top:50%; transform:translateY(-50%); color:var(--accent-gold); pointer-events:none; z-index:1; }
+        .location-search-input { padding-inline-start:42px !important; }
+        .location-search-input[aria-expanded="true"] { border-color:var(--accent-gold); box-shadow:0 0 0 3px rgba(212,175,55,.12); }
+        .location-native-select { display:none !important; }
+        .location-results { display:none; position:absolute; inset-inline:0; top:calc(100% + 8px); z-index:40; max-height:230px; overflow:auto; padding:7px; border:1px solid rgba(212,175,55,.35); border-radius:14px; background:var(--bg-card); box-shadow:0 18px 45px rgba(0,0,0,.36); }
+        .location-results.open { display:block; animation:fadeSlideIn .18s var(--ease-out); }
+        .location-option { display:flex; align-items:center; width:100%; min-height:42px; padding:9px 12px; border:0; border-radius:10px; background:transparent; color:var(--text-main); font:inherit; font-size:13px; font-weight:700; text-align:start; cursor:pointer; transition:background .16s ease, color .16s ease, transform .16s ease; }
+        .location-option:hover, .location-option:focus-visible { background:rgba(212,175,55,.14); color:var(--accent-gold); outline:none; transform:translateX(-2px); }
+        .location-option.selected { color:var(--accent-gold); background:rgba(212,175,55,.09); }
+        .location-option-empty { padding:13px 12px; color:var(--text-muted); font-size:12px; text-align:center; }
+        .about-values { align-items:stretch; }
+        .about-value-card { position:relative; display:flex; gap:15px; align-items:flex-start; overflow:hidden; }
+        .about-value-card::after { content:""; position:absolute; width:120px; height:120px; border-radius:50%; inset-inline-end:-45px; bottom:-58px; background:rgba(212,175,55,.07); pointer-events:none; }
+        .about-value-icon { display:grid; place-items:center; width:44px; height:44px; flex:none; border-radius:14px; color:var(--accent-gold); background:rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.24); font-size:19px; }
+        .about-value-card h3 { margin-top:2px; }
+        .about-value-card p { max-width:560px; }
+        @media (max-width:768px) {
+            .location-results { max-height:190px; }
+            .about-value-card { gap:12px; }
+        }
         .contracts-switcher { display:flex; justify-content:center; gap:10px; margin-bottom:18px; }
         .contracts-card { padding:24px !important; }
         .contracts-card .btn-block { margin-top:5px; }
@@ -612,8 +635,32 @@
                     <div class="wizard-question" data-i18n="location_question">أين يقع العقار؟</div>
                     <div class="wizard-hint" data-i18n="location_hint">اختر المدينة ثم الحي للحصول على تقدير أقرب للسوق.</div>
                     <div class="wizard-grid">
-                        <div class="wizard-field"><label class="form-label">🏙️ <span data-i18n="city">المدينة</span></label><select class="form-select" id="valCity" onchange="updateDistricts(); updateReviewSummary();"><option value="" data-i18n="select_city">-- اختر المدينة --</option><option value="riyadh" data-i18n="city_riyadh">الرياض</option><option value="jeddah" data-i18n="city_jeddah">جدة</option><option value="makkah" data-i18n="city_makkah">مكة المكرمة</option><option value="madinah" data-i18n="city_madinah">المدينة المنورة</option></select></div>
-                        <div class="wizard-field"><label class="form-label">📍 <span data-i18n="district">الحي</span></label><select class="form-select" id="valDistrict" onchange="calculateValuation(); updateReviewSummary();"><option value="" data-i18n="select_district">-- اختر الحي --</option></select></div>
+                        <div class="wizard-field location-search-field">
+                            <label class="form-label" for="valCitySearch">🏙️ <span data-i18n="city">المدينة</span></label>
+                            <div class="location-search-control">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                <input id="valCitySearch" class="form-input location-search-input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-controls="cityResults" aria-expanded="false" placeholder="ابحث عن المدينة..." data-i18n-placeholder="search_city" onfocus="openLocationOptions('city')" oninput="filterLocationOptions('city')" onkeydown="handleLocationKey(event, 'city')">
+                            </div>
+                            <div id="cityResults" class="location-results" role="listbox" aria-label="اختيار المدينة"></div>
+                            <select class="form-select location-native-select" id="valCity" aria-hidden="true" tabindex="-1" onchange="updateDistricts(); updateReviewSummary();">
+                                <option value="" data-i18n="select_city">-- اختر المدينة --</option>
+                                <option value="riyadh" data-i18n="city_riyadh">الرياض</option>
+                                <option value="jeddah" data-i18n="city_jeddah">جدة</option>
+                                <option value="makkah" data-i18n="city_makkah">مكة المكرمة</option>
+                                <option value="madinah" data-i18n="city_madinah">المدينة المنورة</option>
+                            </select>
+                        </div>
+                        <div class="wizard-field location-search-field">
+                            <label class="form-label" for="valDistrictSearch">📍 <span data-i18n="district">الحي</span></label>
+                            <div class="location-search-control">
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                <input id="valDistrictSearch" class="form-input location-search-input" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-controls="districtResults" aria-expanded="false" placeholder="ابحث عن الحي..." data-i18n-placeholder="search_district" onfocus="openLocationOptions('district')" oninput="filterLocationOptions('district')" onkeydown="handleLocationKey(event, 'district')">
+                            </div>
+                            <div id="districtResults" class="location-results" role="listbox" aria-label="اختيار الحي"></div>
+                            <select class="form-select location-native-select" id="valDistrict" aria-hidden="true" tabindex="-1" onchange="calculateValuation(); updateReviewSummary();">
+                                <option value="" data-i18n="select_district">-- اختر الحي --</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="wizard-notice" id="locationNotice"></div>
                 </div>
@@ -818,9 +865,15 @@
                 <div><h3 data-i18n="about_office">مكتب همة المدينة العقارية</h3><p data-i18n="about_desc">شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، وإدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.</p><div class="license-badge" onclick="verifyLicense()"><i class="fa-solid fa-certificate" aria-hidden="true"></i><span data-i18n="license_label">رخصة فال العقارية: 1200030428</span><span aria-hidden="true">✓</span></div></div>
                 <img class="about-mark" src="Himmat-Almedina.png" alt="همة المدينة" loading="lazy" onerror="this.style.display='none';">
             </div>
-            <div class="about-values">
-                <div class="about-card about-value-card"><h3><i class="fa-solid fa-eye" aria-hidden="true"></i><span data-i18n="vision">رؤيتنا</span></h3><p data-i18n="vision_text">أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.</p></div>
-                <div class="about-card about-value-card"><h3><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span data-i18n="mission">رسالتنا</span></h3><p data-i18n="mission_text">تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.</p></div>
+            <div class="about-values" aria-label="قيم المكتب">
+                <article class="about-card about-value-card about-vision-card">
+                    <div class="about-value-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+                    <div><h3><span data-i18n="vision">رؤيتنا</span></h3><p data-i18n="vision_text">أن نكون المرجع العقاري الرقمي الموثوق في المدينة المنورة، ونقدم أدوات ذكية تساعد الأفراد والمستثمرين على اتخاذ قرارات واضحة مبنية على البيانات.</p></div>
+                </article>
+                <article class="about-card about-value-card about-mission-card">
+                    <div class="about-value-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
+                    <div><h3><span data-i18n="mission">رسالتنا</span></h3><p data-i18n="mission_text">تقديم خدمات عقارية احترافية تجمع بين الخبرة المحلية والشفافية والتقنية، من التقييم والتسويق إلى إدارة الأملاك وصياغة العقود.</p></div>
+                </article>
             </div>
         </div>
     </div>
@@ -1028,8 +1081,8 @@
                 'about_office': 'مكتب همة المدينة العقارية',
                 'about_desc': 'شريكك العقاري الموثوق بالمدينة المنورة. نقدم حلولاً متكاملة في التقييم العقاري الذكي، إدارة الأملاك، والتسويق العقاري وفق أعلى معايير الجودة والحوكمة.',
                 'vision': 'رؤيتنا', 'mission': 'رسالتنا',
-                'vision_text': 'أن نكون المنصة العقارية الرائدة بالمدينة المنورة بتوفير حلول رقمية تقييمية عالية الدقة.',
-                'mission_text': 'تقديم خدمات عقارية موثوقة تبنى على الشفافية والابتكار لتلبية تطلعات عملائنا والمستثمرين.',
+                'vision_text': 'أن نكون المرجع العقاري الرقمي الموثوق في المدينة المنورة، ونقدم أدوات ذكية تساعد الأفراد والمستثمرين على اتخاذ قرارات واضحة مبنية على البيانات.',
+                'mission_text': 'تقديم خدمات عقارية احترافية تجمع بين الخبرة المحلية والشفافية والتقنية، من التقييم والتسويق إلى إدارة الأملاك وصياغة العقود.',
                 'lessor': 'المؤجر', 'lessor_id': 'هوية المؤجر', 'tenant': 'المستأجر', 'tenant_id': 'هوية المستأجر',
                 'district_name': 'الحي', 'unit_type': 'نوع الوحدة', 'annual_rent': 'الإيجار السنوي',
                 'duration': 'المدة (شهر)', 'start_date': 'تاريخ البداية', 'deposit': 'الضمان',
@@ -1040,7 +1093,7 @@
                 'browse_offers': 'تصفح العروض', 'evaluate_property': 'قيّم عقارك', 'create_contract': 'أنشئ عقدك',
                 'contact_us': 'تواصل معنا', 'get_consultation': 'احصل على استشارة', 'market_property': 'سوّق عقارك',
 
-                                    'select_city': '-- اختر المدينة --', 'select_district': '-- اختر الحي --', 'city_riyadh': 'الرياض', 'city_jeddah': 'جدة', 'city_makkah': 'مكة المكرمة', 'city_madinah': 'المدينة المنورة', 'optional': '(اختياري)', 'area_example': 'مثال: 250', 'age_example': 'مثال: 5', 'street_example': 'مثال: 15', 'north': 'شمالية', 'south': 'جنوبية', 'east': 'شرقية', 'west': 'غربية', 'class_luxury': 'راقي', 'class_average': 'متوسط', 'class_popular': 'شعبي', 'class_new': 'جديد', 'type_apartment_full': 'شقة في عمارة', 'type_tower_apartment': 'شقة في برج', 'type_duplex': 'دبلكس', 'type_palace': 'قصر', 'type_office': 'مكتب', 'wizard_kicker': '✦ تقييم مبدئي سريع', 'wizard_headline': 'اعرف القيمة التقديرية لعقارك', 'wizard_headline_accent': 'خلال دقائق', 'wizard_desc': 'أجب عن أسئلة بسيطة، وسنحسب لك نطاقاً تقديرياً يساعدك على اتخاذ قرار عقاري أوضح.', 'trust_steps': 'خطوات سهلة', 'trust_cities': 'مدن مغطاة', 'trust_confidence': 'مؤشر الثقة', 'privacy_title': 'بياناتك تحت سيطرتك', 'privacy_desc': 'لا تحتاج إلى إنشاء حساب. يمكنك الرجوع بين الخطوات وتعديل إجاباتك قبل إصدار النتيجة.', 'purpose_question': 'لماذا تريد تقييم العقار؟', 'purpose_hint': 'يساعدنا ذلك على عرض المعلومات المناسبة لك.', 'purpose_sell': 'أريد البيع', 'purpose_sell_hint': 'أعرف السعر المناسب', 'purpose_buy': 'أريد الشراء', 'purpose_buy_hint': 'أتحقق من السعر', 'purpose_invest': 'أريد الاستثمار', 'purpose_invest_hint': 'أحسب العائد', 'purpose_know': 'للمعرفة', 'purpose_know_hint': 'أستكشف القيمة', 'location_question': 'أين يقع العقار؟', 'location_hint': 'اختر المدينة ثم الحي للحصول على تقدير أقرب للسوق.', 'type_question': 'ما نوع العقار؟', 'type_hint': 'اختر النوع الأقرب، وستتغير الأسئلة التالية حسب اختيارك.', 'type_villa': 'فيلا', 'type_villa_hint': 'منزل مستقل', 'type_apartment': 'شقة', 'type_apartment_hint': 'في عمارة', 'type_land': 'أرض', 'type_land_hint': 'سكنية أو تجارية', 'type_building': 'عمارة', 'type_building_hint': 'عدة وحدات', 'details_question': 'ما مواصفات العقار الأساسية؟', 'details_hint': 'كلما زادت البيانات، أصبح التقدير أكثر فائدة. الحقول الأساسية مطلوبة.', 'extras_question': 'هل توجد مزايا إضافية؟', 'extras_hint': 'هذه الاختيارات اختيارية، وقد تساعد في تحسين التقدير.', 'review_question': 'راجع بياناتك قبل الحساب', 'review_hint': 'تأكد من البيانات، ثم اضغط على زر الحساب لإظهار القيمة التقديرية.', 'review_city': 'المدينة', 'review_district': 'الحي', 'review_type': 'نوع العقار', 'review_area': 'المساحة', 'review_rooms_age': 'الغرف والعمر', 'review_extras': 'المزايا', 'result_caption': 'القيمة السوقية التقديرية', 'expected_range': 'النطاق المتوقع:', 'result_notice_title': 'تنبيه مهم:', 'result_notice': 'هذه نتيجة تقديرية مبنية على البيانات المدخلة، وليست تقرير تقييم رسمي. للحصول على رأي متخصص أو تقرير معتمد، تواصل مع فريق همة المدينة.', 'talk_to_expert': 'تحدث مع خبير عبر واتساب', 'valuation_disclaimer': 'النتيجة للاسترشاد العام ولا تغني عن التقييم العقاري الرسمي.',
+                                    'select_city': '-- اختر المدينة --', 'select_district': '-- اختر الحي --', 'search_city': 'ابحث عن المدينة...', 'search_district': 'ابحث عن الحي...', 'city_riyadh': 'الرياض', 'city_jeddah': 'جدة', 'city_makkah': 'مكة المكرمة', 'city_madinah': 'المدينة المنورة', 'optional': '(اختياري)', 'area_example': 'مثال: 250', 'age_example': 'مثال: 5', 'street_example': 'مثال: 15', 'north': 'شمالية', 'south': 'جنوبية', 'east': 'شرقية', 'west': 'غربية', 'class_luxury': 'راقي', 'class_average': 'متوسط', 'class_popular': 'شعبي', 'class_new': 'جديد', 'type_apartment_full': 'شقة في عمارة', 'type_tower_apartment': 'شقة في برج', 'type_duplex': 'دبلكس', 'type_palace': 'قصر', 'type_office': 'مكتب', 'wizard_kicker': '✦ تقييم مبدئي سريع', 'wizard_headline': 'اعرف القيمة التقديرية لعقارك', 'wizard_headline_accent': 'خلال دقائق', 'wizard_desc': 'أجب عن أسئلة بسيطة، وسنحسب لك نطاقاً تقديرياً يساعدك على اتخاذ قرار عقاري أوضح.', 'trust_steps': 'خطوات سهلة', 'trust_cities': 'مدن مغطاة', 'trust_confidence': 'مؤشر الثقة', 'privacy_title': 'بياناتك تحت سيطرتك', 'privacy_desc': 'لا تحتاج إلى إنشاء حساب. يمكنك الرجوع بين الخطوات وتعديل إجاباتك قبل إصدار النتيجة.', 'purpose_question': 'لماذا تريد تقييم العقار؟', 'purpose_hint': 'يساعدنا ذلك على عرض المعلومات المناسبة لك.', 'purpose_sell': 'أريد البيع', 'purpose_sell_hint': 'أعرف السعر المناسب', 'purpose_buy': 'أريد الشراء', 'purpose_buy_hint': 'أتحقق من السعر', 'purpose_invest': 'أريد الاستثمار', 'purpose_invest_hint': 'أحسب العائد', 'purpose_know': 'للمعرفة', 'purpose_know_hint': 'أستكشف القيمة', 'location_question': 'أين يقع العقار؟', 'location_hint': 'اختر المدينة ثم الحي للحصول على تقدير أقرب للسوق.', 'type_question': 'ما نوع العقار؟', 'type_hint': 'اختر النوع الأقرب، وستتغير الأسئلة التالية حسب اختيارك.', 'type_villa': 'فيلا', 'type_villa_hint': 'منزل مستقل', 'type_apartment': 'شقة', 'type_apartment_hint': 'في عمارة', 'type_land': 'أرض', 'type_land_hint': 'سكنية أو تجارية', 'type_building': 'عمارة', 'type_building_hint': 'عدة وحدات', 'details_question': 'ما مواصفات العقار الأساسية؟', 'details_hint': 'كلما زادت البيانات، أصبح التقدير أكثر فائدة. الحقول الأساسية مطلوبة.', 'extras_question': 'هل توجد مزايا إضافية؟', 'extras_hint': 'هذه الاختيارات اختيارية، وقد تساعد في تحسين التقدير.', 'review_question': 'راجع بياناتك قبل الحساب', 'review_hint': 'تأكد من البيانات، ثم اضغط على زر الحساب لإظهار القيمة التقديرية.', 'review_city': 'المدينة', 'review_district': 'الحي', 'review_type': 'نوع العقار', 'review_area': 'المساحة', 'review_rooms_age': 'الغرف والعمر', 'review_extras': 'المزايا', 'result_caption': 'القيمة السوقية التقديرية', 'expected_range': 'النطاق المتوقع:', 'result_notice_title': 'تنبيه مهم:', 'result_notice': 'هذه نتيجة تقديرية مبنية على البيانات المدخلة، وليست تقرير تقييم رسمي. للحصول على رأي متخصص أو تقرير معتمد، تواصل مع فريق همة المدينة.', 'talk_to_expert': 'تحدث مع خبير عبر واتساب', 'valuation_disclaimer': 'النتيجة للاسترشاد العام ولا تغني عن التقييم العقاري الرسمي.',
                 'about_subtitle': 'شريكك العقاري الموثوق في المدينة المنورة', 'license_label': 'رخصة فال العقارية: 1200030428',
                 'faq_subtitle': 'إجابات سريعة عن خدماتنا وأدواتنا', 'faq_q1': 'كيف أضيف عقاري؟', 'faq_a1': 'من صفحة «إضافة عقار» يدوياً أو برفع ملف Excel.',
                 'faq_q2': 'هل التقييم معتمد رسمياً؟', 'faq_a2': 'التقييم المعروض تقديري للاسترشاد، ولا يغني عن تقرير التقييم الرسمي من مختص مرخص.',
@@ -1092,8 +1145,8 @@
                 'about_office': 'Himmat Al Madinah Real Estate Office',
                 'about_desc': 'Your trusted real estate partner in Madinah. We provide integrated solutions in smart valuation, property management, and marketing.',
                 'vision': 'Our Vision', 'mission': 'Our Mission',
-                'vision_text': 'To be the leading real estate platform in Madinah providing high-precision digital valuation solutions.',
-                'mission_text': 'Providing reliable real estate services based on transparency and innovation.',
+                'vision_text': 'To become Madinah’s trusted digital real estate reference, providing intelligent tools that help individuals and investors make clear, data-informed decisions.',
+                'mission_text': 'To deliver professional real estate services that combine local expertise, transparency, and technology—from valuation and marketing to property management and contract drafting.',
                 'lessor': 'Lessor', 'lessor_id': 'Lessor ID', 'tenant': 'Tenant', 'tenant_id': 'Tenant ID',
                 'district_name': 'District', 'unit_type': 'Unit Type', 'annual_rent': 'Annual Rent',
                 'duration': 'Duration (months)', 'start_date': 'Start Date', 'deposit': 'Deposit',
@@ -1104,7 +1157,7 @@
                 'browse_offers': 'Browse Offers', 'evaluate_property': 'Evaluate Property', 'create_contract': 'Create Contract',
                 'contact_us': 'Contact Us', 'get_consultation': 'Get Consultation', 'market_property': 'Market Property',
 
-                                    'select_city': '-- Choose city --', 'select_district': '-- Choose district --', 'city_riyadh': 'Riyadh', 'city_jeddah': 'Jeddah', 'city_makkah': 'Makkah', 'city_madinah': 'Madinah', 'optional': '(optional)', 'area_example': 'Example: 250', 'age_example': 'Example: 5', 'street_example': 'Example: 15', 'north': 'North', 'south': 'South', 'east': 'East', 'west': 'West', 'class_luxury': 'Luxury', 'class_average': 'Average', 'class_popular': 'Popular', 'class_new': 'New', 'type_apartment_full': 'Apartment in a building', 'type_tower_apartment': 'Tower apartment', 'type_duplex': 'Duplex', 'type_palace': 'Palace', 'type_office': 'Office', 'wizard_kicker': '✦ Quick preliminary estimate', 'wizard_headline': 'Get your property value', 'wizard_headline_accent': 'in minutes', 'wizard_desc': 'Answer a few simple questions and we will calculate an estimated range to support your next real estate decision.', 'trust_steps': 'Easy steps', 'trust_cities': 'Covered cities', 'trust_confidence': 'Confidence index', 'privacy_title': 'Your data stays in your control', 'privacy_desc': 'No account is required. You can go back and edit your answers before receiving the result.', 'purpose_question': 'Why are you valuing the property?', 'purpose_hint': 'This helps us show the information most relevant to your goal.', 'purpose_sell': 'I want to sell', 'purpose_sell_hint': 'Find the right price', 'purpose_buy': 'I want to buy', 'purpose_buy_hint': 'Check the price', 'purpose_invest': 'I want to invest', 'purpose_invest_hint': 'Estimate the return', 'purpose_know': 'Just exploring', 'purpose_know_hint': 'Discover the value', 'location_question': 'Where is the property?', 'location_hint': 'Choose the city and district for a closer market estimate.', 'type_question': 'What type of property is it?', 'type_hint': 'Choose the closest type; the following questions will adapt to it.', 'type_villa': 'Villa', 'type_villa_hint': 'Standalone home', 'type_apartment': 'Apartment', 'type_apartment_hint': 'In a building', 'type_land': 'Land', 'type_land_hint': 'Residential or commercial', 'type_building': 'Building', 'type_building_hint': 'Multiple units', 'details_question': 'What are the basic property details?', 'details_hint': 'More details improve the estimate. Required fields are marked.', 'extras_question': 'Does it have any extra features?', 'extras_hint': 'These choices are optional and may improve the estimate.', 'review_question': 'Review your details', 'review_hint': 'Confirm the information, then calculate the estimated value.', 'review_city': 'City', 'review_district': 'District', 'review_type': 'Property type', 'review_area': 'Area', 'review_rooms_age': 'Rooms and age', 'review_extras': 'Features', 'result_caption': 'Estimated market value', 'expected_range': 'Expected range:', 'result_notice_title': 'Important note:', 'result_notice': 'This is an estimate based on the information entered and is not an official valuation report. Contact Himmat Al Madinah for expert guidance.', 'talk_to_expert': 'Talk to an expert on WhatsApp', 'valuation_disclaimer': 'For general guidance only; it does not replace an official real estate valuation.',
+                                    'select_city': '-- Choose city --', 'select_district': '-- Choose district --', 'search_city': 'Search for a city...', 'search_district': 'Search for a district...', 'city_riyadh': 'Riyadh', 'city_jeddah': 'Jeddah', 'city_makkah': 'Makkah', 'city_madinah': 'Madinah', 'optional': '(optional)', 'area_example': 'Example: 250', 'age_example': 'Example: 5', 'street_example': 'Example: 15', 'north': 'North', 'south': 'South', 'east': 'East', 'west': 'West', 'class_luxury': 'Luxury', 'class_average': 'Average', 'class_popular': 'Popular', 'class_new': 'New', 'type_apartment_full': 'Apartment in a building', 'type_tower_apartment': 'Tower apartment', 'type_duplex': 'Duplex', 'type_palace': 'Palace', 'type_office': 'Office', 'wizard_kicker': '✦ Quick preliminary estimate', 'wizard_headline': 'Get your property value', 'wizard_headline_accent': 'in minutes', 'wizard_desc': 'Answer a few simple questions and we will calculate an estimated range to support your next real estate decision.', 'trust_steps': 'Easy steps', 'trust_cities': 'Covered cities', 'trust_confidence': 'Confidence index', 'privacy_title': 'Your data stays in your control', 'privacy_desc': 'No account is required. You can go back and edit your answers before receiving the result.', 'purpose_question': 'Why are you valuing the property?', 'purpose_hint': 'This helps us show the information most relevant to your goal.', 'purpose_sell': 'I want to sell', 'purpose_sell_hint': 'Find the right price', 'purpose_buy': 'I want to buy', 'purpose_buy_hint': 'Check the price', 'purpose_invest': 'I want to invest', 'purpose_invest_hint': 'Estimate the return', 'purpose_know': 'Just exploring', 'purpose_know_hint': 'Discover the value', 'location_question': 'Where is the property?', 'location_hint': 'Choose the city and district for a closer market estimate.', 'type_question': 'What type of property is it?', 'type_hint': 'Choose the closest type; the following questions will adapt to it.', 'type_villa': 'Villa', 'type_villa_hint': 'Standalone home', 'type_apartment': 'Apartment', 'type_apartment_hint': 'In a building', 'type_land': 'Land', 'type_land_hint': 'Residential or commercial', 'type_building': 'Building', 'type_building_hint': 'Multiple units', 'details_question': 'What are the basic property details?', 'details_hint': 'More details improve the estimate. Required fields are marked.', 'extras_question': 'Does it have any extra features?', 'extras_hint': 'These choices are optional and may improve the estimate.', 'review_question': 'Review your details', 'review_hint': 'Confirm the information, then calculate the estimated value.', 'review_city': 'City', 'review_district': 'District', 'review_type': 'Property type', 'review_area': 'Area', 'review_rooms_age': 'Rooms and age', 'review_extras': 'Features', 'result_caption': 'Estimated market value', 'expected_range': 'Expected range:', 'result_notice_title': 'Important note:', 'result_notice': 'This is an estimate based on the information entered and is not an official valuation report. Contact Himmat Al Madinah for expert guidance.', 'talk_to_expert': 'Talk to an expert on WhatsApp', 'valuation_disclaimer': 'For general guidance only; it does not replace an official real estate valuation.',
                 'about_subtitle': 'Your trusted real estate partner in Madinah', 'license_label': 'FAL License: 1200030428',
                 'faq_subtitle': 'Quick answers about our services and tools', 'faq_q1': 'How do I add my property?', 'faq_a1': 'Use the Add Property page manually or upload an Excel file.',
                 'faq_q2': 'Is the valuation officially certified?', 'faq_a2': 'The displayed estimate is for guidance and does not replace an official report by a licensed specialist.',
@@ -1238,6 +1291,10 @@
             }
             updateDistricts();
             updateAddDistricts();
+            if (typeof wizardStep !== 'undefined') showWizardStep(wizardStep);
+            syncLocationSearchInputs();
+            renderLocationOptions('city', false);
+            renderLocationOptions('district', false);
         }
 
         function toggleTheme() {
@@ -1376,6 +1433,151 @@
             showWizardStep(1);
         }
 
+        const cityLocationOptions = {
+            riyadh: { ar: 'الرياض', en: 'Riyadh' },
+            jeddah: { ar: 'جدة', en: 'Jeddah' },
+            makkah: { ar: 'مكة المكرمة', en: 'Makkah' },
+            madinah: { ar: 'المدينة المنورة', en: 'Madinah' }
+        };
+
+        function locationLabel(kind, value) {
+            if (!value) return '';
+            if (kind === 'city') return cityLocationOptions[value]?.[currentLang] || value;
+            return currentLang === 'en' ? (districtTranslations[value] || value) : value;
+        }
+
+        function locationInput(kind) {
+            return document.getElementById(kind === 'city' ? 'valCitySearch' : 'valDistrictSearch');
+        }
+
+        function locationNativeSelect(kind) {
+            return document.getElementById(kind === 'city' ? 'valCity' : 'valDistrict');
+        }
+
+        function locationResults(kind) {
+            return document.getElementById(kind === 'city' ? 'cityResults' : 'districtResults');
+        }
+
+        function getLocationItems(kind) {
+            const select = locationNativeSelect(kind);
+            if (!select) return [];
+            return Array.from(select.options).filter(option => option.value).map(option => ({
+                value: option.value,
+                label: locationLabel(kind, option.value)
+            }));
+        }
+
+        function closeLocationOptions(kind) {
+            const input = locationInput(kind);
+            const results = locationResults(kind);
+            if (results) results.classList.remove('open');
+            if (input) input.setAttribute('aria-expanded', 'false');
+        }
+
+        function renderLocationOptions(kind, showAll = false) {
+            const input = locationInput(kind);
+            const results = locationResults(kind);
+            const select = locationNativeSelect(kind);
+            if (!input || !results || !select) return;
+            const query = showAll ? '' : input.value.trim().toLocaleLowerCase();
+            const selected = select.value;
+            const items = getLocationItems(kind).filter(item => !query || item.label.toLocaleLowerCase().includes(query));
+            results.innerHTML = '';
+            if (!items.length) {
+                const empty = document.createElement('div');
+                empty.className = 'location-option-empty';
+                empty.textContent = currentLang === 'en' ? 'No matching results' : 'لا توجد نتائج مطابقة';
+                results.appendChild(empty);
+            } else {
+                items.forEach(item => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'location-option' + (item.value === selected ? ' selected' : '');
+                    button.setAttribute('role', 'option');
+                    button.setAttribute('aria-selected', String(item.value === selected));
+                    button.textContent = item.label;
+                    button.addEventListener('click', () => chooseLocation(kind, item.value));
+                    results.appendChild(button);
+                });
+            }
+            results.classList.add('open');
+            input.setAttribute('aria-expanded', 'true');
+        }
+
+        function openLocationOptions(kind) {
+            renderLocationOptions(kind, true);
+        }
+
+        function filterLocationOptions(kind) {
+            const select = locationNativeSelect(kind);
+            const input = locationInput(kind);
+            if (select && input && input.value !== locationLabel(kind, select.value)) {
+                if (kind === 'city' && select.value) {
+                    select.value = '';
+                    const district = locationNativeSelect('district');
+                    if (district) district.innerHTML = '<option value="" data-i18n="select_district">-- اختر الحي --</option>';
+                    const districtInput = locationInput('district');
+                    if (districtInput) districtInput.value = '';
+                }
+            }
+            renderLocationOptions(kind, false);
+        }
+
+        function chooseLocation(kind, value) {
+            const select = locationNativeSelect(kind);
+            if (!select) return;
+            select.value = value;
+            const input = locationInput(kind);
+            if (input) input.value = locationLabel(kind, value);
+            closeLocationOptions(kind);
+            if (kind === 'city') {
+                updateDistricts();
+                const district = locationNativeSelect('district');
+                if (district?.value) {
+                    const districtInput = locationInput('district');
+                    if (districtInput) districtInput.value = locationLabel('district', district.value);
+                }
+            } else {
+                calculateValuation();
+                updateReviewSummary();
+            }
+        }
+
+        function handleLocationKey(event, kind) {
+            const results = locationResults(kind);
+            if (event.key === 'Escape') {
+                closeLocationOptions(kind);
+                return;
+            }
+            if (event.key === 'ArrowDown') {
+                const first = results?.querySelector('.location-option');
+                if (first) { event.preventDefault(); first.focus(); }
+                return;
+            }
+            if (event.key === 'Enter') {
+                const first = results?.querySelector('.location-option');
+                if (first) { event.preventDefault(); first.click(); }
+            }
+        }
+
+        function syncLocationSearchInputs() {
+            ['city', 'district'].forEach(kind => {
+                const select = locationNativeSelect(kind);
+                const input = locationInput(kind);
+                if (select && input) input.value = locationLabel(kind, select.value);
+            });
+        }
+
+        function initializeLocationSearch() {
+            syncLocationSearchInputs();
+            document.addEventListener('click', event => {
+                if (!event.target.closest('.location-search-field')) {
+                    closeLocationOptions('city');
+                    closeLocationOptions('district');
+                }
+            });
+        }
+
         function updateDistricts() {
             const city = document.getElementById('valCity')?.value;
             const select = document.getElementById('valDistrict');
@@ -1390,6 +1592,8 @@
                 });
                 select.value = Object.keys(districtsData[city])[0];
             }
+            syncLocationSearchInputs();
+            renderLocationOptions('district', false);
             calculateValuation();
         }
 
@@ -1671,6 +1875,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            initializeLocationSearch();
             const savedLang = localStorage.getItem('lang') || 'ar';
             switchLanguage(savedLang);
             
