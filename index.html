@@ -2049,5 +2049,10 @@
             if(cpw) cpw.addEventListener('click', function(e) { if(e.target === this) closePrintWindow(); });
         });
     </script>
+    <!-- PDF template generation: the original PDF remains the visual background. -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@1.1.1/dist/fontkit.umd.min.js"></script>
+    <script src="residential-contract-pdf.js"></script>
+    <script src="commercial-contract-pdf.js"></script>
 </body>
 </html>
